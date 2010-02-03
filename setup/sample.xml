@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<script>
+	<binding fileName="modules/blog/persistentdocument/import/blog_binding.xml" />
+	<binding fileName="modules/website/persistentdocument/import/website_binding.xml" />
+
+	<website byTag="default_modules_website_default-website" template="tplTwo">
+		<topic byLabel="Liste des blogs" id="blogs">
+			<page byLabel="Liste des blogs" isIndexPage="true" indexingstatus="false" navigationVisibility="hidden">
+				<tag name="functional_blog_blog-list" />
+				<changecontent for="content-block">
+					<changeblock type="modules_blog_blogcontextuallist" />
+				</changecontent>
+			</page>
+
+			<page byLabel="Blog" navigationVisibility="hidden" indexingstatus="false">
+				<tag name="functional_blog_blog-detail" />
+				<changecontent for="content-block">
+					<changeblock type="modules_blog_blog" />
+				</changecontent>
+			</page>
+			
+			<page byLabel="Catégorie" navigationVisibility="hidden" indexingstatus="false">
+				<tag name="functional_blog_category-detail" />
+				<changecontent for="content-block">
+					<changeblock type="modules_blog_category" />
+				</changecontent>
+			</page>
+			
+			<page byLabel="Mot clé" navigationVisibility="hidden" indexingstatus="false">
+				<tag name="functional_blog_keyword-detail" />
+				<changecontent for="content-block">
+					<changeblock type="modules_blog_keyword" />
+				</changecontent>
+			</page>
+			
+			<page byLabel="Billet" navigationVisibility="hidden" indexingstatus="false">
+				<tag name="functional_blog_post-detail" />
+				<changecontent for="content-block">
+					<changeblock type="modules_blog_post" />
+					<changeblock type="modules_blog_comments" />
+				</changecontent>
+			</page>
+			
+			<page byLabel="Archives" navigationVisibility="hidden" indexingstatus="false">
+				<tag name="functional_blog_archives" />
+				<changecontent for="content-block">
+					<changeblock type="modules_blog_archives" />
+				</changecontent>
+			</page>
+		</topic>
+		
+		<topic byLabel="Administration des blogs (sécurisé)" id="blogs-admin">
+			<page byLabel="Administration des blogs" isIndexPage="true" indexingstatus="false">
+				<tag name="contextual_website_website_modules_blog_blogedit" />
+				<changecontent for="content-block">
+					<changeblock type="modules_blog_blogEdit" />
+				</changecontent>
+			</page>
+			
+			<page byLabel="Édition d'un billet" navigationVisibility="hidden" indexingstatus="false">
+				<tag name="contextual_website_website_modules_blog_postform" />
+				<changecontent for="content-block">
+					<changeblock type="modules_blog_postForm" />
+				</changecontent>
+			</page>
+			
+			<page byLabel="Édition d'une catégorie" navigationVisibility="hidden" indexingstatus="false">
+				<tag name="contextual_website_website_modules_blog_categoryform" />
+				<changecontent for="content-block">
+					<changeblock type="modules_blog_categoryForm" />
+				</changecontent>
+			</page>
+			
+			<page byLabel="Validation des commentaires" navigationVisibility="hidden" indexingstatus="false">
+				<tag name="contextual_website_website_modules_blog_commentsvalidation" />
+				<changecontent for="content-block">
+					<changeblock type="modules_blog_commentsvalidation" />
+				</changecontent>
+			</page>
+		</topic>
+	</website>
+
+	<rootfolder module="blog">
+		<linkedtopic refid="blogs">
+			<blog label="Saepissime igitur mihi" description="Saepissime igitur mihi de amicitia cogitanti maxime illud considerandum videri solet, utrum propter imbecillitatem atque inopiam desiderata sit amicitia, ut dandis recipiendisque meritis quod quisque minus per se ipse posset, id acciperet ab alio vicissimque redderet, an esset hoc quidem proprium amicitiae, sed antiquior et pulchrior et magis a natura ipsa profecta alia causa. Amor enim, ex quo amicitia nominata est, princeps est ad benevolentiam coniungendam. Nam utilitates quidem etiam ab iis percipiuntur saepe qui simulatione amicitiae coluntur et observantur temporis causa, in amicitia autem nihil fictum est, nihil simulatum et, quidquid est, id est verum et voluntarium.">
+				<category label="Accedat huc suavitas" id="cat1" description="Accedat huc suavitas quaedam oportet sermonum atque morum, haudquaquam mediocre condimentum amicitiae. Tristitia autem et in omni re severitas habet illa quidem gravitatem, sed amicitia remissior esse debet et liberior et dulcior et ad omnem comitatem facilitatemque proclivior.">
+					<category label="Iamque non umbratis" id="cat11" description="Iamque non umbratis fallaciis res agebatur, sed qua palatium est extra muros, armatis omne circumdedit. ingressusque obscuro iam die, ablatis regiis indumentis Caesarem tunica texit et paludamento communi, eum post haec nihil passurum velut mandato principis iurandi crebritate confirmans et statim inquit exsurge et inopinum carpento privato inpositum ad Histriam duxit prope oppidum Polam, ubi quondam peremptum Constantini filium accepimus Crispum." />
+					<category label="Itaque tum Scaevola" id="cat12" description="Itaque tum Scaevola cum in eam ipsam mentionem incidisset, exposuit nobis sermonem Laeli de amicitia habitum ab illo secum et cum altero genero, C. Fannio Marci filio, paucis diebus post mortem Africani. Eius disputationis sententias memoriae mandavi, quas hoc libro exposui arbitratu meo; quasi enim ipsos induxi loquentes, ne 'inquam' et 'inquit' saepius interponeretur, atque ut tamquam a praesentibus coram haberi sermo videretur." />
+					<category label="Primi igitur omnium" id="cat13" description="Primi igitur omnium statuuntur Epigonus et Eusebius ob nominum gentilitatem oppressi. praediximus enim Montium sub ipso vivendi termino his vocabulis appellatos fabricarum culpasse tribunos ut adminicula futurae molitioni pollicitos." />
+					<category label="Eodem tempore Serenianus" id="cat14" description="Eodem tempore Serenianus ex duce, cuius ignavia populatam in Phoenice Celsen ante rettulimus, pulsatae maiestatis imperii reus iure postulatus ac lege, incertum qua potuit suffragatione absolvi, aperte convictus familiarem suum cum pileo, quo caput operiebat, incantato vetitis artibus ad templum misisse fatidicum, quaeritatum expresse an ei firmum portenderetur imperium, ut cupiebat, et cunctum." />
+				</category>
+				<category label="Homines enim eruditos" id="cat2" description="Homines enim eruditos et sobrios ut infaustos et inutiles vitant, eo quoque accedente quod et nomenclatores adsueti haec et talia venditare, mercede accepta lucris quosdam et prandiis inserunt subditicios ignobiles et obscuros." />
+				
+				<post label="Et hanc quidem" 
+					contents="Et hanc quidem praeter oppida multa duae civitates exornant Seleucia opus Seleuci regis, et Claudiopolis quam deduxit coloniam Claudius Caesar. Isaura enim antehac nimium potens, olim subversa ut rebellatrix interneciva aegre vestigia claritudinis pristinae monstrat admodum pauca." 
+					summary="Et hanc quidem praeter oppida multa duae civitates exornant Seleucia opus Seleuci regis, et Claudiopolis quam deduxit coloniam Claudius Caesar." 
+					categories="cat11" 
+					keywordsText="Habitaculis, Tranquillis, Ad hominum, Atque" 
+					postDate="2009-03-19 15:49:00" />
+				
+				<post label="Verum ad istam" 
+					contents="Qui ut huic virilem togam deditšnihil dicam hoc loco de me; tantum sit, quantum vos existimatis; hoc dicam, hunc a patre continuo ad me esse deductum; nemo hunc M. Caelium in illo aetatis flore vidit nisi aut cum patre aut mecum aut in M. Crassi castissima domo, cum artibus honestissimis erudiretur."
+					summary="Verum ad istam omnem orationem brevis est defensio. Nam quoad aetas M. Caeli dare potuit isti suspicioni locum, fuit primum ipsius pudore, deinde etiam patris diligentia disciplinaque munita." 
+					showSummaryOnDetail="true"
+					categories="cat13, cat2" 
+					keywordsText="Tranquillis, Quae tranquillis, Lingua, Atque" 
+					postDate="2009-03-18 11:19:00" />
+				
+				<post label="Cum haec taliaque" 
+					contents="Cum haec taliaque sollicitas eius aures everberarent expositas semper eius modi rumoribus et patentes, varia animo tum miscente consilia, tandem id ut optimum factu elegit: et Vrsicinum primum ad se venire summo cum honore mandavit ea specie ut pro rerum tunc urgentium captu disponeretur concordi consilio, quibus virium incrementis Parthicarum gentium a arma minantium impetus frangerentur." 
+					categories="cat1, cat12" 
+					keywordsText="Arbitrium, Ad hominum, Pleraeque, Assyria et, Atque" 
+					postDate="2009-02-18 10:09:00" />
+				
+				<post label="Tantum autem cuique tribuendum" 
+					contents="Tantum autem cuique tribuendum, primum quantum ipse efficere possis, deinde etiam quantum ille quem diligas atque adiuves, sustinere. Non enim neque tu possis, quamvis excellas, omnes tuos ad honores amplissimos perducere, ut Scipio P. Rupilium potuit consulem efficere, fratrem eius L. non potuit. Quod si etiam possis quidvis deferre ad alterum, videndum est tamen, quid ille possit sustinere." 
+					categories="cat11" 
+					keywordsText="Habitaculis, quantum ipse, Atque" 
+					postDate="2009-02-17 18:09:00" />
+				
+				<post label="Quanta autem vis amicitiae sit" 
+					contents="Quanta autem vis amicitiae sit, ex hoc intellegi maxime potest, quod ex infinita societate generis humani, quam conciliavit ipsa natura, ita contracta res est et adducta in angustum ut omnis caritas aut inter duos aut inter paucos iungeretur." 
+					categories="cat2, cat1" 
+					keywordsText="Habitaculis, quod ex infinita, ex hoc intellegi" 
+					postDate="2009-01-16 17:39:00" />
+				
+				<post label="His cognitis Gallus" 
+					contents="His cognitis Gallus ut serpens adpetitus telo vel saxo iamque spes extremas opperiens et succurrens saluti suae quavis ratione colligi omnes iussit armatos et cum starent attoniti, districta dentium acie stridens adeste inquit viri fortes mihi periclitanti vobiscum." 
+					categories="cat2" 
+					postDate="2008-12-15 15:25:00" />
+			</blog>
+			
+			<blog label="Qui cum venisset ob haec festinatis">
+				<category label="Nam sole orto" id="catA" description="Nam sole orto magnitudine angusti gurgitis sed profundi a transitu arcebantur et dum piscatorios quaerunt lenunculos vel innare temere contextis cratibus parant, effusae legiones, quae hiemabant tunc apud Siden, isdem impetu occurrere veloci. et signis prope ripam locatis ad manus comminus conserendas denseta scutorum conpage semet scientissime praestruebant, ausos quoque aliquos fiducia nandi vel cavatis arborum truncis amnem permeare latenter facillime trucidarunt." />
+				<category label="Iamque lituis cladium concrepantibus" id="catB" />
+				
+				<post label="Ergo ego senator" 
+					contents="Ergo ego senator inimicus, si ita vultis, homini, amicus esse, sicut semper fui, rei publicae debeo. Quid? si ipsas inimicitias, depono rei publicae causa, quis me tandem iure reprehendet, praesertim cum ego omnium meorum consiliorum atque factorum exempla semper ex summorum hominum consiliis atque factis mihi censuerim petenda." 
+					categories="catA" 
+					keywordsText="Hominum, Consiliis, Atque" 
+					postDate="2009-03-19 15:49:00" />
+				
+				<post label="Constituendi autem sunt qui sint" 
+					contents="Constituendi autem sunt qui sint in amicitia fines et quasi termini diligendi. De quibus tres video sententias ferri, quarum nullam probo, unam, ut eodem modo erga amicum adfecti simus, quo erga nosmet ipsos, alteram, ut nostra in amicos benevolentia illorum erga nos benevolentiae pariter aequaliterque respondeat, tertiam, ut, quanti quisque se ipse facit, tanti fiat ab amicis." 
+					categories="catA, catB" 
+					keywordsText="Hominum, Ut nostra, In amicos" 
+					postDate="2009-03-19 15:49:00" />
+				
+				<post label="Incenderat autem audaces" 
+					contents="Incenderat autem audaces usque ad insaniam homines ad haec, quae nefariis egere conatibus, Luscus quidam curator urbis subito visus: eosque ut heiulans baiolorum praecentor ad expediendum quod orsi sunt incitans vocibus crebris. qui haut longe postea ideo vivus exustus est." 
+					categories="catB" 
+					keywordsText="Hominum, Consiliis, Atque, ut heiulans" 
+					postDate="2009-03-19 15:49:00" />
+			</blog>
+			
+			<blog label="Utque proeliorum periti">
+				<category label="Utque proeliorum periti rectores" id="catC" description="Utque proeliorum periti rectores primo catervas densas opponunt et fortes, deinde leves armaturas, post iaculatores ultimasque subsidiales acies, si fors adegerit, iuvaturas, ita praepositis urbanae familiae suspensae digerentibus sollicite, quos insignes faciunt virgae dexteris aptatae velut tessera data castrensi iuxta vehiculi frontem omne textrinum incedit: huic atratum coquinae iungitur ministerium, dein totum promiscue servitium cum otiosis plebeiis de vicinitate coniunctis: postrema multitudo spadonum a senibus in pueros desinens, obluridi distortaque lineamentorum conpage deformes, ut quaqua incesserit quisquam cernens mutilorum hominum agmina detestetur memoriam Samiramidis reginae illius veteris, quae teneros mares castravit omnium prima velut vim iniectans naturae, eandemque ab instituto cursu retorquens, quae inter ipsa oriundi crepundia per primigenios seminis fontes tacita quodam modo lege vias propagandae posteritatis ostendit." />
+				
+				<post label="Ideo urbs venerabilis post superbas" 
+					contents="Ideo urbs venerabilis post superbas efferatarum gentium cervices oppressas latasque leges fundamenta libertatis et retinacula sempiterna velut frugi parens et prudens et dives Caesaribus tamquam liberis suis regenda patrimonii iura permisit." 
+					categories="catC" 
+					keywordsText="Hominum, Consiliis, Atque, ut heiulans" 
+					postDate="2009-03-19 15:49:00" />
+			</blog>
+		</linkedtopic>
+	</rootfolder>
+</script>

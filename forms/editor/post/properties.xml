@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<panel>
+	<section labeli18n="modules.website.document.page.Generalities">
+		<field name="label" />
+		<field name="postDate" />
+		<field name="category" />
+		<field name="keywordsText" />
+		<field name="allowComments" />
+	</section>
+	<section labeli18n="modules.blog.document.post.Contents">
+		<field name="summary" />
+		<field name="contents" />
+		<field name="showSummaryOnDetail"/>
+	</section>
+	<section labeli18n="modules.website.document.page.Publication">
+		<field name="startpublicationdate" />
+		<field name="endpublicationdate" />
+	</section>
+</panel>

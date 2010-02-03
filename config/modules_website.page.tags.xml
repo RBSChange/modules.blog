@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tags extends="generic">
+	<tag label="&amp;modules.blog.bo.tags.Blog-detail;" icon="blog">functional_blog_blog-detail</tag>
+	<tag label="&amp;modules.blog.bo.tags.Blog-list;" icon="list-block">functional_blog_blog-list</tag>
+	<tag label="&amp;modules.blog.bo.tags.Post-detail;" icon="post">functional_blog_post-detail</tag>
+	<tag label="&amp;modules.blog.bo.tags.Category-detail;" icon="category">functional_blog_category-detail</tag>
+	<tag label="&amp;modules.blog.bo.tags.Keyword-detail;" icon="keyword">functional_blog_keyword-detail</tag>
+	<tag label="&amp;modules.blog.bo.tags.Archives;" icon="archive">functional_blog_archives</tag>
+
+	<!-- Frontoffice administration. -->
+	<tag label="&amp;modules.blog.bo.tags.Blog-edit;" icon="gear">contextual_website_website_modules_blog_blogedit</tag>
+	<tag label="&amp;modules.blog.bo.tags.Post-edit;" icon="gear">contextual_website_website_modules_blog_postform</tag>
+	<tag label="&amp;modules.blog.bo.tags.Category-edit;" icon="gear">contextual_website_website_modules_blog_categoryform</tag>
+	<tag label="&amp;modules.blog.bo.tags.Comments-validation;" icon="gear">contextual_website_website_modules_blog_commentsvalidation</tag>
+</tags>

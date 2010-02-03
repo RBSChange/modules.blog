@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<localization>
+  <entity id="module-name">
+    <locale lang="fr">blog</locale>
+    <locale lang="en">blog</locale>
+    <locale lang="de">Blog</locale>
+  </entity>
+  <entity id="tree-root-name">
+    <locale lang="fr">blog</locale>
+    <locale lang="en">blog</locale>
+    <locale lang="de">Blog</locale>
+  </entity>
+  <entity id="system-folder-name">
+    <locale lang="fr">blog</locale>
+    <locale lang="en">blog</locale>
+    <locale lang="de">Blog</locale>
+  </entity>
+  <entity id="hours">
+    <locale lang="fr">heures</locale>
+    <locale lang="en">hours</locale>
+    <locale lang="de">Stunden</locale>
+  </entity>
+  <entity id="minutes">
+    <locale lang="fr">minutes</locale>
+    <locale lang="en">minutes</locale>
+    <locale lang="de">Minuten</locale>
+  </entity>
+  <entity id="blogs">
+    <locale lang="fr">blogs</locale>
+    <locale lang="en">blogs</locale>
+    <locale lang="de">Blogs</locale>
+  </entity>
+  <entity id="categories">
+    <locale lang="fr">catégories</locale>
+    <locale lang="en">categories</locale>
+    <locale lang="de">Kategorien</locale>
+  </entity>
+  <entity id="keywords">
+    <locale lang="fr">mots-clés</locale>
+    <locale lang="en">keywords</locale>
+    <locale lang="de">Stichwörter</locale>
+  </entity>
+  <entity id="posts">
+    <locale lang="fr">billets</locale>
+    <locale lang="en">posts</locale>
+    <locale lang="de">Beiträge</locale>
+  </entity>
+  <entity id="archives">
+    <locale lang="fr">archives</locale>
+    <locale lang="en">archives</locale>
+    <locale lang="de">Archive</locale>
+  </entity>
+  <entity id="column.label">
+    <locale lang="fr">libellé</locale>
+    <locale lang="en">label</locale>
+    <locale lang="de">Name</locale>
+  </entity>
+  <entity id="column.keywordsText">
+    <locale lang="fr">mots-clés</locale>
+    <locale lang="en">keywords</locale>
+    <locale lang="de">Stichwort</locale>
+  </entity>
+  <entity id="column.post-count">
+    <locale lang="fr">billets</locale>
+    <locale lang="en">posts</locale>
+    <locale lang="de">Beiträge</locale>
+  </entity>
+  <entity id="column.date">
+    <locale lang="fr">date</locale>
+    <locale lang="en">date</locale>
+    <locale lang="de">Datum</locale>
+  </entity>
+  <entity id="column.published-post-count">
+    <locale lang="fr">billets publiés</locale>
+    <locale lang="en">published posts</locale>
+    <locale lang="de">veröffentlichte Beiträge</locale>
+  </entity>
+  <entity id="column.pathOf">
+    <locale lang="fr">chemin</locale>
+    <locale lang="en">path</locale>
+  </entity>
+</localization>

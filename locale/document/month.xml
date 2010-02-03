@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<localization>
+  <entity id="edition-form-title">
+    <locale lang="fr">edition-form-title</locale>
+    <locale lang="en">edition-form-title</locale>
+    <locale lang="de">edition-form-title</locale>
+  </entity>
+  <entity id="document-name">
+    <locale lang="fr">month</locale>
+    <locale lang="en">month</locale>
+    <locale lang="de">Monat</locale>
+  </entity>
+  <entity id="label">
+    <locale lang="fr">label</locale>
+    <locale lang="en">label</locale>
+    <locale lang="de">Name</locale>
+  </entity>
+  <entity id="label-help">
+    <locale lang="fr">label</locale>
+    <locale lang="en">label</locale>
+    <locale lang="de">Name</locale>
+  </entity>
+  <entity id="year">
+    <locale lang="fr">year</locale>
+    <locale lang="en">year</locale>
+    <locale lang="de">Jahr</locale>
+  </entity>
+  <entity id="year-help">
+    <locale lang="fr">year</locale>
+    <locale lang="en">year</locale>
+    <locale lang="de">Jahr</locale>
+  </entity>
+  <entity id="number">
+    <locale lang="fr">number</locale>
+    <locale lang="en">number</locale>
+    <locale lang="de">Nummer</locale>
+  </entity>
+  <entity id="number-help">
+    <locale lang="fr">number</locale>
+    <locale lang="en">number</locale>
+    <locale lang="de">Nummer</locale>
+  </entity>
+</localization>

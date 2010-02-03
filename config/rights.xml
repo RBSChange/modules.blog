@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rights>
+	<actions>
+		<document name="rootfolder" />		
+		<document name="topic" />
+		<document name="blog" />
+		<document name="category" />
+		<document name="categoryfolder" />
+		<document name="keyword" />
+		<document name="keywordfolder" />
+		<document name="post" />
+		<document name="postfolder" />
+		<document name="comment">
+			<action name="Validate" />
+		</document>
+		<action name="FrontAdmin" />
+	</actions>
+	<roles>	
+		<role name="Admin">
+			<permission name="*" />
+			<permission name="LoadPermissions.*" />
+			<permission name="SavePermissions.*" />
+			<permission name="GetPreferencesDocument" />
+			<permission name="EditLocale" />
+			<permission name="Update.rootfolder" />
+		</role>
+		<role name="Writer" extend="Guest">
+			<permission name="Order" />
+			<permission name="LoadTags" />
+			<permission name="Move.*" />
+			<permission name="Load.*" />
+			<permission name="Rename.*" />
+			<permission name="PutInTrash.*" />
+			<permission name="Delete.*" />
+			<permission name="Insert.*" />
+			<permission name="Update.blog" />
+			<permission name="Update.category" />
+			<permission name="Update.keyword" />
+			<permission name="Update.post" />
+		</role>
+		<role name="Translator" extend="Guest">
+			<permission name="Load.*" />
+			<permission name="LoadForTranslation.*" />
+			<permission name="UpdateTranslation.*" />
+		</role>
+		<role name="Validator" extend="Guest">
+			<permission name="Load.*" />
+			<permission name="Activate.*" />
+			<permission name="Cancel.*" />
+			<permission name="Deactivated.*" />
+			<permission name="ReActivate.*" />
+			<permission name="Activate.*" />
+			<permission name="Validate.comment" />	
+		</role>
+		<role name="Guest" extend="User">
+			<permission name="Enabled" />
+		</role>
+		<role name="User">
+			<permission name="List.*" />
+		</role>
+		<frontendrole name="FrontAdmin">
+			<permission name="FrontAdmin" />
+		</frontendrole>
+	</roles>
+</rights>

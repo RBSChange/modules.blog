@@ -1,0 +1,18 @@
+<h2 change:h="">${blog/getLabel}</h2>
+
+<ul class="mini-navigation">
+	<li>
+		<img change:image="front/rss.gif" alt="" />
+		<a class="link" change:link="module blog; action ViewFeed; parentref blog/getId" i18n:translate="&modules.blog.frontoffice.Blog-rss-link;" />
+	</li>
+</ul>
+
+<p tal:condition="blog/getDescription">${blog/getDescriptionAsHtml}</p>
+
+<ol class="module-list">
+	<li tal:repeat="post paginator" class="${php: repeat.post.odd ? 'odd' : 'even'}">
+		<tal:block change:include="module 'blog' ; template 'Blog-Inc-PostShortDetail' ; type 'html' ; post post" />
+	</li>
+</ol>
+<tal:block change:paginator="paginator" />
+<br class="cleaner" />

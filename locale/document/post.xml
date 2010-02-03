@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<localization>
+  <entity id="edition-form-title">
+    <locale lang="fr">propriétés du billet</locale>
+    <locale lang="en">post properties</locale>
+    <locale lang="de">Eigenschaften des Beitrags</locale>
+  </entity>
+  <entity id="document-name">
+    <locale lang="fr">billet</locale>
+    <locale lang="en">post</locale>
+    <locale lang="de">Beitrag</locale>
+  </entity>
+  <entity id="label">
+    <locale lang="fr">libellé</locale>
+    <locale lang="en">label</locale>
+    <locale lang="de">Name</locale>
+  </entity>
+  <entity id="label-help">
+    <locale lang="fr">libellé</locale>
+    <locale lang="en">label</locale>
+    <locale lang="de">Name</locale>
+  </entity>
+  <entity id="contents">
+    <locale lang="fr">contenu</locale>
+    <locale lang="en">contents</locale>
+    <locale lang="de">Inhalt</locale>
+  </entity>
+  <entity id="contents-help">
+    <locale lang="fr">contenu</locale>
+    <locale lang="en">contents</locale>
+    <locale lang="de">Inhalt</locale>
+  </entity>
+  <entity id="summary">
+    <locale lang="fr">résumé</locale>
+    <locale lang="en">summary</locale>
+    <locale lang="de">Zusammenfassung</locale>
+  </entity>
+  <entity id="summary-help">
+    <locale lang="fr">si vous saisissez un résumé, celui-ci sera affiché à la place du contenu dans les listes de billets.</locale>
+    <locale lang="en">If not empty, the summary will be displayed instead of the contents in the posts lists.</locale>
+    <locale lang="de">Wenn ausgefüllt, erscheint die Zusammenfassung anstelle des Inhalts in den Beitragslisten.</locale>
+  </entity>
+  <entity id="showSummaryOnDetail">
+    <locale lang="fr">afficher résumé sur le détail</locale>
+    <locale lang="en">show summary on detail</locale>
+    <locale lang="de">Zusammenfassung über Eigenschaften anzeigen</locale>
+  </entity>
+  <entity id="showSummaryOnDetail-help">
+    <locale lang="fr">choisissez oui pour afficher le résumé au dessus du contenu dans la page de détail du billet. Choissez non pour n'afficher que le contenu.</locale>
+    <locale lang="en">If yes, the summary will be displayed below the contents on the detail page.</locale>
+    <locale lang="de">Wählen Sie JA, um die Zusammenfassung über dem Inhalt der in den Eigenschaften des Beitrags anzuzeigen. Wählen Sie NEIN, um ausschliesslich den Inhalt anzuzeigen.</locale>
+  </entity>
+  <entity id="allowComments">
+    <locale lang="fr">autoriser les commentaires</locale>
+    <locale lang="en">allow comments</locale>
+    <locale lang="de">Kommentare erlauben</locale>
+  </entity>
+  <entity id="allowComments-help">
+    <locale lang="fr">autoriser les commentaires</locale>
+    <locale lang="en">allow comments</locale>
+    <locale lang="de">Kommentare erlauben</locale>
+  </entity>
+  <entity id="category">
+    <locale lang="fr">catégories</locale>
+    <locale lang="en">categories</locale>
+    <locale lang="de">Kategorien</locale>
+  </entity>
+  <entity id="category-help">
+    <locale lang="fr">attentions, seules les catégories appartenant au blog contenant ce billet peuvent être sélectionnées.</locale>
+    <locale lang="en">attention, only the parent blog's categories can be selected.</locale>
+    <locale lang="de">Achtung, ausschliesslich die dem Blog, der diesen Beitrag beinhalt, angehörigen Kategorien können selektiert werden. </locale>
+  </entity>
+  <entity id="keywordsText">
+    <locale lang="fr">mots-clés</locale>
+    <locale lang="en">keywords</locale>
+    <locale lang="de">Stichwörter</locale>
+  </entity>
+  <entity id="keywordsText-help">
+    <locale lang="fr">mots-clés séparés par des virgules</locale>
+    <locale lang="en">comma-separated keywords</locale>
+    <locale lang="de">Durch Kommas getrennte Stichwörter</locale>
+  </entity>
+  <entity id="postdate">
+    <locale lang="fr">date du billet</locale>
+    <locale lang="en">post date</locale>
+    <locale lang="de">Datum des Beitrags</locale>
+  </entity>
+  <entity id="postdate-help">
+    <locale lang="fr">il s'agit de la date affiché sur le site pour ce billet. C'est aussi selon cette date que les billets sont ordonnés dans les listes affichées sur le site. Si elle est laissée vide, elle est complétée automatiquement par la date courante lors de la publication du billet.</locale>
+    <locale lang="en">The date is displayed on the site and serves to order the posts in the lists displayed. If empty, the date will be completed with the publication date.</locale>
+    <locale lang="de">Auf der Webseite angezeigtes Datum des Beitrags. Die Beiträge sind nach diesem Datum in den Listen der Webseite geordnet. Ist dieses Feld leer, wird das aktuelle Veröffentlichungsdatum automatisch eingesetzt.</locale>
+  </entity>
+  <entity id="postdate-date">
+    <locale lang="fr">date du billet</locale>
+    <locale lang="en">post date</locale>
+    <locale lang="de">Datum des Beitrags</locale>
+  </entity>
+  <entity id="postdate-hour">
+    <locale lang="fr">date du billet</locale>
+    <locale lang="en">post date</locale>
+    <locale lang="de">Datum des Beitrags</locale>
+  </entity>
+  <entity id="postdate-minute">
+    <locale lang="fr">date du billet</locale>
+    <locale lang="en">post date</locale>
+    <locale lang="de">Datum des Beitrags</locale>
+  </entity>
+  <entity id="startpublicationdate">
+    <locale lang="fr">date de début de publication</locale>
+    <locale lang="en">start publication date</locale>
+    <locale lang="de">Anfangsdatum der Veröffentlichung</locale>
+  </entity>
+  <entity id="startpublicationdate-help">
+    <locale lang="fr">date de début de publication</locale>
+    <locale lang="en">start publication date</locale>
+    <locale lang="de">Anfangsdatum der Veröffentlichung</locale>
+  </entity>
+  <entity id="endpublicationdate">
+    <locale lang="fr">date de fin de publication</locale>
+    <locale lang="en">end publication date</locale>
+    <locale lang="de">Enddatum der Veröffentlichung</locale>
+  </entity>
+  <entity id="endpublicationdate-help">
+    <locale lang="fr">date de fin de publication</locale>
+    <locale lang="en">end publication date</locale>
+    <locale lang="de">Enddatum der Veröffentlichung</locale>
+  </entity>
+</localization>

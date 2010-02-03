@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<localization>
+  <entity id="edition-form-title">
+    <locale lang="fr">propriétés du mot-clé</locale>
+    <locale lang="en">keyword properties</locale>
+    <locale lang="de">Eigenschaften Stichwort</locale>
+  </entity>
+  <entity id="document-name">
+    <locale lang="fr">mot-clé</locale>
+    <locale lang="en">keyword</locale>
+    <locale lang="de">Stichwort</locale>
+  </entity>
+  <entity id="label">
+    <locale lang="fr">libellé</locale>
+    <locale lang="en">label</locale>
+    <locale lang="de">Name</locale>
+  </entity>
+  <entity id="label-help">
+    <locale lang="fr">libellé</locale>
+    <locale lang="en">label</locale>
+    <locale lang="de">Name</locale>
+  </entity>
+  <entity id="description">
+    <locale lang="fr">description</locale>
+    <locale lang="en">description</locale>
+    <locale lang="de">Beschreibung</locale>
+  </entity>
+  <entity id="description-help">
+    <locale lang="fr">cette description est affichée dans le détail d'un mot-clé. Elle sert également de description au flux RSS associé à ce mot-clé.</locale>
+    <locale lang="en">description</locale>
+    <locale lang="de">Diese Beschreibung erscheint in den Eigenschaften eines Stichwortes. Sie dient ebenfalls als Beschreibung des diesem Stichwort assoziierten RSS Feeds.</locale>
+  </entity>
+</localization>

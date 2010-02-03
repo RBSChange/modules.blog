@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<panels>
+	<panel name="resume" />
+	<panel name="properties" />
+	<panel name="publication" />
+	<panel name="history" />
+	<panel name="create" />
+	<panel name="permission" />
+	
+	<xul>
+		<javascript>
+			<constructor><![CDATA[
+				this.addTab('comments', '&modules.comment.bo.doceditor.tab.Comments;', 'comments');
+			]]></constructor>
+		</javascript>
+	</xul>	 
+</panels>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<panel>
+	<section labeli18n="modules.website.document.page.Generalities">
+		<field name="label" />
+		<field name="postDate" />
+		<field name="category" />
+		<field name="keywordsText" />
+		<field name="allowComments" />
+	</section>
+	<section labeli18n="modules.blog.document.post.Contents">
+		<field name="summary" />
+		<field name="contents" />
+		<field name="showSummaryOnDetail"/>
+	</section>
+	<section labeli18n="modules.website.document.page.Publication">
+		<field name="startpublicationdate" />
+		<field name="endpublicationdate" />
+	</section>
+	<xul>
+		<javascript>
+			<method name="fireInitializeComplete">
+				<parameter name="result" />
+				<body><![CDATA[
+					// Start standard method.
+					
+					var fields = this.fields;
+					var valid = true;
+					var field = null;
+					this.mRevision = 0;
+
+					for (var name in fields)
+					{
+						field = fields[name];
+						if (name in result.contents && result.contents[name] !== null)
+						{
+							field.setInitialValue(result.contents[name]);
+						}
+						else
+						{
+							field.setInitialValue("");
+						}
+						valid = valid && field.valid; 
+					}
+					
+					var parentId = this.documentEditor.parentid;
+					wCore.debug('parentId = '+parentId);
+					var document = wCore.getDocumentInfo(parentId);
+					// FIXME: this won't work with injection...
+					switch (document.model)
+					{
+						case 'modules_blog/category' : 
+							var field = this.fields['category'];
+							field.value = parentId;
+							break;
+						
+						case 'modules_blog/keyword' : 
+							var field = this.fields['keywordsText'];
+							var value = field.value;
+							if (value)
+							{
+								value += ', ';
+							}				
+							value += document.labels[document.lang];
+							field.value = value;
+							break;
+					}
+					
+					this.modified = false;
+					this.error = !valid;
+					this.updateCommandsUI();
+					
+					this.mInitialized = true;
+					this.fireEvent("panelInitializeComplete");
+					this.gotoTop();
+				]]></body>
+			</method>
+		</javascript>
+	</xul>	 	
+</panel>

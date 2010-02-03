@@ -1,0 +1,10 @@
+<h2 change:h="" change:translate="&modules.blog.frontoffice.Blog-edit-title;"/>
+
+<ol class="module-list">
+	<li tal:repeat="blog paginator" class="${php: repeat.blog.odd ? 'odd' : 'even'}">
+		<h3 change:h=""><a change:actionlink="cmpref blog/getId;" class="link">${blog/getLabel}</a></h3>
+		<p tal:condition="blog/getDescription" tal:content="blog/getDescription" />
+	</li>
+</ol>
+<tal:block change:paginator="paginator" />
+<br class="cleaner" />

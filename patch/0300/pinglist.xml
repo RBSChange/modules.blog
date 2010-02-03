@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<script>
+	<binding fileName="modules/list/persistentdocument/import/list_binding.xml" />
+	<systemfolder module="list" relatedmodule="blog">
+		<dynamiclist listid="modules_blog/pings"
+			label="Liste des services de ping weblog" description="Liste des services de ping weblog">
+		</dynamiclist>
+	</systemfolder>
+</script>

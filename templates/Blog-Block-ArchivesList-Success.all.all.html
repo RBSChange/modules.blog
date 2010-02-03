@@ -1,0 +1,14 @@
+<tal:block tal:condition="blog">
+	<h2 change:h="" change:translate="&modules.blog.bo.general.Archives;" />
+	
+	<ul class="normal">
+		<li tal:repeat="year blog/getPublishedYears">
+			<a change:link="module blog ; action ViewArchive ; cmpref blog/getId ; year year/getNumber ; month 'all'">${year/getLabel}</a> <span class="post-count" tal:condition="configuration/getShowpostcountonyears">(${year/getPublishedPostCount})</span>
+			<ul tal:condition="configuration/getDisplaymonths" class="normal">
+				<li tal:repeat="month year/getPublishedMonths">
+					<a change:link="module blog ; action ViewArchive ; cmpref blog/getId ; year year/getNumber ; month month/getNumber">${month/getLabel}</a> <span class="post-count" tal:condition="configuration/getShowpostcountonmonths">(${month/getPublishedPostCount})</span>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</tal:block>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blocks>
+	<block type="modules_blog_blog" display="nbitemperpage:5" icon="blog" label="&amp;modules.blog.bo.blocks.Blog;">
+		<parameters>
+			<parameter name="cmpref" type="modules_blog/blog" />
+			<parameter name="nbitemperpage" type="Integer" default-value="5" />
+		</parameters>
+	</block>
+	<block type="modules_blog_blogcontextuallist" display="nbitemperpage:5;showpoststats:true;showauthors:true" icon="list-block"
+		label="&amp;modules.blog.bo.blocks.BlogContextualList;">
+		<parameters>
+			<parameter name="nbitemperpage" type="Integer" default-value="5" />
+			<parameter name="showpoststats" type="Boolean" default-value="true" />
+			<parameter name="showauthors" type="Boolean" default-value="true" />
+		</parameters>
+	</block>
+	<block type="modules_blog_category" display="includedescendents:true;nbitemperpage:5;showblogrsslink:true" icon="category" label="&amp;modules.blog.bo.blocks.Category;">
+		<parameters>
+			<parameter name="cmpref" type="modules_blog/category" />
+			<parameter name="nbitemperpage" type="Integer" default-value="5" />
+			<parameter name="includedescendents" type="Boolean" default-value="true" />
+			<parameter name="showblogrsslink" type="Boolean" default-value="true" />
+		</parameters>
+	</block>
+	<block type="modules_blog_categoryList" display="recursivecount:true" icon="list-block" label="&amp;modules.blog.bo.blocks.CategoryList;">
+		<parameters>
+			<parameter name="cmpref" type="modules_blog/blog" />
+			<parameter name="recursivecount" type="Boolean" default-value="true" />
+		</parameters>
+	</block>
+	<block type="modules_blog_keyword" display="nbitemperpage:5;showblogrsslink:true" icon="keyword" label="&amp;modules.blog.bo.blocks.Keyword;">
+		<parameters>
+			<parameter name="cmpref" type="modules_blog/keyword" />
+			<parameter name="nbitemperpage" type="Integer" default-value="5" />
+			<parameter name="showblogrsslink" type="Boolean" default-value="true" />
+		</parameters>
+	</block>
+	<block type="modules_blog_keywordList" display="limit:30;cloud:true" icon="list-block" label="&amp;modules.blog.bo.blocks.KeywordList;">
+		<parameters>
+			<parameter name="cmpref" type="modules_blog/blog" />
+			<parameter name="limit" type="Integer" min-occurs="1" default-value="30" />
+			<parameter name="cloud" type="Boolean" default-value="true" />
+		</parameters>
+	</block>
+	<block type="modules_blog_post" display="showblogrsslink:true" icon="post" label="&amp;modules.blog.bo.blocks.Post;">
+		<parameters>
+			<parameter name="cmpref" type="modules_blog/post" />
+			<parameter name="showblogrsslink" type="Boolean" default-value="true" />
+			<parameter name="showshareblock" type="Boolean" default-value="true" />
+		</parameters>
+		<metas>
+			<meta name="postLabel" allow="title,description" />
+			<meta name="postDate" allow="title,description" />
+			<meta name="postSummary" allow="description" />
+			<meta name="blogLabel" allow="title,description" />
+			<meta name="blogDescription" allow="description" />
+			<meta name="postKeywords" allow="keywords" />
+			<meta name="postCategories" allow="keywords" />
+		</metas>
+	</block>
+	<block type="modules_blog_comments" display="nbitemperpage:25;showgravatars:false" icon="comments" label="&amp;modules.blog.bo.blocks.Comments;">
+		<parameters>
+			<parameter name="cmpref" type="modules_blog/post" />
+			<parameter name="nbitemperpage" type="Integer" default-value="25" />
+			<parameter name="enableRating" type="Boolean" default-value="false" />
+			<parameter name="showRatingDistribution" type="Boolean" default-value="false" />
+			<parameter name="displaySortOptions" type="Boolean" default-value="false" />
+			<parameter name="enableEvaluation" type="Boolean" default-value="false" />
+			<parameter name="showgravatars" type="Boolean" default-value="false" />
+		</parameters>
+	</block>
+	<block type="modules_blog_archives" display="nbitemperpage:5;showblogrsslink:true" icon="archive" label="&amp;modules.blog.bo.blocks.Archives;">
+		<parameters>
+			<parameter name="cmpref" type="modules_blog/blog" />
+			<parameter name="nbitemperpage" type="Integer" default-value="5" />
+			<parameter name="year" type="Integer" />
+			<parameter name="month" type="Integer" />
+			<parameter name="showblogrsslink" type="Boolean" default-value="true" />
+		</parameters>
+	</block>
+	<block type="modules_blog_archivesList" display="displaymonths:true;showpostcountonyears:false;showpostcountonmonths:true" icon="archive"
+		label="&amp;modules.blog.bo.blocks.ArchivesList;">
+		<parameters>
+			<parameter name="cmpref" type="modules_blog/blog" />
+			<parameter name="displaymonths" type="Boolean" default-value="true" />
+			<parameter name="showpostcountonyears" type="Boolean" default-value="false" />
+			<parameter name="showpostcountonmonths" type="Boolean" default-value="true" />
+		</parameters>
+	</block>
+
+	<!-- Frontoffice administration. -->
+	<block type="modules_blog_blogEdit" display="nbitemperpage:10" icon="gear" label="&amp;modules.blog.bo.blocks.BlogEdit;">
+		<parameters>
+			<parameter name="cmpref" type="modules_blog/blog" />
+			<parameter name="nbitemperpage" type="Integer" default-value="10" />
+		</parameters>
+	</block>
+	<block type="modules_blog_postForm" display="" icon="gear" label="&amp;modules.blog.bo.blocks.PostForm;">
+		<parameters>
+			<parameter name="cmpref" type="modules_blog/post" />
+		</parameters>
+	</block>
+	<block type="modules_blog_categoryForm" display="" icon="gear" label="&amp;modules.blog.bo.blocks.CategoryForm;">
+		<parameters>
+			<parameter name="cmpref" type="modules_blog/category" />
+		</parameters>
+	</block>
+	<block type="modules_blog_commentsvalidation" display="nbitemperpage:10" icon="gear" label="&amp;modules.blog.bo.blocks.CommentsValidation;">
+		<parameters>
+			<parameter name="cmpref" type="modules_blog/blog" />
+			<parameter name="nbitemperpage" type="Integer" default-value="10" />
+		</parameters>
+	</block>
+</blocks>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlrewriting>
+	<rules>
+		<rule documentModel="blog" viewMode="detail">
+			<template>/blog/$blogLabel-$id/</template>
+			<parameters>
+				<parameter name="blogLabel" method="getLabel" />
+			</parameters>
+		</rule>
+		
+		<rule documentModel="category" viewMode="detail">
+			<template>/blog/$blogLabel-$blogId/$categoryLabel,$id/</template>
+			<parameters>
+				<parameter name="blogId" method="getBlogId" />
+				<parameter name="blogLabel" method="getBlogLabel" />
+				<parameter name="categoryLabel" method="getLabelForUrl" />
+			</parameters>
+		</rule>
+		
+		<rule documentModel="keyword" viewMode="detail">
+			<template>/blog/$blogLabel-$blogId/$keywordLabel,$id/</template>
+			<parameters>
+				<parameter name="blogId" method="getBlogId" />
+				<parameter name="blogLabel" method="getBlogLabel" />
+				<parameter name="keywordLabel" method="getLabel" />
+			</parameters>
+		</rule>
+		
+		<rule documentModel="post" viewMode="detail">
+			<template>/blog/$blogLabel-$blogId/$postLabel,$id.html</template>
+			<parameters>
+				<parameter name="blogId" method="getBlogId" />
+				<parameter name="blogLabel" method="getBlogLabel" />
+				<parameter name="postLabel" method="getLabel" />
+			</parameters>
+		</rule>
+		
+		<rule redirection="blog/ViewArchive">
+			<template>/blog/$cmpref/$year/$month/</template>
+			<parameters>
+				<parameter name="cmpref" format="[0-9]+" />
+				<parameter name="year" format="[0-9]+" />
+				<parameter name="month" format="([0-9]+)|all" />
+			</parameters>
+		</rule>
+		
+		<rule redirection="blog/ViewFeed">
+			<template>/blog/$parentref/feed/</template>
+			<parameters>
+				<parameter name="parentref" format="[0-9]+" />
+			</parameters>
+		</rule>
+	</rules>
+</urlrewriting>

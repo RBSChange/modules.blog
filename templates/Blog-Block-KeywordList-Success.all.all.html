@@ -1,0 +1,22 @@
+<tal:block tal:condition="blog">
+	<h2 change:h="" change:translate="&modules.blog.bo.general.Keywords;" />
+	
+	<ul tal:condition="not: configuration/getCloud" class="normal">
+		<tal:block tal:repeat="keyword keywords">
+			<li tal:define="current php: document.getId() == keyword['document'].getId()" class="${php: current ? 'current' : ''}">
+				<tal:block tal:condition="php: keyword['level'] == 1"><a change:link="document keyword/document" tal:omit-tag="current">${keyword/document/getLabel}</a> <span class="post-count">(${keyword/document/getPublishedPostCount})</span></tal:block>
+				<em tal:condition="php: keyword['level'] == 2"><a change:link="document keyword/document" tal:omit-tag="current">${keyword/document/getLabel}</a> <span class="post-count">(${keyword/document/getPublishedPostCount})</span></em>
+				<strong tal:condition="php: keyword['level'] == 3"><a change:link="document keyword/document" tal:omit-tag="current">${keyword/document/getLabel}</a> <span class="post-count">(${keyword/document/getPublishedPostCount})</span></strong>
+			</li>
+		</tal:block>
+	</ul>
+	<ul tal:condition="configuration/getCloud" class="cloud">
+		<tal:block tal:repeat="keyword keywords">
+			<li tal:define="current php: document.getId() == keyword['document'].getId()" style="font-size: ${keyword/size}em" class="${php: current ? 'current' : ''}" title="${keyword/title}">
+				<tal:block tal:condition="php: keyword['level'] == 1"><a change:link="document keyword/document" tal:omit-tag="current">${keyword/document/getLabel}</a></tal:block>
+				<em tal:condition="php: keyword['level'] == 2"><a change:link="document keyword/document" tal:omit-tag="current">${keyword/document/getLabel}</a></em>
+				<strong tal:condition="php: keyword['level'] == 3"><a change:link="document keyword/document" tal:omit-tag="current">${keyword/document/getLabel}</a></strong>
+			</li>
+		</tal:block>
+	</ul>
+</tal:block>

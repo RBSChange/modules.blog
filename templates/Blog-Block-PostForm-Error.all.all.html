@@ -1,0 +1,9 @@
+<tal:block change:loadhandler="generic_DocumentLoadHandler" args="post" />
+<h2 tal:condition="post/isNew" change:h="" change:translate="&modules.blog.frontoffice.Post-new-title;"/>
+<h2 tal:condition="not: post/isNew" change:h="" change:translate="&modules.blog.frontoffice.Post-edit-title;"/>
+
+<ul change:errors="" />
+
+<p>
+	<a change:link="tag contextual_website_website_modules_blog_blogedit" change:translate="&modules.blog.frontoffice.Back-to-list-link;" />
+</p>

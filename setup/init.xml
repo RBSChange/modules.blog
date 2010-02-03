@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<script>
+	<binding fileName="modules/list/persistentdocument/import/list_binding.xml" />
+	<binding fileName="modules/blog/persistentdocument/import/blog_binding.xml" />
+
+	<rootfolder module="preferences">
+		<blogpreferences pingurls="http://blogsearch.google.com/ping/RPC2,http://rpc.pingomatic.com,http://blogsearch.google.com/ping/RPC2,http://rpc.pingomatic.com,http://ping.feedburner.com,http://rpc.technorati.com/rpc/ping" />
+	</rootfolder>
+
+	<systemfolder module="list" relatedmodule="blog">
+		<dynamiclist listid="modules_blog/hours" label="Liste des heures" description="Liste des heures" />
+		<dynamiclist listid="modules_blog/minutes" label="Liste des minutes" description="Liste des minutes" />
+		<dynamiclist listid="modules_blog/pings" label="Liste des services de ping weblog" description="Liste des services de ping weblog"></dynamiclist>
+	</systemfolder>
+</script>

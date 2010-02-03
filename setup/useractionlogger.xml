@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<script>
+  <binding fileName="modules/useractionlogger/persistentdocument/import/useractionlogger_binding.xml"/>
+  <actiondef modulename="blog" actionname="insert.blog" label="modules.blog.bo.useractionlogger.insert-blog"/>
+  <actiondef modulename="blog" actionname="insert.post" label="modules.blog.bo.useractionlogger.insert-post"/>
+  <actiondef modulename="blog" actionname="insert.category" label="modules.blog.bo.useractionlogger.insert-category"/>
+  <actiondef modulename="blog" actionname="insert.keyword" label="modules.blog.bo.useractionlogger.insert-keyword"/>
+  <actiondef modulename="blog" actionname="update.blog" label="modules.blog.bo.useractionlogger.update-blog"/>
+  <actiondef modulename="blog" actionname="update.post" label="modules.blog.bo.useractionlogger.update-post"/>
+  <actiondef modulename="blog" actionname="update.category" label="modules.blog.bo.useractionlogger.update-category"/>
+  <actiondef modulename="blog" actionname="update.keyword" label="modules.blog.bo.useractionlogger.update-keyword"/>
+  <actiondef modulename="blog" actionname="deactivated.post" label="modules.blog.bo.useractionlogger.deactivated-post"/>
+  <actiondef modulename="blog" actionname="reactivate.post" label="modules.blog.bo.useractionlogger.reactivate-post"/>
+  <actiondef modulename="blog" actionname="deactivated.blog" label="modules.blog.bo.useractionlogger.deactivated-blog"/>
+  <actiondef modulename="blog" actionname="reactivate.blog" label="modules.blog.bo.useractionlogger.reactivate-blog"/>
+  <actiondef modulename="blog" actionname="activate.post" label="modules.blog.bo.useractionlogger.activate-post"/>
+</script>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<localization>
+  <entity id="blog-detail">
+    <locale lang="fr">page de détail d'un blog</locale>
+    <locale lang="en">blogs detail page</locale>
+    <locale lang="de">Eigenschaften eines Blogs</locale>
+  </entity>
+  <entity id="blog-list">
+    <locale lang="fr">page de liste des blogs</locale>
+    <locale lang="en">blogs list page</locale>
+    <locale lang="de">Auflistung der Blogs</locale>
+  </entity>
+  <entity id="post-detail">
+    <locale lang="fr">page de détail d'un billet</locale>
+    <locale lang="en">post detail page</locale>
+    <locale lang="de">Eigenschaften eines Beitrags</locale>
+  </entity>
+  <entity id="post-list">
+    <locale lang="fr">page de liste des billets</locale>
+    <locale lang="en">post list page</locale>
+    <locale lang="de">Auflistung der Beiträge</locale>
+  </entity>
+  <entity id="category-detail">
+    <locale lang="fr">page de détail d'une catégorie</locale>
+    <locale lang="en">category detail page</locale>
+    <locale lang="de">Eigenschaften einer Kategorie</locale>
+  </entity>
+  <entity id="category-list">
+    <locale lang="fr">page de liste des catégories</locale>
+    <locale lang="en">categories list page</locale>
+    <locale lang="de">Auflistung der Kategorien</locale>
+  </entity>
+  <entity id="keyword-detail">
+    <locale lang="fr">page de détail d'un mot-clé</locale>
+    <locale lang="en">keyword detail page</locale>
+    <locale lang="de">Eigenschaften eines Stichwortes</locale>
+  </entity>
+  <entity id="keyword-list">
+    <locale lang="fr">page de liste des mots-clés</locale>
+    <locale lang="en">keyword list page</locale>
+    <locale lang="de">Auflistung der Stichwörter</locale>
+  </entity>
+  <entity id="archives">
+    <locale lang="fr">archives</locale>
+    <locale lang="en">archives</locale>
+    <locale lang="de">Archive</locale>
+  </entity>
+<!-- Frontoffice administration. -->
+  <entity id="blog-edit">
+    <locale lang="fr">page de d'administration d'un blog</locale>
+    <locale lang="en">blogs administration page</locale>
+  </entity>
+  <entity id="post-edit">
+    <locale lang="fr">page d'administration d'un billet</locale>
+    <locale lang="en">post administration page</locale>
+  </entity>
+  <entity id="category-edit">
+    <locale lang="fr">page d'administration d'une catégorie</locale>
+    <locale lang="en">category administration page</locale>
+  </entity>
+  <entity id="comments-validation">
+    <locale lang="fr">page de validation de commentaires</locale>
+    <locale lang="en">comments validation page</locale>
+  </entity>
+</localization>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<localization>
+	<entity id="section.posts">
+		<locale lang="fr">statistiques des billets</locale>
+		<locale lang="en">posts statistics</locale>
+	</entity>
+	<entity id="property.postcount">
+		<locale lang="fr">nombre de billets</locale>
+		<locale lang="en">posts count</locale>
+	</entity>
+	<entity id="property.authors">
+		<locale lang="fr">auteurs</locale>
+		<locale lang="en">authors</locale>
+	</entity>
+	<entity id="property.keywords">
+		<locale lang="fr">mots-clés</locale>
+		<locale lang="en">keywords</locale>
+	</entity>
+	<entity id="property.lastPublishedPost">
+		<locale lang="fr">dernier billet publié</locale>
+		<locale lang="en">last published post</locale>
+	</entity>
+</localization>

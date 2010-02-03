@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<localization>
+  <entity id="posted-by">
+    <locale lang="fr">écrit par {author}</locale>
+    <locale lang="en">written by {author}</locale>
+    <locale lang="de">geschrieben von {author}</locale>
+  </entity>
+  <entity id="blogs-list-title">
+    <locale lang="fr">liste des blogs</locale>
+    <locale lang="en">list of blogs</locale>
+    <locale lang="de">Auflistung Blogs</locale>
+  </entity>
+  <entity id="post-count">
+    <locale lang="fr">{count} billet(s)</locale>
+    <locale lang="en">{count} post(s)</locale>
+    <locale lang="de">{count} Beitrag(-äge)</locale>
+  </entity>
+  <entity id="no-comment">
+    <locale lang="fr">aucun commentaire</locale>
+    <locale lang="en">no comment</locale>
+    <locale lang="de">kein Kommentar</locale>
+  </entity>
+  <entity id="one-comment">
+    <locale lang="fr">1 commentaire</locale>
+    <locale lang="en">1 comment</locale>
+    <locale lang="de">1 Kommentar</locale>
+  </entity>
+  <entity id="several-comments">
+    <locale lang="fr">{count} commentaires</locale>
+    <locale lang="en">{count} comments</locale>
+    <locale lang="de">{count} Kommentare</locale>
+  </entity>
+  <entity id="last-post-by">
+    <locale lang="fr">dernier billet par {author}</locale>
+    <locale lang="en">last post by {author}</locale>
+    <locale lang="de">letzter Beitrag von {author}</locale>
+  </entity>
+  <entity id="authors">
+    <locale lang="fr">auteurs</locale>
+    <locale lang="en">authors</locale>
+    <locale lang="de">authors</locale>
+  </entity>
+  <entity id="blog-rss-link">
+    <locale lang="fr">flux RSS du blog</locale>
+    <locale lang="en">blog's RSS feed</locale>
+    <locale lang="de">RSS Feed des Blogs</locale>
+  </entity>
+  <entity id="category-rss-link">
+    <locale lang="fr">flux RSS de la catégorie</locale>
+    <locale lang="en">category's RSS feed</locale>
+    <locale lang="de">RSS Feed der Kategorie</locale>
+  </entity>
+  <entity id="keyword-rss-link">
+    <locale lang="fr">flux RSS du mot-clé</locale>
+    <locale lang="en">keyword's RSS feed</locale>
+    <locale lang="de">RSS Feed des Stichwortes</locale>
+  </entity>
+  <entity id="rss-link">
+    <locale lang="fr">flux RSS</locale>
+    <locale lang="en">RSS feed</locale>
+    <locale lang="de">RSS Feed</locale>
+  </entity>
+  <entity id="comments-closed-for-this-post">
+    <locale lang="fr">les commentaires sont fermés pour ce billet.</locale>
+    <locale lang="en">comments are closed for this post.</locale>
+    <locale lang="de">Kommentare sind für diesen Beitrag geschlossen.</locale>
+  </entity>
+  <entity id="archives-title">
+    <locale lang="fr">{blog} : archives {date}</locale>
+    <locale lang="en">{blog}: archives {date}</locale>
+    <locale lang="de">{blog}: Archive {date}</locale>
+  </entity>
+<!-- Title and description metas. -->
+  <entity id="blog-meta-title">
+    <locale lang="fr">{blogLabel} - {siteLabel}</locale>
+    <locale lang="en">{blogLabel} - {siteLabel}</locale>
+    <locale lang="de">{blogLabel} - {siteLabel}</locale>
+  </entity>
+  <entity id="blog-meta-description">
+    <locale lang="fr">Blog {blogLabel} - {siteLabel} : {blogDescription}</locale>
+    <locale lang="en">Blog {blogLabel} - {siteLabel} : {blogDescription}</locale>
+    <locale lang="de">Blog {blogLabel} - {siteLabel} : {blogDescription}</locale>
+  </entity>
+  <entity id="category-meta-title">
+    <locale lang="fr">{categoryLabel} - {blogLabel} - {siteLabel}</locale>
+    <locale lang="en">{categoryLabel} - {blogLabel} - {siteLabel}</locale>
+    <locale lang="de">{categoryLabel} - {blogLabel} - {siteLabel}</locale>
+  </entity>
+  <entity id="category-meta-description">
+    <locale lang="fr">{categoryLabel} : billets de la catégorie {categoryLabel} du blog {blogLabel} sur le site {siteLabel}. {categoryDescription}</locale>
+    <locale lang="en">{categoryLabel} : billets de la catégorie {categoryLabel} du blog {blogLabel} sur le site {siteLabel}. {categoryDescription}</locale>
+    <locale lang="de">{categoryLabel} : Kategoriebeiträge {categoryLabel} des Blogs {blogLabel} auf der Webseite {siteLabel}. {categoryDescription}</locale>
+  </entity>
+  <entity id="keyword-meta-title">
+    <locale lang="fr">{keywordLabel} - {blogLabel} - {siteLabel}</locale>
+    <locale lang="en">{keywordLabel} - {blogLabel} - {siteLabel}</locale>
+    <locale lang="de">{keywordLabel} - {blogLabel} - {siteLabel}</locale>
+  </entity>
+  <entity id="keyword-meta-description">
+    <locale lang="fr">Billets {keywordLabel} : du blog {blogLabel} sur le site {siteLabel}. {keywordDescription}</locale>
+    <locale lang="en">Posts {keywordLabel} : in blog {blogLabel} on site {siteLabel}. {keywordDescription}</locale>
+    <locale lang="de">Beiträge {keywordLabel} : des Blogs {blogLabel} auf der Webseite {siteLabel}. {keywordDescription}</locale>
+  </entity>
+  <entity id="post-meta-title">
+    <locale lang="fr">{postLabel} - {blogLabel} - {siteLabel}</locale>
+    <locale lang="en">{postLabel} - {blogLabel} - {siteLabel}</locale>
+    <locale lang="de">{postLabel} - {blogLabel} - {siteLabel}</locale>
+  </entity>
+  <entity id="post-meta-description">
+    <locale lang="fr">{postLabel} : billet du blog {blogLabel} sur le site {siteLabel} créé le {postDate}. {postSummary}</locale>
+    <locale lang="en">{postLabel} : post in blog {blogLabel} on site {siteLabel} created the {postDate}. {postSummary}</locale>
+    <locale lang="de">{postLabel} : Blogbeitrag {blogLabel} auf der Webseite {siteLabel} erstellt am {postDate}. {postSummary}</locale>
+  </entity>
+  <entity id="archives-meta-title">
+    <locale lang="fr">billets {date} - {blogLabel} - {siteLabel}</locale>
+    <locale lang="fr">posts {date} - {blogLabel} - {siteLabel}</locale>
+    <locale lang="de">Beiträge {date} - {blogLabel} - {siteLabel}</locale>
+  </entity>
+  <entity id="archives-meta-description">
+    <locale lang="fr">archives des billets de {date} du blog {blogLabel} sur le site {siteLabel}.</locale>
+    <locale lang="fr">posts archives {date} in blog {blogLabel} on site {siteLabel}.</locale>
+    <locale lang="de">Beitragsarchive {date} des Blogs {blogLabel} auf der Webseite {siteLabel}.</locale>
+  </entity>
+<!-- Frontoffice administration. -->
+  <entity id="blog-edit-title">
+    <locale lang="fr">administration des blogs</locale>
+    <locale lang="en">blog administration</locale>
+  </entity>
+  <entity id="categories-list-title">
+    <locale lang="fr">catégories</locale>
+    <locale lang="en">categories</locale>
+  </entity>
+  <entity id="posts-list-title">
+    <locale lang="fr">billets</locale>
+    <locale lang="en">posts</locale>
+  </entity>
+  <entity id="comments-validation-title">
+    <locale lang="fr">valider les commentaires</locale>
+    <locale lang="en">validate comments</locale>
+  </entity>
+  <entity id="category-new-title">
+    <locale lang="fr">créer une catégorie</locale>
+    <locale lang="en">create category</locale>
+  </entity>
+  <entity id="category-edit-title">
+    <locale lang="fr">modifier une catégorie</locale>
+    <locale lang="en">modify category</locale>
+  </entity>
+  <entity id="post-new-title">
+    <locale lang="fr">créer un billet</locale>
+    <locale lang="en">create post</locale>
+  </entity>
+  <entity id="post-edit-title">
+    <locale lang="fr">modifier un billet</locale>
+    <locale lang="en">modify post</locale>
+  </entity>
+  <entity id="category-new-link">
+    <locale lang="fr">créer une catégorie</locale>
+    <locale lang="en">create category</locale>
+  </entity>
+  <entity id="post-new-link">
+    <locale lang="fr">créer un billet</locale>
+    <locale lang="en">create post</locale>
+  </entity>
+  <entity id="comments-validation-link">
+    <locale lang="fr">valider les commentaires</locale>
+    <locale lang="en">validate comments</locale>
+  </entity>
+  <entity id="blog-edit-link">
+    <locale lang="fr">administration du blog</locale>
+    <locale lang="en">blog administration</locale>
+  </entity>
+  <entity id="back-to-list-link">
+    <locale lang="fr">retour à la liste des blogs</locale>
+    <locale lang="en">back to blogs list</locale>
+  </entity>
+  <entity id="commen-validate-link">
+    <locale lang="fr">accepter</locale>
+    <locale lang="en">accept</locale>
+  </entity>
+  <entity id="commen-cancel-link">
+    <locale lang="fr">réfuser</locale>
+    <locale lang="en">refuse</locale>
+  </entity>
+  <entity id="edit-link">
+    <locale lang="fr">modifier</locale>
+    <locale lang="en">modify</locale>
+  </entity>
+  <entity id="activate-link">
+    <locale lang="fr">activer</locale>
+    <locale lang="en">activate</locale>
+  </entity>
+  <entity id="deactivate-link">
+    <locale lang="fr">désactiver</locale>
+    <locale lang="en">deactivate</locale>
+  </entity>
+  <entity id="delete-link">
+    <locale lang="fr">supprimer</locale>
+    <locale lang="en">delete</locale>
+  </entity>
+  <entity id="delete-confirmation">
+    <locale lang="fr">Etez-vous sûr de vouloir supprimer &lt;{document}&gt; ?</locale>
+    <locale lang="en">Are you sure you want to delete &lt;{document}&gt;?</locale>
+  </entity>
+  <entity id="submit-form">
+    <locale lang="fr">enregistrer</locale>
+    <locale lang="en">save</locale>
+  </entity>
+  <entity id="error-no-permission-on-blog">
+    <locale lang="fr">vous n'avez pas les permissions pour administrer ce blog.</locale>
+  </entity>
+</localization>

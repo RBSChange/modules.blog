@@ -1,0 +1,300 @@
+<?php
+/**
+ * blog_BlogService
+ * @package blog
+ */
+class blog_BlogService extends f_persistentdocument_DocumentService
+{
+	/**
+	 * @var blog_BlogService
+	 */
+	private static $instance;
+
+	/**
+	 * @return blog_BlogService
+	 */
+	public static function getInstance()
+	{
+		if (self::$instance === null)
+		{
+			self::$instance = self::getServiceClassInstance(get_class());
+		}
+		return self::$instance;
+	}
+
+	/**
+	 * @return blog_persistentdocument_blog
+	 */
+	public function getNewDocumentInstance()
+	{
+		return $this->getNewDocumentInstanceByModelName('modules_blog/blog');
+	}
+
+	/**
+	 * Create a query based on 'modules_blog/blog' model
+	 * @return f_persistentdocument_criteria_Query
+	 */
+	public function createQuery()
+	{
+		return $this->pp->createQuery('modules_blog/blog');
+	}
+	
+	/**
+	 * @param Integer $parentNodeId
+	 * @return blog_persistentdocument_blog
+	 */
+	public function getByParentNodeId($parentNodeId)
+	{
+		$query = blog_BlogService::getInstance()->createQuery();
+		$query->add(Restrictions::orExp(
+			Restrictions::eq('id', $parentNodeId), 
+			Restrictions::ancestorOf($parentNodeId)
+		));
+		return $query->findUnique();
+	}
+	
+	/**
+	 * @param blog_persistentdocument_blog $blog
+	 * @param Array $date the result of getArchiveDates() or null
+	 * @return blog_persistentdocument_post[]
+	 */
+	public function getSortedPosts($blog, $dates = null)
+	{
+		$query = blog_PostService::getInstance()->createQuery();
+		$query->add(Restrictions::published());
+		$query->add(Restrictions::eq('blog.id', $blog->getId()));
+		if ($dates !== null && isset($dates['startDate']) && isset($dates['endDate']))
+		{
+			$query->add(Restrictions::between('postDate', $dates['startDate'], $dates['endDate']));
+		}
+		$query->addOrder(Order::desc('postdate'));
+		return $query->find();
+	}
+	
+	/**
+	 * @param Integer $year
+	 * @param Integer $month
+	 * @return Array<'startDate' => ..., 'endDate' => ...>
+	 */
+	public function getArchiveDates($year, $month = null)
+	{
+		$month = (is_numeric($month)) ? intval($month) : null;
+		if ($month !== null)
+		{
+			$dateCalendar = date_Calendar::getInstanceFromFormat($year.'/'.$month.'/1', 'Y/m/d');
+			$startDate = $dateCalendar->toString();
+			$startLabel = date_DateFormat::format($dateCalendar, 'F Y');
+			$endDate = $dateCalendar->add(date_Calendar::MONTH, 1)->sub(date_Calendar::SECOND, 1)->toString();
+		}
+		else 
+		{
+			$dateCalendar = date_Calendar::getInstanceFromFormat($year.'/1/1', 'Y/m/d');
+			$startDate = $dateCalendar->toString();
+			$startLabel = date_DateFormat::format($dateCalendar, 'Y');
+			$endDate = $dateCalendar->add(date_Calendar::YEAR, 1)->sub(date_Calendar::SECOND, 1)->toString();
+		}
+		
+		return array('startLabel' => ucfirst($startLabel), 'startDate' => $startDate, 'endDate' => $endDate);
+	}
+	
+	/**
+	 * @param blog_persistentdocument_blog $blog
+	 * @return Integer
+	 */
+	public function getPublishedPostCount($blog)
+	{
+		$query = blog_PostService::getInstance()->createQuery()
+			->add(Restrictions::eq('blog.id', $blog->getId()))
+			->add(Restrictions::published())
+			->setProjection(Projections::rowCount('rows'));
+		$result = $query->find();
+		return intval($result[0]['rows']);
+	}
+	
+	/**
+	 * @param blog_persistentdocument_blog $blog
+	 * @return blog_persistentdocument_post
+	 */
+	public function getLastPublishedPost($blog)
+	{
+		$query = blog_PostService::getInstance()->createQuery()
+			->add(Restrictions::eq('blog.id', $blog->getId()))
+			->add(Restrictions::published())
+			->addOrder(Order::desc('postDate'))
+			->setMaxResults(1);
+		return f_util_ArrayUtils::firstElement($query->find());
+	}
+	
+	/**
+	 * @param blog_persistentdocument_blog $blog
+	 * @return String[]
+	 */
+	public function getAuthorNames($blog)
+	{
+		$ps = blog_PostService::getInstance();
+		$query = $ps->createQuery()
+			->add(Restrictions::eq('blog.id', $blog->getId()))
+			->add(Restrictions::published())
+			->setProjection(Projections::property('authorid'), Projections::property('author'));
+		$rows = $query->find();
+		
+		$authorNames = array();
+		foreach ($rows as $row)
+		{
+			$authorName = $ps->getAuthorNameByAthorData($row['authorid'], $row['author']);
+			if (!in_array($authorName, $authorNames))
+			{
+				$authorNames[] = $authorName;
+			}
+		}
+		sort($authorNames);
+		return $authorNames;
+	}
+	
+	/**
+	 * @param blog_persistentdocument_blog $blog
+	 * @return rss_FeedWriter
+	 */
+	public function getRSSFeedWriter($blog)
+	{
+		$restriction = Restrictions::eq('blog.id', $blog->getId());
+		return blog_PostService::getInstance()->getRSSFeedWriterByRestriction($restriction);
+	}
+	
+	/**
+	 * @param blog_persistentdocument_blog $blog
+	 * @return Boolean
+	 */
+	public function checkAdminPermissionsForCurrentFrontendUser($blog)
+	{
+		$user = users_UserService::getInstance()->getCurrentFrontEndUser();
+		$ps = f_permission_PermissionService::getInstance();
+		return $ps->hasPermission($user, 'modules_blog.FrontAdmin', $blog->getId());		
+	}
+	
+	/**
+	 * @param website_persistentdocument_website $website
+	 * @return blog_persistentdocument_blog[]
+	 */
+	public function getByWebsite($website)
+	{
+		return $this->createQuery()->add(Restrictions::descendentOf($website->getId()))->find();
+	}
+
+	/**
+	 * @param blog_persistentdocument_blog $document
+	 * @param Integer $parentNodeId Parent node ID where to save the document.
+	 * @return void
+	 */
+	protected function postInsert($document, $parentNodeId = null)
+	{
+		$postFolder = blog_PostfolderService::getInstance()->getNewDocumentInstance();
+		$postFolder->setLabel(f_Locale::translate('&modules.blog.document.postfolder.Default-label-value;'));
+		$postFolder->save($document->getId());
+		
+		$categoryFolder = blog_CategoryfolderService::getInstance()->getNewDocumentInstance();
+		$categoryFolder->setLabel(f_Locale::translate('&modules.blog.document.categoryfolder.Default-label-value;'));
+		$categoryFolder->save($document->getId());
+		
+		$keywordFolder = blog_KeywordfolderService::getInstance()->getNewDocumentInstance();
+		$keywordFolder->setLabel(f_Locale::translate('&modules.blog.document.keywordfolder.Default-label-value;'));
+		$keywordFolder->save($document->getId());
+	}
+
+	/**
+	 * @param blog_persistentdocument_blog $document
+	 * @return void
+	 */
+	protected function preDelete($document)
+	{
+		// Delete folders.
+		foreach ($this->getChildrenOf($document) as $child)
+		{
+			$child->delete();
+		}
+	}
+	
+	
+
+	/**
+	 * @see f_persistentdocument_DocumentService::getResume()
+	 *
+	 * @param f_persistentdocument_PersistentDocument $document
+	 * @param string $forModuleName
+	 * @param unknown_type $allowedSections
+	 * @return array
+	 */
+	public function getResume($document, $forModuleName, $allowedSections = null)
+	{
+		$data = parent::getResume($document, $forModuleName, $allowedSections);
+		$data['posts']['postcount'] = $this->getPublishedPostCount($document);
+		$lastPost = $this->getLastPublishedPost($document);
+		if ($lastPost !== null)
+		{
+			$data['posts']['lastpublishedpost'] = LinkHelper::getDocumentUrl($lastPost);
+			
+		}
+		$authorNames = $this->getAuthorNames($document);
+		if (f_util_ArrayUtils::isNotEmpty($authorNames))
+		{
+			$data['posts']['authors'] = f_util_StringUtils::shortenString(implode(", ", $authorNames), 80);
+		}
+		$mostUsedKeyWords = blog_KeywordService::getInstance()->getMostUsedByBlog($document, 5);
+		if (f_util_ArrayUtils::isNotEmpty($mostUsedKeyWords))
+		{
+			$keyWords = array();
+			foreach ($mostUsedKeyWords as $mostUsedKeyWord)
+			{
+				$keyWords[] = $mostUsedKeyWord->getLabel();
+			}
+			$data['posts']['keywords'] = implode(", ", $keyWords);
+		}
+		
+		return $data;
+	}
+	
+	/**
+	 * @param blog_persistentdocument_blog $blog
+	 */
+	public function pingServicesForBlog($blog)
+	{
+		if ($blog->getPingurls() === null)
+		{
+			return;
+		}
+		
+		if (!f_util_ClassUtils::classExists("XML_RPC2_Client"))
+		{
+			Framework::warn(__METHOD__ . " XML_RPC2_Client not installed, please run change.php --deep-check to install module dependency");
+			return;
+		}
+
+		$website = DocumentHelper::getDocumentInstance($this->getWebsiteId($blog));
+		$websiteLabel = $website->getLabel();
+		$websiteUrl = LinkHelper::getDocumentUrl($website);
+		$blogUrl = LinkHelper::getDocumentUrl($blog);
+		$feedUrl = LinkHelper::getActionUrl('blog', 'ViewFeed', array(K::PARENT_ID_ACCESSOR => $blog->getId()));
+		$optionArray = array('prefix' => 'weblogUpdates.', 'encoding' => 'utf-8');
+		if (defined('OUTGOING_HTTP_PROXY_HOST') && OUTGOING_HTTP_PROXY_HOST && defined('OUTGOING_HTTP_PROXY_PORT') && OUTGOING_HTTP_PROXY_PORT)
+		{
+			$optionArray['proxy'] = OUTGOING_HTTP_PROXY_HOST . ':' . OUTGOING_HTTP_PROXY_PORT;
+		}
+		
+		foreach ($blog->getPingurlsArray() as $url)
+		{
+			try 
+			{
+				$client = XML_RPC2_Client::create($url, $optionArray);
+				$result = $client->extendedPing($websiteLabel, $websiteUrl , $blogUrl , $feedUrl);
+				if (isset($result['flerror']) && $result['flerror'] != 0)
+				{
+					Framework::warn(__METHOD__ . var_export($result, true));
+				}
+			}
+			catch (Exception $e)
+			{
+				Framework::exception($e);
+			}
+		}
+	}
+}

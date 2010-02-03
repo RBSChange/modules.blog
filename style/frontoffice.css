@@ -1,0 +1,96 @@
+ul.cloud li{
+	display: inline;
+	padding-right: 5px;
+}
+ul.cloud .post-count{
+	display: none;
+}
+.modules-blog-keywordList ul em,.modules-blog-keywordList ul strong{
+	font-weight: normal;
+	font-style: normal;
+}
+.modules-blog .heading-three{
+	margin-top: 5px;
+}
+.modules-blog p.meta-post-infos{
+	color: #666666;
+	margin-bottom: 5px;
+}
+.modules-blog ol.module-list{
+	display: block;
+	overflow-y: auto;
+	width: 100%;
+	margin-top: 10px;
+}
+.modules-blog ol.module-list li{
+	float: left;
+	display: block;
+	width: 100%;
+	margin-bottom: 20px;
+}
+.modules-blog .heading-four{
+	font-size: 11px;
+	margin-top: 5px;
+	margin-bottom: 0px;
+	padding: 0;
+	background: none;
+}
+.modules-blog ul.meta-categories,.modules-blog ul.meta-keywords,.modules-blog ul.meta-keyword{
+	display: block;
+	overflow-y: auto;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+.modules-blog ul.meta-categories li,.modules-blog ul.meta-keywords li,.modules-blog ul.meta-keyword li{
+	padding: 0;
+	margin: 0;
+	display: inline;
+	width: auto;
+	padding: 0 10px 0 19px;
+	float: left;
+}
+.modules-blog .heading-four{
+	font-size: 11px;
+	margin-bottom: 0px;
+	padding: 0;
+	background: none;
+}
+.modules-blog-comments{
+	float: left;
+	display: block;
+	width: 100%;
+	margin-top: 20px;
+}
+.modules-blog-keywordList,.modules-blog-categoryList,.modules-blog-ArchivesList{
+	width: 100%;
+	margin-bottom: 20px;
+}
+table.document-list{
+	width: 100%;
+}
+table.document-list .even{
+	background-color: #eeeeee;
+}
+table.document-list caption{
+	margin-top: 20px;
+	text-size: 1.5em;
+	font-weight: bold;
+	color: #666666;
+}
+table.document-list .actions{
+	width: 100px;
+	text-align: right;
+}
+table.document-list .ACTIVE,table.document-list .DRAFT,table.document-list .DEACTIVATED,table.document-list .TRASH,table.document-list .CORRECTION,table.document-list .WORKFLOW{
+	color: #777777;
+}
+table.document-list .ACTIVE,table.document-list .DRAFT,table.document-list .DEACTIVATED,table.document-list .TRASH,table.document-list .CORRECTION,table.document-list .WORKFLOW,table.document-list .PUBLICATED{
+	padding-left: 17px;
+}
+table.document-list .ACTIVE{
+	background: url(/icons/small/bullet_ball_glass_yellow.png) no-repeat left;
+}
+.document-list .PUBLICATED{
+	background: url(/icons/small/bullet_ball_glass_green.png) no-repeat left;
+}

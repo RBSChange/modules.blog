@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="utf-8"?>
+<localization>
+  <entity id="blog">
+    <locale lang="fr">detail d'un blog</locale>
+    <locale lang="en">Blog detail</locale>
+    <locale lang="de">Eigenschaft Blog</locale>
+  </entity>
+  <entity id="blog.cmpref">
+    <locale lang="fr">Document lié</locale>
+    <locale lang="en">linked document</locale>
+    <locale lang="de">verknüpftes Dokument</locale>
+  </entity>
+  <entity id="blog.cmpref-help">
+    <locale lang="fr">Document lié</locale>
+    <locale lang="en">linked document</locale>
+    <locale lang="de">verknüpftes Dokument</locale>
+  </entity>
+  <entity id="blog.nbitemperpage">
+    <locale lang="fr">Nombre de documents</locale>
+    <locale lang="en">Document count</locale>
+    <locale lang="de">Anzahl Dokumente</locale>
+  </entity>
+  <entity id="blog.nbitemperpage-help">
+    <locale lang="fr">Nombre maximal de documents à afficher par page</locale>
+    <locale lang="en">Max. document count per page</locale>
+    <locale lang="de">Maximale Anzahl anzuzeigende Dokumente pro Seite</locale>
+  </entity>
+  <entity id="blogcontextualList">
+    <locale lang="fr">liste des blogs</locale>
+    <locale lang="en">Blog list</locale>
+    <locale lang="de">Blogliste</locale>
+  </entity>
+  <entity id="blogcontextualList.nbitemperpage">
+    <locale lang="fr">Nombre de documents</locale>
+    <locale lang="en">Document count</locale>
+    <locale lang="de">Anzahl Dokumente</locale>
+  </entity>
+  <entity id="blogcontextualList.nbitemperpage-help">
+    <locale lang="fr">Nombre maximal de documents à afficher par page</locale>
+    <locale lang="en">Max. document count per page</locale>
+    <locale lang="de">Maximale Anzahl anzuzeigende Dokumente pro Seite</locale>
+  </entity>
+  <entity id="blogcontextualList.showpoststats">
+    <locale lang="fr">statistiques sur les billets</locale>
+    <locale lang="en">show posts statistics</locale>
+    <locale lang="de">Beitragsstatistik anzeigen</locale>
+  </entity>
+  <entity id="blogcontextualList.showpoststats-help">
+    <locale lang="fr">afficher ou non les statistiques sur les billets.</locale>
+    <locale lang="en">show posts statistics.</locale>
+    <locale lang="de">Autorenliste der Beiträge zu diesem Blog anzeigen/nicht anzeigen</locale>
+  </entity>
+  <entity id="blogcontextualList.showauthors">
+    <locale lang="fr">afficher les auteurs</locale>
+    <locale lang="en">show authors</locale>
+    <locale lang="de">Autoren anzeigen</locale>
+  </entity>
+  <entity id="blogcontextualList.showpoststats-help">
+    <locale lang="fr">afficher ou non la liste des auteurs des billets de ce blog.</locale>
+    <locale lang="en">show authors</locale>
+    <locale lang="de">Autorenliste der Beiträge zu diesem Blog anzeigen/nicht anzeigen</locale>
+  </entity>
+  <entity id="post">
+    <locale lang="fr">detail d'un billet</locale>
+    <locale lang="en">Post detail</locale>
+    <locale lang="de">Eigenschaften Beitrag</locale>
+  </entity>
+  <entity id="post.cmpref">
+    <locale lang="fr">Document lié</locale>
+    <locale lang="en">linked document</locale>
+    <locale lang="de">verknüpftes Dokument</locale>
+  </entity>
+  <entity id="post.cmpref-help">
+    <locale lang="fr">Document lié</locale>
+    <locale lang="en">linked document</locale>
+    <locale lang="de">verknüpftes Dokument</locale>
+  </entity>
+  <entity id="post.nbitemperpage">
+    <locale lang="fr">Nombre de documents</locale>
+    <locale lang="en">Document count</locale>
+    <locale lang="de">Anzahl Dokumente</locale>
+  </entity>
+  <entity id="post.nbitemperpage-help">
+    <locale lang="fr">Nombre maximal de documents à afficher par page</locale>
+    <locale lang="en">Max. document count per page</locale>
+    <locale lang="de">Maximale Anzahl anzuzeigende Dokumente pro Seite</locale>
+  </entity>
+  <entity id="post.showblogrsslink">
+    <locale lang="fr">lien vers le flux RSS du blog</locale>
+    <locale lang="en">link to blog's RSS flux</locale>
+    <locale lang="de">Link zum RSS Feed des Blogs</locale>
+  </entity>
+  <entity id="post.showblogrsslink-help">
+    <locale lang="fr">afficher le lien vers le flux RSS global du blog</locale>
+    <locale lang="en">show link to blog(s global RSS flux</locale>
+    <locale lang="de">Link zum gesamten RSS Feed des Blogs anzeigen</locale>
+  </entity>
+  <entity id="post.showshareblock">
+    <locale lang="fr">activer le partage de liens</locale>
+  </entity>
+  <entity id="post.showshareblock-help">
+    <locale lang="fr">activer ou non les icônes de paratage de liens</locale>
+  </entity>
+  <entity id="post.metas.postLabel">
+    <locale lang="fr">titre du billet</locale>
+  </entity>
+  <entity id="post.metas.postDate">
+    <locale lang="fr">date du billet</locale>
+  </entity>
+  <entity id="post.metas.postSummary">
+    <locale lang="fr">résumé du billet</locale>
+  </entity>
+  <entity id="post.metas.blogLabel">
+    <locale lang="fr">titre du blog</locale>
+  </entity>
+  <entity id="post.metas.blogDescription">
+    <locale lang="fr">description du blog</locale>
+  </entity>
+  <entity id="post.metas.postKeywords">
+    <locale lang="fr">mots clefs du billet</locale>
+  </entity>
+  <entity id="post.metas.postCategories">
+    <locale lang="fr">catégories du billet</locale>
+  </entity>
+  <entity id="category">
+    <locale lang="fr">détail d'une catégorie</locale>
+    <locale lang="en">Category detail</locale>
+    <locale lang="de">Eigenschaften einer Kategorie</locale>
+  </entity>
+  <entity id="category.cmpref">
+    <locale lang="fr">Document lié</locale>
+    <locale lang="en">linked document</locale>
+    <locale lang="de">verlinktes Dokument</locale>
+  </entity>
+  <entity id="category.cmpref-help">
+    <locale lang="fr">Document lié</locale>
+    <locale lang="en">linked document</locale>
+    <locale lang="de">verlinktes Dokument</locale>
+  </entity>
+  <entity id="category.nbitemperpage">
+    <locale lang="fr">Nombre de documents</locale>
+    <locale lang="en">Document count</locale>
+    <locale lang="de">Anzahl Dokumente</locale>
+  </entity>
+  <entity id="category.nbitemperpage-help">
+    <locale lang="fr">Nombre maximal de documents à afficher par page</locale>
+    <locale lang="en">Max. document count per page</locale>
+    <locale lang="de">Maximale Anzahl anzuzeigende Dokumente pro Seite</locale>
+  </entity>
+  <entity id="category.includedescendents">
+    <locale lang="fr">inclure les descendants</locale>
+    <locale lang="en">include descendant</locale>
+    <locale lang="de">Abkomme einschliessen</locale>
+  </entity>
+  <entity id="category.includedescendents-help">
+    <locale lang="fr">en choisissant d'inclure les descendants, les billets associés aux sous-catégories de la catégorie courante seront aussi affichés. Dans le cas contraire, seuls les billets associés directement à la catégorie courante seront affichés.</locale>
+    <locale lang="en">includedescendents-help</locale>
+    <locale lang="de">Bei der Wahl Abkomme einzuschliessen, werden die den Unterkategorien der aktuellen Kategorie assoziierten Beiträge zusätzlich angezeigt. Im umgekehrten Fall, werden ausschliesslich die der aktuellen Kategorie direkt assoziierten Beiträge angezeigt.</locale>
+  </entity>
+  <entity id="category.showblogrsslink">
+    <locale lang="fr">lien vers le flux RSS du blog</locale>
+    <locale lang="en">link to blog's RSS flux</locale>
+    <locale lang="de">Link zum RSS Feed des Blogs</locale>
+  </entity>
+  <entity id="category.showblogrsslink-help">
+    <locale lang="fr">afficher le lien vers le flux RSS global du blog</locale>
+    <locale lang="en">show link to blog(s global RSS flux</locale>
+    <locale lang="de">Link zum gesamten RSS Feed des Blogs anzeigen</locale>
+  </entity>
+  <entity id="keyword">
+    <locale lang="fr">detail d'un mot-clé</locale>
+    <locale lang="en">keyword detail</locale>
+    <locale lang="de">Eigenschaften eines Stichworts</locale>
+  </entity>
+  <entity id="keyword.cmpref">
+    <locale lang="fr">Document lié</locale>
+    <locale lang="en">linked document</locale>
+    <locale lang="de">verlinktes Dokument</locale>
+  </entity>
+  <entity id="keyword.cmpref-help">
+    <locale lang="fr">Document lié</locale>
+    <locale lang="en">linked document</locale>
+    <locale lang="de">verlinktes Dokument</locale>
+  </entity>
+  <entity id="keyword.nbitemperpage">
+    <locale lang="fr">Nombre de documents</locale>
+    <locale lang="en">Document count</locale>
+    <locale lang="de">Anzahl Dokumente</locale>
+  </entity>
+  <entity id="keyword.nbitemperpage-help">
+    <locale lang="fr">Nombre maximal de documents à afficher par page</locale>
+    <locale lang="en">Max. document count per page</locale>
+    <locale lang="de">Maximale Anzahl anzuzeigende Dokumente pro Seite</locale>
+  </entity>
+  <entity id="keyword.showblogrsslink">
+    <locale lang="fr">lien vers le flux RSS du blog</locale>
+    <locale lang="en">link to blog's RSS flux</locale>
+    <locale lang="de">Link zum RSS Feed des Blogs</locale>
+  </entity>
+  <entity id="keyword.showblogrsslink-help">
+    <locale lang="fr">afficher le lien vers le flux RSS global du blog</locale>
+    <locale lang="en">show link to blog(s global RSS flux</locale>
+    <locale lang="de">Link zum gesamten RSS Feed des Blogs anzeigen</locale>
+  </entity>
+  <entity id="categoryList">
+    <locale lang="fr">liste des catégories</locale>
+    <locale lang="en">categories list</locale>
+    <locale lang="de">Kategorienliste</locale>
+  </entity>
+  <entity id="categoryList.cmpref">
+    <locale lang="fr">Document lié</locale>
+    <locale lang="en">linked document</locale>
+    <locale lang="de">verknüpftes Dokument</locale>
+  </entity>
+  <entity id="categoryList.cmpref-help">
+    <locale lang="fr">Document lié</locale>
+    <locale lang="en">linked document</locale>
+    <locale lang="de">verknüpftes Dokument</locale>
+  </entity>
+  <entity id="categoryList.recursivecount">
+    <locale lang="fr">décompte récursif</locale>
+    <locale lang="en">recursive count</locale>
+    <locale lang="de">rekursive Aufzählung</locale>
+  </entity>
+  <entity id="categoryList.recursivecount-help">
+    <locale lang="fr">si vous activez le décompte récursif, le compteur de billets affiché à côté du nom de la catégorie comprendra les catégories descendantes, sinon, seuls les billets associés directement à la catégorie seront pris en compte.</locale>
+    <locale lang="en">recursivecount-help</locale>
+    <locale lang="de">Ist rekursive Aufzählung aktiviert, beinhaltet der Beitragszähler neben der Kategorie, die abkommenden Kategorien, sonst werden ausschliesslich die der Kategorie direkt assoziierten Beiträge berücksichtigt.</locale>
+  </entity>
+  <entity id="keywordList">
+    <locale lang="fr">liste des mots-clés</locale>
+    <locale lang="en">keywords list</locale>
+    <locale lang="de">Liste der Stichwörter</locale>
+  </entity>
+  <entity id="keywordList.cmpref">
+    <locale lang="fr">Document lié</locale>
+    <locale lang="en">linked document</locale>
+    <locale lang="de">verknüpftes Dokument</locale>
+  </entity>
+  <entity id="keywordList.cmpref-help">
+    <locale lang="fr">Document lié</locale>
+    <locale lang="en">linked document</locale>
+    <locale lang="de">verknüpftes Dokument</locale>
+  </entity>
+  <entity id="keywordList.limit">
+    <locale lang="fr">nombre maximum</locale>
+    <locale lang="en">limit</locale>
+    <locale lang="de">maximale Anzahl</locale>
+  </entity>
+  <entity id="keywordList.limit-help">
+    <locale lang="fr">indiquez ici le nombre maximal de mots-clés à afficher. En cas de dépassement, les mots-clés les plus utilisés seront affichés en priorité.</locale>
+    <locale lang="en">limit-help</locale>
+    <locale lang="de">Geben Sie hier die maximale Anzahl der anzuzeigenden Stichwörter ein. Im Falle einer Überschreitung, werden die meist benutzten Stichwörter angezeigt.</locale>
+  </entity>
+  <entity id="keywordList.cloud">
+    <locale lang="fr">mode nuage</locale>
+    <locale lang="en">cloud mode</locale>
+    <locale lang="de">Wolkenmodus</locale>
+  </entity>
+  <entity id="keywordList.cloud-help">
+    <locale lang="fr">précisez ici si vous voulez afficher les mots-clés sous forme de liste ou de nuage.</locale>
+    <locale lang="en">cloud-help</locale>
+    <locale lang="de">präzisieren Sie hier ob die Stichwörter im Listen- oder Wolkenmodus angezeigt werden sollen.</locale>
+  </entity>
+  <entity id="comments">
+    <locale lang="fr">Commentaires du billet</locale>
+    <locale lang="en">post comments</locale>
+    <locale lang="de">Beitragskommentar</locale>
+  </entity>
+  <entity id="comments.cmpref">
+    <locale lang="fr">Document lié</locale>
+    <locale lang="en">linked document</locale>
+    <locale lang="de">verknüpftes Dokument</locale>
+  </entity>
+  <entity id="comments.cmpref-help">
+    <locale lang="fr">Document lié</locale>
+    <locale lang="en">linked document</locale>
+    <locale lang="de">verknüpftes Dokument</locale>
+  </entity>
+  <entity id="comments.nbitemperpage">
+    <locale lang="fr">Commentaires par page</locale>
+    <locale lang="en">comments per page</locale>
+    <locale lang="de">Kommentare pro Seite</locale>
+  </entity>
+  <entity id="comments.nbitemperpage-help">
+    <locale lang="fr">Commentaires par page</locale>
+    <locale lang="en">comments per page</locale>
+    <locale lang="de">Kommentare pro Seite</locale>
+  </entity>
+  <entity id="comments.enableRating">
+    <locale lang="fr">activer la notation</locale>
+    <locale lang="en">enable rating</locale>
+  </entity>
+  <entity id="comments.enableRating-help">
+    <locale lang="fr">activer la notation sur les produits</locale>
+    <locale lang="en">activate rating on products</locale>
+  </entity>
+  <entity id="comments.showRatingDistribution">
+    <locale lang="fr">afficher la répartition des notes</locale>
+    <locale lang="en">show rating distribution</locale>
+  </entity>
+  <entity id="comments.showRatingDistribution-help">
+    <locale lang="fr">afficher la répartition des notes atribuées à ce billet</locale>
+    <locale lang="en">show rating distribution on this post</locale>
+  </entity>
+  <entity id="comments.displaySortOptions">
+    <locale lang="fr">activer le tri</locale>
+    <locale lang="en">enable sorting</locale>
+  </entity>
+  <entity id="comments.displaySortOptions-help">
+    <locale lang="fr">activer le tri des commentaires</locale>
+    <locale lang="en">enable sorting of comments</locale>
+  </entity>
+  <entity id="comments.enableEvaluation">
+    <locale lang="fr">activer l'évaluation</locale>
+    <locale lang="en">enable evaluation</locale>
+  </entity>
+  <entity id="comments.enableEvaluation-help">
+    <locale lang="fr">activer l'évaluation des commentaires</locale>
+    <locale lang="en">enable evaluation of comments</locale>
+  </entity>
+  <entity id="comments.showgravatars">
+    <locale lang="fr">Afficher l'avatar</locale>
+    <locale lang="en">show avatar</locale>
+    <locale lang="de">Avatar anzeigen</locale>
+  </entity>
+  <entity id="comments.showgravatars-help">
+    <locale lang="fr">Afficher l'avatar (site www.gravatar.com)</locale>
+    <locale lang="en">show avatar (www.gravatar.com)</locale>
+    <locale lang="de">Avatar anzeigen (www.gravatar.com)</locale>
+  </entity>
+  <entity id="archives">
+    <locale lang="fr">Archives</locale>
+    <locale lang="en">Archives</locale>
+    <locale lang="de">Archive</locale>
+  </entity>
+  <entity id="archives.cmpref">
+    <locale lang="fr">document lié</locale>
+    <locale lang="en">linked document</locale>
+    <locale lang="de">verknüpftes Dokument</locale>
+  </entity>
+  <entity id="archives.cmpref-help">
+    <locale lang="fr">document lié</locale>
+    <locale lang="en">linked document</locale>
+    <locale lang="de">verknüpftes Dokument</locale>
+  </entity>
+  <entity id="archives.nbitemperpage">
+    <locale lang="fr">billets par page</locale>
+    <locale lang="en">posts per page</locale>
+    <locale lang="de">Beiträge pro Seite</locale>
+  </entity>
+  <entity id="archives.nbitemperpage-help">
+    <locale lang="fr">nombre de billets par page</locale>
+    <locale lang="en">posts count per page</locale>
+    <locale lang="de">Anzahl Beiträge pro Seite</locale>
+  </entity>
+  <entity id="archives.year">
+    <locale lang="fr">année</locale>
+    <locale lang="en">year</locale>
+    <locale lang="de">Jahr</locale>
+  </entity>
+  <entity id="archives.year-help">
+    <locale lang="fr">année à afficher</locale>
+    <locale lang="en">year to display</locale>
+    <locale lang="de">anzuzeigendes Jahr</locale>
+  </entity>
+  <entity id="archives.month">
+    <locale lang="fr">mois</locale>
+    <locale lang="en">month</locale>
+    <locale lang="de">Monat</locale>
+  </entity>
+  <entity id="archives.month-help">
+    <locale lang="fr">mois à afficher</locale>
+    <locale lang="en">month to display</locale>
+    <locale lang="de">anzuzeigender Monat</locale>
+  </entity>
+  <entity id="archives.showblogrsslink">
+    <locale lang="fr">lien vers le flux RSS du blog</locale>
+    <locale lang="en">link to blog's RSS flux</locale>
+    <locale lang="de">Link zum RSS Feed des Blogs</locale>
+  </entity>
+  <entity id="archives.showblogrsslink-help">
+    <locale lang="fr">afficher le lien vers le flux RSS global du blog</locale>
+    <locale lang="en">show link to blog's global RSS flux</locale>
+    <locale lang="de">Link zum gesamten RSS Feed des Blogs anzeigen</locale>
+  </entity>
+  <entity id="archivesList">
+    <locale lang="fr">Menu des archives</locale>
+    <locale lang="en">menu of archives</locale>
+    <locale lang="de">Menü der Archive</locale>
+  </entity>
+  <entity id="archivesList.cmpref">
+    <locale lang="fr">document lié</locale>
+    <locale lang="en">linked document</locale>
+    <locale lang="de">verlinktes Dokument</locale>
+  </entity>
+  <entity id="archivesList.cmpref-help">
+    <locale lang="fr">document lié</locale>
+    <locale lang="en">linked document</locale>
+    <locale lang="de">verlinktes Dokument</locale>
+  </entity>
+  <entity id="archivesList.displaymonths">
+    <locale lang="fr">afficher les mois</locale>
+    <locale lang="en">show months</locale>
+    <locale lang="de">Monate anzeigen</locale>
+  </entity>
+  <entity id="archivesList.displaymonths-help">
+    <locale lang="fr">afficher les mois</locale>
+    <locale lang="en">show months</locale>
+    <locale lang="de">Monate anzeigen</locale>
+  </entity>
+  <entity id="archivesList.showpostcountonyears">
+    <locale lang="fr">décompte sur les années</locale>
+    <locale lang="en">show count for years</locale>
+    <locale lang="de">Jahresaufzählung</locale>
+  </entity>
+  <entity id="archivesList.showpostcountonyears-help">
+    <locale lang="fr">afficher le décompte de billets sur les années</locale>
+    <locale lang="en">show posts count for years</locale>
+    <locale lang="de">Jahresaufzählung der Beiträge anzeigen</locale>
+  </entity>
+  <entity id="archivesList.showpostcountonmonths">
+    <locale lang="fr">décompte sur les mois</locale>
+    <locale lang="en">show count for months</locale>
+    <locale lang="de">Monatsaufzählung</locale>
+  </entity>
+  <entity id="archivesList.showpostcountonmonths-help">
+    <locale lang="fr">afficher le décompte de billets sur les mois</locale>
+    <locale lang="en">show posts count for months</locale>
+    <locale lang="de">Monatsaufzählung der Beiträge anzeigen</locale>
+  </entity>
+<!-- Frontoffice administration. -->
+  <entity id="blogedit">
+    <locale lang="fr">administration d'un blog</locale>
+    <locale lang="en">Blog administration</locale>
+  </entity>
+  <entity id="blogedit.cmpref">
+    <locale lang="fr">Document lié</locale>
+    <locale lang="en">linked document</locale>
+  </entity>
+  <entity id="blogedit.cmpref-help">
+    <locale lang="fr">Document lié</locale>
+    <locale lang="en">linked document</locale>
+  </entity>
+  <entity id="blogedit.nbitemperpage">
+    <locale lang="fr">Nombre de documents</locale>
+    <locale lang="en">Document count</locale>
+  </entity>
+  <entity id="blogedit.nbitemperpage-help">
+    <locale lang="fr">Nombre maximal de documents à afficher par page</locale>
+    <locale lang="en">Max. document count per page</locale>
+  </entity>
+  <entity id="postform">
+    <locale lang="fr">formulaire d'un billet</locale>
+    <locale lang="en">Post form</locale>
+  </entity>
+  <entity id="postform.cmpref">
+    <locale lang="fr">Document lié</locale>
+    <locale lang="en">linked document</locale>
+  </entity>
+  <entity id="postform.cmpref-help">
+    <locale lang="fr">Document lié</locale>
+    <locale lang="en">linked document</locale>
+  </entity>
+  <entity id="categoryform">
+    <locale lang="fr">formulaire d'une catégorie</locale>
+    <locale lang="en">Category form</locale>
+  </entity>
+  <entity id="categoryform.cmpref">
+    <locale lang="fr">Document lié</locale>
+    <locale lang="en">linked document</locale>
+  </entity>
+  <entity id="categoryform.cmpref-help">
+    <locale lang="fr">Document lié</locale>
+    <locale lang="en">linked document</locale>
+  </entity>
+  <entity id="commentsvalidation">
+    <locale lang="fr">validation de commentaires</locale>
+    <locale lang="en">Comments validation</locale>
+  </entity>
+  <entity id="commentsvalidation.cmpref">
+    <locale lang="fr">Document lié</locale>
+    <locale lang="en">linked document</locale>
+  </entity>
+  <entity id="commentsvalidation.cmpref-help">
+    <locale lang="fr">Document lié</locale>
+    <locale lang="en">linked document</locale>
+  </entity>
+  <entity id="commentsvalidation.nbitemperpage">
+    <locale lang="fr">Nombre de documents</locale>
+    <locale lang="en">Document count</locale>
+  </entity>
+  <entity id="commentsvalidation.nbitemperpage-help">
+    <locale lang="fr">Nombre maximal de documents à afficher par page</locale>
+    <locale lang="en">Max. document count per page</locale>
+  </entity>
+</localization>

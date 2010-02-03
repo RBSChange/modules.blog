@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions extends="generic">
+	<action name="createBlog">
+		<parameter name="listWidget" />
+		<body><![CDATA[
+			this.createDocumentEditor('modules_blog_blog', listWidget.getSelectedItems()[0].id);
+		]]></body>
+	</action>
+	<action name="createPost">
+		<parameter name="listWidget" />
+		<body><![CDATA[
+			this.createDocumentEditor('modules_blog_post', listWidget.getSelectedItems()[0].id);
+		]]></body>
+	</action>
+	<action name="createCategory">
+		<parameter name="listWidget" />
+		<body><![CDATA[
+			this.createDocumentEditor('modules_blog_category', listWidget.getSelectedItems()[0].id);
+		]]></body>
+	</action>
+	<action name="createKeyword">
+		<parameter name="listWidget" />
+		<body><![CDATA[
+			this.createDocumentEditor('modules_blog_keyword', listWidget.getSelectedItems()[0].id);
+		]]></body>
+	</action>
+</actions>

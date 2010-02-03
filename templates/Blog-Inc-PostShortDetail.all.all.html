@@ -1,0 +1,21 @@
+<h3 change:h=""><a change:link="document post">${post/getLabel}</a></h3>
+<p class="meta-post-infos"><tal:block change:translate="&modules.blog.frontoffice.Posted-by; author post/getAuthorName" /> - <tal:block change:datetime="post/getPostDate" /> - 
+	<a change:link="document post; anchor php: 'comments-' . post.getId()" tal:define="commentCount post/getCommentCount">
+		<tal:block tal:condition="php: commentCount GT 1" change:translate="&modules.blog.frontoffice.Several-comments; count commentCount" />
+		<tal:block tal:condition="php: commentCount == 1" change:translate="&modules.blog.frontoffice.One-comment;" />
+		<tal:block tal:condition="php: commentCount LT 1" change:translate="&modules.blog.frontoffice.No-comment;" />
+	</a>
+</p>
+<p tal:condition="post/getSummary" tal:content="post/getSummaryAsHtml" />
+<p tal:condition="not:post/getSummary" tal:content="post/getContentsAsHtml" />
+
+<h4 change:h="" change:translate="&modules.blog.bo.general.Categories;" />
+<ul tal:condition="post/getCategoryCount" class="meta-categories">
+	<li tal:repeat="category post/getCategoryArray"><a change:link="document category">${category/getLabel}</a></li>
+</ul>
+<tal:block tal:condition="post/getKeywordCount">
+	<h4 change:h="" change:translate="&modules.blog.bo.general.Keywords;" />
+	<ul class="meta-keywords">
+		<li tal:repeat="keyword post/getKeywordArray"><a change:link="document keyword">${keyword/getLabel}</a></li>
+	</ul>
+</tal:block>

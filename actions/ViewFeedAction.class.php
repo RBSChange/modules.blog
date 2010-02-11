@@ -43,7 +43,7 @@ class blog_ViewFeedAction extends blog_Action
 			$title = $parent->getBlog()->getLabel() . ' - ' . $title;
 		}		
 		$feedWriter->setTitle($title);
-		$feedWriter->setDescription($parent->getDescriptionAsHtml());
+		$feedWriter->setDescription(f_util_StringUtils::htmlToText($parent->getDescriptionAsHtml()));
 
 		$feedURL = LinkHelper::getUrl($parent);
 

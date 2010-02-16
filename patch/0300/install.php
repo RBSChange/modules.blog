@@ -26,6 +26,8 @@ class blog_patch_0300 extends patch_BasePatch
 		$this->executeLocalXmlScript('pinglist.xml');
 		exec("change.php ci18n blog");
 		
+		exec("change.php import-data blog init.xml");
+		
 		$prefs = ModuleService::getInstance()->getPreferencesDocument('blog');
 		$prefs->setPingurls("http://blogsearch.google.com/ping/RPC2,http://rpc.pingomatic.com,http://ping.feedburner.com,http://rpc.technorati.com/rpc/ping");
 		$prefs->save();

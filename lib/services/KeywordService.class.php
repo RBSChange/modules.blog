@@ -379,4 +379,16 @@ class blog_KeywordService extends blog_PostgroupService
 		$result = $query->findUnique();
 		$this->changePostCount($keyword, $result['count']);
 	}
+	
+	/**
+	 * @param website_persistentdoculent_website $website
+	 * @param Integer $maxUrl
+	 * @return Integer[]
+	 */
+	public function getIdsForSitemap($website, $maxUrl)
+	{
+		$query = $this->createQuery()->add(Restrictions::published());
+		$query->createCriteria('blog')->add(Restrictions::descendentOf($website->getId()));
+		return $query->setProjection(Projections::property('id'))->findColumn('id');	
+	}
 }

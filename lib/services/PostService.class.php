@@ -563,4 +563,16 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		$data['properties']['keywordsText'] = $document->getKeywordsText();
 		return $data;
 	}
+	
+	/**
+	 * @param website_persistentdoculent_website $website
+	 * @param Integer $maxUrl
+	 * @return Integer[]
+	 */
+	public function getIdsForSitemap($website, $maxUrl)
+	{
+		$query = $this->createQuery()->add(Restrictions::published());
+		$query->createCriteria('blog')->add(Restrictions::descendentOf($website->getId()));
+		return $query->setProjection(Projections::property('id'))->findColumn('id');	
+	}
 }

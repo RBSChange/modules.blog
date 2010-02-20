@@ -389,6 +389,6 @@ class blog_KeywordService extends blog_PostgroupService
 	{
 		$query = $this->createQuery()->add(Restrictions::published());
 		$query->createCriteria('blog')->add(Restrictions::descendentOf($website->getId()));
-		return $query->setProjection(Projections::property('id'))->findColumn('id');	
+		return $query->setProjection(Projections::property('id'))->setMaxResults($maxUrl)->findColumn('id');	
 	}
 }

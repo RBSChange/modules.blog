@@ -143,10 +143,6 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	 */
 	protected function postUpdate($document, $parentNodeId)
 	{
-		if ($document->isPublished())
-		{
-			
-		}
 	}
 
 	
@@ -573,6 +569,6 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	{
 		$query = $this->createQuery()->add(Restrictions::published());
 		$query->createCriteria('blog')->add(Restrictions::descendentOf($website->getId()));
-		return $query->setProjection(Projections::property('id'))->findColumn('id');	
+		return $query->setProjection(Projections::property('id'))->setMaxResults($maxUrl)->findColumn('id');	
 	}
 }

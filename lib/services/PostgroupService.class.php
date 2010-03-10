@@ -275,4 +275,21 @@ class blog_PostgroupService extends f_persistentdocument_DocumentService
 			}
 		}
 	}
+	
+	/**
+	 * @see f_persistentdocument_DocumentService::getDisplayPage()
+	 *
+	 * @param f_persistentdocument_PersistentDocument $document
+	 * @return website_persistentdocument_page
+	 */
+	public function getDisplayPage($document)
+	{
+		if ($document->isPublished())
+		{
+			$blog = $document->getBlog();
+			$page = TagService::getInstance()->getDocumentBySiblingTag('functional_blog_' . $document->getPersistentModel()->getDocumentName(). '-detail', $blog);
+			return $page;
+		}
+		return parent::getDisplayPage($document);
+	}
 }

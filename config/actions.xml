@@ -24,4 +24,15 @@
 			this.createDocumentEditor('modules_blog_keyword', listWidget.getSelectedItems()[0].id);
 		]]></body>
 	</action>
+	<action name="previewPost">
+		<parameter name="listWidget" />
+		<body><![CDATA[
+			var item = listWidget.getSelectedItems()[0];
+			var params = {};
+			params['blogParam[cmpref]'] = item.id;
+			params['lang'] = this.getContextLang();
+			var href = wCore.buildeServerUrl('blog', 'PreviewPost', params);
+			window.open(href, item.label, "menubar=yes, location=yes, toolbar=yes, resizable=yes, scrollbars=yes, status=yes");
+		]]></body>
+	</action>
 </actions>

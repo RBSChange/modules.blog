@@ -73,6 +73,7 @@
 		<model name="modules_blog/post">
 			<contextactions>
 				<contextaction name="edit" />
+				<contextaction name="previewPost" />
 				<contextaction name="activate" />
 				<contextaction name="deactivated" />
 				<contextaction name="reactivate" />
@@ -110,6 +111,7 @@
 	</models>
 	<toolbar>
 		<toolbarbutton name="edit" />
+		<toolbarbutton name="previewPost" />	
 		<toolbarbutton name="delete" />
 		<toolbarbutton name="activate" />
 		<toolbarbutton name="deactivated" />
@@ -132,5 +134,6 @@
 		<action name="createPost" permission="Insert_post" icon="add" label="&amp;modules.blog.bo.actions.Create-Post;" />
 		<action name="createKeyword" permission="Insert_keyword" icon="add" label="&amp;modules.blog.bo.actions.Create-Keyword;" />
 		<action name="createFolder" single="true" icon="create-folder" label="&amp;modules.uixul.bo.actions.Create-folder;" />	
+		<action name="previewPost" single="true" permission="PreviewPost" icon="preview" label="&amp;modules.blog.bo.actions.PreviewPost;" />
 	</actions>
 </perspective>

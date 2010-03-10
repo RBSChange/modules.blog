@@ -5,11 +5,15 @@
  */
 class blog_PostService extends f_persistentdocument_DocumentService
 {
+	const TARGET_PINGBACK_OK = 1;
+	const TARGET_PINGBACK_FAILED = -1;
+	const TARGET_PINGBACK_NOT_AVAILABLE = 0;
+	
 	/**
 	 * @var blog_PostService
 	 */
 	private static $instance;
-
+	
 	/**
 	 * @return blog_PostService
 	 */
@@ -21,7 +25,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		}
 		return self::$instance;
 	}
-
+	
 	/**
 	 * @return blog_persistentdocument_post
 	 */
@@ -29,7 +33,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	{
 		return $this->getNewDocumentInstanceByModelName('modules_blog/post');
 	}
-
+	
 	/**
 	 * Create a query based on 'modules_blog/post' model
 	 * @return f_persistentdocument_criteria_Query
@@ -38,7 +42,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	{
 		return $this->pp->createQuery('modules_blog/post');
 	}
-
+	
 	/**
 	 * @param blog_persistentdocument_post $post
 	 * @return String
@@ -47,7 +51,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	{
 		return $this->getAuthorNameByAthorData($post->getAuthorid(), $post->getAuthor());
 	}
-
+	
 	/**
 	 * @param Integer $authorid
 	 * @param String $author
@@ -55,7 +59,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	 */
 	public function getAuthorNameByAthorData($authorid, $author)
 	{
-		try 
+		try
 		{
 			$authorDocument = DocumentHelper::getDocumentInstance($authorid);
 			return $authorDocument->getFullname();
@@ -85,7 +89,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		{
 			if ($category->getBlog()->getId() != $blogId)
 			{
-				$document->removeCategory($category);	
+				$document->removeCategory($category);
 			}
 		}
 		
@@ -130,8 +134,58 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		// Update month field.
 		if ($document->isPropertyModified('postDate'))
 		{
-			$this->updateMonth($document);	
+			$this->updateMonth($document);
 		}
+	}
+	
+	/**
+	 * @param blog_persistentdocument_post $post
+	 */
+	private function buildLinklist($post)
+	{	
+		$DOMDoc = f_util_DOMUtils::fromString('<body>' . f_util_HtmlUtils::renderHtmlFragment($post->getContents()) . '</body>');
+		$nodes = $DOMDoc->find('//a[@href]');
+		$linklist = array();
+		foreach ($nodes as $node)
+		{
+			$href = $node->getAttribute("href");			
+			if (!in_array($href, $linklist) && !$this->isLocalUrl($href))
+			{
+				$linklist[] = $href;
+			}
+		}
+		$post->setMeta('linklist', $linklist);
+		$post->saveMeta();
+	}
+	
+	/**
+	 * @var Array
+	 */
+	private $websiteDomains = null;
+	
+	/**
+	 * @param String $url
+	 * @return Boolean
+	 */
+	protected function isLocalUrl($url)
+	{
+		if ($this->websiteDomains === null)
+		{
+			$this->websiteDomains = website_WebsiteService::getInstance()->createQuery()->setProjection(Projections::property('domain'))->findColumn('domain');
+		}
+		$href = preg_replace('#^(http|https)://#', '', $url);
+		foreach ($this->websiteDomains as $domain)
+		{
+			if (strpos($href, $domain) === 0)
+			{
+				return true;
+			}
+			if (strpos($href, str_replace('www.', '', $domain)) === 0)
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 	
 
@@ -143,9 +197,13 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	 */
 	protected function postUpdate($document, $parentNodeId)
 	{
+		if ($document->isPublished())
+		{
+			$this->schedulePings($document);
+		}
 	}
-
 	
+
 	/**
 	 * @param blog_persistentdocument_post $post
 	 */
@@ -156,11 +214,11 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		{
 			$newDate = date_Calendar::getInstance($newDate);
 		}
-
+		
 		$ms = blog_MonthService::getInstance();
 		$oldMonth = $post->getMonth();
 		$newMonth = $ms->getByDateAndBlog($newDate, $post->getBlog());
-			
+		
 		if (!DocumentHelper::equals($newMonth, $oldMonth))
 		{
 			// Set the new month.
@@ -180,7 +238,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 			}
 		}
 	}
-
+	
 	/**
 	 * @param blog_persistentdocument_post $document
 	 * @param Integer $parentNodeId Parent node ID where to save the document.
@@ -235,27 +293,30 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	 * @param Integer $parentNodeId Parent node ID where to save the document.
 	 * @return void
 	 */
-//	protected function postInsert($document, $parentNodeId = null)
-//	{
-//	}
+	//	protected function postInsert($document, $parentNodeId = null)
+	//	{
+	//	}
+	
 
 	/**
 	 * @param blog_persistentdocument_post $document
 	 * @param Integer $parentNodeId Parent node ID where to save the document.
 	 * @return void
 	 */
-//	protected function preUpdate($document, $parentNodeId = null)
-//	{
-//	}
+	//	protected function preUpdate($document, $parentNodeId = null)
+	//	{
+	//	}
+	
 
 	/**
 	 * @param blog_persistentdocument_post $document
 	 * @param Integer $parentNodeId Parent node ID where to save the document.
 	 * @return void
 	 */
-//	protected function postUpdate($document, $parentNodeId = null)
-//	{
-//	}
+	//	protected function postUpdate($document, $parentNodeId = null)
+	//	{
+	//	}
+	
 
 	/**
 	 * @param blog_persistentdocument_post $document
@@ -267,7 +328,6 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		// Delete old month if unused. This must be done is post save to nested saves. 
 		$ms = blog_MonthService::getInstance();
 		$oldMonthId = $document->getMonthOldValueId();
-		Framework::debug(__METHOD__ . ' ' . $oldMonthId);
 		if ($oldMonthId !== null)
 		{
 			$oldMonth = DocumentHelper::getDocumentInstance($oldMonthId);
@@ -309,7 +369,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 			}
 		}
 	}
-
+	
 	/**
 	 * @param blog_persistentdocument_post $document
 	 * @return void
@@ -322,40 +382,44 @@ class blog_PostService extends f_persistentdocument_DocumentService
 			$ts->decrementPostCount($keyword);
 		}
 	}
+	
+	/**
+	 * @param blog_persistentdocument_post $document
+	 * @return void
+	 */
+	//	protected function preDeleteLocalized($document)
+	//	{
+	//	}
+	
 
 	/**
 	 * @param blog_persistentdocument_post $document
 	 * @return void
 	 */
-//	protected function preDeleteLocalized($document)
-//	{
-//	}
+	//	protected function postDelete($document)
+	//	{
+	//	}
+	
 
 	/**
 	 * @param blog_persistentdocument_post $document
 	 * @return void
 	 */
-//	protected function postDelete($document)
-//	{
-//	}
-
-	/**
-	 * @param blog_persistentdocument_post $document
-	 * @return void
-	 */
-//	protected function postDeleteLocalized($document)
-//	{
-//	}
+	//	protected function postDeleteLocalized($document)
+	//	{
+	//	}
+	
 
 	/**
 	 * @param blog_persistentdocument_post $document
 	 * @return boolean true if the document is publishable, false if it is not.
 	 */
-//	public function isPublishable($document)
-//	{
-//		$result = parent::isPublishable($document);
-//		return $result;
-//	}
+	//	public function isPublishable($document)
+	//	{
+	//		$result = parent::isPublishable($document);
+	//		return $result;
+	//	}
+	
 
 
 	/**
@@ -382,14 +446,14 @@ class blog_PostService extends f_persistentdocument_DocumentService
 			foreach ($document->getKeywordArray() as $keyword)
 			{
 				$ts->incrementPublishedPostCount($keyword);
-			}			
+			}
 			
 			// Generate postDate if it is null.
 			// Here we do not need to update published post count on month because it is done on presave.
 			if ($document->getPostDate() === null)
 			{
 				$document->setPostDate(date_Calendar::now()->toString());
-				$document->save();
+				$this->getPersistentProvider()->updateDocument($document);
 			}
 			// Update count on month.
 			else
@@ -401,6 +465,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 				}
 			}
 			blog_BlogService::getInstance()->pingServicesForBlog($document->getBlog());
+			$this->schedulePingbacksAndTrackbacks($document);
 		}
 		// Status transits from PUBLICATED to ACTIVE.
 		elseif ($oldPublicationStatus == 'PUBLICATED')
@@ -426,36 +491,169 @@ class blog_PostService extends f_persistentdocument_DocumentService
 			}
 			blog_BlogService::getInstance()->pingServicesForBlog($document->getBlog());
 		}
-		
-		
 	}
-
+	
+	/**
+	 * @param blog_persistentdocument_post $document
+	 */
+	protected function schedulePingbacksAndTrackbacks($document)
+	{
+		$this->buildLinklist($document);
+		$linkList = $document->getMeta('linklist');
+		if (f_util_ArrayUtils::isEmpty($linkList))
+		{
+			if (Framework::isDebugEnabled())
+			{
+				Framework::debug(__METHOD__ . ": no link in post, nothing to ping");
+			}
+			return;
+		}
+		if ($document->hasMeta('pingbackresults'))
+		{
+			$pingList = array_keys($document->getMeta('pingbackresults'));
+			if (f_util_ArrayUtils::isEmpty(array_diff($linkList, $pingList)))
+			{
+				if (Framework::isDebugEnabled())
+				{
+					Framework::debug(__METHOD__ . ": no new link in post, nothing to ping");
+				}
+				return;
+			}
+		}
+		$taskService = task_PlannedtaskService::getInstance();
+		$plannedTasks = $taskService->getRunnableBySystemtaskclassname('blog_PingBlogsTask');
+		if (f_util_ArrayUtils::isNotEmpty($plannedTasks))
+		{
+			$pingTask = f_util_ArrayUtils::firstElement($plannedTasks);
+			$parameters = unserialize($pingTask->getParameters());
+			$postIds = $parameters['postIds'];
+		}
+		else
+		{
+			$pingTask = $taskService->getNewDocumentInstance();
+			$pingTask->setSystemtaskclassname('blog_PingBlogsTask');
+			$pingTask->setLabel(__METHOD__);
+			$postIds = array();
+		}
+		if (!in_array($document->getId(), $postIds))
+		{
+			$postIds[] = $document->getId();
+		}
+		$runDate = date_Calendar::getInstance()->add(date_Calendar::MINUTE, 1);
+		$pingTask->setParameters(serialize(array('postIds' => $postIds)));
+		$pingTask->setUniqueExecutiondate($runDate);
+		$pingTask->save(ModuleService::getInstance()->getSystemFolderId('task', 'blog'));
+	}
+	
+	/**
+	 * @param blog_persistentdocument_post $post
+	 */
+	public function pingbacksForPost($post)
+	{
+		$cs = blog_PingBackClientService::getInstance();
+		$linkList = $post->getMeta('linklist');
+		$pingbackResults = array();
+		if ($post->hasMeta('pingbackresults'))
+		{
+			$pingbackResults = $post->getMeta('pingbackresults');
+		}
+		$pingList = array_keys($pingbackResults);
+		foreach (array_diff($linkList, $pingList) as $url) 
+		{
+			$pbUrl = $cs->getPingbackUrlForUrl($url);
+			if ($pbUrl !== null)
+			{
+				if (Framework::isDebugEnabled())
+				{
+					Framework::debug(__METHOD__ . ': getting ready to ping ' . $pbUrl . 'for postId = '. $post->getId());
+				}
+				try 
+				{
+					$cs->ping($pbUrl, LinkHelper::getDocumentUrl($post), $url);
+					$pingbackResults[$url] = array('status' => self::TARGET_PINGBACK_OK);
+				}
+				catch (Exception $e)
+				{
+					$pingbackResults[$url] = array('status' => self::TARGET_PINGBACK_FAILED, 'message' => $e->getMessage());
+				}
+			}
+			else 
+			{
+				$pingbackResults[$url] = array('status' => self::TARGET_PINGBACK_NOT_AVAILABLE);
+			}
+		}
+		$post->setMeta('pingbackresults', $pingbackResults);
+		$post->saveMeta();
+	}
+	
+	
+	/**
+	 * @param blog_persistentdocument_post $post
+	 */
+	public function trackbacksForPost($post)
+	{
+		$trackbackResults = array();
+		if ($post->hasMeta('trackbackresults'))
+		{
+			$trackbackResults = $post->getMeta('trackbackresults');
+		}
+		$trackbackUrls = $post->getTrackbacks();
+		$trackbacks = explode(',', $trackbackUrls);
+		$postUrl = LinkHelper::getDocumentUrl($post);
+		foreach (array_diff($trackbacks, array_keys($trackbackResults)) as $url) 
+		{
+			$url = trim($url);
+			if ($this->isLocalUrl($url))
+			{
+				continue;
+			}
+			
+			$client = HTTPClientService::getInstance()->getNewHTTPClient();
+			$params =  array('url' => $postUrl);
+			$params['blog_name'] = $post->getBlogLabel();
+			$params['title'] = $post->getLabel();
+			$summary = f_util_StringUtils::htmlToText($post->getSummary());
+			if (f_util_StringUtils::isEmpty($summary))
+			{
+				$summary = f_util_StringUtils::shortenString(f_util_StringUtils::htmlToText($post->getContents()));
+			}
+			$params['excerpt'] = $summary;
+			$data = $client->post($url,  $params);
+			$trackbackResults[$url] = $data;
+		}
+		$post->setMeta('trackbackresults', $trackbackResults);
+		$post->saveMeta();
+	}
+	
 	/**
 	 * Correction document is available via $args['correction'].
 	 * @param f_persistentdocument_PersistentDocument $document
 	 * @param Array<String=>mixed> $args
 	 */
-//	protected function onCorrectionActivated($document, $args)
-//	{
-//	}
+	//	protected function onCorrectionActivated($document, $args)
+	//	{
+	//	}
+	
 
 	/**
 	 * @param blog_persistentdocument_post $document
 	 * @param String $tag
 	 * @return void
 	 */
-//	public function tagAdded($document, $tag)
-//	{
-//	}
+	//	public function tagAdded($document, $tag)
+	//	{
+	//	}
+	
 
 	/**
 	 * @param blog_persistentdocument_post $document
 	 * @param String $tag
 	 * @return void
 	 */
-//	public function tagRemoved($document, $tag)
-//	{
-//	}
+	//	public function tagRemoved($document, $tag)
+	//	{
+	//	}
+	
 
 	/**
 	 * @param blog_persistentdocument_post $fromDocument
@@ -463,9 +661,10 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	 * @param String $tag
 	 * @return void
 	 */
-//	public function tagMovedFrom($fromDocument, $toDocument, $tag)
-//	{
-//	}
+	//	public function tagMovedFrom($fromDocument, $toDocument, $tag)
+	//	{
+	//	}
+	
 
 	/**
 	 * @param f_persistentdocument_PersistentDocument $fromDocument
@@ -473,9 +672,10 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	 * @param String $tag
 	 * @return void
 	 */
-//	public function tagMovedTo($fromDocument, $toDocument, $tag)
-//	{
-//	}
+	//	public function tagMovedTo($fromDocument, $toDocument, $tag)
+	//	{
+	//	}
+	
 
 	/**
 	 * Called before the moveToOperation starts. The method is executed INSIDE a
@@ -484,9 +684,10 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	 * @param f_persistentdocument_PersistentDocument $document
 	 * @param Integer $destId
 	 */
-//	protected function onMoveToStart($document, $destId)
-//	{
-//	}
+	//	protected function onMoveToStart($document, $destId)
+	//	{
+	//	}
+	
 
 	/**
 	 * this method is call before save the duplicate document.
@@ -499,10 +700,11 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	 *
 	 * @throws IllegalOperationException
 	 */
-//	protected function preDuplicate($newDocument, $originalDocument, $parentNodeId)
-//	{
-//		throw new IllegalOperationException('This document cannot be duplicated.');
-//	}
+	//	protected function preDuplicate($newDocument, $originalDocument, $parentNodeId)
+	//	{
+	//		throw new IllegalOperationException('This document cannot be duplicated.');
+	//	}
+	
 
 	/**
 	 * @param blog_persistentdocument_post $document
@@ -531,7 +733,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 					}
 					$document->addKeyword($keyword);
 				}
-			}		
+			}
 		}
 		
 		if ($document->isPropertyModified('keyword'))
@@ -569,6 +771,39 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	{
 		$query = $this->createQuery()->add(Restrictions::published());
 		$query->createCriteria('blog')->add(Restrictions::descendentOf($website->getId()));
-		return $query->setProjection(Projections::property('id'))->setMaxResults($maxUrl)->findColumn('id');	
+		return $query->setProjection(Projections::property('id'))->setMaxResults($maxUrl)->findColumn('id');
 	}
+	
+
+	/**
+	 * @see f_persistentdocument_DocumentService::getDisplayPage()
+	 *
+	 * @param f_persistentdocument_PersistentDocument $document
+	 * @return website_persistentdocument_page
+	 */
+	public function getDisplayPage($document)
+	{
+		//Check for original document;
+		$document = DocumentHelper::getByCorrection($document);
+		if ($document->isPublished())
+		{
+			$blog = $document->getBlog();
+			$page = TagService::getInstance()->getDocumentBySiblingTag('functional_blog_post-detail', $blog);
+			return $page;
+		}
+		return parent::getDisplayPage($document);
+	}
+	
+	/**
+	 * @param f_persistentdocument_PersistentDocument $document
+	 * @return website_persistentdocument_page
+	 */
+	public function getPreviewPage($document)
+	{
+		//Check for original document;
+		$document = DocumentHelper::getByCorrection($document);
+		$blog = $document->getBlog();
+		return TagService::getInstance()->getDocumentBySiblingTag('functional_blog_post-detail', $blog);
+	}	
+
 }

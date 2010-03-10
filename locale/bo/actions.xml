@@ -1,33 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <localization>
-  <entity id="create_">
-    <locale lang="fr">créer</locale>
-    <locale lang="en">create</locale>
-    <locale lang="de">Neu</locale>
-  </entity>
-  <entity id="createOnCategory">
-    <locale lang="fr">créer</locale>
-    <locale lang="en">create</locale>
-    <locale lang="de">Neu</locale>
-  </entity>
-  <entity id="Create-Blog">
-    <locale lang="fr">créer un blog</locale>
-    <locale lang="en">create a blog</locale>
-    <locale lang="de">Neuer Blog</locale>
-  </entity>
-  <entity id="Create-Post">
-    <locale lang="fr">créer un billet</locale>
-    <locale lang="en">create a post</locale>
-    <locale lang="de">Neuer Beitrag</locale>
-  </entity>
-  <entity id="Create-Category">
-    <locale lang="fr">créer une catégorie</locale>
-    <locale lang="en">create a category</locale>
-    <locale lang="de">Neue Kategorie</locale>
-  </entity>
-  <entity id="Create-Keyword">
-    <locale lang="fr">créer un mot-clé</locale>
-    <locale lang="en">create a keyword</locale>
-    <locale lang="de">Neues Stichwort</locale>
-  </entity>
+	<entity id="create_">
+		<locale lang="fr">créer</locale>
+		<locale lang="en">create</locale>
+		<locale lang="de">Neu</locale>
+	</entity>
+	<entity id="createOnCategory">
+		<locale lang="fr">créer</locale>
+		<locale lang="en">create</locale>
+		<locale lang="de">Neu</locale>
+	</entity>
+	<entity id="Create-Blog">
+		<locale lang="fr">créer un blog</locale>
+		<locale lang="en">create a blog</locale>
+		<locale lang="de">Neuer Blog</locale>
+	</entity>
+	<entity id="Create-Post">
+		<locale lang="fr">créer un billet</locale>
+		<locale lang="en">create a post</locale>
+		<locale lang="de">Neuer Beitrag</locale>
+	</entity>
+	<entity id="Create-Category">
+		<locale lang="fr">créer une catégorie</locale>
+		<locale lang="en">create a category</locale>
+		<locale lang="de">Neue Kategorie</locale>
+	</entity>
+	<entity id="Create-Keyword">
+		<locale lang="fr">créer un mot-clé</locale>
+		<locale lang="en">create a keyword</locale>
+		<locale lang="de">Neues Stichwort</locale>
+	</entity>
+	<entity id="PreviewPost">
+		<locale lang="fr">Prévisualiser le billet</locale>
+		<locale lang="en">Preview post</locale>
+		<locale lang="de">Postvorschau</locale>
+	</entity>
 </localization>

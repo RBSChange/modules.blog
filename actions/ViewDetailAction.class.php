@@ -17,13 +17,15 @@ class blog_ViewDetailAction extends generic_ViewDetailAction
 		$document = $this->getDocumentInstanceFromRequest($request);
 		if ($document !== null)
 		{
-			// Find detail page for the document to display.
-			$page = $this->getDetailPage($document);
-			if ($page !== null)
+			if ($document instanceof comment_persistentdocument_comment)
 			{
-				$request->setParameter(K::PAGE_REF_ACCESSOR, $page->getId());
-				$module = 'website';
-				$action = 'Display';
+				$module = 'comment';
+				$action = 'ViewDetail';
+			}
+			else 
+			{
+				$module = 'generic';
+				$action = 'ViewDetail';
 			}
 		}
 

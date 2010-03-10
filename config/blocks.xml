@@ -47,6 +47,7 @@
 			<parameter name="cmpref" type="modules_blog/post" />
 			<parameter name="showblogrsslink" type="Boolean" default-value="true" />
 			<parameter name="showshareblock" type="Boolean" default-value="true" />
+			<parameter name="showtrackbackurl" type="Boolean" default-value="true" />
 		</parameters>
 		<metas>
 			<meta name="postLabel" allow="title,description" />

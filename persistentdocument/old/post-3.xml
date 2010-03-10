@@ -13,7 +13,6 @@
     <add name="month" type="modules_blog/month" inverse="true" preserve-old-value="true"/>
     <add name="trackbacks" type="LongString"/>
     <add name="allowPingbacks" type="Boolean" default-value="true"/>
-    <add name="allowTrackbacks" type="Boolean" default-value="true"/>
   </properties>
   <statuses default="DRAFT"/>
 </document>

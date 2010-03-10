@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<localization extend="modules.comment.document.comment">
+  <entity id="document-name">
+    <locale lang="fr">pingback</locale>
+    <locale lang="en">pingback</locale>
+  </entity>
+</localization>

@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <script>
-	<binding fileName="modules/generic/persistentdocument/import/generic_binding.xml"/>
-	<binding name="blog" className="blog_BlogScriptDocumentElement"/>
-	<binding name="post" className="blog_PostScriptDocumentElement"/>
-	<binding name="postgroup" className="blog_PostgroupScriptDocumentElement"/>
-	<binding name="category" className="blog_CategoryScriptDocumentElement"/>
-	<binding name="keyword" className="blog_KeywordScriptDocumentElement"/>
-	<binding name="postfolder" className="blog_PostfolderScriptDocumentElement"/>
-	<binding name="categoryfolder" className="blog_CategoryfolderScriptDocumentElement"/>
-	<binding name="keywordfolder" className="blog_KeywordfolderScriptDocumentElement"/>
-	<binding name="postgroup" className="blog_PostgroupScriptDocumentElement"/>
-	
-	<binding name="linkedtopic" className="blog_LinkedtopicScriptDocumentElement"/>
-	<binding name="preferences" className="blog_PreferencesScriptDocumentElement"/>
-	<binding name="blogpreferences" className="blog_PreferencesScriptDocumentElement"/>
-	<binding name="year" className="blog_YearScriptDocumentElement"/>
-	<binding name="month" className="blog_MonthScriptDocumentElement"/>
+  <binding fileName="modules/generic/persistentdocument/import/generic_binding.xml"/>
+  <binding name="blog" className="blog_BlogScriptDocumentElement"/>
+  <binding name="post" className="blog_PostScriptDocumentElement"/>
+  <binding name="postgroup" className="blog_PostgroupScriptDocumentElement"/>
+  <binding name="category" className="blog_CategoryScriptDocumentElement"/>
+  <binding name="keyword" className="blog_KeywordScriptDocumentElement"/>
+  <binding name="postfolder" className="blog_PostfolderScriptDocumentElement"/>
+  <binding name="categoryfolder" className="blog_CategoryfolderScriptDocumentElement"/>
+  <binding name="keywordfolder" className="blog_KeywordfolderScriptDocumentElement"/>
+  <binding name="postgroup" className="blog_PostgroupScriptDocumentElement"/>
+  <binding name="linkedtopic" className="blog_LinkedtopicScriptDocumentElement"/>
+  <binding name="preferences" className="blog_PreferencesScriptDocumentElement"/>
+  <binding name="blogpreferences" className="blog_PreferencesScriptDocumentElement"/>
+  <binding name="year" className="blog_YearScriptDocumentElement"/>
+  <binding name="month" className="blog_MonthScriptDocumentElement"/>
+  <binding name="pingback" className="blog_PingbackScriptDocumentElement"/>
+  <binding name="trackback" className="blog_TrackbackScriptDocumentElement"/>
 </script>

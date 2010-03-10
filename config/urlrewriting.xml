@@ -35,6 +35,16 @@
 			</parameters>
 		</rule>
 		
+		<rule documentModel="pingback" viewMode="detail">
+			<template>/blog/pingback/$id</template>
+			<parameters />
+		</rule>
+		
+		<rule documentModel="trackback" viewMode="detail">
+			<template>/blog/trackback/$id</template>
+			<parameters />
+		</rule>
+		
 		<rule redirection="blog/ViewArchive">
 			<template>/blog/$cmpref/$year/$month/</template>
 			<parameters>
@@ -48,6 +58,20 @@
 			<template>/blog/$parentref/feed/</template>
 			<parameters>
 				<parameter name="parentref" format="[0-9]+" />
+			</parameters>
+		</rule>
+		
+		<rule redirection="blog/PingBack">
+			<template>/pingback/$postId/xmlrpc.php</template>
+			<parameters>
+				<parameter name="postId" format="[0-9]+" />
+			</parameters>
+		</rule>
+		
+		<rule redirection="blog/TrackBack">
+			<template>/trackback/$cmpref</template>
+			<parameters>
+				<parameter name="cmpref" format="[0-9]+" />
 			</parameters>
 		</rule>
 	</rules>

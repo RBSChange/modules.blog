@@ -17,11 +17,9 @@
 
 <p tal:content="post/getContentsAsHtml" />
 
-<tal:block tal:condition="configuration/getShowtrackbackurl">
-	<tal:block tal:condition="post/getAllowTrackbacks">
-		<h3 change:h="" change:translate="&modules.blog.frontoffice.trackback-url;" />
-		<p tal:content="trackbackurl" /> 
-	</tal:block>
+<tal:block tal:condition="post/getAllowTrackbacks">
+	<h3 change:h="" change:translate="&modules.blog.frontoffice.trackback-url;" />
+	<p tal:content="trackbackurl" /> 
 </tal:block>
 <tal:block tal:condition="showShareBlock" change:block="" module="sharethis" name="Sharepage" />
 

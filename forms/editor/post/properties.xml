@@ -21,4 +21,31 @@
 		<field name="allowPingbacks" />
 		<field name="allowTrackbacks" />
 	</section>
+		<xul>
+		<javascript>
+			<field name="mPreviewPostButton">null</field>
+
+			<constructor><![CDATA[
+				this.mPreviewPostButton = this.addActionButton('&modules.blog.bo.actions.PreviewPost;', wToolkit.getIcon('preview', 'small'));
+				var me = this;
+				this.mPreviewPostButton.addEventListener('command', function(event) {me.onPreviewPost();}, true);			
+				this.extendMethod("updateCommandsUI", this.updatePreviewPostUI);
+			]]></constructor>
+
+			<method name="updatePreviewPostUI">
+				<parameter name="event" />
+				<body><![CDATA[
+					this.mPreviewPostButton.disabled = this.modified;
+				]]></body>
+			</method>
+
+			<method name="onPreviewPost">
+				<parameter name="event" />
+				<body><![CDATA[
+					this.documentEditor.module.previewPostFromDocument(this.mDocumentId, this.mLang);
+				]]></body>
+			</method>
+
+		</javascript>
+	</xul>
 </panel>

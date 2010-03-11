@@ -17,17 +17,15 @@ class blog_PreviewPostAction extends f_action_BaseAction
 		// retrieve the page to display
 		if (!is_null($document) && $document instanceof blog_persistentdocument_post)
 		{
+			$document = DocumentHelper::getCorrection($document);
 			$page = $document->getDocumentService()->getPreviewPage($document);
 		}
 
 		if (!is_null($page))
 		{
 			$model = $document->getPersistentModel();
-			if ($model->isInjectedModel() && 
-				$this->getModuleName($request) != $model->getOriginalModuleName())
-			{
-				$request->setParameter($model->getOriginalModuleName()."Param", array("cmpref" => $document->getId()));
-			}
+			$request->setParameter($model->getOriginalModuleName()."Param", array("cmpref" => $document->getId()));
+
 			
 			//set pageref parameter into the request
 			$request->setParameter(K::PAGE_REF_ACCESSOR, $page->getId());

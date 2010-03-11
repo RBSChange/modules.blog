@@ -38,4 +38,20 @@
   	<locale lang="fr">URL de sites qui implémente l'interface XML-RPC Weblogs.Com.</locale>
     <locale lang="en">URL implementing the XML-RPC Weblogs.Com interface.</locale>
   </entity>
+    <entity id="enablepingback">
+  	<locale lang="fr">Activer les notifications entre blog</locale>
+    <locale lang="en">Enable pingbacks</locale>
+  </entity>
+  <entity id="enablepingback-help">
+  	<locale lang="fr">Activer les notifications entre blog (pingback) pour les billets de ce blog</locale>
+    <locale lang="en">Activate pingbacks por the posts of this blog</locale>
+  </entity>
+    <entity id="enabletrackback">
+  	<locale lang="fr">Activer les rétroliens</locale>
+    <locale lang="en">Enable trackbacks</locale>
+  </entity>
+  <entity id="enabletrackback-help">
+  	<locale lang="fr">Activer les rétroliens pour les billets de ce blog</locale>
+    <locale lang="en">Activate trackbacks por the posts of this blog</locale>
+  </entity>
 </localization>

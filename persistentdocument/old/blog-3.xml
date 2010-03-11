@@ -4,7 +4,6 @@
     <add name="description" type="XHTMLFragment"/>
     <add name="pingurls" type="LongString"/>
     <add name="enablepingback" type="Boolean" default-value="true"/>
-    <add name="enabletrackback" type="Boolean"/>
   </properties>
   <statuses default="ACTIVE"/>
 </document>

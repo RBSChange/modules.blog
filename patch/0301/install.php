@@ -26,12 +26,16 @@ class blog_patch_0301 extends patch_BasePatch
 	public function execute()
 	{
 		parent::execute();
-		/*	$newPath = f_util_FileUtils::buildWebeditPath('modules/blog/persistentdocument/blog.xml');
+		$newPath = f_util_FileUtils::buildWebeditPath('modules/blog/persistentdocument/blog.xml');
 		$newModel = generator_PersistentModel::loadModelFromString(f_util_FileUtils::read($newPath), 'blog', 'blog');
 		$newProp = $newModel->getPropertyByName('enablepingback');
 		f_persistentdocument_PersistentProvider::getInstance()->addProperty('blog', 'blog', $newProp);*/
 		
-
+		$newPath = f_util_FileUtils::buildWebeditPath('modules/blog/persistentdocument/blog.xml');
+		$newModel = generator_PersistentModel::loadModelFromString(f_util_FileUtils::read($newPath), 'blog', 'blog');
+		$newProp = $newModel->getPropertyByName('enabletrackback');
+		f_persistentdocument_PersistentProvider::getInstance()->addProperty('blog', 'blog', $newProp);
+		
 		$newPath = f_util_FileUtils::buildWebeditPath('modules/blog/persistentdocument/post.xml');
 		$newModel = generator_PersistentModel::loadModelFromString(f_util_FileUtils::read($newPath), 'blog', 'post');
 		$newProp = $newModel->getPropertyByName('trackbacks');

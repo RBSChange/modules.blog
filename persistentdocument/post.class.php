@@ -104,5 +104,36 @@ class blog_persistentdocument_post extends blog_persistentdocument_postbase impl
 	public function getRSSDate()
 	{
 		return $this->getPostDate();
-	}	
+	}
+	
+	/**
+	 * @see blog_persistentdocument_postbase::getAllowPingbacks()
+	 *
+	 * @return Boolean
+	 */
+	public function getAllowPingbacks()
+	{
+		if ($this->getBlog()->getEnablepingback())
+		{
+			return parent::getAllowPingbacks();
+		}
+		return false;
+	}
+	
+
+	/**
+	 * @see blog_persistentdocument_postbase::getAllowTrackbacks()
+	 *
+	 * @return Boolean
+	 */
+	public function getAllowTrackbacks()
+	{
+		if ($this->getBlog()->getEnabletrackback())
+		{
+			return parent::getAllowTrackbacks();
+		}
+		return false;
+	}
+
+
 }

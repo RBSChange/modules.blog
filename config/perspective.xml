@@ -3,30 +3,64 @@
 	<models>
 		<model name="modules_generic/rootfolder">
 			<children>
-				<child model="modules_website/topic" from="topics"/>
+				<child model="modules_website/websitetopicsfolder" />
+			</children>
+			<drops>
+				<drop model="modules_website/websitetopicsfolder" action="move" />
+			</drops>
+			<contextactions>
+				<contextaction name="edit" />
+				<contextaction name="addTopic" />
+				<contextaction name="openTreeNodeOrder" />		
+			</contextactions>
+		</model>
+		<model name="modules_website/websitetopicsfolder">
+			<children>
+				<child model="modules_website/topic" from="topics" />
+				<child model="modules_website/systemtopic" from="topics" />
 			</children>
 			<columns>
 				<column name="pathOf" label="PathOf" flex="3" />
 			</columns>
 			<contextactions>
-				<contextaction name="edit" />
-				<contextaction name="addTopic" />
-				<contextaction name="openTopicOrder" />
+				<contextaction name="openFolder" />
+				<contextaction name="openTopicOrder"/>
 			</contextactions>
 		</model>
 		<model name="modules_website/topic">
 			<children>
 				<child model="modules_website/topic" />
+				<child model="modules_website/systemtopic" />
 				<child model="modules_blog/blog" />
 			</children>
 			<drops>
 				<drop model="modules_blog/blog" action="move" />
 			</drops>
 			<contextactions>
+				<contextaction name="openFolder" />
 				<contextaction name="edit" />
 				<contextaction name="createBlog" />
 			</contextactions>
 		</model>
+		<model name="modules_website/systemtopic">
+			<children>
+				<child model="modules_website/topic" />
+				<child model="modules_website/systemtopic" />
+				<child model="modules_blog/blog" />
+			</children>
+			<drops>
+				<drop model="modules_blog/blog" action="move" />
+			</drops>
+			<contextactions>
+				<contextaction name="openFolder" />
+				<contextaction name="edit" />
+				<contextaction name="createBlog" />
+			</contextactions>
+		</model>
+		
+		
+		
+		
 		<model name="modules_blog/postfolder">
 			<children>
 				<child model="modules_blog/post" from="function"/>
@@ -135,5 +169,6 @@
 		<action name="createKeyword" permission="Insert_keyword" icon="add" label="&amp;modules.blog.bo.actions.Create-Keyword;" />
 		<action name="createFolder" single="true" icon="create-folder" label="&amp;modules.uixul.bo.actions.Create-folder;" />	
 		<action name="previewPost" single="true" permission="PreviewPost" icon="preview" label="&amp;modules.blog.bo.actions.PreviewPost;" />
+		<action name="openTreeNodeOrder" single="true" permission="Order" icon="sort" label="&amp;modules.uixul.bo.actions.Set-children-order;" />
 	</actions>
 </perspective>

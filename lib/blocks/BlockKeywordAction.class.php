@@ -3,8 +3,15 @@
  * blog_BlockKeywordAction
  * @package modules.blog.lib.blocks.
  */
-class blog_BlockKeywordAction extends website_BlockAction
+class blog_BlockKeywordAction extends website_TaggerBlockAction
 {
+    	/**
+	 * @return String
+	 */
+	protected function getTag()
+	{
+		return "functional_blog_keyword-detail";
+	}
 	/**
 	 * @see website_BlockAction::execute()
 	 *

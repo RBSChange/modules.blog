@@ -3,8 +3,16 @@
  * blog_BlockArchivesAction
  * @package modules.blog.lib.blocks
  */
-class blog_BlockArchivesAction extends website_BlockAction
+class blog_BlockArchivesAction extends website_TaggerBlockAction
 {
+    	/**
+	 * @return String
+	 */
+	protected function getTag()
+	{
+		return "functional_blog_archives";
+	}
+        
 	/**
 	 * @see website_BlockAction::execute()
 	 *

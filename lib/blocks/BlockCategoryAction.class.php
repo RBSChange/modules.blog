@@ -3,8 +3,15 @@
  * blog_BlockCategoryAction
  * @package modules.blog.lib.blocks.lib.blocks
  */
-class blog_BlockCategoryAction extends website_BlockAction
+class blog_BlockCategoryAction extends website_TaggerBlockAction
 {
+    	/**
+	 * @return String
+	 */
+	protected function getTag()
+	{
+		return "functional_blog_category-detail";
+	}
 	/**
 	 * @see website_BlockAction::execute()
 	 *

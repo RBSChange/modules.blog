@@ -14,4 +14,9 @@
   <actiondef modulename="blog" actionname="deactivated.blog" label="modules.blog.bo.useractionlogger.deactivated-blog"/>
   <actiondef modulename="blog" actionname="reactivate.blog" label="modules.blog.bo.useractionlogger.reactivate-blog"/>
   <actiondef modulename="blog" actionname="activate.post" label="modules.blog.bo.useractionlogger.activate-post"/>
+  <actiondef modulename="blog" actionname="update.rootfolder" label="modules.blog.bo.useractionlogger.update-rootfolder"/>
+  <actiondef modulename="blog" actionname="insert.blog" label="modules.blog.bo.useractionlogger.insert-blog"/>
+  <actiondef modulename="blog" actionname="insert.post" label="modules.blog.bo.useractionlogger.insert-post"/>
+  <actiondef modulename="blog" actionname="insert.category" label="modules.blog.bo.useractionlogger.insert-category"/>
+  <actiondef modulename="blog" actionname="update.post" label="modules.blog.bo.useractionlogger.update-post"/>
 </script>

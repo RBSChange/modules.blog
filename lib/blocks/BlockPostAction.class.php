@@ -3,8 +3,16 @@
  * blog_BlockPostAction
  * @package modules.blog.lib.blocks.lib.blocks
  */
-class blog_BlockPostAction extends website_BlockAction
+class blog_BlockPostAction extends website_TaggerBlockAction
 {
+    	/**
+	 * @return String
+	 */
+	protected function getTag()
+	{
+		return "functional_blog_post-detail";
+	}
+
 	function getCacheKeyParameters($request)
 	{
 		return array('cmpref' => $this->getDocumentIdParameter(), 'context->lang' => $this->getLang(), 'pageId' => $this->getPage()->getId());

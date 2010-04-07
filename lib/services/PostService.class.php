@@ -1,7 +1,7 @@
 <?php
 /**
  * blog_PostService
- * @package blog
+ * @package modules.blog
  */
 class blog_PostService extends f_persistentdocument_DocumentService
 {
@@ -136,6 +136,12 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		{
 			$this->updateMonth($document);
 		}
+		
+		// Handle trackbacks.
+		if ($document->isPropertyModified('trackbacks'))
+		{
+			$document->setMeta('trackbacks.modified', true);
+		}
 	}
 	
 	/**
@@ -188,10 +194,8 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		return false;
 	}
 	
-
 	/**
 	 * @see f_persistentdocument_DocumentService::postUpdate()
-	 *
 	 * @param f_persistentdocument_PersistentDocument $document
 	 * @param Integer $parentNodeId
 	 */
@@ -203,7 +207,6 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		}
 	}
 	
-
 	/**
 	 * @param blog_persistentdocument_post $post
 	 */
@@ -293,36 +296,6 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	 * @param Integer $parentNodeId Parent node ID where to save the document.
 	 * @return void
 	 */
-	//	protected function postInsert($document, $parentNodeId = null)
-	//	{
-	//	}
-	
-
-	/**
-	 * @param blog_persistentdocument_post $document
-	 * @param Integer $parentNodeId Parent node ID where to save the document.
-	 * @return void
-	 */
-	//	protected function preUpdate($document, $parentNodeId = null)
-	//	{
-	//	}
-	
-
-	/**
-	 * @param blog_persistentdocument_post $document
-	 * @param Integer $parentNodeId Parent node ID where to save the document.
-	 * @return void
-	 */
-	//	protected function postUpdate($document, $parentNodeId = null)
-	//	{
-	//	}
-	
-
-	/**
-	 * @param blog_persistentdocument_post $document
-	 * @param Integer $parentNodeId Parent node ID where to save the document.
-	 * @return void
-	 */
 	protected function postSave($document, $parentNodeId = null)
 	{
 		// Delete old month if unused. This must be done is post save to nested saves. 
@@ -382,45 +355,6 @@ class blog_PostService extends f_persistentdocument_DocumentService
 			$ts->decrementPostCount($keyword);
 		}
 	}
-	
-	/**
-	 * @param blog_persistentdocument_post $document
-	 * @return void
-	 */
-	//	protected function preDeleteLocalized($document)
-	//	{
-	//	}
-	
-
-	/**
-	 * @param blog_persistentdocument_post $document
-	 * @return void
-	 */
-	//	protected function postDelete($document)
-	//	{
-	//	}
-	
-
-	/**
-	 * @param blog_persistentdocument_post $document
-	 * @return void
-	 */
-	//	protected function postDeleteLocalized($document)
-	//	{
-	//	}
-	
-
-	/**
-	 * @param blog_persistentdocument_post $document
-	 * @return boolean true if the document is publishable, false if it is not.
-	 */
-	//	public function isPublishable($document)
-	//	{
-	//		$result = parent::isPublishable($document);
-	//		return $result;
-	//	}
-	
-
 
 	/**
 	 * Methode à surcharger pour effectuer des post traitement apres le changement de status du document
@@ -499,27 +433,27 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	protected function schedulePingbacksAndTrackbacks($document)
 	{
 		$this->buildLinklist($document);
-		$linkList = $document->getMeta('linklist');
-		if (f_util_ArrayUtils::isEmpty($linkList))
+		$linkList = array();
+		if ($document->hasMeta('linklist'))
 		{
-			if (Framework::isDebugEnabled())
-			{
-				Framework::debug(__METHOD__ . ": no link in post, nothing to ping");
-			}
-			return;
+			$linkList = $document->getMeta('linklist');
 		}
+		$pingList = array();
 		if ($document->hasMeta('pingbackresults'))
 		{
 			$pingList = array_keys($document->getMeta('pingbackresults'));
-			if (f_util_ArrayUtils::isEmpty(array_diff($linkList, $pingList)))
-			{
-				if (Framework::isDebugEnabled())
-				{
-					Framework::debug(__METHOD__ . ": no new link in post, nothing to ping");
-				}
-				return;
-			}
 		}
+		if (!$document->hasMeta('trackbacks.modified') && f_util_ArrayUtils::isEmpty(array_diff($linkList, $pingList)))
+		{
+			if (Framework::isDebugEnabled())
+			{
+				Framework::debug(__METHOD__ . ": no new link in post, nothing to ping");
+			}
+			return;
+		}
+		$document->setMeta('trackbacks.modified', null);
+		$document->saveMeta();
+		
 		$taskService = task_PlannedtaskService::getInstance();
 		$plannedTasks = $taskService->getRunnableBySystemtaskclassname('blog_PingBlogsTask');
 		if (f_util_ArrayUtils::isNotEmpty($plannedTasks))
@@ -539,9 +473,8 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		{
 			$postIds[] = $document->getId();
 		}
-		$runDate = date_Calendar::getInstance()->add(date_Calendar::MINUTE, 1);
 		$pingTask->setParameters(serialize(array('postIds' => $postIds)));
-		$pingTask->setUniqueExecutiondate($runDate);
+		$pingTask->setUniqueExecutiondate(date_Calendar::getInstance());
 		$pingTask->save(ModuleService::getInstance()->getSystemFolderId('task', 'blog'));
 	}
 	
@@ -626,87 +559,6 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	}
 	
 	/**
-	 * Correction document is available via $args['correction'].
-	 * @param f_persistentdocument_PersistentDocument $document
-	 * @param Array<String=>mixed> $args
-	 */
-	//	protected function onCorrectionActivated($document, $args)
-	//	{
-	//	}
-	
-
-	/**
-	 * @param blog_persistentdocument_post $document
-	 * @param String $tag
-	 * @return void
-	 */
-	//	public function tagAdded($document, $tag)
-	//	{
-	//	}
-	
-
-	/**
-	 * @param blog_persistentdocument_post $document
-	 * @param String $tag
-	 * @return void
-	 */
-	//	public function tagRemoved($document, $tag)
-	//	{
-	//	}
-	
-
-	/**
-	 * @param blog_persistentdocument_post $fromDocument
-	 * @param f_persistentdocument_PersistentDocument $toDocument
-	 * @param String $tag
-	 * @return void
-	 */
-	//	public function tagMovedFrom($fromDocument, $toDocument, $tag)
-	//	{
-	//	}
-	
-
-	/**
-	 * @param f_persistentdocument_PersistentDocument $fromDocument
-	 * @param blog_persistentdocument_post $toDocument
-	 * @param String $tag
-	 * @return void
-	 */
-	//	public function tagMovedTo($fromDocument, $toDocument, $tag)
-	//	{
-	//	}
-	
-
-	/**
-	 * Called before the moveToOperation starts. The method is executed INSIDE a
-	 * transaction.
-	 *
-	 * @param f_persistentdocument_PersistentDocument $document
-	 * @param Integer $destId
-	 */
-	//	protected function onMoveToStart($document, $destId)
-	//	{
-	//	}
-	
-
-	/**
-	 * this method is call before save the duplicate document.
-	 * If this method not override in the document service, the document isn't duplicable.
-	 * An IllegalOperationException is so launched.
-	 *
-	 * @param f_persistentdocument_PersistentDocument $newDocument
-	 * @param f_persistentdocument_PersistentDocument $originalDocument
-	 * @param Integer $parentNodeId
-	 *
-	 * @throws IllegalOperationException
-	 */
-	//	protected function preDuplicate($newDocument, $originalDocument, $parentNodeId)
-	//	{
-	//		throw new IllegalOperationException('This document cannot be duplicated.');
-	//	}
-	
-
-	/**
 	 * @param blog_persistentdocument_post $document
 	 */
 	private function synchronizeKeywordProperties($document)
@@ -749,7 +601,6 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	
 	/**
 	 * @see f_persistentdocument_DocumentService::getResume()
-	 *
 	 * @param blog_persistentdocument_post $document
 	 * @param string $forModuleName
 	 * @param unknown_type $allowedSections
@@ -774,10 +625,8 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		return $query->setProjection(Projections::property('id'))->setMaxResults($maxUrl)->findColumn('id');
 	}
 	
-
 	/**
 	 * @see f_persistentdocument_DocumentService::getDisplayPage()
-	 *
 	 * @param f_persistentdocument_PersistentDocument $document
 	 * @return website_persistentdocument_page
 	 */
@@ -804,6 +653,5 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		$document = DocumentHelper::getByCorrection($document);
 		$blog = $document->getBlog();
 		return TagService::getInstance()->getDocumentBySiblingTag('functional_blog_post-detail', $blog);
-	}	
-
+	}
 }

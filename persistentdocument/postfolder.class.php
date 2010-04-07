@@ -16,6 +16,7 @@ class blog_persistentdocument_postfolder extends blog_persistentdocument_postfol
 		{
 			$query->add(Restrictions::isNull('correctionofid'));
 		}
+		$query->addOrder(Order::desc('postdate'));
 		return $query->find();
 	}
 }

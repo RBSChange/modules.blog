@@ -57,10 +57,6 @@
 				<contextaction name="createBlog" />
 			</contextactions>
 		</model>
-		
-		
-		
-		
 		<model name="modules_blog/postfolder">
 			<children>
 				<child model="modules_blog/post" from="function"/>

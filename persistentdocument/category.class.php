@@ -7,7 +7,6 @@ class blog_persistentdocument_category extends blog_persistentdocument_categoryb
 {
 	/**
 	 * Get the indexable document
-	 *
 	 * @return indexer_IndexedDocument
 	 */
 	public function getIndexedDocument()
@@ -51,5 +50,19 @@ class blog_persistentdocument_category extends blog_persistentdocument_categoryb
 		$labels[] = $this->getLabel();
 		$labels = array_reverse($labels);
 		return implode('-', $labels);
+	}
+	
+	/**
+	 * @return f_persistentdocument_PersistentDocument[]
+	 */
+	public function getBOChildren()
+	{
+		$query = blog_PostService::getInstance()->createQuery()->add(Restrictions::eq('category', $this));
+		if (f_persistentdocument_PersistentDocumentModel::getInstance("blog", "post")->useCorrection())
+		{
+			$query->add(Restrictions::isNull('correctionofid'));
+		}
+		$query->addOrder(Order::desc('postdate'));
+		return $query->find();
 	}
 }

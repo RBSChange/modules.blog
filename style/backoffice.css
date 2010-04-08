@@ -1,24 +1,40 @@
 treechildren::-moz-tree-image(modules_blog_blog){
-	list-style-image: url(/icons/small/blog.png) ;
+	list-style-image: url(/changeicons/small/blog.png) ;
 }
 treechildren::-moz-tree-image(modules_blog_post){
-	list-style-image: url(/icons/small/post.png) ;
+	list-style-image: url(/changeicons/small/post.png) ;
 }
 treechildren::-moz-tree-image(modules_blog_category){
-	list-style-image: url(/icons/small/category.png) ;
+	list-style-image: url(/changeicons/small/category.png) ;
 }
 treechildren::-moz-tree-image(modules_blog_keyword){
-	list-style-image: url(/icons/small/keyword.png) ;
+	list-style-image: url(/changeicons/small/keyword.png) ;
 }
 treechildren::-moz-tree-image(modules_blog_postfolder){
-	list-style-image: url(/icons/small/folder.png) ;
+	list-style-image: url(/changeicons/small/folder.png) ;
 }
 treechildren::-moz-tree-image(modules_blog_categoryfolder){
-	list-style-image: url(/icons/small/folder.png) ;
+	list-style-image: url(/changeicons/small/folder.png) ;
 }
 treechildren::-moz-tree-image(modules_blog_keywordfolder){
-	list-style-image: url(/icons/small/folder.png) ;
+	list-style-image: url(/changeicons/small/folder.png) ;
 }
 treechildren::-moz-tree-image(modules_blog_preferences){
-	list-style-image: url(/icons/small/blog.png) ;
+	list-style-image: url(/changeicons/small/blog.png) ;
+}
+
+treechildren::-moz-tree-image(modules_blog_month){
+	list-style-image: url(/changeicons/small/document.png);
+}
+treechildren::-moz-tree-image(modules_blog_postgroup){
+	list-style-image: url(/changeicons/small/document.png);
+}
+treechildren::-moz-tree-image(modules_blog_year){
+	list-style-image: url(/changeicons/small/document.png);
+}
+treechildren::-moz-tree-image(modules_blog_trackback){
+	list-style-image: url(/changeicons/small/message.png);
+}
+treechildren::-moz-tree-image(modules_blog_pingback){
+	list-style-image: url(/changeicons/small/message.png);
 }

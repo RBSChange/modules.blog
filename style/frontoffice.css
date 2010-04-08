@@ -89,8 +89,8 @@ table.document-list .ACTIVE,table.document-list .DRAFT,table.document-list .DEAC
 	padding-left: 17px;
 }
 table.document-list .ACTIVE{
-	background: url(/icons/small/bullet_ball_glass_yellow.png) no-repeat left;
+	background: url(/changeicons/small/bullet_ball_glass_yellow.png) no-repeat left;
 }
 .document-list .PUBLICATED{
-	background: url(/icons/small/bullet_ball_glass_green.png) no-repeat left;
+	background: url(/changeicons/small/bullet_ball_glass_green.png) no-repeat left;
 }

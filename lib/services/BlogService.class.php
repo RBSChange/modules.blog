@@ -221,7 +221,7 @@ class blog_BlogService extends f_persistentdocument_DocumentService
 	 *
 	 * @param f_persistentdocument_PersistentDocument $document
 	 * @param string $forModuleName
-	 * @param unknown_type $allowedSections
+	 * @param array $allowedSections
 	 * @return array
 	 */
 	public function getResume($document, $forModuleName, $allowedSections = null)

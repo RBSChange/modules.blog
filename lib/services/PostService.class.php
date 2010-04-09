@@ -603,7 +603,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	 * @see f_persistentdocument_DocumentService::getResume()
 	 * @param blog_persistentdocument_post $document
 	 * @param string $forModuleName
-	 * @param unknown_type $allowedSections
+	 * @param array $allowedSections
 	 * @return array
 	 */
 	public function getResume($document, $forModuleName, $allowedSections = null)

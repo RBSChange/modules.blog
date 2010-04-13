@@ -87,15 +87,23 @@ class blog_KeywordService extends blog_PostgroupService
 	}
 	
 	/**
+	 * @param String $label
+	 */
+	private function buildComparablelabel($label)
+	{
+		return f_util_StringUtils::strtolower(website_UrlRewritingService::getInstance()->getUrlLabel($label));
+	}
+	
+	/**
 	 * @param blog_persistentdocument_keyword $document
 	 * @param Integer $parentNodeId Parent node ID where to save the document (optionnal => can be null !).
 	 * @return void
 	 */
-//	protected function preSave($document, $parentNodeId = null)
-//	{
-//		parent::preSave($document, $parentNodeId);
-//
-//	}
+	protected function preSave($document, $parentNodeId = null)
+	{
+		parent::preSave($document, $parentNodeId);
+		$document->setComparablelabel($this->buildComparablelabel($document->getLabel()));
+	}
 
 	/**
 	 * @param blog_persistentdocument_keyword $document
@@ -307,7 +315,7 @@ class blog_KeywordService extends blog_PostgroupService
 	public function getByLabelInBlog($label, $blog)
 	{
 		$query = $this->createStrictQuery();
-		$query->add(Restrictions::eq('label', $label, true));
+		$query->add(Restrictions::eq('comparablelabel', $this->buildComparablelabel($label), true));
 		$query->add(Restrictions::eq('blog.id', $blog->getId()));
 		return $query->findUnique();
 	}
@@ -375,6 +383,10 @@ class blog_KeywordService extends blog_PostgroupService
 	{
 		$query = blog_PostService::getInstance()->createQuery();
 		$query->add(Restrictions::eq('keyword.id', $keyword->getId()));
+		if (f_persistentdocument_PersistentDocumentModel::getInstance("blog", "post")->useCorrection())
+		{
+			$query->add(Restrictions::isNull('correctionofid'));
+		}
 		$query->setProjection(Projections::rowCount('count'));
 		$result = $query->findUnique();
 		$this->changePostCount($keyword, $result['count']);

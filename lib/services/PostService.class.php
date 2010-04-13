@@ -95,42 +95,6 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		
 		$this->synchronizeKeywordProperties($document);
 		
-		if ($document->isPropertyModified('keyword'))
-		{
-			$oldIds = $document->getKeywordOldValueIds();
-			$currentKeywords = $document->getKeywordArray();
-			$ts = blog_KeywordService::getInstance();
-			
-			// Increment post count for added keywords.
-			$currentIds = array();
-			foreach ($currentKeywords as $keyword)
-			{
-				if (!in_array($keyword->getId(), $oldIds))
-				{
-					$ts->incrementPostCount($keyword);
-					if ($document->isPublished())
-					{
-						$ts->incrementPublishedPostCount($keyword);
-					}
-				}
-				$currentIds[] = $keyword->getId();
-			}
-			
-			// Decrement post count for removed keywords.
-			foreach ($oldIds as $keywordId)
-			{
-				if (!in_array($keywordId, $currentIds))
-				{
-					$keyword = DocumentHelper::getDocumentInstance($keywordId);
-					$ts->decrementPostCount($keyword);
-					if ($document->isPublished())
-					{
-						$ts->decrementPublishedPostCount($keyword);
-					}
-				}
-			}
-		}
-		
 		// Update month field.
 		if ($document->isPropertyModified('postDate'))
 		{
@@ -148,13 +112,13 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	 * @param blog_persistentdocument_post $post
 	 */
 	private function buildLinklist($post)
-	{	
+	{
 		$DOMDoc = f_util_DOMUtils::fromString('<body>' . f_util_HtmlUtils::renderHtmlFragment($post->getContents()) . '</body>');
 		$nodes = $DOMDoc->find('//a[@href]');
 		$linklist = array();
 		foreach ($nodes as $node)
 		{
-			$href = $node->getAttribute("href");			
+			$href = $node->getAttribute("href");
 			if (!in_array($href, $linklist) && !$this->isLocalUrl($href))
 			{
 				$linklist[] = $href;
@@ -293,6 +257,25 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	
 	/**
 	 * @param blog_persistentdocument_post $document
+	 */
+	private function syncKeywordsAndCategoriesForDocument($document)
+	{
+		foreach ($document->getCategoryArray() as $category) 
+		{
+			$cs = blog_CategoryService::getInstance();
+			$cs->refreshPublishedPostCount($category);
+		}
+		
+		foreach ($document->getKeywordArray() as $keyWord) 
+		{
+			$ks = blog_KeywordService::getInstance();
+			$ks->refreshPostCount($keyWord);
+			$ks->refreshPublishedPostCount($keyWord);
+		}	
+	}
+	
+	/**
+	 * @param blog_persistentdocument_post $document
 	 * @param Integer $parentNodeId Parent node ID where to save the document.
 	 * @return void
 	 */
@@ -310,37 +293,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 				$ms->deleteIfUnused($oldMonth, $document->getId());
 			}
 		}
-		
-		// Update categories counters.
-		// This must be done here, because recursive post count is
-		// refreshed by a query so, the update must be done at this time.
-		if ($document->isPropertyModified('category') && $document->isPublished())
-		{
-			$oldIds = $document->getCategoryOldValueIds();
-			$currentCategories = $document->getCategoryArray();
-			$cs = blog_CategoryService::getInstance();
-			
-			// Increment post count for added categories.
-			$currentIds = array();
-			foreach ($currentCategories as $category)
-			{
-				if (!in_array($category->getId(), $oldIds))
-				{
-					$cs->incrementPublishedPostCount($category);
-				}
-				$currentIds[] = $category->getId();
-			}
-			
-			// Decrement post count for removed categories.
-			foreach ($oldIds as $categoryId)
-			{
-				if (!in_array($categoryId, $currentIds))
-				{
-					$category = DocumentHelper::getDocumentInstance($categoryId);
-					$cs->decrementPublishedPostCount($category);
-				}
-			}
-		}
+		$this->syncKeywordsAndCategoriesForDocument($document);
 	}
 	
 	/**
@@ -355,7 +308,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 			$ts->decrementPostCount($keyword);
 		}
 	}
-
+	
 	/**
 	 * Methode à surcharger pour effectuer des post traitement apres le changement de status du document
 	 * utiliser $document->getPublicationstatus() pour retrouver le nouveau status du document.
@@ -369,18 +322,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		// Status transits from ACTIVE to PUBLICATED.
 		if ($document->isPublished())
 		{
-			// Update counters in keywords and categories.
-			$cs = blog_CategoryService::getInstance();
-			foreach ($document->getCategoryArray() as $category)
-			{
-				$cs->incrementPublishedPostCount($category);
-			}
-			
-			$ts = blog_KeywordService::getInstance();
-			foreach ($document->getKeywordArray() as $keyword)
-			{
-				$ts->incrementPublishedPostCount($keyword);
-			}
+
 			
 			// Generate postDate if it is null.
 			// Here we do not need to update published post count on month because it is done on presave.
@@ -403,20 +345,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		}
 		// Status transits from PUBLICATED to ACTIVE.
 		elseif ($oldPublicationStatus == 'PUBLICATED')
-		{
-			// Update counters in keywords and categories.
-			$cs = blog_CategoryService::getInstance();
-			foreach ($document->getCategoryArray() as $category)
-			{
-				$cs->decrementPublishedPostCount($category);
-			}
-			
-			$ts = blog_KeywordService::getInstance();
-			foreach ($document->getKeywordArray() as $keyword)
-			{
-				$ts->decrementPublishedPostCount($keyword);
-			}
-			
+		{	
 			// Update counter on month.
 			$month = $document->getMonth();
 			if ($month !== null)
@@ -425,6 +354,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 			}
 			blog_BlogService::getInstance()->pingServicesForBlog($document->getBlog());
 		}
+		$this->syncKeywordsAndCategoriesForDocument($document);
 	}
 	
 	/**
@@ -491,16 +421,16 @@ class blog_PostService extends f_persistentdocument_DocumentService
 			$pingbackResults = $post->getMeta('pingbackresults');
 		}
 		$pingList = array_keys($pingbackResults);
-		foreach (array_diff($linkList, $pingList) as $url) 
+		foreach (array_diff($linkList, $pingList) as $url)
 		{
 			$pbUrl = $cs->getPingbackUrlForUrl($url);
 			if ($pbUrl !== null)
 			{
 				if (Framework::isDebugEnabled())
 				{
-					Framework::debug(__METHOD__ . ': getting ready to ping ' . $pbUrl . 'for postId = '. $post->getId());
+					Framework::debug(__METHOD__ . ': getting ready to ping ' . $pbUrl . 'for postId = ' . $post->getId());
 				}
-				try 
+				try
 				{
 					$cs->ping($pbUrl, LinkHelper::getDocumentUrl($post), $url);
 					$pingbackResults[$url] = array('status' => self::TARGET_PINGBACK_OK);
@@ -510,7 +440,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 					$pingbackResults[$url] = array('status' => self::TARGET_PINGBACK_FAILED, 'message' => $e->getMessage());
 				}
 			}
-			else 
+			else
 			{
 				$pingbackResults[$url] = array('status' => self::TARGET_PINGBACK_NOT_AVAILABLE);
 			}
@@ -519,7 +449,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		$post->saveMeta();
 	}
 	
-	
+
 	/**
 	 * @param blog_persistentdocument_post $post
 	 */
@@ -533,7 +463,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		$trackbackUrls = $post->getTrackbacks();
 		$trackbacks = explode(',', $trackbackUrls);
 		$postUrl = LinkHelper::getDocumentUrl($post);
-		foreach (array_diff($trackbacks, array_keys($trackbackResults)) as $url) 
+		foreach (array_diff($trackbacks, array_keys($trackbackResults)) as $url)
 		{
 			$url = trim($url);
 			if ($this->isLocalUrl($url))
@@ -542,7 +472,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 			}
 			
 			$client = HTTPClientService::getInstance()->getNewHTTPClient();
-			$params =  array('url' => $postUrl);
+			$params = array('url' => $postUrl);
 			$params['blog_name'] = $post->getBlogLabel();
 			$params['title'] = $post->getLabel();
 			$summary = f_util_StringUtils::htmlToText($post->getSummary());
@@ -551,7 +481,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 				$summary = f_util_StringUtils::shortenString(f_util_StringUtils::htmlToText($post->getContents()));
 			}
 			$params['excerpt'] = $summary;
-			$data = $client->post($url,  $params);
+			$data = $client->post($url, $params);
 			$trackbackResults[$url] = $data;
 		}
 		$post->setMeta('trackbackresults', $trackbackResults);
@@ -598,7 +528,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 			$document->setKeywordsText(implode(', ', $labels));
 		}
 	}
-	
+
 	/**
 	 * @see f_persistentdocument_DocumentService::getResume()
 	 * @param blog_persistentdocument_post $document

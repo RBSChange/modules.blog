@@ -113,7 +113,8 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	 */
 	private function buildLinklist($post)
 	{
-		$DOMDoc = f_util_DOMUtils::fromString('<body>' . f_util_HtmlUtils::renderHtmlFragment($post->getContents()) . '</body>');
+		$DOMDoc = f_util_DOMUtils::fromXhtmlFragmentString(f_util_HtmlUtils::renderHtmlFragment($post->getContents()));
+					
 		$nodes = $DOMDoc->find('//a[@href]');
 		$linklist = array();
 		foreach ($nodes as $node)

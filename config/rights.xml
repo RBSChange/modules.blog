@@ -46,6 +46,7 @@
 			<permission name="Update.category" />
 			<permission name="Update.keyword" />
 			<permission name="Update.post" />
+			<permission name="PreviewPost" />
 		</role>
 		<role name="Translator" extend="Guest">
 			<permission name="Load.*" />

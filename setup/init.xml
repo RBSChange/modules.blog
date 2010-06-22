@@ -11,5 +11,6 @@
 		<dynamiclist listid="modules_blog/hours" label="Liste des heures" description="Liste des heures" />
 		<dynamiclist listid="modules_blog/minutes" label="Liste des minutes" description="Liste des minutes" />
 		<dynamiclist listid="modules_blog/pings" label="Liste des services de ping weblog" description="Liste des services de ping weblog"></dynamiclist>
+		<dynamiclist listid="modules_blog/categoriesbyblog" label="Catégories d'un blog" description="Liste des catégories d'un blog donné"></dynamiclist>
 	</systemfolder>
 </script>

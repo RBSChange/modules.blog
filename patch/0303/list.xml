@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<script>
+	<binding fileName="modules/list/persistentdocument/import/list_binding.xml" />
+
+	<systemfolder module="list" relatedmodule="blog">
+		<dynamiclist listid="modules_blog/categoriesbyblog" label="Catégories d'un blog" description="Liste des catégories d'un blog donné"></dynamiclist>
+	</systemfolder>
+</script>

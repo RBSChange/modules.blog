@@ -36,7 +36,7 @@ class blog_persistentdocument_post extends blog_persistentdocument_postbase impl
 		$fullText .= ' ' . $this->getContentsAsHtml();
 		return f_util_StringUtils::htmlToText($fullText);
 	}
-		
+	
 	/**
 	 * @return String
 	 */
@@ -44,7 +44,7 @@ class blog_persistentdocument_post extends blog_persistentdocument_postbase impl
 	{
 		return $this->getDocumentService()->getAuthorName($this);
 	}
-		
+	
 	/**
 	 * @return String
 	 */
@@ -113,14 +113,14 @@ class blog_persistentdocument_post extends blog_persistentdocument_postbase impl
 	 */
 	public function getAllowPingbacks()
 	{
-		if ($this->getBlog()->getEnablepingback())
+		$blog = $this->getBlog();
+		if ($blog !== null && $blog->getEnablepingback())
 		{
 			return parent::getAllowPingbacks();
 		}
 		return false;
 	}
 	
-
 	/**
 	 * @see blog_persistentdocument_postbase::getAllowTrackbacks()
 	 *
@@ -128,12 +128,23 @@ class blog_persistentdocument_post extends blog_persistentdocument_postbase impl
 	 */
 	public function getAllowTrackbacks()
 	{
-		if ($this->getBlog()->getEnabletrackback())
+		$blog = $this->getBlog();
+		if ($blog !== null && $blog->getEnabletrackback())
 		{
 			return parent::getAllowTrackbacks();
 		}
 		return false;
 	}
 
-
+	/**
+	 * @param string $actionType
+	 * @param array $formProperties
+	 */
+	public function addFormProperties($propertiesNames, &$formProperties)
+	{	
+		if (!$this->isNew())
+		{
+			$formProperties['blogId'] = $this->getBlogId();
+		}
+	}
 }

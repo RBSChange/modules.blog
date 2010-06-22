@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <localization>
-	<entity id="edition-form-title">
-		<locale lang="fr">propriétés du billet</locale>
-		<locale lang="en">post properties</locale>
-		<locale lang="de">Eigenschaften des Beitrags</locale>
-	</entity>
 	<entity id="document-name">
 		<locale lang="fr">billet</locale>
 		<locale lang="en">post</locale>
@@ -15,17 +10,7 @@
 		<locale lang="en">label</locale>
 		<locale lang="de">Name</locale>
 	</entity>
-	<entity id="label-help">
-		<locale lang="fr">libellé</locale>
-		<locale lang="en">label</locale>
-		<locale lang="de">Name</locale>
-	</entity>
 	<entity id="contents">
-		<locale lang="fr">contenu</locale>
-		<locale lang="en">contents</locale>
-		<locale lang="de">Inhalt</locale>
-	</entity>
-	<entity id="contents-help">
 		<locale lang="fr">contenu</locale>
 		<locale lang="en">contents</locale>
 		<locale lang="de">Inhalt</locale>
@@ -55,20 +40,10 @@
 		<locale lang="en">allow comments</locale>
 		<locale lang="de">Kommentare erlauben</locale>
 	</entity>
-	<entity id="allowComments-help">
-		<locale lang="fr">autoriser les commentaires</locale>
-		<locale lang="en">allow comments</locale>
-		<locale lang="de">Kommentare erlauben</locale>
-	</entity>
 	<entity id="category">
 		<locale lang="fr">catégories</locale>
 		<locale lang="en">categories</locale>
 		<locale lang="de">Kategorien</locale>
-	</entity>
-	<entity id="category-help">
-		<locale lang="fr">attentions, seules les catégories appartenant au blog contenant ce billet peuvent être sélectionnées.</locale>
-		<locale lang="en">attention, only the parent blog's categories can be selected.</locale>
-		<locale lang="de">Achtung, ausschliesslich die dem Blog, der diesen Beitrag beinhalt, angehörigen Kategorien können selektiert werden.</locale>
 	</entity>
 	<entity id="keywordsText">
 		<locale lang="fr">mots-clés</locale>
@@ -86,26 +61,9 @@
 		<locale lang="de">Datum des Beitrags</locale>
 	</entity>
 	<entity id="postdate-help">
-		<locale lang="fr">
-			il s'agit de la date affiché sur le site pour ce billet. C'est aussi selon cette date que les billets sont ordonnés dans les listes affichées sur le site. Si elle est laissée vide, elle est complétée automatiquement par la date courante lors de la publication du billet.
-		</locale>
+		<locale lang="fr">il s'agit de la date affiché sur le site pour ce billet. C'est aussi selon cette date que les billets sont ordonnés dans les listes affichées sur le site. Si elle est laissée vide, elle est complétée automatiquement par la date courante lors de la publication du billet.</locale>
 		<locale lang="en">The date is displayed on the site and serves to order the posts in the lists displayed. If empty, the date will be completed with the publication date.</locale>
 		<locale lang="de">Auf der Webseite angezeigtes Datum des Beitrags. Die Beiträge sind nach diesem Datum in den Listen der Webseite geordnet. Ist dieses Feld leer, wird das aktuelle Veröffentlichungsdatum automatisch eingesetzt.</locale>
-	</entity>
-	<entity id="postdate-date">
-		<locale lang="fr">date du billet</locale>
-		<locale lang="en">post date</locale>
-		<locale lang="de">Datum des Beitrags</locale>
-	</entity>
-	<entity id="postdate-hour">
-		<locale lang="fr">date du billet</locale>
-		<locale lang="en">post date</locale>
-		<locale lang="de">Datum des Beitrags</locale>
-	</entity>
-	<entity id="postdate-minute">
-		<locale lang="fr">date du billet</locale>
-		<locale lang="en">post date</locale>
-		<locale lang="de">Datum des Beitrags</locale>
 	</entity>
 	<entity id="startpublicationdate">
 		<locale lang="fr">date de début de publication</locale>

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <panel>
 	<section labeli18n="modules.blog.document.post.Contents">
-		<field name="label" />
+		<field name="label" hidehelp="true" />
 		<field name="postDate" />
-		<field name="contents" />
-		<field name="startpublicationdate" />
-		<field name="endpublicationdate" />
+		<field name="contents" hidehelp="true" />
+		<field name="startpublicationdate" hidehelp="true" />
+		<field name="endpublicationdate" hidehelp="true" />
 	</section>
 	<section labeli18n="modules.blog.document.post.CategoriesAndKeywords" class="toggle">
-		<field name="category" />
+		<field name="category" type="multiplelist" nocache="true" hidehelp="true" />
 		<field name="keywordsText" />
 	</section>
 	<section labeli18n="modules.blog.document.post.Summary" class="toggle" hidden="true">
@@ -17,11 +17,11 @@
 	</section>
 	<section labeli18n="modules.blog.document.post.CommentsAndPings" class="toggle" hidden="true">
 		<field name="trackbacks" />
-		<field name="allowComments" />
+		<field name="allowComments" hidehelp="true" />
 		<field name="allowPingbacks" />
 		<field name="allowTrackbacks" />
 	</section>
-		<xul>
+	<xul>
 		<javascript>
 			<field name="mPreviewPostButton">null</field>
 
@@ -29,7 +29,8 @@
 				this.mPreviewPostButton = this.addActionButton('&modules.blog.bo.actions.PreviewPost;', wToolkit.getIcon('preview', 'small'));
 				var me = this;
 				this.mPreviewPostButton.addEventListener('command', function(event) {me.onPreviewPost();}, true);			
-				this.extendMethod("updateCommandsUI", this.updatePreviewPostUI);
+				this.extendMethod('updateCommandsUI', this.updatePreviewPostUI);
+				this.extendMethod('fireInitializeComplete', this.fireInitializeCompleteExtend);
 			]]></constructor>
 
 			<method name="updatePreviewPostUI">
@@ -45,7 +46,22 @@
 					this.documentEditor.module.previewPostFromDocument(this.mDocumentId, this.mLang);
 				]]></body>
 			</method>
-
+			
+			<method name="fireInitializeCompleteExtend">
+				<parameter name="result" />
+				<body><![CDATA[
+					try
+					{
+						var field = this.fields.category;
+						var parentId = result.contents.blogId;
+						wCore.executeOnMethodExists(field, 'replaceItems', function () { field.replaceItems({cmpref: 'modules_blog/categoriesbyblog', parentId: parentId}); });
+					}
+					catch (e)
+					{
+						wCore.error("post.propertiespanel.fireInitializeCompleteExtend", [result], e);
+					}
+				]]></body>
+			</method>
 		</javascript>
 	</xul>
 </panel>

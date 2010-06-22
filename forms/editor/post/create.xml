@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <panel>
 	<section labeli18n="modules.blog.document.post.Contents">
-		<field name="label" />
+		<field name="label" hidehelp="true" />
 		<field name="postDate" />
-		<field name="contents" />
-		<field name="startpublicationdate" />
-		<field name="endpublicationdate" />
+		<field name="contents" hidehelp="true" />
+		<field name="startpublicationdate" hidehelp="true" />
+		<field name="endpublicationdate" hidehelp="true" />
 	</section>
 	<section labeli18n="modules.blog.document.post.CategoriesAndKeywords" class="toggle">
-		<field name="category" />
+		<field name="category" type="multiplelist" nocache="true" hidehelp="true" />
 		<field name="keywordsText" />
 	</section>
 	<section labeli18n="modules.blog.document.post.Summary" class="toggle" hidden="true">
@@ -17,66 +17,43 @@
 	</section>
 	<section labeli18n="modules.blog.document.post.CommentsAndPings" class="toggle" hidden="true">
 		<field name="trackbacks" />
-		<field name="allowComments" />
+		<field name="allowComments" hidehelp="true" />
 		<field name="allowPingbacks" />
 		<field name="allowTrackbacks" />
 	</section>
 	<xul>
 		<javascript>
-			<method name="fireInitializeComplete">
+			<constructor><![CDATA[
+				this.extendMethod('fireInitializeComplete', this.fireInitializeCompleteExtend);
+			]]></constructor>
+			
+			<method name="fireInitializeCompleteExtend">
 				<parameter name="result" />
 				<body><![CDATA[
-					// Start standard method.
-					
-					var fields = this.fields;
-					var valid = true;
-					var field = null;
-					this.mRevision = 0;
-
-					for (var name in fields)
-					{
-						field = fields[name];
-						if (name in result.contents && result.contents[name] !== null)
-						{
-							field.setInitialValue(result.contents[name]);
-						}
-						else
-						{
-							field.setInitialValue("");
-						}
-						valid = valid && field.valid; 
-					}
-					
 					var parentId = this.documentEditor.parentid;
-					wCore.debug('parentId = '+parentId);
-					var document = wCore.getDocumentInfo(parentId);
-					// FIXME: this won't work with injection...
-					switch (document.model)
+					var documentInfos = wCore.getDocumentInfo(parentId);
+					switch (documentInfos.model)
 					{
 						case 'modules_blog/category' : 
-							var field = this.fields['category'];
-							field.value = parentId;
+							var field = this.fields.category;
+							wCore.executeOnMethodExists(field, 'setInitialValue', function () { field.value = parentId; });
 							break;
 						
 						case 'modules_blog/keyword' : 
-							var field = this.fields['keywordsText'];
-							var value = field.value;
-							if (value)
-							{
-								value += ', ';
-							}				
-							value += document.labels[document.lang];
-							field.value = value;
+							var field = this.fields.keywordsText;
+							wCore.executeOnMethodExists(field, 'setInitialValue', function () { 
+								var value = field.value;
+								if (value)
+								{
+									value += ', ';
+								}				
+								value += documentInfos.labels[documentInfos.lang];
+								field.value = value;
+							});
 							break;
 					}
-					
-					this.modified = false;
-					this.error = !valid;
-					this.updateCommandsUI();
-					
-					this.mInitialized = true;
-					this.fireEvent("panelInitializeComplete");
-					this.gotoTop();
+					var field = this.fields.category;
+					wCore.executeOnMethodExists(field, 'replaceItems', function () { field.replaceItems({cmpref: 'modules_blog/categoriesbyblog', parentId: parentId}); });
 				]]></body>
 			</method>
 		</javascript>

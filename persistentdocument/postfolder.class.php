@@ -19,4 +19,12 @@ class blog_persistentdocument_postfolder extends blog_persistentdocument_postfol
 		$query->addOrder(Order::desc('postdate'));
 		return $query->find();
 	}
+	
+	/**
+	 * @return blog_persistentodcument_blog
+	 */
+	public function getBlog()
+	{
+		return $this->getDocumentService()->getParentOf($this);
+	}
 }

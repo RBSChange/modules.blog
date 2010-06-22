@@ -13,4 +13,12 @@ class blog_persistentdocument_keywordfolder extends blog_persistentdocument_keyw
 		$blogId = $this->getDocumentService()->getParentOf($this)->getId();
 		return blog_KeywordService::getInstance()->createQuery()->add(Restrictions::eq('blog.id', $blogId))->find();
 	}
+	
+	/**
+	 * @return blog_persistentodcument_blog
+	 */
+	public function getBlog()
+	{
+		return $this->getDocumentService()->getParentOf($this);
+	}
 }

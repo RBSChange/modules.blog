@@ -3,7 +3,7 @@
  * blog_ViewFeedAction
  * @package modules.blog.actions
  */
-class blog_ViewFeedAction extends blog_Action
+class blog_ViewFeedAction extends f_action_BaseAction
 {
 	/**
 	 * @param Context $context
@@ -50,11 +50,17 @@ class blog_ViewFeedAction extends blog_Action
 		$feedWriter->setLink($feedURL);
 	}
 	
+	/**
+	 * @return boolean
+	 */
 	public function isSecure()
 	{
 		return false;
 	}
 	
+	/**
+	 * @return boolean
+	 */
 	protected function suffixSecureActionByDocument()
 	{
 		return false;

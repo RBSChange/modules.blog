@@ -3,7 +3,7 @@
  * blog_ViewArchiveAction
  * @package modules.blog.actions
  */
-class blog_ViewArchiveAction extends blog_Action
+class blog_ViewArchiveAction extends f_action_BaseAction
 {
 	/**
 	 * @param Context $context

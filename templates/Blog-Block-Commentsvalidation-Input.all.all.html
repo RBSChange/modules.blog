@@ -1,23 +1,23 @@
 <tal:block change:loadhandler="blog_CommentsValidationLoadHandler"/>
-<h2 change:h="" change:translate="&modules.blog.frontoffice.Comments-validation-title;"/>
-<h3 change:h="">${blog/getLabel}</h3>
+<h2 change:h="" change:translate="modules.blog.frontoffice.Comments-validation-title"></h2>
+<h3 change:h="">${blog/getLabelAsHtml}</h3>
 
 <ul class="mini-navigation">
 	<li>
-		<a class="link" change:actionlink="cmpref blog/getId" block="blog_blogEdit" i18n:translate="&modules.blog.frontoffice.Blog-edit-link;" />
+		<a class="link" change:actionlink="cmpref blog/getId" block="blog_blogEdit" change:translate="modules.blog.frontoffice.Blog-edit-link"></a>
 	</li>
 </ul>
 
 <table class="document-list" tal:condition="php: count(paginator)">
 	<tr tal:repeat="document paginator" class="${php: repeat.document.odd ? 'odd' : 'even'}">
 		<td tal:define="target document/getTarget">
-			<a tal:condition="target/isPublished" class="link" change:link="document target" tal:content="document/getLabel"/>
-			<span tal:condition="not: target/isPublished" tal:content="document/getLabel"/>
+			<a tal:condition="target/isPublished" class="link" change:link="document target">${document/getLabelAsHtml}</a>
+			<span tal:condition="not: target/isPublished">${document/getLabelAsHtml}</span>
 		</td>
-		<td tal:content="document/getContentsAsHtml"/>
+		<td>${document/getContentsAsHtml}</td>
 		<td class="actions" tal:define="currentTaskId php: array_search(document->getId(), commentIds)">
-			<a class="link" change:actionlink="taskId currentTaskId; cmpref blog/getId" block="blog_commentsvalidation" action="validate"><img change:i18nattr="alt &modules.blog.frontoffice.Comment-Validate-link;" change:icon="src media_play_green/small"/></a>
-			<a class="link" change:actionlink="taskId currentTaskId; cmpref blog/getId" block="blog_commentsvalidation" action="cancel"><img change:i18nattr="alt &modules.blog.frontoffice.Comment-Cancel-link;" change:icon="src media_stop_red/small"/></a>
+			<a class="link" change:actionlink="taskId currentTaskId; cmpref blog/getId" block="blog_commentsvalidation" action="validate"><img change:i18nattr="alt &modules.blog.frontoffice.Comment-Validate-link;" change:icon="src media_play_green/small" /></a>
+			<a class="link" change:actionlink="taskId currentTaskId; cmpref blog/getId" block="blog_commentsvalidation" action="cancel"><img change:i18nattr="alt &modules.blog.frontoffice.Comment-Cancel-link;" change:icon="src media_stop_red/small" /></a>
 		</td>
 	</tr>
 </table>

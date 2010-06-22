@@ -1,12 +1,12 @@
 <tal:block change:loadhandler="generic_DocumentLoadHandler" args="post" />
 <tal:block change:loadhandler="blog_CategoryListLoadHandler"/>
 
-<h2 tal:condition="post/isNew" change:h="" change:translate="&modules.blog.frontoffice.Post-new-title;"/>
-<h2 tal:condition="not: post/isNew" change:h="" change:translate="&modules.blog.frontoffice.Post-edit-title;"/>
+<h2 tal:condition="post/isNew" change:h="" change:translate="modules.blog.frontoffice.Post-new-title"></h2>
+<h2 tal:condition="not: post/isNew" change:h="" change:translate="modules.blog.frontoffice.Post-edit-title"></h2>
 
 <ul class="mini-navigation">
 	<li>
-		<a class="link" change:actionlink="cmpref post/getBlog/getId" block="blog_blogEdit" i18n:translate="&modules.blog.frontoffice.Blog-edit-link;" />
+		<a class="link" change:actionlink="cmpref post/getBlog/getId" block="blog_blogEdit" change:translate="modules.blog.frontoffice.Blog-edit-link"></a>
 	</li>
 </ul>
 
@@ -22,7 +22,7 @@
 		<li><input change:field="name summary; width 445px; height 200px" /></li>
 		<li><input change:hiddeninput="name blog" /></li>
 		<li>
-			<label change:fieldlabel="name category"/>
+			<label change:fieldlabel="name category"></label>
 			<input change:selectinput="name category; multiple true; documentList categories" values="${selectedCategories}" />
 		</li>
 		<li><input change:field="name keywordsText; rows 2; cols 30" /></li>

@@ -1,9 +1,9 @@
-<h2 change:h="">${blog/getLabel}</h2>
+<h2 change:h="">${blog/getLabelAsHtml}</h2>
 
 <ul class="mini-navigation">
 	<li>
 		<img change:image="front/rss.gif" alt="" />
-		<a class="link" change:link="module blog; action ViewFeed; parentref blog/getId" i18n:translate="&modules.blog.frontoffice.Blog-rss-link;" />
+		<a class="link" change:link="module blog; action ViewFeed; parentref blog/getId" change:translate="modules.blog.frontoffice.Blog-rss-link"></a>
 	</li>
 </ul>
 

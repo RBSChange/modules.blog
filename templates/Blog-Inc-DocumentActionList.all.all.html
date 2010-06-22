@@ -1,11 +1,11 @@
 <table class="document-list">
-	<caption tal:condition="parentLabel" tal:content="parentLabel"/>
+	<caption tal:condition="parentLabel">${parentLabel}</caption>
 	<tr tal:repeat="document documents" class="${php: repeat.document.odd ? 'odd' : 'even'}">
-		<td><span tal:content="document/getLabel" class="${document/getPublicationstatus}"/></td>
+		<td><span class="${document/getPublicationstatus}">${document/getLabelAsHtml}</span></td>
 		<td class="actions">
-			<a class="link" change:actionlink="beanId document/getId; blog blog/getId" block="${editBlock}"><img change:i18nattr="alt &modules.blog.frontoffice.Edit-link;" change:icon="src document_edit/small"/></a>
-			<tal:block tal:define="global deleteConfirmation"><tal:block change:translate="&modules.blog.frontoffice.Delete-confirmation;; document document/getLabel"/></tal:block>
-			<a class="link" change:actionlink="documentId document/getId;" action="delete" ><img change:i18nattr="alt &modules.blog.frontoffice.Delete-link;" change:icon="src delete2/small" onClick="return confirm('${deleteConfirmation}');"/></a>
+			<a class="link" change:actionlink="beanId document/getId; blog blog/getId" block="${editBlock}"><img change:i18nattr="alt &modules.blog.frontoffice.Edit-link;" change:icon="src document_edit/small" /></a>
+			<tal:block tal:define="global deleteConfirmation"><tal:block change:translate="modules.blog.frontoffice.Delete-confirmation; document document/getLabelAsHtml"/></tal:block>
+			<a class="link" change:actionlink="documentId document/getId;" action="delete" ><img change:i18nattr="alt &modules.blog.frontoffice.Delete-link;" change:icon="src delete2/small" onclick="return confirm('${deleteConfirmation}');"/></a>
 			<a tal:condition="php: document->getPublicationstatus() EQ 'DEACTIVATED'" class="link" change:actionlink="documentId document/getId;" action="activate"><img change:i18nattr="alt &modules.blog.frontoffice.Activate-link;" change:icon="src media_play/small"/></a>
 			<a tal:condition="php: document->getPublicationstatus() EQ 'DRAFT'" class="link" change:actionlink="documentId document/getId;" action="activate"><img change:i18nattr="alt &modules.blog.frontoffice.Activate-link;" change:icon="src media_play_green/small"/></a>
 			<a tal:condition="php: document->getPublicationstatus() EQ 'PUBLICATED'" class="link" change:actionlink="documentId document/getId;" action="deactivate"><img change:i18nattr="alt &modules.blog.frontoffice.Deactivate-link;" change:icon="src media_pause/small"/></a>

@@ -1,13 +1,13 @@
-<h2 change:h="">${keyword/getLabel}</h2>
+<h2 change:h="">${keyword/getLabelAsHtml}</h2>
 
 <ul class="mini-navigation">
 	<li tal:condition="configuration/getShowblogrsslink">
 		<img change:image="front/rss.gif" alt="" />
-		<a class="link" change:link="module blog; action ViewFeed; parentref keyword/getBlog/getId" i18n:translate="&modules.blog.frontoffice.Blog-rss-link;" />
+		<a class="link" change:link="module blog; action ViewFeed; parentref keyword/getBlog/getId" change:translate="modules.blog.frontoffice.Blog-rss-link"></a>
 	</li>
 	<li>
 		<img change:image="front/rss.gif" alt="" />
-		<a class="link" change:link="module blog; action ViewFeed; parentref keyword/getId" i18n:translate="&modules.blog.frontoffice.Keyword-rss-link;" />
+		<a class="link" change:link="module blog; action ViewFeed; parentref keyword/getId" change:translate="modules.blog.frontoffice.Keyword-rss-link"></a>
 	</li>
 </ul>
 

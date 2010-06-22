@@ -4,9 +4,9 @@
 	</tal:block>
 	
 	<tal:block tal:condition="not: target/getAllowComments">
-		<h3 change:h="" change:translate="&modules.comment.frontoffice.Leave-a-comment;" />
+		<h3 change:h="" change:translate="modules.comment.frontoffice.Leave-a-comment"></h3>
 		
-		<p change:translate="&modules.blog.frontoffice.Comments-closed-for-this-post;" />
+		<p change:translate="modules.blog.frontoffice.Comments-closed-for-this-post"></p>
 	</tal:block>
 	
 	<tal:block tal:condition="target/getAllowComments">

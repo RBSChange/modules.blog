@@ -1,2 +1,2 @@
-<span change:translate="&amp;modules.blog.document.category.Document-name;"></span>
-<tal:block tal:condition="category/getLabel"> : ${category/getLabel}</tal:block>
+<span change:translate="modules.blog.document.category.Document-name"></span>
+<tal:block tal:condition="category/getLabel"> : ${category/getLabelAsHtml}</tal:block>

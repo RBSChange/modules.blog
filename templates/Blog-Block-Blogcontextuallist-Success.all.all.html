@@ -1,16 +1,16 @@
-<h2 change:h="" change:translate="&modules.blog.frontoffice.Blogs-list-title;" />
+<h2 change:h="" change:translate="modules.blog.frontoffice.Blogs-list-title"></h2>
 
 <ol class="module-list">
 	<li tal:repeat="blog paginator" class="${php: repeat.blog.odd ? 'odd' : 'even'}">
-		<h3 change:h=""><a change:link="document blog">${blog/getLabel}</a></h3>
+		<h3 change:h=""><a change:link="document blog">${blog/getLabelAsHtml}</a></h3>
 		<tal:block tal:condition="configuration/getShowpoststats">
 			<p tal:define="lastPost blog/getLastPublishedPost"><tal:block change:translate="&modules.blog.frontoffice.Post-count; count blog/getPublishedPostCount" /> - <tal:block change:translate="&modules.blog.frontoffice.Last-post-by; author lastPost/getAuthorName" /> (<tal:block change:datetime="lastPost/getPostDate" />)</p>
 		</tal:block>
-		<p tal:condition="blog/getDescription" tal:content="blog/getDescription" />
+		<p tal:condition="blog/getDescription">${blog/getDescriptionAsHtml}</p>
 		<tal:block tal:condition="configuration/getShowauthors">
-			<h4 change:h="" change:translate="&modules.blog.frontoffice.Authors;" />
+			<h4 change:h="" change:translate="modules.blog.frontoffice.Authors"></h4>
 			<ul>
-				<li tal:repeat="authorName blog/getAuthorNames" tal:content="authorName" />
+				<li tal:repeat="authorName blog/getAuthorNames">${authorName}</li>
 			</ul>
 		</tal:block>
 	</li>

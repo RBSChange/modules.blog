@@ -16,7 +16,7 @@ class blog_BlockKeywordListAction extends website_BlockAction
 	{
 		if ($this->isInBackoffice())
 		{
-			return website_BlockView::BACKOFFICE;
+			return website_BlockView::NONE;
 		}
 				
 		$document = $this->getDocumentParameter();

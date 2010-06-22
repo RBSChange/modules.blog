@@ -1,5 +1,5 @@
 <li tal:define="current php: document.getId() == category.getId()" class="${php: current ? 'current' : ''}">
-	<a tal:omit-tag="current" change:link="document category">${category/getLabel}</a> 
+	<a tal:omit-tag="current" change:link="document category">${category/getLabelAsHtml}</a> 
 	<span tal:condition="recursiveCount" class="post-count">(${category/getRecursivePublishedPostCount})</span>
 	<span tal:condition="not:recursiveCount" class="post-count">(${category/getPublishedPostCount})</span>
 	<tal:block tal:define="subCategories category/getPublishedSubCategories">

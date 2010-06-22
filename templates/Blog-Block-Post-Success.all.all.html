@@ -3,35 +3,34 @@
 <ul class="mini-navigation" tal:condition="php: post.getAllowComments() || configuration.getShowblogrsslink()">
 	<li tal:condition="configuration/getShowblogrsslink">
 		<img change:image="front/rss.gif" alt="" />
-		<a class="link" change:link="module blog; action ViewFeed; parentref post/getBlog/getId" i18n:translate="&modules.blog.frontoffice.Blog-rss-link;" />
+		<a class="link" change:link="module blog; action ViewFeed; parentref post/getBlog/getId" change:translate="modules.blog.frontoffice.Blog-rss-link"></a>
 	</li>
 	<li tal:condition="post/getAllowComments">
 		<img change:image="front/rss.gif" alt="" />
-		<a class="link" change:link="module comment; action ViewFeed; targetId post/getId" i18n:translate="&modules.comment.frontoffice.Rss-link;" />
+		<a class="link" change:link="module comment; action ViewFeed; targetId post/getId" change:translate="modules.comment.frontoffice.Rss-link"></a>
 	</li>
 </ul>
 
-<p class="meta-post-infos"><tal:block change:translate="&modules.blog.frontoffice.Posted-by; author post/getAuthorName" /> - <tal:block change:datetime="post/getPostDate" /></p>
+<p class="meta-post-infos"><tal:block change:translate="modules.blog.frontoffice.Posted-by; author post/getAuthorName" /> - <tal:block change:datetime="post/getPostDate" /></p>
 
-<p tal:condition="php: post.getSummary() AND post.getShowSummaryOnDetail()" tal:content="post/getSummaryAsHtml" />
+<p tal:condition="php: post.getSummary() AND post.getShowSummaryOnDetail()">${post/getSummaryAsHtml}</p>
 
 <p tal:content="post/getContentsAsHtml" />
 <tal:block tal:condition="showShareBlock" change:block="" module="sharethis" name="Sharepage" />
 
-
-<h3 change:h="" change:translate="&modules.blog.bo.general.Categories;" />
+<h3 change:h="" change:translate="modules.blog.bo.general.Categories"></h3>
 <ul class="meta-categories">
-	<li tal:repeat="category post/getCategoryArray"><a change:link="document category">${category/getLabel}</a></li>
+	<li tal:repeat="category post/getCategoryArray"><a change:link="document category">${category/getLabelAsHtml}</a></li>
 </ul>
 
 <tal:block tal:condition="post/getKeywordCount">
-	<h3 change:h="" change:translate="&modules.blog.bo.general.Keywords;" />
+	<h3 change:h="" change:translate="modules.blog.bo.general.Keywords"></h3>
 	<ul class="meta-keyword">
-		<li tal:repeat="keyword post/getKeywordArray"><a change:link="document keyword">${keyword/getLabel}</a></li>
+		<li tal:repeat="keyword post/getKeywordArray"><a change:link="document keyword">${keyword/getLabelAsHtml}</a></li>
 	</ul>
 </tal:block>
 
 <tal:block tal:condition="post/getAllowTrackbacks">
-	<h3 change:h="" change:translate="&modules.blog.frontoffice.trackback-url;" />
-	<input type="text" readonly="readonly" value="${trackbackurl}" class="textfield" style="width:50%"/> 
+	<h3 change:h="" change:translate="modules.blog.frontoffice.trackback-url"></h3>
+	<input type="text" readonly="readonly" value="${trackbackurl}" class="textfield" style="width:50%" /> 
 </tal:block>

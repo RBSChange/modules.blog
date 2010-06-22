@@ -5,7 +5,7 @@
  */
 class blog_BlockArchivesAction extends website_TaggerBlockAction
 {
-    	/**
+    /**
 	 * @return String
 	 */
 	protected function getTag()
@@ -24,7 +24,7 @@ class blog_BlockArchivesAction extends website_TaggerBlockAction
 	{
 		if ($this->isInBackoffice())
 		{
-			return website_BlockView::BACKOFFICE;
+			return website_BlockView::NONE;
 		}
 
 		$bs = blog_BlogService::getInstance();

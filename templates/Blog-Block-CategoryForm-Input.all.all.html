@@ -1,10 +1,10 @@
 <tal:block change:loadhandler="generic_DocumentLoadHandler" args="category" />
-<h2 tal:condition="category/isNew" change:h="" change:translate="&modules.blog.frontoffice.Category-new-title;"/>
-<h2 tal:condition="not: category/isNew" change:h="" change:translate="&modules.blog.frontoffice.Category-edit-title;"/>
+<h2 tal:condition="category/isNew" change:h="" change:translate="modules.blog.frontoffice.Category-new-title"></h2>
+<h2 tal:condition="not: category/isNew" change:h="" change:translate="modules.blog.frontoffice.Category-edit-title"></h2>
 
 <ul class="mini-navigation">
 	<li>
-		<a class="link" change:actionlink="cmpref category/getBlog/getId" block="blog_blogEdit" i18n:translate="&modules.blog.frontoffice.Blog-edit-link;" />
+		<a class="link" change:actionlink="cmpref category/getBlog/getId" block="blog_blogEdit" change:translate="modules.blog.frontoffice.Blog-edit-link"></a>
 	</li>
 </ul>
 
@@ -17,6 +17,6 @@
 		<li><input change:hiddeninput="name blog" /></li>
 	</ol>
 	<p>
-		<input change:submit="label &modules.blog.frontoffice.Submit-form;"/>
+		<input change:submit="label &modules.blog.frontoffice.Submit-form;" />
 	</p>
 </form>

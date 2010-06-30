@@ -51,6 +51,38 @@ class blog_CategoryService extends blog_PostgroupService
 	}
 	
 	/**
+	 * @param blog_persistentdocument_category $document
+	 * @param string[] $subModelNames
+	 * @param integer $locateDocumentId null if use startindex
+	 * @param integer $pageSize
+	 * @param integer $startIndex
+	 * @param integer $totalCount
+	 * @return f_persistentdocument_PersistentDocument[]
+	 */
+	public function getVirtualChildrenAt($document, $subModelNames, $locateDocumentId, $pageSize, &$startIndex, &$totalCount)
+	{
+		$countQuery = blog_PostService::getInstance()->createQuery()->add(Restrictions::eq('category', $document));
+		if (f_persistentdocument_PersistentDocumentModel::getInstance("blog", "post")->useCorrection())
+		{
+			$countQuery->add(Restrictions::isNull('correctionofid'));
+		}		
+		$countQuery->setProjection(Projections::rowCount('countItems'));
+      	$resultCount = $countQuery->find();
+		$totalCount = intval($resultCount[0]['countItems']);
+			
+			
+		$query = blog_PostService::getInstance()->createQuery()
+				->add(Restrictions::eq('category', $document));
+		if (f_persistentdocument_PersistentDocumentModel::getInstance("blog", "post")->useCorrection())
+		{
+			$query->add(Restrictions::isNull('correctionofid'));
+		}
+		$query->addOrder(Order::desc('postdate'));
+		$query->setFirstResult($startIndex)->setMaxResults($pageSize);
+		return $query->find();
+	}	
+	
+	/**
 	 * @param blog_persistentdocument_category $category
 	 * @param Boolean $includeDescendants if set to false, only posts related directly to the given 
 	 * 		category are returned. Else, posts related to descendent categories of the 

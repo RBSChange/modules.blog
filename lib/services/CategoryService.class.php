@@ -508,4 +508,15 @@ class blog_CategoryService extends blog_PostgroupService
 			$this->refreshRecursivePublishedPostCount($ancestor);
 		}
 	}
+	
+	// Tweets handling.
+	
+	/**
+	 * @param blog_persistentdocument_blog $document
+	 * @return string[]
+	 */
+	public function getDocumentsModelNamesForTweet($document)
+	{
+		return array('modules_blog/post');
+	}
 }

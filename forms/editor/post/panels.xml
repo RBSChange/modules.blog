@@ -7,12 +7,15 @@
 	<panel name="history" />
 	<panel name="create" />
 	<panel name="permission" />
-	
 	<xul>
 		<javascript>
 			<constructor><![CDATA[
 				this.addTab('comments', '&modules.comment.bo.doceditor.tab.Comments;', 'comments');
+				if (getController().checkModuleVersion('twitterconnect', '3.0.3'))
+				{
+					this.addTab('tweets', "&modules.twitterconnect.bo.doceditor.tab.Tweets;", 'tweet');
+				}
 			]]></constructor>
 		</javascript>
-	</xul>	 
+	</xul>
 </panels>

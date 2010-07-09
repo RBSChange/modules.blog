@@ -212,7 +212,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	 * @param Integer $parentNodeId Parent node ID where to save the document.
 	 * @return void
 	 */
-	protected function preInsert($document, $parentNodeId = null)
+	protected function preInsert($document, $parentNodeId)
 	{
 		$document->setInsertInTree(false);
 		
@@ -280,7 +280,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	 * @param Integer $parentNodeId Parent node ID where to save the document.
 	 * @return void
 	 */
-	protected function postSave($document, $parentNodeId = null)
+	protected function postSave($document, $parentNodeId)
 	{
 		// Delete old month if unused. This must be done is post save to nested saves. 
 		$ms = blog_MonthService::getInstance();
@@ -558,7 +558,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	
 	/**
 	 * @see f_persistentdocument_DocumentService::getDisplayPage()
-	 * @param f_persistentdocument_PersistentDocument $document
+	 * @param blog_persistentdocument_post $document
 	 * @return website_persistentdocument_page
 	 */
 	public function getDisplayPage($document)
@@ -575,14 +575,62 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	}
 	
 	/**
-	 * @param f_persistentdocument_PersistentDocument $document
+	 * @param blog_persistentdocument_post $document
 	 * @return website_persistentdocument_page
 	 */
 	public function getPreviewPage($document)
 	{
-		//Check for original document;
+		// Check for original document.
 		$document = DocumentHelper::getByCorrection($document);
 		$blog = $document->getBlog();
 		return TagService::getInstance()->getDocumentBySiblingTag('functional_blog_post-detail', $blog);
+	}
+	
+	/**
+	 * @param blog_persistentdocument_post $document
+	 * @return integer | null
+	 */
+	public function getWebsiteId($document)
+	{
+		$blog = $document->getBlog();
+		return $blog->getDocumentService()->getWebsiteId($blog);
+	}
+	
+	// Tweets handling.
+	
+	/**
+	 * @param blog_persistentdocument_post $document or null
+	 * @param integer $websiteId
+	 * @return array
+	 */
+	public function getReplacementsForTweet($document, $websiteId)
+	{
+		$label = array(
+			'name' => 'label',
+			'label' => f_Locale::translateUI('&modules.blog.document.post.Label;'),
+			'maxLength' => 80
+		);
+		$shortUrl = array(
+			'name' => 'shortUrl', 
+			'label' => f_Locale::translateUI('&modules.twitterconnect.bo.general.Short-url;'),
+			'maxLength' => 30
+		);
+		if ($document !== null)
+		{
+			$label['value'] = f_util_StringUtils::shortenString($document->getLabel(), 80);
+			$shortUrl['value'] = website_ShortenUrlService::getInstance()->shortenUrl(LinkHelper::getDocumentUrl($document));
+		}
+		return array($label, $shortUrl);
+	}
+	
+	/**
+	 * @param blog_persistentdocument_post $document
+	 * @return f_persistentdocument_PersistentDocument[]
+	 */
+	public function getContainersForTweets($document)
+	{
+		$containers = $document->getCategoryArray();
+		$containers[] = $document->getBlog();
+		return $containers;
 	}
 }

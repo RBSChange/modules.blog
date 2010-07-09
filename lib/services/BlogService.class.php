@@ -297,4 +297,15 @@ class blog_BlogService extends f_persistentdocument_DocumentService
 			}
 		}
 	}
+	
+	// Tweets handling.
+	
+	/**
+	 * @param blog_persistentdocument_blog $document
+	 * @return string[]
+	 */
+	public function getDocumentsModelNamesForTweet($document)
+	{
+		return array('modules_blog/post');
+	}
 }

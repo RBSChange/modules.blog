@@ -265,6 +265,8 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		{
 			$cs = blog_CategoryService::getInstance();
 			$cs->refreshPublishedPostCount($category);
+			$cs->refreshRecursivePublishedPostCount($category);
+			
 		}
 		
 		foreach ($document->getKeywordArray() as $keyWord) 

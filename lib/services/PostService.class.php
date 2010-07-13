@@ -61,14 +61,18 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	{
 		try
 		{
-			$authorDocument = DocumentHelper::getDocumentInstance($authorid);
-			return $authorDocument->getFullname();
+			$authorDocument = DocumentHelper::getDocumentInstance($authorid);	
 		}
 		catch (Exception $e)
 		{
 			// The author may not exist any more.
+			if (Framework::isDebugEnabled())
+			{
+				Framework::debug(__METHOD__ . " $authorid not found : " . $e->getMessage());
+			}
 			return $author;
 		}
+		return $authorDocument->getFullname();
 	}
 	
 	/**
@@ -81,30 +85,99 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		if ($document->getBlog() === null)
 		{
 			$document->setBlog(blog_BlogService::getInstance()->getByParentNodeId($parentNodeId));
+			if ($document->getBlog() === null)
+			{
+				throw new Exception('unable to find parent blog');
+			}
 		}
 		
+		$this->updateMonth($document);
+		
 		// Remove categories from other blogs.
-		$blogId = $document->getBlog()->getId();
-		foreach ($document->getCategoryArray() as $category)
+		if ($document->isPropertyModified('category'))
 		{
-			if ($category->getBlog()->getId() != $blogId)
+			$blogId = $document->getBlog()->getId();
+			foreach ($document->getCategoryArray() as $category)
 			{
-				$document->removeCategory($category);
+				if ($category->getBlog()->getId() != $blogId)
+				{
+					$document->removeCategory($category);
+				}
 			}
 		}
 		
 		$this->synchronizeKeywordProperties($document);
 		
-		// Update month field.
-		if ($document->isPropertyModified('postDate'))
-		{
-			$this->updateMonth($document);
-		}
-		
 		// Handle trackbacks.
 		if ($document->isPropertyModified('trackbacks'))
 		{
 			$document->setMeta('trackbacks.modified', true);
+		}
+	}
+	
+	/**
+	 * @param blog_persistentdocument_post $document
+	 */
+	private function synchronizeKeywordProperties($document)
+	{
+		if ($document->isPropertyModified('keywordsText'))
+		{
+			// Clear the keyword property.
+			$document->setKeywordArray(array());
+			
+			// Add all keywords from the keywordsText property.
+			$ts = blog_KeywordService::getInstance();
+			$blog = $document->getBlog();
+			foreach (explode(',', $document->getKeywordsText()) as $keywordLabel)
+			{
+				$keywordLabel = trim($keywordLabel);
+				if ($keywordLabel != '')
+				{
+					$keyword = $ts->getByLabelInBlog($keywordLabel, $blog);
+					if ($keyword === null)
+					{
+						$keyword = $ts->getNewDocumentInstance();
+						$keyword->setLabel($keywordLabel);
+						$keyword->save($blog->getId());
+					}
+					$document->addKeyword($keyword);
+				}
+			}
+		}
+		
+		if ($document->isPropertyModified('keyword'))
+		{
+			$labels = array();
+			foreach ($document->getKeywordArray() as $keyword)
+			{
+				$labels[] = $keyword->getLabel();
+			}
+			$document->setKeywordsText(implode(', ', $labels));
+		}
+	}
+	
+	/**
+	 * @param blog_persistentdocument_post $post
+	 */
+	protected function updateMonth($post)
+	{
+		if ($post->getPostDate() === null)
+		{
+			$newDate = date_Calendar::getInstance();
+			$post->setPostDate($newDate->toString());
+		}
+		else
+		{
+			$newDate = date_Calendar::getInstance($post->getPostDate());
+		}
+		
+		$ms = blog_MonthService::getInstance();
+		$oldMonth = $post->getMonth();
+		$newMonth = $ms->getByDateAndBlog($newDate, $post->getBlog());	
+		if (!DocumentHelper::equals($newMonth, $oldMonth))
+		{
+			// Set the new month.
+			$post->setMonth($newMonth);
 		}
 	}
 	
@@ -158,55 +231,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		}
 		return false;
 	}
-	
-	/**
-	 * @see f_persistentdocument_DocumentService::postUpdate()
-	 * @param f_persistentdocument_PersistentDocument $document
-	 * @param Integer $parentNodeId
-	 */
-	protected function postUpdate($document, $parentNodeId)
-	{
-		if ($document->isPublished())
-		{
-			$this->schedulePings($document);
-		}
-	}
-	
-	/**
-	 * @param blog_persistentdocument_post $post
-	 */
-	public function updateMonth($post)
-	{
-		$newDate = $post->getPostDate();
-		if ($newDate !== null)
-		{
-			$newDate = date_Calendar::getInstance($newDate);
-		}
 		
-		$ms = blog_MonthService::getInstance();
-		$oldMonth = $post->getMonth();
-		$newMonth = $ms->getByDateAndBlog($newDate, $post->getBlog());
-		
-		if (!DocumentHelper::equals($newMonth, $oldMonth))
-		{
-			// Set the new month.
-			$post->setMonth($newMonth);
-			
-			// Update published post count.
-			if ($post->isPublished())
-			{
-				if ($newMonth !== null)
-				{
-					$ms->incrementPublishedPostCount($newMonth);
-				}
-				if ($oldMonth !== null)
-				{
-					$ms->decrementPublishedPostCount($oldMonth);
-				}
-			}
-		}
-	}
-	
 	/**
 	 * @param blog_persistentdocument_post $document
 	 * @param Integer $parentNodeId Parent node ID where to save the document.
@@ -214,8 +239,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	 */
 	protected function preInsert($document, $parentNodeId = null)
 	{
-		$document->setInsertInTree(false);
-		
+		$document->setInsertInTree(false);	
 		// Set the full name of the current user as author, to display it in frontoffice.
 		if (RequestContext::getInstance()->getMode() == RequestContext::BACKOFFICE_MODE)
 		{
@@ -259,58 +283,72 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	/**
 	 * @param blog_persistentdocument_post $document
 	 */
-	private function syncKeywordsAndCategoriesForDocument($document)
+	private function updatePostCount($document)
+	{
+		if (Framework::isInfoEnabled())
+		{
+			Framework::info(__METHOD__ . ' -> ' . $document->__toString(). ' -> ' . $document->getPublicationstatus());
+		}
+		$this->updateMonthPostCount($document);
+		$this->updateCategoriesPostCount($document);	
+		$this->updateKeywordsPostCount($document);		
+	}
+	
+	/**
+	 * @param blog_persistentdocument_post $document
+	 */
+	private function updateMonthPostCount($document)
+	{
+		$month = $document->getMonth();
+		$month->getDocumentService()->updatePostCount($month);
+	}	
+
+	/**
+	 * @param blog_persistentdocument_post $document
+	 */
+	private function updateCategoriesPostCount($document)
 	{
 		foreach ($document->getCategoryArray() as $category) 
 		{
 			$cs = blog_CategoryService::getInstance();
-			$cs->refreshPublishedPostCount($category);
-			$cs->refreshRecursivePublishedPostCount($category);
-			
+			$cs->updatePostCount($category);
 		}
-		
+	}
+	
+	/**
+	 * @param blog_persistentdocument_post $document
+	 */
+	private function updateKeywordsPostCount($document)
+	{
 		foreach ($document->getKeywordArray() as $keyWord) 
 		{
 			$ks = blog_KeywordService::getInstance();
-			$ks->refreshPostCount($keyWord);
-			$ks->refreshPublishedPostCount($keyWord);
-		}	
-	}
-	
-	/**
-	 * @param blog_persistentdocument_post $document
-	 * @param Integer $parentNodeId Parent node ID where to save the document.
-	 * @return void
-	 */
-	protected function postSave($document, $parentNodeId = null)
-	{
-		// Delete old month if unused. This must be done is post save to nested saves. 
-		$ms = blog_MonthService::getInstance();
-		$oldMonthId = $document->getMonthOldValueId();
-		if ($oldMonthId !== null)
-		{
-			$oldMonth = DocumentHelper::getDocumentInstance($oldMonthId);
-			$newMonth = $document->getMonth();
-			if (!DocumentHelper::equals($newMonth, $oldMonth))
-			{
-				$ms->deleteIfUnused($oldMonth, $document->getId());
-			}
+			$ks->updatePostCount($keyWord);
 		}
-		$this->syncKeywordsAndCategoriesForDocument($document);
-	}
-	
+	}	
+		
 	/**
+	 * @see f_persistentdocument_DocumentService::onCorrectionActivated()
+	 *
 	 * @param blog_persistentdocument_post $document
-	 * @return void
+	 * @param Array<String=>mixed> $args
 	 */
-	protected function preDelete($document)
+	protected function onCorrectionActivated($document, $args)
 	{
-		$ts = blog_KeywordService::getInstance();
-		foreach ($document->getKeywordArray() as $keyword)
+		$deprecatedPost = $args['correction'];
+		try
 		{
-			$ts->decrementPostCount($keyword);
+			$this->tm->beginTransaction();
+			$this->updatePostCount($deprecatedPost);
+			$this->tm->commit();
+		}
+		catch (Exception $e)
+		{
+			$this->tm->rollBack($e);
+			throw $e;
 		}
 	}
+
 	
 	/**
 	 * Methode à surcharger pour effectuer des post traitement apres le changement de status du document
@@ -325,39 +363,16 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		// Status transits from ACTIVE to PUBLICATED.
 		if ($document->isPublished())
 		{
-
-			
-			// Generate postDate if it is null.
-			// Here we do not need to update published post count on month because it is done on presave.
-			if ($document->getPostDate() === null)
-			{
-				$document->setPostDate(date_Calendar::now()->toString());
-				$this->getPersistentProvider()->updateDocument($document);
-			}
-			// Update count on month.
-			else
-			{
-				$month = $document->getMonth();
-				if ($month !== null)
-				{
-					blog_MonthService::getInstance()->incrementPublishedPostCount($month);
-				}
-			}
 			blog_BlogService::getInstance()->pingServicesForBlog($document->getBlog());
 			$this->schedulePingbacksAndTrackbacks($document);
+			$this->updatePostCount($document);
 		}
 		// Status transits from PUBLICATED to ACTIVE.
 		elseif ($oldPublicationStatus == 'PUBLICATED')
 		{	
-			// Update counter on month.
-			$month = $document->getMonth();
-			if ($month !== null)
-			{
-				blog_MonthService::getInstance()->decrementPublishedPostCount($month);
-			}
 			blog_BlogService::getInstance()->pingServicesForBlog($document->getBlog());
+			$this->updatePostCount($document);
 		}
-		$this->syncKeywordsAndCategoriesForDocument($document);
 	}
 	
 	/**
@@ -491,46 +506,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		$post->saveMeta();
 	}
 	
-	/**
-	 * @param blog_persistentdocument_post $document
-	 */
-	private function synchronizeKeywordProperties($document)
-	{
-		if ($document->isPropertyModified('keywordsText'))
-		{
-			// Clear the keyword property.
-			$document->setKeywordArray(array());
-			
-			// Add all keywords from the keywordsText property.
-			$ts = blog_KeywordService::getInstance();
-			$blog = $document->getBlog();
-			foreach (explode(',', $document->getKeywordsText()) as $keywordLabel)
-			{
-				$keywordLabel = trim($keywordLabel);
-				if ($keywordLabel != '')
-				{
-					$keyword = $ts->getByLabelInBlog($keywordLabel, $blog);
-					if ($keyword === null)
-					{
-						$keyword = $ts->getNewDocumentInstance();
-						$keyword->setLabel($keywordLabel);
-						$keyword->save($blog->getId());
-					}
-					$document->addKeyword($keyword);
-				}
-			}
-		}
-		
-		if ($document->isPropertyModified('keyword'))
-		{
-			$labels = array();
-			foreach ($document->getKeywordArray() as $keyword)
-			{
-				$labels[] = $keyword->getLabel();
-			}
-			$document->setKeywordsText(implode(', ', $labels));
-		}
-	}
+
 
 	/**
 	 * @see f_persistentdocument_DocumentService::getResume()

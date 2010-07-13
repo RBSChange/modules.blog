@@ -7,17 +7,19 @@ class blog_Setup extends object_InitDataSetup
 	public function install()
 	{
 		$this->executeModuleScript('init.xml');
+		$this->addCountPublishedPostTask();
 	}
-
+		
 	/**
-	 * @return array<string>
+	 * @return void
 	 */
-	public function getRequiredPackages()
+	private function addCountPublishedPostTask()
 	{
-		// Return an array of packages name if the data you are inserting in
-		// this file depend on the data of other packages.
-		// Example:
-		// return array('modules_website', 'modules_users');
-		return array();
+		$task = task_PlannedtaskService::getInstance()->getNewDocumentInstance();
+		$task->setSystemtaskclassname('blog_CountPublishedPostTask');
+		$task->setLabel('blog_CountPublishedPostTask');
+		$task->setMinute(0);
+		$task->setHour(4);
+		$task->save(ModuleService::getInstance()->getSystemFolderId('task', 'blog'));
 	}
 }

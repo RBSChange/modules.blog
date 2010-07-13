@@ -12,16 +12,23 @@ class blog_persistentdocument_postgroup extends blog_persistentdocument_postgrou
 	public function getIndexedDocument()
 	{
 		$indexedDoc = new indexer_IndexedDocument();
-		// TODO : set the different properties you want in you indexedDocument :
-		// - please verify that id, documentModel, label and lang are correct according your requirements
-		// - please set text value.
 		$indexedDoc->setId($this->getId());
-		$indexedDoc->setDocumentModel('modules_blog/postgroup');
+		$indexedDoc->setDocumentModel($this->getDocumentModelName());
 		$indexedDoc->setLabel($this->getLabel());
 		$indexedDoc->setLang($this->getLang());
-		$indexedDoc->setText(null); // TODO : please fill text property
+		$indexedDoc->setText($this->getFullTextForIndexation());
 		return $indexedDoc;
 	}
+	
+	/**
+	 * @return String
+	 */
+	protected function getFullTextForIndexation()
+	{
+		$fullText = $this->getDescriptionAsHtml();
+		return f_util_StringUtils::htmlToText($fullText);
+	}
+	
 	
 	/**
 	 * @return Integer

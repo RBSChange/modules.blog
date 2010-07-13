@@ -127,61 +127,20 @@ class blog_MonthService extends blog_PostgroupService
 	 */
 	protected function preInsert($document, $parentNodeId = null)
 	{
-		// Overload the default postgroup method.
+		parent::preInsert($document, $parentNodeId);	
+		$document->setInsertInTree(false);
 	}
-
-	/**
-	 * @param blog_persistentdocument_month $document
-	 * @param Integer $parentNodeId Parent node ID where to save the document.
-	 * @return void
-	 */
-//	protected function postInsert($document, $parentNodeId = null)
-//	{
-//	}
-
-	/**
-	 * @param blog_persistentdocument_month $document
-	 * @param Integer $parentNodeId Parent node ID where to save the document.
-	 * @return void
-	 */
-//	protected function preUpdate($document, $parentNodeId = null)
-//	{
-//	}
-
-	/**
-	 * @param blog_persistentdocument_month $document
-	 * @param Integer $parentNodeId Parent node ID where to save the document.
-	 * @return void
-	 */
-//	protected function postUpdate($document, $parentNodeId = null)
-//	{
-//	}
-
-	/**
-	 * @param blog_persistentdocument_month $document
-	 * @param Integer $parentNodeId Parent node ID where to save the document.
-	 * @return void
-	 */
-//	protected function postSave($document, $parentNodeId = null)
-//	{
-//	}
-
+	
+	private $checkYears = array();
+	
 	/**
 	 * @param blog_persistentdocument_month $document
 	 * @return void
 	 */
 	protected function preDelete($document)
 	{
-		$document->setMeta('year', $document->getYear());
+		$this->checkYears[$document->getId()] = $document->getYear();
 	}
-
-	/**
-	 * @param blog_persistentdocument_month $document
-	 * @return void
-	 */
-//	protected function preDeleteLocalized($document)
-//	{
-//	}
 
 	/**
 	 * @param blog_persistentdocument_month $document
@@ -189,162 +148,55 @@ class blog_MonthService extends blog_PostgroupService
 	 */
 	protected function postDelete($document)
 	{
-		$year = $document->getMeta('year');
-		if ($year->getMonthCountInverse() == 0)
+		if (isset($this->checkYears[$document->getId()]))
 		{
-			$year->delete();
-		}
+			blog_YearService::getInstance()->monthDeleted($this->checkYears[$document->getId()]);
+			unset($this->checkYears[$document->getId()]);
+		}		
 	}
 
 	/**
-	 * @param blog_persistentdocument_month $document
-	 * @return void
-	 */
-//	protected function postDeleteLocalized($document)
-//	{
-//	}
-
-	/**
-	 * @param blog_persistentdocument_month $document
-	 * @return boolean true if the document is publishable, false if it is not.
-	 */
-//	public function isPublishable($document)
-//	{
-//		$result = parent::isPublishable($document);
-//		return $result;
-//	}
-
-
-	/**
-	 * Methode à surcharger pour effectuer des post traitement apres le changement de status du document
-	 * utiliser $document->getPublicationstatus() pour retrouver le nouveau status du document.
-	 * @param blog_persistentdocument_month $document
-	 * @param String $oldPublicationStatus
-	 * @param array<"cause" => String, "modifiedPropertyNames" => array, "oldPropertyValues" => array> $params
-	 * @return void
-	 */
-//	protected function publicationStatusChanged($document, $oldPublicationStatus, $params)
-//	{
-//	}
-
-	/**
-	 * Correction document is available via $args['correction'].
-	 * @param f_persistentdocument_PersistentDocument $document
-	 * @param Array<String=>mixed> $args
-	 */
-//	protected function onCorrectionActivated($document, $args)
-//	{
-//	}
-
-	/**
-	 * @param blog_persistentdocument_month $document
-	 * @param String $tag
-	 * @return void
-	 */
-//	public function tagAdded($document, $tag)
-//	{
-//	}
-
-	/**
-	 * @param blog_persistentdocument_month $document
-	 * @param String $tag
-	 * @return void
-	 */
-//	public function tagRemoved($document, $tag)
-//	{
-//	}
-
-	/**
-	 * @param blog_persistentdocument_month $fromDocument
-	 * @param f_persistentdocument_PersistentDocument $toDocument
-	 * @param String $tag
-	 * @return void
-	 */
-//	public function tagMovedFrom($fromDocument, $toDocument, $tag)
-//	{
-//	}
-
-	/**
-	 * @param f_persistentdocument_PersistentDocument $fromDocument
-	 * @param blog_persistentdocument_month $toDocument
-	 * @param String $tag
-	 * @return void
-	 */
-//	public function tagMovedTo($fromDocument, $toDocument, $tag)
-//	{
-//	}
-
-	/**
-	 * Called before the moveToOperation starts. The method is executed INSIDE a
-	 * transaction.
+	 * @see blog_PostgroupService::calculatePostCount()
 	 *
-	 * @param f_persistentdocument_PersistentDocument $document
-	 * @param Integer $destId
-	 */
-//	protected function onMoveToStart($document, $destId)
-//	{
-//	}
-
-	/**
 	 * @param blog_persistentdocument_month $document
-	 * @param Integer $destId
-	 * @return void
+	 * @return boolean
 	 */
-//	protected function onDocumentMoved($document, $destId)
-//	{
-//	}
-
-	/**
-	 * this method is call before save the duplicate document.
-	 * If this method not override in the document service, the document isn't duplicable.
-	 * An IllegalOperationException is so launched.
-	 *
-	 * @param f_persistentdocument_PersistentDocument $newDocument
-	 * @param f_persistentdocument_PersistentDocument $originalDocument
-	 * @param Integer $parentNodeId
-	 *
-	 * @throws IllegalOperationException
-	 */
-//	protected function preDuplicate($newDocument, $originalDocument, $parentNodeId)
-//	{
-//		throw new IllegalOperationException('This document cannot be duplicated.');
-//	}
-
-	/**
-	 * @param blog_persistentdocument_month $document
-	 * @return Boolean
-	 */
-	public function isPublishable($document)
+	protected function calculatePostCount($document)
 	{
-		// A post keyword is publishable only if there is at least one related published post.
-		if ($document->getPublishedPostCount() <= 0)
+		$query = blog_PostService::getInstance()->createQuery()
+			->add(Restrictions::published())
+			->add(Restrictions::eq('month', $document))
+			->setProjection(Projections::rowCount('count'));	
+			
+		if (f_persistentdocument_PersistentDocumentModel::getInstance("blog", "post")->useCorrection())
 		{
-			return false;
+			$query->add(Restrictions::isNull('correctionofid'));
+		}		
+		$result = $query->findUnique();
+		$document->setPublishedPostCount($result['count']);
+		$modified = $document->isPropertyModified('publishedPostCount');		
+		if ($modified && $document->getYear())
+		{
+			blog_YearService::getInstance()->updatePostCount($document->getYear());
 		}
-		return parent::isPublishable($document);
+		return $modified;
 	}
 	
 	/**
+	 * @deprecated 
 	 * @param blog_persistentdocument_month $month
 	 */
 	public function incrementPublishedPostCount($month)
 	{
-		parent::incrementPublishedPostCount($month);
-		
-		// Update year counter.
-		$year = $month->getYear();
-		$year->getDocumentService()->incrementPublishedPostCount($year);
+		$this->updatePostCount($month);
 	}
 
 	/**
+	 * @deprecated
 	 * @param blog_persistentdocument_month $month
 	 */
 	public function decrementPublishedPostCount($month)
 	{
-		parent::decrementPublishedPostCount($month);
-		
-		// Update year counter.
-		$year = $month->getYear();
-		$year->getDocumentService()->decrementPublishedPostCount($year);
+		$this->updatePostCount($month);
 	}
 }

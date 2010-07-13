@@ -4,6 +4,7 @@
 		<property name="label" labeli18n="modules.uixul.bo.doceditor.property.Label"/>
 		<property name="author" labeli18n="modules.uixul.bo.doceditor.property.Author"/>
 		<property name="creationdate" labeli18n="modules.uixul.bo.doceditor.property.Creationdate"/>
+		<property name="publishedpostcount" labeli18n="modules.blog.bo.doceditor.property.Publishedpostcount"/>
 	</section>
 									
 	<section name="history" linkedtab="history" actiontexti18n="modules.uixul.bo.doceditor.section.action.View" labeli18n="modules.uixul.bo.doceditor.section.History" image="{IconsBase}/small/history.png">

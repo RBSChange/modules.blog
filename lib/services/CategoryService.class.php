@@ -115,14 +115,9 @@ class blog_CategoryService extends blog_PostgroupService
 	{
 		$cfs = blog_CategoryfolderService::getInstance();
 		$categoryFolder = $cfs->getByBlog($blog);
-		$categories = array();
-		foreach ($cfs->getChildrenOf($categoryFolder, 'modules_blog/category') as $category)
-		{
-			if ($category->isPublished())
-			{
-				$categories[] = $category;
-			}
-		}
+		$categories = $this->createQuery()->add(Restrictions::published())
+			->add(Restrictions::childOf($categoryFolder->getId()));
+			
 		return $categories;
 	}
 	
@@ -132,14 +127,8 @@ class blog_CategoryService extends blog_PostgroupService
 	 */
 	public function getPublishedSubCategories($category)
 	{
-		$categories = array();
-		foreach ($this->getChildrenOf($category, 'modules_blog/category') as $category)
-		{
-			if ($category->isPublished())
-			{
-				$categories[] = $category;
-			}
-		}
+		$categories = $this->createQuery()->add(Restrictions::published())
+			->add(Restrictions::childOf($category->getId()));
 		return $categories;
 	}
 	
@@ -149,14 +138,8 @@ class blog_CategoryService extends blog_PostgroupService
 	 */
 	public function getPublishedAncestorCategories($category)
 	{
-		$categories = array();
-		foreach ($this->getAncestorsOf($category, 'modules_blog/category') as $category)
-		{
-			if ($category->isPublished())
-			{
-				$categories[] = $category;
-			}
-		}
+		$categories = $this->createQuery()->add(Restrictions::published())
+			->add(Restrictions::ancestorOf($category->getId()));
 		return $categories;
 	}
 		
@@ -169,239 +152,127 @@ class blog_CategoryService extends blog_PostgroupService
 		$restriction = Restrictions::eq('category.id', $category->getId());
 		return blog_PostService::getInstance()->getRSSFeedWriterByRestriction($restriction);
 	}
+
+	private $ancestorIds = array();
+
+	/**
+	 * @param blog_persistentdocument_category $document
+	 * @return void
+	 */
+	protected function preDelete($document)
+	{
+		if (count($document->getPublishedPostCount()))
+		{
+			$id = $document->getId();
+			$ancestorIds = $this->createQuery()->add(Restrictions::ancestorOf($id))
+				->setProjection(Projections::groupProperty('id', 'id'))->findColumn('id');
+				
+			if (count($ancestorIds))
+			{
+				$this->ancestorIds[$id] = $ancestorIds;
+			}
+		}
+	}
 	
 	/**
-	 * @param blog_persistentdocument_category $document
-	 * @param Integer $parentNodeId Parent node ID where to save the document (optionnal => can be null !).
-	 * @return void
-	 */
-//	protected function preSave($document, $parentNodeId = null)
-//	{
-//		parent::preSave($document, $parentNodeId);
-//
-//	}
-
-
-	/**
-	 * @param blog_persistentdocument_category $document
-	 * @param Integer $parentNodeId Parent node ID where to save the document.
-	 * @return void
-	 */
-//	protected function preInsert($document, $parentNodeId = null)
-//	{
-//		parent::preInsert($document, $parentNodeId);
-//	}
-
-	/**
-	 * @param blog_persistentdocument_category $document
-	 * @param Integer $parentNodeId Parent node ID where to save the document.
-	 * @return void
-	 */
-//	protected function postInsert($document, $parentNodeId = null)
-//	{
-//		parent::postInsert($document, $parentNodeId);
-//	}
-
-	/**
-	 * @param blog_persistentdocument_category $document
-	 * @param Integer $parentNodeId Parent node ID where to save the document.
-	 * @return void
-	 */
-//	protected function preUpdate($document, $parentNodeId = null)
-//	{
-//		parent::preUpdate($document, $parentNodeId);
-//	}
-
-	/**
-	 * @param blog_persistentdocument_category $document
-	 * @param Integer $parentNodeId Parent node ID where to save the document.
-	 * @return void
-	 */
-//	protected function postUpdate($document, $parentNodeId = null)
-//	{
-//		parent::postUpdate($document, $parentNodeId);
-//	}
-
-	/**
-	 * @param blog_persistentdocument_category $document
-	 * @param Integer $parentNodeId Parent node ID where to save the document.
-	 * @return void
-	 */
-//	protected function postSave($document, $parentNodeId = null)
-//	{
-//		parent::postSave($document, $parentNodeId);
-//	}
-
-	/**
-	 * @param blog_persistentdocument_category $document
-	 * @return void
-	 */
-//	protected function preDelete($document)
-//	{
-//		parent::preDelete($document);
-//	}
-
-	/**
-	 * @param blog_persistentdocument_category $document
-	 * @return void
-	 */
-//	protected function preDeleteLocalized($document)
-//	{
-//		parent::preDeleteLocalized($document);
-//	}
-
-	/**
-	 * @param blog_persistentdocument_category $document
-	 * @return void
-	 */
-//	protected function postDelete($document)
-//	{
-//		parent::postDelete($document);
-//	}
-
-	/**
-	 * @param blog_persistentdocument_category $document
-	 * @return void
-	 */
-//	protected function postDeleteLocalized($document)
-//	{
-//		parent::postDeleteLocalized($document);
-//	}
-
-	/**
-	 * @param blog_persistentdocument_category $document
-	 * @return boolean true if the document is publishable, false if it is not.
-	 */
-//	public function isPublishable($document)
-//	{
-//		$result = parent::isPublishable($document);
-//		return $result;
-//	}
-
-
-	/**
-	 * Methode à surcharger pour effectuer des post traitement apres le changement de status du document
-	 * utiliser $document->getPublicationstatus() pour retrouver le nouveau status du document.
-	 * @param blog_persistentdocument_category $document
-	 * @param String $oldPublicationStatus
-	 * @param array<"cause" => String, "modifiedPropertyNames" => array, "oldPropertyValues" => array> $params
-	 * @return void
-	 */
-//	protected function publicationStatusChanged($document, $oldPublicationStatus, $params)
-//	{
-//		parent::publicationStatusChanged($document, $oldPublicationStatus, $params);
-//	}
-
-	/**
-	 * Correction document is available via $args['correction'].
 	 * @param f_persistentdocument_PersistentDocument $document
-	 * @param Array<String=>mixed> $args
-	 */
-//	protected function onCorrectionActivated($document, $args)
-//	{
-//		parent::onCorrectionActivated($document, $args);
-//	}
-
-	/**
-	 * @param blog_persistentdocument_category $document
-	 * @param String $tag
 	 * @return void
 	 */
-//	public function tagAdded($document, $tag)
-//	{
-//		parent::tagAdded($document, $tag);
-//	}
-
-	/**
-	 * @param blog_persistentdocument_category $document
-	 * @param String $tag
-	 * @return void
-	 */
-//	public function tagRemoved($document, $tag)
-//	{
-//		parent::tagRemoved($document, $tag);
-//	}
-
-	/**
-	 * @param blog_persistentdocument_category $fromDocument
-	 * @param f_persistentdocument_PersistentDocument $toDocument
-	 * @param String $tag
-	 * @return void
-	 */
-//	public function tagMovedFrom($fromDocument, $toDocument, $tag)
-//	{
-//		parent::tagMovedFrom($fromDocument, $toDocument, $tag);
-//	}
-
-	/**
-	 * @param f_persistentdocument_PersistentDocument $fromDocument
-	 * @param blog_persistentdocument_category $toDocument
-	 * @param String $tag
-	 * @return void
-	 */
-//	public function tagMovedTo($fromDocument, $toDocument, $tag)
-//	{
-//		parent::tagMovedTo($fromDocument, $toDocument, $tag);
-//	}
-
+	protected function postDelete($document)
+	{
+		$id = $document->getId();
+		if (isset($this->ancestorIds[$id]))
+		{
+			try
+			{
+				$this->tm->beginTransaction();
+				foreach ($this->ancestorIds[$id] as $categoryId) 
+				{
+					$category = DocumentHelper::getDocumentInstance($categoryId, 'modules_blog/category');
+					if ($this->calculatePostCount($category, false))
+					{
+						$this->pp->updateDocument($category);
+						$this->publishDocumentIfPossible($category);
+					}
+				}
+				$this->tm->commit();
+			}
+			catch (Exception $e)
+			{
+				$this->tm->rollBack($e);
+				throw $e;
+			}
+			unset($this->ancestorIds[$id]);			
+		}
+	}
+		
 	/**
 	 * Called before the moveToOperation starts. The method is executed INSIDE a
 	 * transaction.
 	 *
-	 * @param f_persistentdocument_PersistentDocument $document
+	 * @param blog_persistentdocument_category $document
 	 * @param Integer $destId
 	 */
 	protected function onMoveToStart($document, $destId)
 	{
-		parent::onMoveToStart($document, $destId);
+		
+		$id = $document->getId();
+		$categoryIds = array();
 		
 		// Refresh old ancestors counters.
-		$ancestors = $this->getAncestorsOf($document, 'modules_blog/category');
-		foreach ($ancestors as $ancestor)
-		{
-			$newCount = $ancestor->getRecursivePublishedDocumentCount() - $document->getRecursivePublishedDocumentCount();
-			$this->changeRecursivePublishedPostCount($ancestor, $newCount);
-		}
-		
+		$categoryIds = $this->createQuery()
+			->add(Restrictions::ancestorOf($id))
+			->setProjection(Projections::groupProperty('id', 'id'))->findColumn('id');
+
+	
 		// Refresh new ancestors counters.
 		$newParent = DocumentHelper::getDocumentInstance($destId);
 		if ($newParent instanceof blog_persistentcument_category)
 		{
-			$ancestors = $this->getAncestorsOf($newParent, 'modules_blog/category');
-			$ancestors[] = $newParent;
-			foreach ($ancestors as $ancestor)
-			{
-				$newCount = $ancestor->getRecursivePublishedDocumentCount() + $document->getRecursivePublishedDocumentCount();
-				$this->changeRecursivePublishedPostCount($ancestor, $newCount);
-			}
-		}
-	}
+			$categoryIds[] = $newParent->getId();
 
+			$categoryIds = array_merge($categoryIds, $this->createQuery()
+				->add(Restrictions::ancestorOf($destId))
+				->setProjection(Projections::groupProperty('id', 'id'))->findColumn('id'));
+		}
+		
+		$this->ancestorIds[$id] = array_unique($categoryIds);
+	}
+	
 	/**
+	 * Called upon successful moveTo operation. The method is executed OUTSIDE a
+	 * transaction.
+	 *
 	 * @param blog_persistentdocument_category $document
 	 * @param Integer $destId
-	 * @return void
 	 */
-//	protected function onDocumentMoved($document, $destId)
-//	{
-//		parent::onDocumentMoved($document, $destId);
-//	}
-
-	/**
-	 * this method is call before save the duplicate document.
-	 * If this method not override in the document service, the document isn't duplicable.
-	 * An IllegalOperationException is so launched.
-	 *
-	 * @param f_persistentdocument_PersistentDocument $newDocument
-	 * @param f_persistentdocument_PersistentDocument $originalDocument
-	 * @param Integer $parentNodeId
-	 *
-	 * @throws IllegalOperationException
-	 */
-//	protected function preDuplicate($newDocument, $originalDocument, $parentNodeId)
-//	{
-//		throw new IllegalOperationException('This document cannot be duplicated.');
-//	}
+	protected function onDocumentMoved($document, $destId)
+	{
+		$id = $document->getId();
+		if (isset($this->ancestorIds[$id]))
+		{
+			try
+			{
+				$this->tm->beginTransaction();
+				foreach ($this->ancestorIds[$id] as $categoryId) 
+				{
+					$category = DocumentHelper::getDocumentInstance($categoryId, 'modules_blog/category');
+					if ($this->calculatePostCount($category, false))
+					{
+						$this->pp->updateDocument($category);
+						$this->publishDocumentIfPossible($category);
+					}
+				}
+				$this->tm->commit();
+			}
+			catch (Exception $e)
+			{
+				$this->tm->rollBack($e);
+				throw $e;
+			}
+			unset($this->ancestorIds[$id]);
+		}
+	}	
 
 	/**
 	 * @param blog_persistentdocument_category $document
@@ -411,101 +282,110 @@ class blog_CategoryService extends blog_PostgroupService
 	{
 		// A post category is publishable only if there is at least one published post
 		// related the it or on of its descendants.
-		if ($document->getRecursivePublishedPostCount() <= 0)
+		if ($document->getRecursivePublishedPostCount() + $document->getPublishedPostCount() <= 0)
 		{
 			return false;
 		}
-		return parent::isPublishable($document);
+		return true;
 	}
 	
+	
 	/**
-	 * @param blog_persistentdocument_category $category
+	 * @see blog_PostgroupService::calculatePostCount()
+	 *
+	 * @param blog_persistentdocument_category $document
+	 * @param boolean $updateAncestors 
+	 * @return boolean
+	 */
+	protected function calculatePostCount($document, $updateAncestors = true)
+	{
+		$query = blog_PostService::getInstance()->createQuery()
+			->add(Restrictions::published())
+			->add(Restrictions::eq('category', $document))
+			->setProjection(Projections::rowCount('count'));				
+		if (f_persistentdocument_PersistentDocumentModel::getInstance("blog", "post")->useCorrection())
+		{
+			$query->add(Restrictions::isNull('correctionofid'));
+		}	
+		$result = $query->findUnique();
+		$count = $result['count'];
+		$document->setPublishedPostCount($count);
+		
+		$modified = $document->isPropertyModified('publishedPostCount');
+		
+		$categoryIds = $this->createQuery()
+			->add(Restrictions::descendentOf($document->getId()))
+			->setProjection(Projections::groupProperty('id', 'id'))->findColumn('id');
+		
+		if (count($categoryIds) > 0)
+		{
+			$query = blog_PostService::getInstance()->createQuery()
+						->add(Restrictions::published())
+						->add(Restrictions::in('category.id', $categoryIds))
+						->setProjection(Projections::rowCount('count'));				
+			if (f_persistentdocument_PersistentDocumentModel::getInstance("blog", "post")->useCorrection())
+			{
+				$query->add(Restrictions::isNull('correctionofid'));
+			}	
+			$result = $query->findUnique();			
+			$count = $count + $result['count'];
+		}
+
+		$document->setRecursivePublishedPostCount($count);
+		$modified = $modified || $document->isPropertyModified('recursivePublishedPostCount');
+
+		if ($updateAncestors && $modified)
+		{
+			$ancestors = $this->createQuery()->add(Restrictions::ancestorOf($document->getId()))->find();
+			foreach ($ancestors as $ancestor) 
+			{
+				if ($this->updatePostCount($ancestor, false))
+				{
+					$this->pp->updateDocument($ancestor);
+					$this->publishDocumentIfPossible($ancestor);
+				}
+			}
+		}
+		return $modified;
+	}
+		
+	/**
+	 * @deprecated 
 	 */
 	public function incrementPublishedPostCount($category)
 	{
-		parent::incrementPublishedPostCount($category);
-		
-		// Refresh counter on ancestors. Here we can't just increment it because a category
-		// and one of its ancestors may be related to a same post.
-		$this->refreshRecursivePublishedPostCount($category);		
-		$this->refreshRecursivePublishedPostCountOnAncestors($category);
+		$this->updatePostCount($category);
 	}
 
 	/**
-	 * @param blog_persistentdocument_category $category
+	 * @deprecated 
 	 */
 	public function decrementPublishedPostCount($category)
 	{
-		parent::decrementPublishedPostCount($category);
-		
-		// Refresh counter on ancestors. Here we can't just decrement it because a category
-		// and one of its ancestors may be related to a same post.
-		$this->refreshRecursivePublishedPostCount($category);		
-		$this->refreshRecursivePublishedPostCountOnAncestors($category);
+		$this->updatePostCount($category);
 	}
 	
 	/**
-	 * @param blog_persistentdocument_category $category
+	 * @deprecated
 	 */
 	public function refreshPublishedPostCount($category)
 	{
-		$query = blog_PostService::getInstance()->createQuery()->add(Restrictions::published());
-		$query->add(Restrictions::eq('category.id', $category->getId()));
-		$query->setProjection(Projections::rowCount('count'));
-		$result = $query->findUnique();
-		$this->changePublishedPostCount($category, $result['count']);
+		$this->updatePostCount($category);
 	}
 
 	/**
-	 * @param blog_persistentdocument_category $category
-	 * @param Integer $newCount
+	 * @deprecated
 	 */
 	private function changeRecursivePublishedPostCount($category, $newCount)
 	{
-		$oldCount = $category->getRecursivePublishedPostCount();
-		if ($oldCount != $newCount)
-		{
-			try
-			{
-				$this->tm->beginTransaction();
-				$category->setRecursivePublishedPostCount($newCount);
-				$this->pp->updateDocument($category);
-				if ($newCount == 0 || $oldCount == 0)
-				{
-					$this->publishDocumentIfPossible($category);
-				}
-				$this->tm->commit();
-			}
-			catch (Exception $e)
-			{
-				$this->tm->rollBack($e);
-			}
-		}
+		$this->updatePostCount($category);
 	}
 	
 	/**
-	 * @param blog_persistentdocument_category $category
+	 * @deprecated
 	 */
 	public function refreshRecursivePublishedPostCount($category)
 	{
-		$query = blog_PostService::getInstance()->createQuery()->add(Restrictions::published());
-		$query->createCriteria('category')->add(Restrictions::orExp(
-			Restrictions::eq('id', $category->getId()),
-			Restrictions::descendentOf($category->getId())
-		));
-		$query->setProjection(Projections::rowCount('count'));
-		$result = $query->findUnique();
-		$this->changeRecursivePublishedPostCount($category, $result['count']);
-	}
-	
-	/**
-	 * @param blog_persistentdocument_category $category
-	 */
-	private function refreshRecursivePublishedPostCountOnAncestors($category)
-	{
-		foreach ($this->getAncestorsOf($category, 'modules_blog/category') as $ancestor)
-		{
-			$this->refreshRecursivePublishedPostCount($ancestor);
-		}
+		$this->updatePostCount($category);
 	}
 }

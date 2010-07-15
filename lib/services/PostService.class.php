@@ -298,10 +298,10 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	 * @param blog_persistentdocument_post $document
 	 */
 	private function updateMonthPostCount($document)
-		{
+	{
 		$month = $document->getMonth();
 		$month->getDocumentService()->updatePostCount($month);
-		}	
+	}		
 
 	/**
 	 * @param blog_persistentdocument_post $document
@@ -312,21 +312,19 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		{
 			$cs = blog_CategoryService::getInstance();
 			$cs->updatePostCount($category);
-	}
+		}
 	}
 	
 	/**
 	 * @param blog_persistentdocument_post $document
 	 */
-	 */
-	protected function postSave($document, $parentNodeId)
 	private function updateKeywordsPostCount($document)
 	{
 		foreach ($document->getKeywordArray() as $keyWord) 
 		{
 			$ks = blog_KeywordService::getInstance();
 			$ks->updatePostCount($keyWord);
-			}
+		}
 	}	
 	
 	/**
@@ -348,10 +346,9 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		{
 			$this->tm->rollBack($e);
 			throw $e;
-	}
+		}
 	}
 
-	
 	/**
 	 * Methode à surcharger pour effectuer des post traitement apres le changement de status du document
 	 * utiliser $document->getPublicationstatus() pour retrouver le nouveau status du document.
@@ -507,8 +504,6 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		$post->setMeta('trackbackresults', $trackbackResults);
 		$post->saveMeta();
 	}
-	
-
 
 	/**
 	 * @see f_persistentdocument_DocumentService::getResume()

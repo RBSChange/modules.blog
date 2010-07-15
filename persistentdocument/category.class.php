@@ -3,32 +3,8 @@
  * blog_persistentdocument_category
  * @package blog.persistentdocument
  */
-class blog_persistentdocument_category extends blog_persistentdocument_categorybase implements indexer_IndexableDocument
+class blog_persistentdocument_category extends blog_persistentdocument_categorybase
 {
-	/**
-	 * Get the indexable document
-	 * @return indexer_IndexedDocument
-	 */
-	public function getIndexedDocument()
-	{
-		$indexedDoc = new indexer_IndexedDocument();
-		$indexedDoc->setId($this->getId());
-		$indexedDoc->setDocumentModel('modules_blog/category');
-		$indexedDoc->setLabel($this->getLabel());
-		$indexedDoc->setLang($this->getLang());
-		$indexedDoc->setText($this->getFullTextForIndexation());
-		return $indexedDoc;
-	}
-		
-	/**
-	 * @return String
-	 */
-	private function getFullTextForIndexation()
-	{
-		$fullText = $this->getDescriptionAsHtml();
-		return f_util_StringUtils::htmlToText($fullText);
-	}
-	
 	/**
 	 * @return blog_persistentdocument_category[]
 	 */

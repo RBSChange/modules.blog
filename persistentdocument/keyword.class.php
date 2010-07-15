@@ -3,33 +3,8 @@
  * blog_persistentdocument_keyword
  * @package blog.persistentdocument
  */
-class blog_persistentdocument_keyword extends blog_persistentdocument_keywordbase implements indexer_IndexableDocument
-{
-	/**
-	 * Get the indexable document
-	 *
-	 * @return indexer_IndexedDocument
-	 */
-	public function getIndexedDocument()
-	{
-		$indexedDoc = new indexer_IndexedDocument();
-		$indexedDoc->setId($this->getId());
-		$indexedDoc->setDocumentModel('modules_blog/keyword');
-		$indexedDoc->setLabel($this->getLabel());
-		$indexedDoc->setLang($this->getLang());
-		$indexedDoc->setText($this->getFullTextForIndexation());
-		return $indexedDoc;
-	}
-	
-	/**
-	 * @return String
-	 */
-	private function getFullTextForIndexation()
-	{
-		$fullText = $this->getDescriptionAsHtml();
-		return f_util_StringUtils::htmlToText($fullText);
-	}
-		
+class blog_persistentdocument_keyword extends blog_persistentdocument_keywordbase
+{		
 	/**
 	 * @param string $moduleName
 	 * @param string $treeType
@@ -37,7 +12,17 @@ class blog_persistentdocument_keyword extends blog_persistentdocument_keywordbas
 	 */
 	protected function addTreeAttributes($moduleName, $treeType, &$nodeAttributes)
 	{
-		$nodeAttributes['postCount'] = $this->getPostCount();
+			
+		$query = blog_PostService::getInstance()->createQuery()
+			->add(Restrictions::eq('keyword', $this))
+			->setProjection(Projections::rowCount('count'));
+				
+		if (f_persistentdocument_PersistentDocumentModel::getInstance("blog", "post")->useCorrection())
+		{
+			$query->add(Restrictions::isNull('correctionofid'));
+		}
+		$result = $query->findUnique();			
+		$nodeAttributes['postCount'] = $result['count'];
 		$nodeAttributes['publishedPostCount'] = $this->getPublishedPostCount();
 	}
 }

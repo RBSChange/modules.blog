@@ -20,4 +20,8 @@
 		<locale lang="fr">dernier billet publié</locale>
 		<locale lang="en">last published post</locale>
 	</entity>
+	<entity id="property.publishedpostcount">
+		<locale lang="fr">nombre de billets publiés</locale>
+		<locale lang="en">published posts count</locale>
+	</entity>	
 </localization>

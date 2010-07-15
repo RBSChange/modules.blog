@@ -46,51 +46,92 @@ class blog_PostgroupService extends f_persistentdocument_DocumentService
 	 */
 	protected function preInsert($document, $parentNodeId = null)
 	{
-		$document->setBlog(blog_BlogService::getInstance()->getByParentNodeId($parentNodeId));
+		if ($parentNodeId !== null && $document->getBlog() === null)
+		{
+			$blog = blog_BlogService::getInstance()->getByParentNodeId($parentNodeId);
+			if ($blog !== null)
+			{
+				$document->setBlog($blog);
+			}
+		}
 	}
 	
 	/**
+	 * @deprecated 
 	 * @param blog_persistentdocument_postgroup $postgroup
 	 */
 	public function incrementPublishedPostCount($postgroup)
 	{
-		$this->changePublishedPostCount($postgroup, $postgroup->getPublishedPostCount()+1);
+		$this->updatePostCount($postgroup);
 	}
 
 	/**
+	 * @deprecated 
 	 * @param blog_persistentdocument_postgroup $postgroup
 	 */
 	public function decrementPublishedPostCount($postgroup)
 	{
-		$this->changePublishedPostCount($postgroup, $postgroup->getPublishedPostCount()-1);
+		$this->updatePostCount($postgroup);
 	}
 
 	/**
+	 * @deprecated 
 	 * @param blog_persistentdocument_postgroup $postgroup
 	 * @param Integer $newCount
 	 */
 	protected function changePublishedPostCount($postgroup, $newCount)
 	{
-		$oldCount = $postgroup->getPublishedPostCount();
-		if ($oldCount != $newCount)
-		{
-			try
-			{
-				$this->tm->beginTransaction();
-				$postgroup->setPublishedPostCount($newCount);
-				$this->pp->updateDocument($postgroup);
-				if ($newCount == 0 || $oldCount == 0)
-				{
-					$this->publishDocumentIfPossible($postgroup);
-				}
-				$this->tm->commit();
-			}
-			catch (Exception $e)
-			{
-				$this->tm->rollBack($e);
-			}
-		}
+		$this->updatePostCount($postgroup);
 	}
+	
+	/**
+	 * @param blog_persistentdocument_postgroup $postgroup
+	 * @return boolean;
+	 */
+	public function updatePostCount($postgroup)
+	{
+		try
+		{
+			$this->tm->beginTransaction();
+			$modified = $this->calculatePostCount($postgroup);
+			if ($modified)
+			{
+				$this->pp->updateDocument($postgroup);
+				$this->publishDocumentIfPossible($postgroup);
+			}
+			$this->tm->commit();
+		}
+		catch (Exception $e)
+		{
+			$this->tm->rollBack($e);
+			throw $e;
+		}
+		return $modified;
+	}
+	
+	/**
+	 * @param blog_persistentdocument_postgroup $postgroup
+	 * @return boolean
+	 */
+	protected function calculatePostCount($postgroup)
+	{
+		$postgroup->setPublishedPostCount(0);
+		return $postgroup->isPropertyModified('publishedPostCount');
+	}
+
+	/**
+	 * @param blog_persistentdocument_postgroup $document
+	 * @return Boolean
+	 */
+	public function isPublishable($document)
+	{
+		if ($document->getPublishedPostCount() <= 0)
+		{
+			return false;
+		}
+		return parent::isPublishable($document);
+	}
+	
 	
 	/**
 	 * @see f_persistentdocument_DocumentService::getDisplayPage()
@@ -107,4 +148,20 @@ class blog_PostgroupService extends f_persistentdocument_DocumentService
 		}
 		return parent::getDisplayPage($document);
 	}
+	
+	/**
+	 * @see f_persistentdocument_DocumentService::getResume()
+	 *
+	 * @param blog_persistentdocument_postgroup $document
+	 * @param string $forModuleName
+	 * @param array $allowedSections
+	 * @return array
+	 */
+	public function getResume($document, $forModuleName, $allowedSections = null)
+	{
+		$data = parent::getResume($document, $forModuleName, $allowedSections);
+		$data['properties']['publishedpostcount'] = $document->getPublishedPostCount();
+		return $data;
+	}
+
 }

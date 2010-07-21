@@ -40,6 +40,7 @@
 				<contextaction name="openFolder" />
 				<contextaction name="edit" />
 				<contextaction name="createBlog" />
+				<contextaction name="initDefaultStruct" />
 			</contextactions>
 		</model>
 		<model name="modules_website/systemtopic">
@@ -55,6 +56,7 @@
 				<contextaction name="openFolder" />
 				<contextaction name="edit" />
 				<contextaction name="createBlog" />
+				<contextaction name="initDefaultStruct" />
 			</contextactions>
 		</model>
 		<model name="modules_blog/postfolder">
@@ -166,5 +168,6 @@
 		<action name="createFolder" single="true" icon="create-folder" label="&amp;modules.uixul.bo.actions.Create-folder;" />	
 		<action name="previewPost" single="true" permission="PreviewPost" icon="preview" label="&amp;modules.blog.bo.actions.PreviewPost;" />
 		<action name="openTreeNodeOrder" single="true" permission="Order" icon="sort" label="&amp;modules.uixul.bo.actions.Set-children-order;" />
+		<action name="initDefaultStruct" single="true" permission="InitDefaultStruct" icon="add" label="&amp;modules.website.bo.actions.Init-default-struct;"/>
 	</actions>
 </perspective>

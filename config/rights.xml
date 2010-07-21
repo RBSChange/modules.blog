@@ -23,6 +23,7 @@
 			<action name="Trusted" />
 		</document>
 		<action name="FrontAdmin" />
+		<action name="InitDefaultStruct" />
 	</actions>
 	<roles>
 		<role name="Admin">
@@ -32,6 +33,7 @@
 			<permission name="GetPreferencesDocument" />
 			<permission name="EditLocale" />
 			<permission name="Update.rootfolder" />
+			<permission name="InitDefaultStruct" />
 		</role>
 		<role name="Writer" extend="Guest">
 			<permission name="Order" />

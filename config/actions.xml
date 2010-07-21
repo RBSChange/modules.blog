@@ -46,4 +46,22 @@
 			window.open(href, '', "menubar=yes, location=yes, toolbar=yes, resizable=yes, scrollbars=yes, status=yes");
 		]]></body>
 	</action>
+	<action name="initDefaultStruct">
+		<parameter name="listWidget" />
+		<body><![CDATA[
+			try
+			{
+				var documentId = listWidget.getSelectedItems()[0].id;
+				var lang = this.getContextLang();
+				var callback = function (pageTemplateName) {
+					return wCore.executeJSON('website', 'InitializeStructure', { cmpref: documentId, moduleName: 'blog', scriptName: 'topicDefaultStructure', pageTemplateName: pageTemplateName, lang: lang}, null, true);
+				};
+				getController().openModalDialog(this, 'InitializeStructure', {documentId: documentId, module: this, callback: callback });
+			}
+			catch (e)
+			{
+				wCore.error('blog.initDefaultStruct', [], e);
+			}
+		]]></body>
+	</action>
 </actions>

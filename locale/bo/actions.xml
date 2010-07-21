@@ -35,4 +35,12 @@
 		<locale lang="en">Preview post</locale>
 		<locale lang="de">Postvorschau</locale>
 	</entity>
+	<entity id="invalid-topic">
+		<locale lang="fr">Rubrique non valide.</locale>
+		<locale lang="en">Invalid topic.</locale>
+	</entity>
+	<entity id="topic-already-contains-pages">
+		<locale lang="fr">Cette rubrique contient déjà des pages.</locale>
+		<locale lang="en">This topic already contains pages.</locale>
+	</entity>
 </localization>

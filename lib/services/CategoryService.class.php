@@ -115,10 +115,8 @@ class blog_CategoryService extends blog_PostgroupService
 	{
 		$cfs = blog_CategoryfolderService::getInstance();
 		$categoryFolder = $cfs->getByBlog($blog);
-		$categories = $this->createQuery()->add(Restrictions::published())
-			->add(Restrictions::childOf($categoryFolder->getId()));
-			
-		return $categories;
+		return $this->createQuery()->add(Restrictions::published())
+			->add(Restrictions::childOf($categoryFolder->getId()))->find();
 	}
 	
 	/**
@@ -127,9 +125,8 @@ class blog_CategoryService extends blog_PostgroupService
 	 */
 	public function getPublishedSubCategories($category)
 	{
-		$categories = $this->createQuery()->add(Restrictions::published())
-			->add(Restrictions::childOf($category->getId()));
-		return $categories;
+		return $this->createQuery()->add(Restrictions::published())
+			->add(Restrictions::childOf($category->getId()))->find();
 	}
 	
 	/**
@@ -138,9 +135,8 @@ class blog_CategoryService extends blog_PostgroupService
 	 */
 	public function getPublishedAncestorCategories($category)
 	{
-		$categories = $this->createQuery()->add(Restrictions::published())
-			->add(Restrictions::ancestorOf($category->getId()));
-		return $categories;
+		return $this->createQuery()->add(Restrictions::published())
+			->add(Restrictions::ancestorOf($category->getId()))->find();
 	}
 		
 	/**

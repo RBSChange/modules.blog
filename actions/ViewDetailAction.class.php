@@ -48,7 +48,6 @@ class blog_ViewDetailAction extends generic_ViewDetailAction
 			$treeAncestor = $document;
 		}
 		
-		$page = null;
 		try
 		{
 			$page = TagService::getInstance()->getDocumentBySiblingTag(
@@ -58,7 +57,8 @@ class blog_ViewDetailAction extends generic_ViewDetailAction
 		}
 		catch (TagException $e)
 		{
-			//No taged Page found
+			// No taged Page found.
+			$page = null;
 			Framework::exception($e);
 		}
 

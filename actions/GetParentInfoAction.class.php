@@ -30,6 +30,10 @@ class blog_GetParentInfoAction extends f_action_BaseJSONAction
 		catch (Exception $e)
 		{
 			// Nothing to return. 
+			if (Framework::isDebugEnabled())
+			{
+				Framework::exception($e);
+			}
 		}
 		return $this->sendJSON($result);
 	}

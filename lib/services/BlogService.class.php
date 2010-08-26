@@ -186,7 +186,7 @@ class blog_BlogService extends f_persistentdocument_DocumentService
 	 * @param Integer $parentNodeId Parent node ID where to save the document.
 	 * @return void
 	 */
-	protected function postInsert($document, $parentNodeId = null)
+	protected function postInsert($document, $parentNodeId)
 	{
 		$postFolder = blog_PostfolderService::getInstance()->getNewDocumentInstance();
 		$postFolder->setLabel(f_Locale::translate('&modules.blog.document.postfolder.Default-label-value;'));

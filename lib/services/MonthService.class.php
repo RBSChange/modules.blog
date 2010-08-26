@@ -112,7 +112,7 @@ class blog_MonthService extends blog_PostgroupService
 	 * @param Integer $parentNodeId Parent node ID where to save the document (optionnal => can be null !).
 	 * @return void
 	 */
-	protected function preSave($document, $parentNodeId = null)
+	protected function preSave($document, $parentNodeId)
 	{
 		// Set the label.
 		$dateCalendar = date_Calendar::getInstanceFromFormat($document->getYear()->getNumber().'/'.$document->getNumber().'/1', 'Y/m/d');

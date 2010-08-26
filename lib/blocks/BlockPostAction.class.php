@@ -5,7 +5,7 @@
  */
 class blog_BlockPostAction extends website_TaggerBlockAction
 {
-    	/**
+    /**
 	 * @return String
 	 */
 	protected function getTag()

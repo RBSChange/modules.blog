@@ -3,7 +3,6 @@ class blog_PingBlogsTask extends task_SimpleSystemTask
 {
 	/**
 	 * @see task_SimpleSystemTask::execute()
-	 *
 	 */
 	protected function execute()
 	{
@@ -21,6 +20,5 @@ class blog_PingBlogsTask extends task_SimpleSystemTask
 				Framework::exception($e);
 			}
 		}
-		
 	}
 }

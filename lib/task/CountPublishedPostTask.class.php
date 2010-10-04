@@ -18,7 +18,12 @@ class blog_CountPublishedPostTask extends task_SimpleSystemTask
 			{
 				Framework::info(__METHOD__ . ' count post for blog: ' . $id);		
 			}	
-			f_util_System::execHTTPScript($batchPath, array($id));
+			$result = f_util_System::execHTTPScript($batchPath, array($id));
+			// Log fatal errors...
+			if ($result != '1')
+			{
+				Framework::error(__METHOD__ . ' ' . $batchPath . ' unexpected result: "' . $result . '"');
+			}
 		}	
 	}
 }

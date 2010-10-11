@@ -17,3 +17,4 @@ catch (Exception $e)
 {
 	$tm->rollBack($e);
 }
+echo 'OK';

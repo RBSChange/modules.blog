@@ -300,7 +300,10 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	private function updateMonthPostCount($document)
 	{
 		$month = $document->getMonth();
-		$month->getDocumentService()->updatePostCount($month);
+		if ($month !== null)
+		{
+			$month->getDocumentService()->updatePostCount($month);
+		}
 	}		
 
 	/**

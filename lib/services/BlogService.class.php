@@ -298,6 +298,60 @@ class blog_BlogService extends f_persistentdocument_DocumentService
 		}
 	}
 	
+	/**
+	 * @param blog_persistentdocument_blog $blog
+	 */
+	public function deleteWithContents($blog)
+	{
+		try 
+		{
+			$this->tm->beginTransaction();
+			
+			TreeService::getInstance()->setTreeNodeCache(false);
+			
+			foreach (blog_PostService::getInstance()->createQuery()->add(Restrictions::eq('blog', $blog))->find() as $post)
+			{
+				$post->setMonth(null);
+				$post->removeAllCategory();
+				$post->removeAllKeyword();
+				$post->delete();
+			}
+			blog_PostfolderService::getInstance()->createQuery()->add(Restrictions::descendentOf($blog->getId()))->delete();
+			
+			$this->deleteWithChildrenRecursive(blog_CategoryfolderService::getInstance()->getByBlog($blog));
+			
+			blog_KeywordService::getInstance()->createQuery()->add(Restrictions::eq('blog', $blog))->delete();
+			blog_KeywordfolderService::getInstance()->createQuery()->add(Restrictions::descendentOf($blog->getId()))->delete();
+			
+			foreach (blog_MonthService::getInstance()->createQuery()->add(Restrictions::eq('blog', $blog))->find() as $month)
+			{
+				$month->setYear(null);
+				$month->delete();
+			}
+			blog_YearService::getInstance()->createQuery()->add(Restrictions::eq('blog', $blog))->delete();
+			
+			$blog->delete();
+			
+			$this->tm->commit();
+		}
+		catch (Exception $e)
+		{
+			$this->tm->rollBack($e);
+		}
+	}
+	
+	/**
+	 * @param f_persistentdocument_PersistentDocument $parent
+	 */
+	private function deleteWithChildrenRecursive($parent)
+	{
+		foreach ($parent->getDocumentService()->getChildrenOf($parent) as $category)
+		{
+			$this->deleteWithChildrenRecursive($category);
+		}
+		$parent->delete();
+	}
+	
 	// Tweets handling.
 	
 	/**

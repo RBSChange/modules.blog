@@ -64,4 +64,28 @@
 			}
 		]]></body>
 	</action>
+	<action name="deleteBlog">
+		<parameter name="listWidget" />
+		<body><![CDATA[
+			if (confirm("&amp;modules.blog.bo.actions.Confirm-delete-blog;"))
+			{
+				var doc = listWidget.getSelectedItems()[0];
+				var lang = this.getContextLang();
+				this.executeJSON("DeleteBlog", { cmpref: doc.id, lang: lang });
+			}
+		]]></body>
+	</action>
+	<method name="onDeleteBlogSuccess">
+		<parameter name="result"/>
+		<body><![CDATA[
+			this.refresh();
+		]]></body>
+	</method>			
+	<method name="onDeleteBlogError">
+		<parameter name="result"/>
+		<body><![CDATA[
+			this.onDeleteBlogSuccess(result);
+			this.getController().alert(result.contents.errorMessage);
+		]]></body>
+	</method>
 </actions>

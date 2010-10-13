@@ -1,0 +1,16 @@
+<h2 tal:condition="configuration/getBlockTitle" change:h="">${configuration/getBlockTitleAsHtml}</h2>
+<tal:block tal:condition="not: configuration/getBlockTitle" tal:define="blog configuration/getBlog">
+	<h2 tal:condition="not: blog" change:h="" change:translate="modules.blog.frontoffice.Last-comments-from-blogs"></h2>
+	<h2 tal:condition="blog" change:h="" change:translate="modules.blog.frontoffice.Last-comments-from-blog; blog blog/getLabelAsHtml"></h2>
+</tal:block>
+
+<ul class="normal" tal:condition="comments">
+	<li tal:repeat="comment comments">
+		<a change:link="document comment" change:translate="modules.blog.frontoffice.Comment-on; target comment/getTarget/getLabelAsHtml"></a> <tal:block change:translate="modules.blog.frontoffice.posted-by; author comment/getAuthorNameAsHtml" /> - <tal:block change:datetime="comment/getCreationDate" />
+		<div class="summary" tal:condition="configuration/getShowSummary">
+			<tal:block tal:condition="not: configuration/getSummaryMaxLength">${comment/getContentsAsHtml}</tal:block>
+			<tal:block tal:condition="configuration/getSummaryMaxLength">${php: comment.getSummary(configuration.getSummaryMaxLength())}</tal:block>
+		</div>
+	</li>
+</ul>
+<p tal:condition="not: comments" class="normal" change:translate="modules.blog.frontoffice.No-comment-yet"></p>

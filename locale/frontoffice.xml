@@ -15,7 +15,7 @@
 		<locale lang="en">Trackback by</locale>
 		<locale lang="de">Trackback von</locale>
 	</entity>
-		<entity id="trackback-url">
+	<entity id="trackback-url">
 		<locale lang="fr">URL du rétrolien</locale>
 		<locale lang="en">Trackback URL</locale>
 		<locale lang="de">Trackback URL</locale>
@@ -102,9 +102,12 @@
 		<locale lang="de">{categoryLabel} - {blogLabel} - {siteLabel}</locale>
 	</entity>
 	<entity id="category-meta-description">
-		<locale lang="fr">{categoryLabel} : billets de la catégorie {categoryLabel} du blog {blogLabel} sur le site {siteLabel}. {categoryDescription}</locale>
-		<locale lang="en">{categoryLabel} : billets de la catégorie {categoryLabel} du blog {blogLabel} sur le site {siteLabel}. {categoryDescription}</locale>
-		<locale lang="de">{categoryLabel} : Kategoriebeiträge {categoryLabel} des Blogs {blogLabel} auf der Webseite {siteLabel}. {categoryDescription}</locale>
+		<locale lang="fr">{categoryLabel} : billets de la catégorie {categoryLabel} du blog {blogLabel} sur le site {siteLabel}.
+			{categoryDescription}</locale>
+		<locale lang="en">{categoryLabel} : billets de la catégorie {categoryLabel} du blog {blogLabel} sur le site {siteLabel}.
+			{categoryDescription}</locale>
+		<locale lang="de">{categoryLabel} : Kategoriebeiträge {categoryLabel} des Blogs {blogLabel} auf der Webseite {siteLabel}.
+			{categoryDescription}</locale>
 	</entity>
 	<entity id="keyword-meta-title">
 		<locale lang="fr">{keywordLabel} - {blogLabel} - {siteLabel}</locale>
@@ -124,7 +127,8 @@
 	<entity id="post-meta-description">
 		<locale lang="fr">{postLabel} : billet du blog {blogLabel} sur le site {siteLabel} créé le {postDate}. {postSummary}</locale>
 		<locale lang="en">{postLabel} : post in blog {blogLabel} on site {siteLabel} created the {postDate}. {postSummary}</locale>
-		<locale lang="de">{postLabel} : Blogbeitrag {blogLabel} auf der Webseite {siteLabel} erstellt am {postDate}. {postSummary}</locale>
+		<locale lang="de">{postLabel} : Blogbeitrag {blogLabel} auf der Webseite {siteLabel} erstellt am {postDate}. {postSummary}
+		</locale>
 	</entity>
 	<entity id="archives-meta-title">
 		<locale lang="fr">billets {date} - {blogLabel} - {siteLabel}</locale>
@@ -223,5 +227,28 @@
 	</entity>
 	<entity id="error-no-permission-on-blog">
 		<locale lang="fr">vous n'avez pas les permissions pour administrer ce blog.</locale>
+	</entity>
+	<entity id="last-posts-from-blogs">
+		<locale lang="fr">derniers billets</locale>
+	</entity>
+	<entity id="last-posts-from-blog">
+		<locale lang="fr">derniers billets du blog {blog}</locale>
+	</entity>
+	<entity id="no-post-yet">
+		<locale lang="fr">Il n'y a encore aucun billet à afficher.</locale>
+	</entity>
+	<entity id="last-comments-from-blogs">
+		<locale lang="fr">derniers commentaires</locale>
+	</entity>
+	<entity id="last-comments-from-blog">
+		<locale lang="fr">derniers commentaires du blog {blog}</locale>
+	</entity>
+	<entity id="no-comment-yet">
+		<locale lang="fr">Il n'y a encore aucun commentaire à afficher.</locale>
+	</entity>
+	<entity id="comment-on">
+		<locale lang="fr">commentaire sur "{target}"</locale>
+		<locale lang="en">comment on "{target}"</locale>
+		<locale lang="de">Kommentar zu "{target}"</locale>
 	</entity>
 </localization>

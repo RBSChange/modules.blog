@@ -574,6 +574,57 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		return $blog->getDocumentService()->getWebsiteId($blog);
 	}
 	
+	/**
+	 * @param blog_persistentdocument_blog $blog or null
+	 * @param integer $maxCount
+	 * @return blog_persistentdocument_post[]
+	 */
+	public function getLastPublished($blog, $maxCount, $website = null)
+	{
+		$query = $this->createQuery()->add(Restrictions::published());
+		if ($blog instanceof blog_persistentdocument_blog)
+		{
+			$query->add(Restrictions::eq('blog', $blog));
+		}
+		else
+		{
+			if ($website === null)
+			{
+				$website = website_WebsiteModuleService::getInstance()->getCurrentWebsite();
+			}
+			$query->createCriteria('blog')->add(Restrictions::descendentOf($website->getId()));
+		}
+		$query->addOrder(Order::desc('postDate'));
+		$query->setFirstResult(0)->setMaxResults($maxCount);
+		return $query->find();
+	}
+	
+	/**
+	 * @param blog_persistentdocument_blog $blog or null
+	 * @param integer $maxCount
+	 * @return comment_persistentdocument_comment[]
+	 */
+	public function getLastCommentsPublished($blog, $maxCount, $website = null)
+	{
+		$query = comment_CommentService::getInstance()->createQuery()->add(Restrictions::published());
+		$criteria = $query->createPropertyCriteria('targetId', 'modules_blog/post');
+		if ($blog instanceof blog_persistentdocument_blog)
+		{
+			$criteria->add(Restrictions::eq('blog', $blog));
+		}
+		else
+		{
+			if ($website === null)
+			{
+				$website = website_WebsiteModuleService::getInstance()->getCurrentWebsite();
+			}
+			$criteria->createCriteria('blog')->add(Restrictions::descendentOf($website->getId()));
+		}
+		$query->addOrder(Order::desc('creationdate'));
+		$query->setFirstResult(0)->setMaxResults($maxCount);
+		return $query->find();
+	}
+	
 	// Tweets handling.
 	
 	/**

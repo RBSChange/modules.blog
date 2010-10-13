@@ -147,4 +147,14 @@ class blog_persistentdocument_post extends blog_persistentdocument_postbase impl
 			$formProperties['blogId'] = $this->getBlogId();
 		}
 	}
+	
+	/**
+	 * @param integer $maxLength
+	 * @return string
+	 */
+	public function getShortSummary($maxLength = 80)
+	{
+		$summary = ($this->getSummary()) ? $this->getSummaryAsHtml() : $this->getContentsAsHtml();
+		return f_util_StringUtils::shortenString(f_util_StringUtils::htmlToText($summary), $maxLength);
+	}
 }

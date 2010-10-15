@@ -50,7 +50,7 @@
 		</topic>
 		
 		<topic byLabel="Administration des blogs (sécurisé)" id="blogs-admin">
-			<page byLabel="Administration des blogs" isIndexPage="true" indexingstatus="false">
+			<page byLabel="Administration des blogs" isIndexPage="true" navigationVisibility="hidden" indexingstatus="false">
 				<tag name="contextual_website_website_modules_blog_blogedit" />
 				<changecontent for="content-block">
 					<changeblock type="modules_blog_blogEdit" />

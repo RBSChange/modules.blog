@@ -3,50 +3,12 @@
 	<binding fileName="modules/blog/persistentdocument/import/blog_binding.xml" />
 	<binding fileName="modules/website/persistentdocument/import/website_binding.xml" />
 
-	<website byTag="default_modules_website_default-website" template="webfactory/tplTwo">
+	<attribute name="template" default="true">webfactory/tplTwo</attribute>
+	
+	<website byTag="default_modules_website_default-website">
 		<topic byLabel="Liste des blogs" id="blogs">
-			<page byLabel="Liste des blogs" isIndexPage="true" indexingstatus="false" navigationVisibility="hidden">
-				<tag name="functional_blog_blog-list" />
-				<changecontent for="content-block">
-					<changeblock type="modules_blog_blogcontextuallist" />
-				</changecontent>
-			</page>
-
-			<page byLabel="Blog" navigationVisibility="hidden" indexingstatus="false">
-				<tag name="functional_blog_blog-detail" />
-				<changecontent for="content-block">
-					<changeblock type="modules_blog_blog" />
-				</changecontent>
-			</page>
-			
-			<page byLabel="Catégorie" navigationVisibility="hidden" indexingstatus="false">
-				<tag name="functional_blog_category-detail" />
-				<changecontent for="content-block">
-					<changeblock type="modules_blog_category" />
-				</changecontent>
-			</page>
-			
-			<page byLabel="Mot clé" navigationVisibility="hidden" indexingstatus="false">
-				<tag name="functional_blog_keyword-detail" />
-				<changecontent for="content-block">
-					<changeblock type="modules_blog_keyword" />
-				</changecontent>
-			</page>
-			
-			<page byLabel="Billet" navigationVisibility="hidden" indexingstatus="false">
-				<tag name="functional_blog_post-detail" />
-				<changecontent for="content-block">
-					<changeblock type="modules_blog_post" />
-					<changeblock type="modules_blog_comments" />
-				</changecontent>
-			</page>
-			
-			<page byLabel="Archives" navigationVisibility="hidden" indexingstatus="false">
-				<tag name="functional_blog_archives" />
-				<changecontent for="content-block">
-					<changeblock type="modules_blog_archives" />
-				</changecontent>
-			</page>
+			<execute method="setDocumentIdAttribute" />
+			<binding fileName="modules/blog/setup/topicDefaultStructure.xml" />
 		</topic>
 		
 		<topic byLabel="Administration des blogs (sécurisé)" id="blogs-admin">

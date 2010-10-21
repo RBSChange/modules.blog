@@ -3,7 +3,9 @@
 	<binding fileName="modules/blog/persistentdocument/import/blog_binding.xml" />
 	<binding fileName="modules/website/persistentdocument/import/website_binding.xml" />
 
-	<topic template="webfactory/tplTwo">
+	<attribute name="template" default="true">webfactory/tplTwo</attribute>
+	
+	<topic byDocumentId-attr="">
 		<page byLabel="Liste des blogs" isIndexPage="true" indexingstatus="false" navigationVisibility="hidden">
 			<tag name="functional_blog_blog-list" />
 			<changecontent for="content-block">

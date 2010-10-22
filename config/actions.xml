@@ -64,6 +64,19 @@
 			}
 		]]></body>
 	</action>
+	<action name="initFrontadminStructure">
+		<parameter name="listWidget" />
+		<body><![CDATA[
+			try
+			{
+				getController().openModalDialog(this, 'selectBlogStructureRoot', { module: 'website', allow: 'modules_website_website,modules_website_topic,modules_website_systemtopic', single: true, originalModule: this });
+			}
+			catch (e)
+			{
+				wCore.error('catalog.initDefaultStructure', [], e);
+			}
+		]]></body>
+	</action>
 	<action name="deleteBlog">
 		<parameter name="listWidget" />
 		<body><![CDATA[

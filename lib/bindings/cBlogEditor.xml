@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<bindings xmlns="http://www.mozilla.org/xbl" xmlns:xbl="http://www.mozilla.org/xbl" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<!-- Root structure selection. -->
+	
+	<binding id="cSelectStructureRootDialog" extends="core.wDialog#cRessourceDialog">
+		<implementation>
+			<method name="handleSelected">
+				<parameter name="list" />
+				<body><![CDATA[
+					var selectedItems = list.getSelectedItems();
+					if (selectedItems.length == 0)
+					{
+						return;
+					}
+					var selectedItem = selectedItems[0];
+					if (selectedItem.id)
+					{
+						var originalModule = this.parameters.originalModule
+						var documentId = selectedItem.id;
+						var topicId = selectedItem.id;
+						var lang = originalModule.getContextLang();
+						var callback = function (pageTemplateName) {
+							return wCore.executeJSON('website', 'InitializeStructure', { cmpref: documentId, moduleName: 'blog', scriptName: 'frontadminDefaultStructure', pageTemplateName: pageTemplateName, lang: lang }, null, true);
+						};
+						this.controller.closeModalDialog(true);
+						setTimeout(function() { getController().openModalDialog(originalModule, 'InitializeStructure', { documentId: documentId, pageContainerId: topicId, module: originalModule, callback: callback }); }, 100);
+					}
+				]]></body>
+			</method>
+		</implementation>
+	</binding>
+</bindings>

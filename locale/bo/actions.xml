@@ -43,6 +43,9 @@
 		<locale lang="fr">Cette rubrique contient déjà des pages.</locale>
 		<locale lang="en">This topic already contains pages.</locale>
 	</entity>
+	<entity id="init-frontadmin-struct">
+		<locale lang="fr">initialiser les pages pour l'administration sur le site</locale>
+	</entity>
 	<entity id="delete-blog">
 		<locale lang="fr">supprimer ce blog et tout son contenu</locale>
 	</entity>

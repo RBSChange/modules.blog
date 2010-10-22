@@ -14,6 +14,11 @@ class blog_BlockPostFormAction extends website_BlockAction
 	 */
 	public function execute($request, $response, blog_persistentdocument_post $post)
 	{
+		if ($this->isInBackoffice())
+		{
+			return website_BlockView::NONE;
+		}
+		
 		$blog = $post->getBlog();
 		if (!$blog->getDocumentService()->checkAdminPermissionsForCurrentFrontendUser($blog))
 		{

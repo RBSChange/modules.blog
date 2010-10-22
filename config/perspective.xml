@@ -25,6 +25,7 @@
 			<contextactions>
 				<contextaction name="openFolder" />
 				<contextaction name="openTopicOrder"/>
+				<contextaction name="initFrontadminStructure"/>
 			</contextactions>
 		</model>
 		<model name="modules_website/topic">
@@ -169,5 +170,6 @@
 		<action name="previewPost" single="true" permission="PreviewPost" icon="preview" label="&amp;modules.blog.bo.actions.PreviewPost;" />
 		<action name="openTreeNodeOrder" single="true" permission="Order" icon="sort" label="&amp;modules.uixul.bo.actions.Set-children-order;" />
 		<action name="initDefaultStruct" single="true" permission="InitDefaultStruct" icon="add" label="&amp;modules.website.bo.actions.Init-default-struct;"/>
+		<action name="initFrontadminStructure" single="true" permission="InitDefaultStruct" icon="add" label="&amp;modules.blog.bo.actions.Init-frontadmin-struct;"/>
 	</actions>
 </perspective>

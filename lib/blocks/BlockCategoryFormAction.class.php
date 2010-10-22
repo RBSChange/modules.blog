@@ -14,6 +14,11 @@ class blog_BlockCategoryFormAction extends website_BlockAction
 	 */
 	public function execute($request, $response, blog_persistentdocument_category $category)
 	{
+		if ($this->isInBackoffice())
+		{
+			return website_BlockView::NONE;
+		}
+		
 		$blog = $category->getBlog();
 		if (!$blog->getDocumentService()->checkAdminPermissionsForCurrentFrontendUser($blog))
 		{

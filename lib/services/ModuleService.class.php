@@ -73,18 +73,68 @@ class blog_ModuleService extends ModuleBaseService
 	 */
 	public function updateStructureInitializationScript($container, $pageTemplate, $script, $scriptDom)
 	{
+		switch ($script)
+		{
+			case 'topicDefaultStructure':
+				$this->updateBlogStructureInitializationScript($container, $pageTemplate, $script, $scriptDom);
+				break;
+				
+			case 'frontadminDefaultStructure' :
+				$this->updateFrontadminStructureInitializationScript($container, $pageTemplate, $script, $scriptDom);
+				break;
+				
+			default:
+				throw new BaseException('Unknown structure initialization script: '.$script, 'modules.blog.bo.actions.Unknown-structure-initialization-script', array('script' => $script));
+		}
+	}
+	
+	/**
+	 * @param f_peristentdocument_PersistentDocument $container
+	 * @param string $pageTemplate
+	 * @param string $script
+	 * @param DOMDocument $scriptPath
+	 */
+	protected function updateBlogStructureInitializationScript($container, $pageTemplate, $script, $scriptDom)
+	{
 		// Check container.
 		if (!$container instanceof website_persistentdocument_topic)
 		{
 			throw new BaseException('Invalid shop', 'modules.blog.bo.actions.Invalid-topic');
 		}
-		else
+		
+		$node = TreeService::getInstance()->getInstanceByDocument($container);
+		if (count($node->getChildren('modules_website/page')) > 0)
 		{
-			$node = TreeService::getInstance()->getInstanceByDocument($container);
-			if (count($node->getChildren('modules_website/page')) > 0)
-			{
-				throw new BaseException('This shop already contains pages', 'modules.blog.bo.actions.Topic-already-contains-pages');
-			}
+			throw new BaseException('This shop already contains pages', 'modules.blog.bo.actions.Topic-already-contains-pages');
+		}
+		
+		// Fix script content.
+		$xmlWebsite = $scriptDom->getElementsByTagName('systemtopic')->item(0);
+		if (!$xmlWebsite)
+		{
+			$xmlWebsite = $scriptDom->getElementsByTagName('topic')->item(0);
+		}
+		$xmlWebsite->setAttribute('documentid', $container->getId());
+	}
+	
+	/**
+	 * @param f_peristentdocument_PersistentDocument $container
+	 * @param string $pageTemplate
+	 * @param string $script
+	 * @param DOMDocument $scriptPath
+	 */
+	protected function updateFrontadminStructureInitializationScript($container, $pageTemplate, $script, $scriptDom)
+	{
+		// Check container.
+		if (!$container instanceof website_persistentdocument_topic)
+		{
+			throw new BaseException('Invalid topic', 'modules.blog.bo.actions.Invalid-topic');
+		}
+		
+		$node = TreeService::getInstance()->getInstanceByDocument($container);
+		if (count($node->getChildren('modules_website/page')) > 0)
+		{
+			throw new BaseException('This shop already contains pages', 'modules.blog.bo.actions.Topic-already-contains-pages');
 		}
 		
 		// Fix script content.

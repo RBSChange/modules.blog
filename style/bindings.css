@@ -1,3 +1,0 @@
-wdialog[template="selectBlogStructureRoot"]{
-	-moz-binding: url(binding:modules.blog.cBlogEditor#cSelectStructureRootDialog);
-}

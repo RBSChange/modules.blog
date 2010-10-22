@@ -65,7 +65,6 @@ class blog_ModuleService extends ModuleBaseService
 		return $result;
 	}
 	
-
 	/**
 	 * @param f_peristentdocument_PersistentDocument $container
 	 * @param array $attributes
@@ -73,6 +72,27 @@ class blog_ModuleService extends ModuleBaseService
 	 * @return array
 	 */
 	public function getStructureInitializationAttributes($container, $attributes, $script)
+	{
+		switch ($script)
+		{
+			case 'topicDefaultStructure':
+				return $this->getBlogStructureInitializationAttributes($container, $attributes, $script);
+				
+			case 'frontadminDefaultStructure' :
+				return $this->getFrontadminStructureInitializationAttributes($container, $attributes, $script);
+			
+			default:
+				throw new BaseException('Unknown structure initialization script: '.$script, 'modules.blog.bo.actions.Unknown-structure-initialization-script', array('script' => $script));
+		}
+	}
+
+	/**
+	 * @param f_peristentdocument_PersistentDocument $container
+	 * @param array $attributes
+	 * @param string $script
+	 * @return array
+	 */
+	public function getBlogStructureInitializationAttributes($container, $attributes, $script)
 	{
 		// Check container.
 		if (!$container instanceof website_persistentdocument_topic)
@@ -84,6 +104,33 @@ class blog_ModuleService extends ModuleBaseService
 		if (count($node->getChildren('modules_website/page')) > 0)
 		{
 			throw new BaseException('This shop already contains pages', 'modules.blog.bo.actions.Topic-already-contains-pages');
+		}
+		
+		// Set atrtibutes.
+		$attributes['byDocumentId'] = $container->getId();
+		return $attributes;
+	}
+	
+	/**
+	 * @param f_peristentdocument_PersistentDocument $container
+	 * @param array $attributes
+	 * @param string $script
+	 * @return array
+	 */
+	public function getFrontadminStructureInitializationAttributes($container, $attributes, $script)
+	{
+		// Check container.
+		if (!$container instanceof website_persistentdocument_website)
+		{
+			throw new BaseException('Invalid website', 'modules.blog.bo.actions.Invalid-website');
+		}
+		
+		if (TagService::getInstance()->hasDocumentByContextualTag('contextual_website_website_modules_forums_memberlist', $container) || 
+			TagService::getInstance()->hasDocumentByContextualTag('contextual_website_website_modules_forums_member', $container) ||
+			TagService::getInstance()->hasDocumentByContextualTag('contextual_website_website_modules_forums_editprofile', $container) ||
+			TagService::getInstance()->hasDocumentByContextualTag('contextual_website_website_modules_forums_memberban', $container))
+		{
+			throw new BaseException('This website already contains front admin pages', 'modules.blog.bo.actions.Website-already-contains-frontadmin-page');
 		}
 		
 		// Set atrtibutes.

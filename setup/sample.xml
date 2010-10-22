@@ -6,39 +6,11 @@
 	<attribute name="template" default="true">webfactory/tplTwo</attribute>
 	
 	<website byTag="default_modules_website_default-website">
+		<execute method="setDocumentIdAttribute" />
+		<binding fileName="modules/blog/setup/frontadminDefaultStructure.xml" />
 		<topic byLabel="Liste des blogs" id="blogs">
 			<execute method="setDocumentIdAttribute" />
 			<binding fileName="modules/blog/setup/topicDefaultStructure.xml" />
-		</topic>
-		
-		<topic byLabel="Administration des blogs (sécurisé)" id="blogs-admin">
-			<page byLabel="Administration des blogs" isIndexPage="true" navigationVisibility="hidden" indexingstatus="false">
-				<tag name="contextual_website_website_modules_blog_blogedit" />
-				<changecontent for="content-block">
-					<changeblock type="modules_blog_blogEdit" />
-				</changecontent>
-			</page>
-			
-			<page byLabel="Édition d'un billet" navigationVisibility="hidden" indexingstatus="false">
-				<tag name="contextual_website_website_modules_blog_postform" />
-				<changecontent for="content-block">
-					<changeblock type="modules_blog_postForm" />
-				</changecontent>
-			</page>
-			
-			<page byLabel="Édition d'une catégorie" navigationVisibility="hidden" indexingstatus="false">
-				<tag name="contextual_website_website_modules_blog_categoryform" />
-				<changecontent for="content-block">
-					<changeblock type="modules_blog_categoryForm" />
-				</changecontent>
-			</page>
-			
-			<page byLabel="Validation des commentaires" navigationVisibility="hidden" indexingstatus="false">
-				<tag name="contextual_website_website_modules_blog_commentsvalidation" />
-				<changecontent for="content-block">
-					<changeblock type="modules_blog_commentsvalidation" />
-				</changecontent>
-			</page>
 		</topic>
 	</website>
 

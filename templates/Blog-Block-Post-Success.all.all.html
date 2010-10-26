@@ -2,11 +2,11 @@
 
 <ul class="mini-navigation" tal:condition="php: post.getAllowComments() || configuration.getShowblogrsslink()">
 	<li tal:condition="configuration/getShowblogrsslink">
-		<img change:image="front/rss.gif" alt="" />
+		<img change:img="front/rss.gif" alt="" />
 		<a class="link" change:link="module blog; action ViewFeed; parentref post/getBlog/getId" change:translate="modules.blog.frontoffice.Blog-rss-link"></a>
 	</li>
 	<li tal:condition="post/getAllowComments">
-		<img change:image="front/rss.gif" alt="" />
+		<img change:img="front/rss.gif" alt="" />
 		<a class="link" change:link="module comment; action ViewFeed; targetId post/getId" change:translate="modules.comment.frontoffice.Rss-link"></a>
 	</li>
 </ul>

@@ -2,11 +2,11 @@
 
 <ul class="mini-navigation">
 	<li tal:condition="configuration/getShowblogrsslink">
-		<img change:image="front/rss.gif" alt="" />
+		<img change:img="front/rss.gif" alt="" />
 		<a class="link" change:link="module blog; action ViewFeed; parentref category/getBlog/getId" change:translate="modules.blog.frontoffice.Blog-rss-link"></a>
 	</li>
 	<li>
-		<img change:image="front/rss.gif" alt="" />
+		<img change:img="front/rss.gif" alt="" />
 		<a class="link" change:link="module blog; action ViewFeed; parentref category/getId" change:translate="modules.blog.frontoffice.Category-rss-link"></a>
 	</li>
 </ul>

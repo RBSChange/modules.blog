@@ -16,8 +16,8 @@
 		</td>
 		<td>${document/getContentsAsHtml}</td>
 		<td class="actions" tal:define="currentTaskId php: array_search(document->getId(), commentIds)">
-			<a class="link" change:actionlink="taskId currentTaskId; cmpref blog/getId" block="blog_commentsvalidation" action="validate"><img change:i18nattr="alt &modules.blog.frontoffice.Comment-Validate-link;" change:icon="src activate/small" /></a>
-			<a class="link" change:actionlink="taskId currentTaskId; cmpref blog/getId" block="blog_commentsvalidation" action="cancel"><img change:i18nattr="alt &modules.blog.frontoffice.Comment-Cancel-link;" change:icon="src delete/small" /></a>
+			<a class="link" change:actionlink="taskId currentTaskId; cmpref blog/getId" block="blog_commentsvalidation" action="validate"><img change:i18nattr="alt &modules.blog.frontoffice.Comment-Validate-link;" change:img="icon/small/activate.png" /></a>
+			<a class="link" change:actionlink="taskId currentTaskId; cmpref blog/getId" block="blog_commentsvalidation" action="cancel"><img change:i18nattr="alt &modules.blog.frontoffice.Comment-Cancel-link;" change:img="icon/small/delete.png" /></a>
 		</td>
 	</tr>
 </table>

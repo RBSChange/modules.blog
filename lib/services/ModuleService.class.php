@@ -125,10 +125,10 @@ class blog_ModuleService extends ModuleBaseService
 			throw new BaseException('Invalid website', 'modules.blog.bo.actions.Invalid-website');
 		}
 		
-		if (TagService::getInstance()->hasDocumentByContextualTag('contextual_website_website_modules_blog_blogedit', $website) || 
-			TagService::getInstance()->hasDocumentByContextualTag('contextual_website_website_modules_blog_postform', $website) ||
-			TagService::getInstance()->hasDocumentByContextualTag('contextual_website_website_modules_blog_categoryform', $website) ||
-			TagService::getInstance()->hasDocumentByContextualTag('contextual_website_website_modules_blog_commentsvalidation', $website))
+		if (TagService::getInstance()->hasDocumentByContextualTag('contextual_website_website_modules_blog_blogedit', $container) || 
+			TagService::getInstance()->hasDocumentByContextualTag('contextual_website_website_modules_blog_postform', $container) ||
+			TagService::getInstance()->hasDocumentByContextualTag('contextual_website_website_modules_blog_categoryform', $container) ||
+			TagService::getInstance()->hasDocumentByContextualTag('contextual_website_website_modules_blog_commentsvalidation', $container))
 		{
 			throw new BaseException('This website already contains front admin pages', 'modules.blog.bo.actions.Website-already-contains-frontadmin-page');
 		}

@@ -211,7 +211,6 @@ class blog_CategoryService extends blog_PostgroupService
 	 */
 	protected function onMoveToStart($document, $destId)
 	{
-		
 		$id = $document->getId();
 		$categoryIds = array();
 		
@@ -220,10 +219,9 @@ class blog_CategoryService extends blog_PostgroupService
 			->add(Restrictions::ancestorOf($id))
 			->setProjection(Projections::groupProperty('id', 'id'))->findColumn('id');
 
-	
 		// Refresh new ancestors counters.
 		$newParent = DocumentHelper::getDocumentInstance($destId);
-		if ($newParent instanceof blog_persistentcument_category)
+		if ($newParent instanceof blog_persistentdocument_category)
 		{
 			$categoryIds[] = $newParent->getId();
 

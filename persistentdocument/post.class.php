@@ -95,7 +95,7 @@ class blog_persistentdocument_post extends blog_persistentdocument_postbase impl
 	 */
 	public function getRSSGuid()
 	{
-		return LinkHelper::getUrl($this);
+		return LinkHelper::getDocumentUrl($this);
 	}
 	
 	/**

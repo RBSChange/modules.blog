@@ -45,7 +45,7 @@ class blog_ViewFeedAction extends f_action_BaseAction
 		$feedWriter->setTitle($title);
 		$feedWriter->setDescription(f_util_StringUtils::htmlToText($parent->getDescriptionAsHtml()));
 
-		$feedURL = LinkHelper::getUrl($parent);
+		$feedURL = LinkHelper::getDocumentUrl($parent);
 
 		$feedWriter->setLink($feedURL);
 	}

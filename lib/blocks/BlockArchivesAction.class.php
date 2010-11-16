@@ -42,7 +42,7 @@ class blog_BlockArchivesAction extends website_TaggerBlockAction
 		
 		// Set the paginator.
 		$paginator = new paginator_Paginator('blog', 
-			$request->getParameter(paginator_Paginator::REQUEST_PARAMETER_NAME, 1),
+			$request->getParameter(paginator_Paginator::PAGEINDEX_PARAMETER_NAME, 1),
 			$bs->getSortedPosts($blog, $dates),
 			$this->getNbItemPerPage($request, $response)
 		);

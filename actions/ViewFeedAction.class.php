@@ -61,7 +61,7 @@ class blog_ViewFeedAction extends f_action_BaseAction
 	/**
 	 * @return boolean
 	 */
-	protected function suffixSecureActionByDocument()
+	protected function isDocumentAction()
 	{
 		return false;
 	}

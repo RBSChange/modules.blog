@@ -23,7 +23,7 @@ class blog_BlockBlogEditAction extends website_BlockAction
 		if (!$blog)
 		{
 			// Set the paginator.
-			$pageIndex = $request->getParameter(paginator_Paginator::REQUEST_PARAMETER_NAME, 1);
+			$pageIndex = $request->getParameter(paginator_Paginator::PAGEINDEX_PARAMETER_NAME, 1);
 			$paginator = new paginator_Paginator('blog', $pageIndex, $this->getDocumentList($request, $response), $this->getNbItemPerPage($request, $response));
 			$request->setAttribute('paginator', $paginator);
 			return 'List';

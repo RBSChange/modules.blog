@@ -13,7 +13,7 @@ class blog_BlogEditLoadHandler extends website_ViewLoadHandlerImpl
 			
 		// Set the paginator
 		$paginator = new paginator_Paginator('blog', 
-				$request->getParameter(paginator_Paginator::REQUEST_PARAMETER_NAME, 1),
+				$request->getParameter(paginator_Paginator::PAGEINDEX_PARAMETER_NAME, 1),
 				$this->getPosts($blog),
 				$this->getNbItemPerPage($request, $response));
 

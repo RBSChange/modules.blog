@@ -13,7 +13,7 @@ class blog_CommentsValidationLoadHandler extends website_ViewLoadHandlerImpl
 		list ($commentIds, $comments) = $this->getComments($blog);
 		
 		// Set the paginator.
-		$pageIndex = $request->getParameter(paginator_Paginator::REQUEST_PARAMETER_NAME, 1);
+		$pageIndex = $request->getParameter(paginator_Paginator::PAGEINDEX_PARAMETER_NAME, 1);
 		$itemsPerPage = $this->getNbItemPerPage($request, $response);
 		$paginator = new paginator_Paginator('blog', $pageIndex, $comments, $itemsPerPage);
 		

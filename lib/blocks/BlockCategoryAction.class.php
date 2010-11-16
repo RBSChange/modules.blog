@@ -36,7 +36,7 @@ class blog_BlockCategoryAction extends website_TaggerBlockAction
 		
 		// Set the paginator
 		$paginator = new paginator_Paginator('blog', 
-				$request->getParameter(paginator_Paginator::REQUEST_PARAMETER_NAME, 1),
+				$request->getParameter(paginator_Paginator::PAGEINDEX_PARAMETER_NAME, 1),
 				blog_CategoryService::getInstance()->getSortedPosts($category, $this->getConfiguration()->getIncludedescendents()),
 				$this->getNbItemPerPage($request, $response)
 		);

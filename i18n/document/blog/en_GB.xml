@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.document.blog" lcid="en_GB">
+  <key id="edition-form-title">blog properties</key>
+  <key id="document-name">blog</key>
+  <key id="label">label</key>
+  <key id="label-help">label</key>
+  <key id="description">description</key>
+  <key id="description-help">description</key>
+  <key id="pingurls">URL to ping</key>
+  <key id="pingurls-help">URL implementing the XML-RPC Weblogs.Com interface.</key>
+  <key id="enablepingback">Enable pingbacks</key>
+  <key id="enablepingback-help">Activate pingbacks por the posts of this blog</key>
+  <key id="enabletrackback">Enable trackbacks</key>
+  <key id="enabletrackback-help">Activate trackbacks por the posts of this blog</key>
+</i18n>

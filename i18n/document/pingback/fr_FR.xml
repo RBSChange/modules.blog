@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.document.pingback" lcid="fr_FR">
+  <include id="m.comment.document.comment"/>
+  <key id="document-name">pingback</key>
+</i18n>

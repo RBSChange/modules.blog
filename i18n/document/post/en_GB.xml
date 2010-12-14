@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.document.post" lcid="en_GB">
+  <key id="document-name">post</key>
+  <key id="label">label</key>
+  <key id="contents">contents</key>
+  <key id="summary">summary</key>
+  <key id="summary-help">If not empty, the summary will be displayed instead of the contents in the posts lists.</key>
+  <key id="showsummaryondetail">show summary on detail</key>
+  <key id="showsummaryondetail-help">If yes, the summary will be displayed below the contents on the detail page.</key>
+  <key id="allowcomments">allow comments</key>
+  <key id="category">categories</key>
+  <key id="keywordstext">keywords</key>
+  <key id="keywordstext-help">comma-separated keywords</key>
+  <key id="postdate">post date</key>
+  <key id="postdate-help">The date is displayed on the site and serves to order the posts in the lists displayed. If empty, the date will be completed with the publication date.</key>
+  <key id="startpublicationdate">start publication date</key>
+  <key id="startpublicationdate-help">start publication date</key>
+  <key id="endpublicationdate">end publication date</key>
+  <key id="endpublicationdate-help">end publication date</key>
+  <key id="trackbacks">trackbacks</key>
+  <key id="trackbacks-help">Comma-separated trackback list.</key>
+  <key id="allowpingbacks">Allow pingbacks</key>
+  <key id="allowpingbacks-help">When set to ″yes″, you will be able to send and receive trackbacks and pingbacks for this post.</key>
+  <key id="allowtrackbacks">Allow trackbacks</key>
+  <key id="allowtrackbacks-help">When set to ″yes″, you will be able to receive trackbacks for this post.</key>
+  <key id="categoriesandkeywords">categories and keywords</key>
+  <key id="commentsandpings">comments and pings</key>
+</i18n>

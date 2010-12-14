@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.document.preferences" lcid="fr_FR">
+  <key id="document-name">préférences</key>
+  <key id="edition-form-title">préférences du module blog</key>
+  <key id="rssmaxitemcount">nombre de billets dans les flux RSS</key>
+  <key id="rssmaxitemcount-help">indiquez ici le nombre maximal de billets à lister dans les flux RSS. Laisser vide pour ne pas limiter ce nombre.</key>
+  <key id="pingurls">URL de pings (séparés par des virgules)</key>
+  <key id="pingurls-help">URL de sites qui implémente l'interface XML-RPC Weblogs.Com séparées par des virgules.</key>
+</i18n>

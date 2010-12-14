@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.bo.actions" lcid="fr_FR">
+  <key id="create_">créer</key>
+  <key id="createoncategory">créer</key>
+  <key id="create-blog">créer un blog</key>
+  <key id="create-post">créer un billet</key>
+  <key id="create-category">créer une catégorie</key>
+  <key id="create-keyword">créer un mot-clé</key>
+  <key id="previewpost">Prévisualiser le billet</key>
+  <key id="invalid-topic">Rubrique non valide.</key>
+  <key id="topic-already-contains-pages">Cette rubrique contient déjà des pages.</key>
+  <key id="init-frontadmin-struct">initialiser les pages pour l'administration sur le site</key>
+  <key id="delete-blog">supprimer ce blog et tout son contenu</key>
+  <key id="confirm-delete-blog">êtes-vous sûr de vouloir supprimer ce blog et tout son contenu ? (cette opération est irréversible)</key>
+</i18n>

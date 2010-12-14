@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.bo.blocks.category" lcid="en_GB">
+  <key id="cmpref">linked document</key>
+  <key id="cmpref-help">linked document</key>
+  <key id="nbitemperpage">Document count</key>
+  <key id="nbitemperpage-help">Max. document count per page</key>
+  <key id="includedescendents">include descendant</key>
+  <key id="includedescendents-help">includedescendents-help</key>
+  <key id="showblogrsslink">link to blog's RSS flux</key>
+  <key id="showblogrsslink-help">show link to blog(s global RSS flux</key>
+</i18n>

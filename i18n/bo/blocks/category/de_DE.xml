@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.bo.blocks.category" lcid="de_DE">
+  <key id="cmpref">verlinktes Dokument</key>
+  <key id="cmpref-help">verlinktes Dokument</key>
+  <key id="nbitemperpage">Anzahl Dokumente</key>
+  <key id="nbitemperpage-help">Maximale Anzahl anzuzeigende Dokumente pro Seite</key>
+  <key id="includedescendents">Abkomme einschliessen</key>
+  <key id="includedescendents-help">Bei der Wahl Abkomme einzuschliessen, werden die den Unterkategorien der aktuellen Kategorie assoziierten Beiträge zusätzlich angezeigt. Im umgekehrten Fall, werden ausschliesslich die der aktuellen Kategorie direkt assoziierten Beiträge angezeigt.</key>
+  <key id="showblogrsslink">Link zum RSS Feed des Blogs</key>
+  <key id="showblogrsslink-help">Link zum gesamten RSS Feed des Blogs anzeigen</key>
+</i18n>

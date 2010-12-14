@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.document.keyword" lcid="fr_FR">
+  <key id="edition-form-title">propriétés du mot-clé</key>
+  <key id="document-name">mot-clé</key>
+  <key id="label">libellé</key>
+  <key id="label-help">libellé</key>
+  <key id="description">description</key>
+  <key id="description-help">cette description est affichée dans le détail d'un mot-clé. Elle sert également de description au flux RSS associé à ce mot-clé.</key>
+</i18n>

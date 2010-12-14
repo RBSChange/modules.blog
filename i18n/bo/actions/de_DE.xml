@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.bo.actions" lcid="de_DE">
+  <key id="create_">Neu</key>
+  <key id="createoncategory">Neu</key>
+  <key id="create-blog">Neuer Blog</key>
+  <key id="create-post">Neuer Beitrag</key>
+  <key id="create-category">Neue Kategorie</key>
+  <key id="create-keyword">Neues Stichwort</key>
+  <key id="previewpost">Postvorschau</key>
+</i18n>

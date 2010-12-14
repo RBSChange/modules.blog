@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.bo.blocks.blogcontextuallist" lcid="de_DE">
+  <key id="nbitemperpage">Anzahl Dokumente</key>
+  <key id="nbitemperpage-help">Maximale Anzahl anzuzeigende Dokumente pro Seite</key>
+  <key id="showpoststats">Beitragsstatistik anzeigen</key>
+  <key id="showpoststats-help">Autorenliste der Beiträge zu diesem Blog anzeigen/nicht anzeigen</key>
+  <key id="showauthors">Autoren anzeigen</key>
+</i18n>

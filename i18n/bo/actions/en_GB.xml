@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.bo.actions" lcid="en_GB">
+  <key id="create_">create</key>
+  <key id="createoncategory">create</key>
+  <key id="create-blog">create a blog</key>
+  <key id="create-post">create a post</key>
+  <key id="create-category">create a category</key>
+  <key id="create-keyword">create a keyword</key>
+  <key id="previewpost">Preview post</key>
+  <key id="invalid-topic">Invalid topic.</key>
+  <key id="topic-already-contains-pages">This topic already contains pages.</key>
+</i18n>

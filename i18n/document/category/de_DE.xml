@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.document.category" lcid="de_DE">
+  <key id="edition-form-title">Eigenschaften der Kategorie</key>
+  <key id="document-name">Kategorie</key>
+  <key id="label">Name</key>
+  <key id="label-help">Name</key>
+  <key id="description">Beschreibung</key>
+  <key id="description-help">Diese Beschreibung erscheint in den Eigenschaften einer Kategorie. Sie dient ebenfalls als Beschreibung des dieser Kategorie assoziierten RSS Feeds.</key>
+</i18n>

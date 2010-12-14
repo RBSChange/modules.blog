@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.document.preferences" lcid="en_GB">
+  <key id="document-name">preferences</key>
+  <key id="edition-form-title">blog module preferences</key>
+  <key id="rssmaxitemcount">post count in RSS feeds</key>
+  <key id="rssmaxitemcount-help">rssMaxItemCount</key>
+  <key id="pingurls">Ping URL (comma separated)</key>
+  <key id="pingurls-help">Comma separated URL implementing the XML-RPC Weblogs.Com interface.</key>
+</i18n>

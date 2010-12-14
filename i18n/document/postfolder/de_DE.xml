@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.document.postfolder" lcid="de_DE">
+  <key id="document-name">Ordner Beiträge</key>
+  <key id="edition-form-title">Eigenschaften des Ordners Beiträge</key>
+  <key id="default-label-value">Beiträge</key>
+  <key id="label">Name</key>
+  <key id="label-help">Name</key>
+  <key id="description">Beschreibung</key>
+  <key id="description-help">Beschreibung</key>
+</i18n>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.bo.blocks.keywordlist" lcid="fr_FR">
+  <key id="cmpref">Document lié</key>
+  <key id="cmpref-help">Document lié</key>
+  <key id="limit">nombre maximum</key>
+  <key id="limit-help">indiquez ici le nombre maximal de mots-clés à afficher. En cas de dépassement, les mots-clés les plus utilisés seront affichés en priorité.</key>
+  <key id="cloud">mode nuage</key>
+  <key id="cloud-help">précisez ici si vous voulez afficher les mots-clés sous forme de liste ou de nuage.</key>
+</i18n>

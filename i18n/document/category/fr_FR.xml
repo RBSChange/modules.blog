@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.document.category" lcid="fr_FR">
+  <key id="edition-form-title">propriétés de la catégories</key>
+  <key id="document-name">catégorie</key>
+  <key id="label">libellé</key>
+  <key id="label-help">libellé</key>
+  <key id="description">description</key>
+  <key id="description-help">cette description est affichée dans le détail d'une catégorie. Elle sert également de description au flux RSS associé à cette catégorie.</key>
+</i18n>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.document.post" lcid="de_DE">
+  <key id="document-name">Beitrag</key>
+  <key id="label">Name</key>
+  <key id="contents">Inhalt</key>
+  <key id="summary">Zusammenfassung</key>
+  <key id="summary-help">Wenn ausgefüllt, erscheint die Zusammenfassung anstelle des Inhalts in den Beitragslisten.</key>
+  <key id="showsummaryondetail">Zusammenfassung über Eigenschaften anzeigen</key>
+  <key id="showsummaryondetail-help">Wählen Sie JA, um die Zusammenfassung über dem Inhalt der in den Eigenschaften des Beitrags anzuzeigen. Wählen Sie NEIN, um ausschliesslich den Inhalt anzuzeigen.</key>
+  <key id="allowcomments">Kommentare erlauben</key>
+  <key id="category">Kategorien</key>
+  <key id="keywordstext">Stichwörter</key>
+  <key id="keywordstext-help">Durch Kommas getrennte Stichwörter</key>
+  <key id="postdate">Datum des Beitrags</key>
+  <key id="postdate-help">Auf der Webseite angezeigtes Datum des Beitrags. Die Beiträge sind nach diesem Datum in den Listen der Webseite geordnet. Ist dieses Feld leer, wird das aktuelle Veröffentlichungsdatum automatisch eingesetzt.</key>
+  <key id="startpublicationdate">Anfangsdatum der Veröffentlichung</key>
+  <key id="startpublicationdate-help">Anfangsdatum der Veröffentlichung</key>
+  <key id="endpublicationdate">Enddatum der Veröffentlichung</key>
+  <key id="endpublicationdate-help">Enddatum der Veröffentlichung</key>
+</i18n>

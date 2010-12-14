@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.bo.blocks.category" lcid="fr_FR">
+  <key id="cmpref">Document lié</key>
+  <key id="cmpref-help">Document lié</key>
+  <key id="nbitemperpage">Nombre de documents</key>
+  <key id="nbitemperpage-help">Nombre maximal de documents à afficher par page</key>
+  <key id="includedescendents">inclure les descendants</key>
+  <key id="includedescendents-help">en choisissant d'inclure les descendants, les billets associés aux sous-catégories de la catégorie courante seront aussi affichés. Dans le cas contraire, seuls les billets associés directement à la catégorie courante seront affichés.</key>
+  <key id="showblogrsslink">lien vers le flux RSS du blog</key>
+  <key id="showblogrsslink-help">afficher le lien vers le flux RSS global du blog</key>
+</i18n>

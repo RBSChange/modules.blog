@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.document.postgroup" lcid="en_GB">
+  <key id="label">label</key>
+  <key id="label-help">label</key>
+  <key id="description">description</key>
+  <key id="description-help">description</key>
+  <key id="postcount">postCount</key>
+  <key id="postcount-help">postCount</key>
+</i18n>

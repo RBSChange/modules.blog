@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.document.preferences" lcid="de_DE">
+  <key id="document-name">Präferenzen</key>
+  <key id="edition-form-title">Präferenzen des Moduls Blog</key>
+  <key id="rssmaxitemcount">Anzahl Beiträge in den RSS Feeds</key>
+  <key id="rssmaxitemcount-help">Geben Sie hier die maximale Anzahl der in den RSS Feeds aufzulistenden Beiträge. Freilassen um kein Limit zu setzen.</key>
+</i18n>

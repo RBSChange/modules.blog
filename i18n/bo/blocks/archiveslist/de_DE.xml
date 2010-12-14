@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.bo.blocks.archiveslist" lcid="de_DE">
+  <key id="cmpref">verlinktes Dokument</key>
+  <key id="cmpref-help">verlinktes Dokument</key>
+  <key id="displaymonths">Monate anzeigen</key>
+  <key id="displaymonths-help">Monate anzeigen</key>
+  <key id="showpostcountonyears">Jahresaufzählung</key>
+  <key id="showpostcountonyears-help">Jahresaufzählung der Beiträge anzeigen</key>
+  <key id="showpostcountonmonths">Monatsaufzählung</key>
+  <key id="showpostcountonmonths-help">Monatsaufzählung der Beiträge anzeigen</key>
+</i18n>

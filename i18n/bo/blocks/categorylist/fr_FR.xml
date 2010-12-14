@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.bo.blocks.categorylist" lcid="fr_FR">
+  <key id="cmpref">Document lié</key>
+  <key id="cmpref-help">Document lié</key>
+  <key id="recursivecount">décompte récursif</key>
+  <key id="recursivecount-help">si vous activez le décompte récursif, le compteur de billets affiché à côté du nom de la catégorie comprendra les	catégories descendantes, sinon, seuls les billets associés directement à la catégorie seront pris en compte.</key>
+</i18n>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.bo.blocks.post" lcid="fr_FR">
+  <key id="cmpref">Document lié</key>
+  <key id="cmpref-help">Document lié</key>
+  <key id="nbitemperpage">Nombre de documents</key>
+  <key id="nbitemperpage-help">Nombre maximal de documents à afficher par page</key>
+  <key id="showblogrsslink">lien vers le flux RSS du blog</key>
+  <key id="showblogrsslink-help">afficher le lien vers le flux RSS global du blog</key>
+  <key id="showshareblock">activer le partage de liens</key>
+  <key id="showshareblock-help">activer ou non les icônes de paratage de liens</key>
+</i18n>

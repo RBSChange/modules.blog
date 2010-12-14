@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.bo.blocks" lcid="de_DE">
+  <key id="blog">Eigenschaft Blog</key>
+  <key id="blogcontextuallist">Blogliste</key>
+  <key id="post">Eigenschaften Beitrag</key>
+  <key id="category">Eigenschaften einer Kategorie</key>
+  <key id="keyword">Eigenschaften eines Stichworts</key>
+  <key id="categorylist">Kategorienliste</key>
+  <key id="keywordlist">Liste der Stichwörter</key>
+  <key id="comments">Beitragskommentar</key>
+  <key id="archives">Archive</key>
+  <key id="archiveslist">Menü der Archive</key>
+</i18n>

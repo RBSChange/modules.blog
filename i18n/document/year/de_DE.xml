@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.document.year" lcid="de_DE">
+  <key id="edition-form-title">edition-form-title</key>
+  <key id="document-name">Jahr</key>
+  <key id="label">Name</key>
+  <key id="label-help">Name</key>
+  <key id="blog">Blog</key>
+  <key id="blog-help">Blog</key>
+  <key id="number">Nummer</key>
+  <key id="number-help">Nummer</key>
+</i18n>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.bo.blocks.keywordlist" lcid="de_DE">
+  <key id="cmpref">verknüpftes Dokument</key>
+  <key id="cmpref-help">verknüpftes Dokument</key>
+  <key id="limit">maximale Anzahl</key>
+  <key id="limit-help">Geben Sie hier die maximale Anzahl der anzuzeigenden Stichwörter ein. Im Falle einer Überschreitung, werden die meist benutzten Stichwörter angezeigt.</key>
+  <key id="cloud">Wolkenmodus</key>
+  <key id="cloud-help">präzisieren Sie hier ob die Stichwörter im Listen- oder Wolkenmodus angezeigt werden sollen.</key>
+</i18n>

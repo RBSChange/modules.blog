@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.bo.blocks.post" lcid="de_DE">
+  <key id="cmpref">verknüpftes Dokument</key>
+  <key id="cmpref-help">verknüpftes Dokument</key>
+  <key id="nbitemperpage">Anzahl Dokumente</key>
+  <key id="nbitemperpage-help">Maximale Anzahl anzuzeigende Dokumente pro Seite</key>
+  <key id="showblogrsslink">Link zum RSS Feed des Blogs</key>
+  <key id="showblogrsslink-help">Link zum gesamten RSS Feed des Blogs anzeigen</key>
+</i18n>

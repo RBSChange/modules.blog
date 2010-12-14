@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.document.blog" lcid="fr_FR">
+  <key id="edition-form-title">propriétés du blog</key>
+  <key id="document-name">blog</key>
+  <key id="label">libellé</key>
+  <key id="label-help">libellé</key>
+  <key id="description">description</key>
+  <key id="description-help">cette description est affichée dans le détail d'un blog. Elle sert également de description au flux RSS associé à ce blog.</key>
+  <key id="pingurls">URL à pinguer</key>
+  <key id="pingurls-help">URL de sites qui implémente l'interface XML-RPC Weblogs.Com.</key>
+  <key id="enablepingback">Activer les notifications entre blog</key>
+  <key id="enablepingback-help">Activer les notifications entre blog (pingback) pour les billets de ce blog</key>
+  <key id="enabletrackback">Activer les rétroliens</key>
+  <key id="enabletrackback-help">Activer les rétroliens pour les billets de ce blog</key>
+</i18n>

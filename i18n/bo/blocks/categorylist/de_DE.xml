@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.bo.blocks.categorylist" lcid="de_DE">
+  <key id="cmpref">verknüpftes Dokument</key>
+  <key id="cmpref-help">verknüpftes Dokument</key>
+  <key id="recursivecount">rekursive Aufzählung</key>
+  <key id="recursivecount-help">Ist rekursive Aufzählung aktiviert, beinhaltet der Beitragszähler neben der Kategorie, die abkommenden Kategorien, sonst werden ausschliesslich die der Kategorie direkt assoziierten Beiträge berücksichtigt.</key>
+</i18n>

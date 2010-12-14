@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.bo.blocks" lcid="fr_FR">
+  <key id="blog">detail d'un blog</key>
+  <key id="blogcontextuallist">liste des blogs</key>
+  <key id="post">detail d'un billet</key>
+  <key id="category">détail d'une catégorie</key>
+  <key id="keyword">detail d'un mot-clé</key>
+  <key id="categorylist">liste des catégories</key>
+  <key id="keywordlist">liste des mots-clés</key>
+  <key id="comments">Commentaires du billet</key>
+  <key id="archives">Archives</key>
+  <key id="archiveslist">Menu des archives</key>
+  <key id="blogedit">administration d'un blog</key>
+  <key id="postform">formulaire d'un billet</key>
+  <key id="categoryform">formulaire d'une catégorie</key>
+  <key id="commentsvalidation">validation de commentaires</key>
+</i18n>

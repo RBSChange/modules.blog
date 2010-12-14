@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.bo.general.column" lcid="de_DE">
+  <key id="label">Name</key>
+  <key id="keywordstext">Stichwort</key>
+  <key id="post-count">Beiträge</key>
+  <key id="date">Datum</key>
+  <key id="published-post-count">veröffentlichte Beiträge</key>
+</i18n>

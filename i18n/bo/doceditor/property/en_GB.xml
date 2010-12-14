@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.bo.doceditor.property" lcid="en_GB">
+  <key id="postcount">posts count</key>
+  <key id="authors">authors</key>
+  <key id="keywords">keywords</key>
+  <key id="lastpublishedpost">last published post</key>
+  <key id="publishedpostcount">published posts count</key>
+</i18n>

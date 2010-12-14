@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.bo.tags" lcid="de_DE">
+  <key id="blog-detail">Eigenschaften eines Blogs</key>
+  <key id="blog-list">Auflistung der Blogs</key>
+  <key id="post-detail">Eigenschaften eines Beitrags</key>
+  <key id="post-list">Auflistung der Beiträge</key>
+  <key id="category-detail">Eigenschaften einer Kategorie</key>
+  <key id="category-list">Auflistung der Kategorien</key>
+  <key id="keyword-detail">Eigenschaften eines Stichwortes</key>
+  <key id="keyword-list">Auflistung der Stichwörter</key>
+  <key id="archives">Archive</key>
+</i18n>

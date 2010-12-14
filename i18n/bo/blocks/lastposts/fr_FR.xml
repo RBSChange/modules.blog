@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.bo.blocks.lastposts" lcid="fr_FR">
+  <key id="title">derniers billets</key>
+  <key id="blocktitle">titre</key>
+  <key id="blocktitle-help">Titre du bloc affiché sur le site. Laissez vide pour le générer automatiquement.</key>
+  <key id="blog">blog</key>
+  <key id="blog-help">Saisissez un blog pour resteindre l'affichage à celui-ci, laissez vide pour rechercher les billets dans tous
+			les blogs du site.</key>
+  <key id="maxcount">nombre de billets</key>
+  <key id="maxcount-help">Nombre maximum de billets à afficher.</key>
+  <key id="showsummary">afficher le résumé</key>
+  <key id="showsummary-help">Afficher ou non le résumé des billets.</key>
+  <key id="summarymaxlength">longueur maximale du résumé</key>
+  <key id="summarymaxlength-help">Au-delà de cette longueur, le résumé sera tronqué. Laissez vide pour ne pas tronquer.</key>
+</i18n>

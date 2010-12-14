@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.bo.blocks.archives" lcid="de_DE">
+  <key id="cmpref">verknüpftes Dokument</key>
+  <key id="cmpref-help">verknüpftes Dokument</key>
+  <key id="nbitemperpage">Beiträge pro Seite</key>
+  <key id="nbitemperpage-help">Anzahl Beiträge pro Seite</key>
+  <key id="year">Jahr</key>
+  <key id="year-help">anzuzeigendes Jahr</key>
+  <key id="month">Monat</key>
+  <key id="month-help">anzuzeigender Monat</key>
+  <key id="showblogrsslink">Link zum RSS Feed des Blogs</key>
+  <key id="showblogrsslink-help">Link zum gesamten RSS Feed des Blogs anzeigen</key>
+</i18n>

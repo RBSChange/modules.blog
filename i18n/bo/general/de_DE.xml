@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.bo.general" lcid="de_DE">
+  <key id="module-name">Blog</key>
+  <key id="tree-root-name">Blog</key>
+  <key id="system-folder-name">Blog</key>
+  <key id="hours">Stunden</key>
+  <key id="minutes">Minuten</key>
+  <key id="blogs">Blogs</key>
+  <key id="categories">Kategorien</key>
+  <key id="keywords">Stichwörter</key>
+  <key id="posts">Beiträge</key>
+  <key id="archives">Archive</key>
+</i18n>

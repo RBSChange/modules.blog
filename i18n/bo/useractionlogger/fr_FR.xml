@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.bo.useractionlogger" lcid="fr_FR">
+  <key id="insert-blog">Création du blog {documentlabel}</key>
+  <key id="log-insert-blog">log-insert-blog</key>
+  <key id="insert-post">Création du billet {documentlabel}</key>
+  <key id="log-insert-post">log-insert-post</key>
+  <key id="insert-category">Création de la categorie {documentlabel}</key>
+  <key id="log-insert-category">log-insert-category</key>
+  <key id="insert-keyword">Création du mot-clé {documentlabel}</key>
+  <key id="log-insert-keyword">log-insert-keyword</key>
+  <key id="update-blog">Mise à jour du blog {documentlabel}</key>
+  <key id="log-update-blog">log-update-blog</key>
+  <key id="update-post">Mise à jour billet {documentlabel}</key>
+  <key id="log-update-post">log-update-post</key>
+  <key id="update-category">Mise à jour de la categorie {documentlabel}</key>
+  <key id="log-update-category">log-update-category</key>
+  <key id="update-keyword">Mise à jour du mot-clé {documentlabel}</key>
+  <key id="log-update-keyword">log-update-keyword</key>
+  <key id="deactivated-post">Désactivation du billet {documentlabel}</key>
+  <key id="log-deactivated-post">log-deactivated-post</key>
+  <key id="reactivate-post">Réactivation du billet {documentlabel}</key>
+  <key id="log-reactivate-post">log-reactivate-post</key>
+  <key id="deactivated-blog">deactivated.blog {documentlabel}</key>
+  <key id="log-deactivated-blog">log-deactivated-blog</key>
+  <key id="reactivate-blog">reactivate.blog {documentlabel}</key>
+  <key id="log-reactivate-blog">log-reactivate-blog</key>
+  <key id="activate-post">activate.post {documentlabel}</key>
+  <key id="log-activate-post">log-activate-post</key>
+  <key id="update-rootfolder">update.rootfolder {documentlabel}</key>
+  <key id="log-update-rootfolder">log-update-rootfolder</key>
+</i18n>

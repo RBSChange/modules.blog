@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.frontoffice" lcid="en_GB">
+  <key id="posted-by">written by {author}</key>
+  <key id="pingback-by">Pingback by</key>
+  <key id="trackback-by">Trackback by</key>
+  <key id="trackback-url">Trackback URL</key>
+  <key id="blogs-list-title">list of blogs</key>
+  <key id="post-count">{count} post(s)</key>
+  <key id="no-comment">no comment</key>
+  <key id="one-comment">1 comment</key>
+  <key id="several-comments">{count} comments</key>
+  <key id="last-post-by">last post by {author}</key>
+  <key id="authors">authors</key>
+  <key id="blog-rss-link">blog's RSS feed</key>
+  <key id="category-rss-link">category's RSS feed</key>
+  <key id="keyword-rss-link">keyword's RSS feed</key>
+  <key id="rss-link">RSS feed</key>
+  <key id="comments-closed-for-this-post">comments are closed for this post.</key>
+  <key id="archives-title">{blog}: archives {date}</key>
+  <key id="blog-meta-title">{blogLabel} - {siteLabel}</key>
+  <key id="blog-meta-description">Blog {blogLabel} - {siteLabel} : {blogDescription}</key>
+  <key id="category-meta-title">{categoryLabel} - {blogLabel} - {siteLabel}</key>
+  <key id="category-meta-description">{categoryLabel} : billets de la catégorie {categoryLabel} du blog {blogLabel} sur le site {siteLabel}.
+			{categoryDescription}</key>
+  <key id="keyword-meta-title">{keywordLabel} - {blogLabel} - {siteLabel}</key>
+  <key id="keyword-meta-description">Posts {keywordLabel} : in blog {blogLabel} on site {siteLabel}. {keywordDescription}</key>
+  <key id="post-meta-title">{postLabel} - {blogLabel} - {siteLabel}</key>
+  <key id="post-meta-description">{postLabel} : post in blog {blogLabel} on site {siteLabel} created the {postDate}. {postSummary}</key>
+  <key id="blog-edit-title">blog administration</key>
+  <key id="categories-list-title">categories</key>
+  <key id="posts-list-title">posts</key>
+  <key id="comments-validation-title">validate comments</key>
+  <key id="category-new-title">create category</key>
+  <key id="category-edit-title">modify category</key>
+  <key id="post-new-title">create post</key>
+  <key id="post-edit-title">modify post</key>
+  <key id="category-new-link">create category</key>
+  <key id="post-new-link">create post</key>
+  <key id="comments-validation-link">validate comments</key>
+  <key id="blog-edit-link">blog administration</key>
+  <key id="back-to-list-link">back to blogs list</key>
+  <key id="commen-validate-link">accept</key>
+  <key id="commen-cancel-link">refuse</key>
+  <key id="edit-link">modify</key>
+  <key id="activate-link">activate</key>
+  <key id="deactivate-link">deactivate</key>
+  <key id="delete-link">delete</key>
+  <key id="delete-confirmation">Are you sure you want to delete &lt;{document}&gt;?</key>
+  <key id="submit-form">save</key>
+  <key id="comment-on">comment on ″{target}″</key>
+</i18n>

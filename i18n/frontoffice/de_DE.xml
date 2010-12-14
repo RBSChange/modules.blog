@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.frontoffice" lcid="de_DE">
+  <key id="posted-by">geschrieben von {author}</key>
+  <key id="pingback-by">Pingback von</key>
+  <key id="trackback-by">Trackback von</key>
+  <key id="trackback-url">Trackback URL</key>
+  <key id="blogs-list-title">Auflistung Blogs</key>
+  <key id="post-count">{count} Beitrag(-äge)</key>
+  <key id="no-comment">kein Kommentar</key>
+  <key id="one-comment">1 Kommentar</key>
+  <key id="several-comments">{count} Kommentare</key>
+  <key id="last-post-by">letzter Beitrag von {author}</key>
+  <key id="authors">authors</key>
+  <key id="blog-rss-link">RSS Feed des Blogs</key>
+  <key id="category-rss-link">RSS Feed der Kategorie</key>
+  <key id="keyword-rss-link">RSS Feed des Stichwortes</key>
+  <key id="rss-link">RSS Feed</key>
+  <key id="comments-closed-for-this-post">Kommentare sind für diesen Beitrag geschlossen.</key>
+  <key id="archives-title">{blog}: Archive {date}</key>
+  <key id="blog-meta-title">{blogLabel} - {siteLabel}</key>
+  <key id="blog-meta-description">Blog {blogLabel} - {siteLabel} : {blogDescription}</key>
+  <key id="category-meta-title">{categoryLabel} - {blogLabel} - {siteLabel}</key>
+  <key id="category-meta-description">{categoryLabel} : Kategoriebeiträge {categoryLabel} des Blogs {blogLabel} auf der Webseite {siteLabel}.
+			{categoryDescription}</key>
+  <key id="keyword-meta-title">{keywordLabel} - {blogLabel} - {siteLabel}</key>
+  <key id="keyword-meta-description">Beiträge {keywordLabel} : des Blogs {blogLabel} auf der Webseite {siteLabel}. {keywordDescription}</key>
+  <key id="post-meta-title">{postLabel} - {blogLabel} - {siteLabel}</key>
+  <key id="post-meta-description">{postLabel} : Blogbeitrag {blogLabel} auf der Webseite {siteLabel} erstellt am {postDate}. {postSummary}
+		</key>
+  <key id="archives-meta-title">Beiträge {date} - {blogLabel} - {siteLabel}</key>
+  <key id="archives-meta-description">Beitragsarchive {date} des Blogs {blogLabel} auf der Webseite {siteLabel}.</key>
+  <key id="comment-on">Kommentar zu ″{target}″</key>
+</i18n>

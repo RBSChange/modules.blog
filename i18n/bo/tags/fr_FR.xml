@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.bo.tags" lcid="fr_FR">
+  <key id="blog-detail">page de détail d'un blog</key>
+  <key id="blog-list">page de liste des blogs</key>
+  <key id="post-detail">page de détail d'un billet</key>
+  <key id="post-list">page de liste des billets</key>
+  <key id="category-detail">page de détail d'une catégorie</key>
+  <key id="category-list">page de liste des catégories</key>
+  <key id="keyword-detail">page de détail d'un mot-clé</key>
+  <key id="keyword-list">page de liste des mots-clés</key>
+  <key id="archives">archives</key>
+  <key id="blog-edit">page de d'administration d'un blog</key>
+  <key id="post-edit">page d'administration d'un billet</key>
+  <key id="category-edit">page d'administration d'une catégorie</key>
+  <key id="comments-validation">page de validation de commentaires</key>
+</i18n>

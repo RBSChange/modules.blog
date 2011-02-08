@@ -165,6 +165,27 @@ class blog_KeywordService extends blog_PostgroupService
 	}
 
 	/**
+	 * @param blog_persistentdocument_keyword $keyword
+	 * @param string $moduleName
+	 * @param string $treeType
+	 * @param array<string, string> $nodeAttributes
+	 */
+	protected function addTreeAttributes($keyword, $moduleName, $treeType, &$nodeAttributes)
+	{
+			
+		$query = blog_PostService::getInstance()->createQuery()
+			->add(Restrictions::eq('keyword', $keyword))
+			->setProjection(Projections::rowCount('count'));
+				
+		if (f_persistentdocument_PersistentDocumentModel::getInstance("blog", "post")->useCorrection())
+		{
+			$query->add(Restrictions::isNull('correctionofid'));
+		}
+		$result = $query->findUnique();			
+		$nodeAttributes['postCount'] = $result['count'];
+		$nodeAttributes['publishedPostCount'] = $keyword->getPublishedPostCount();
+	}
+	/**
 	 * @deprecated 
 	 * @param blog_persistentdocument_keyword $keyword
 	 */
@@ -199,5 +220,5 @@ class blog_KeywordService extends blog_PostgroupService
 	{
 		$this->updatePostCount($keyword);
 	}
-
+	
 }

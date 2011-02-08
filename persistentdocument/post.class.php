@@ -135,18 +135,6 @@ class blog_persistentdocument_post extends blog_persistentdocument_postbase impl
 		}
 		return false;
 	}
-
-	/**
-	 * @param string $actionType
-	 * @param array $formProperties
-	 */
-	public function addFormProperties($propertiesNames, &$formProperties)
-	{	
-		if (!$this->isNew())
-		{
-			$formProperties['blogId'] = $this->getBlogId();
-		}
-	}
 	
 	/**
 	 * @param integer $maxLength

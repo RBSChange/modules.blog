@@ -662,4 +662,17 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		$containers[] = $document->getBlog();
 		return $containers;
 	}
+	
+	/**
+	 * @param blog_persistentdocument_post $document
+	 * @param string $actionType
+	 * @param array $formProperties
+	 */
+	public function addFormProperties($document, $propertiesNames, &$formProperties)
+	{	
+		if (!$document->isNew())
+		{
+			$formProperties['blogId'] = $document->getBlogId();
+		}
+	}
 }

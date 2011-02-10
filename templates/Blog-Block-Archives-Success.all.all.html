@@ -1,8 +1,8 @@
-<h2 change:h="" change:translate="&modules.blog.frontoffice.Archives-title; blog blog/getLabelAsHtml; date dates/startLabel"></h2>
+<h2 change:h="">${trans: m.blog.frontoffice.Archives-title,blog=blog/getLabelAsHtml,date=dates/startLabel}</h2>
 
 <ol class="module-list">
 	<li tal:repeat="post paginator" class="${php: repeat.post.odd ? 'odd' : 'even'}">
-		<tal:block change:include="module 'blog' ; template 'Blog-Inc-PostShortDetail' ; type 'html' ; post post" />
+		<tal:block change:include="module 'blog' ; template 'Blog-Inc-PostShortDetail' ; type 'html' ; post post ; showHightlightingVisual configuration/getShowHightlightingVisual" />
 	</li>
 </ol>
 <tal:block change:paginator="paginator" />

@@ -11,26 +11,31 @@
 	</li>
 </ul>
 
-<p class="meta-post-infos"><tal:block change:translate="modules.blog.frontoffice.Posted-by; author post/getAuthorName" /> - <tal:block change:datetime="post/getPostDate" /></p>
+<p class="meta-post-infos">${trans: m.blog.frontoffice.posted-by,ucf,author=post/getAuthorNameAsHtml} - <tal:block change:datetime="post/getPostDate" /></p>
 
-<p tal:condition="php: post.getSummary() AND post.getShowSummaryOnDetail()">${post/getSummaryAsHtml}</p>
+<tal:block tal:condition="configuration/getShowHightlightingVisual">
+	<img tal:condition="post/getHighlightingVisual" change:media="document post/getHighlightingVisual; format 'modules.blog.frontoffice/hightlightingVisual-detail'; zoom 'true'" class="hightlinghting-visual" />
+</tal:block>
 
-<p tal:content="post/getContentsAsHtml" />
+<div tal:condition="php: post.getSummary() AND post.getShowSummaryOnDetail()">${post/getSummaryAsHtml}</div>
+
+<div>${post/getContentsAsHtml}</div>
+
 <tal:block tal:condition="showShareBlock" change:block="" module="sharethis" name="Sharepage" />
 
-<h3 change:h="" change:translate="modules.blog.bo.general.Categories"></h3>
+<h3 change:h="">${trans: m.blog.bo.general.categories,ucf}</h3>
 <ul class="meta-categories">
 	<li tal:repeat="category post/getCategoryArray"><a change:link="document category">${category/getLabelAsHtml}</a></li>
 </ul>
 
 <tal:block tal:condition="post/getKeywordCount">
-	<h3 change:h="" change:translate="modules.blog.bo.general.Keywords"></h3>
+	<h3 change:h="">${trans: m.blog.bo.general.keywords,ucf}</h3>
 	<ul class="meta-keyword">
 		<li tal:repeat="keyword post/getKeywordArray"><a change:link="document keyword">${keyword/getLabelAsHtml}</a></li>
 	</ul>
 </tal:block>
 
 <tal:block tal:condition="post/getAllowTrackbacks">
-	<h3 change:h="" change:translate="modules.blog.frontoffice.trackback-url"></h3>
+	<h3 change:h="">${trans: m.blog.frontoffice.trackback-url,ucf}</h3>
 	<input type="text" readonly="readonly" value="${trackbackurl}" class="textfield" style="width:50%" /> 
 </tal:block>

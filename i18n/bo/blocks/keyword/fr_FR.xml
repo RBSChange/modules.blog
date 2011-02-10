@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <i18n baseKey="m.blog.bo.blocks.keyword" lcid="fr_FR">
-  <key id="cmpref">Document lié</key>
-  <key id="cmpref-help">Document lié</key>
-  <key id="nbitemperpage">Nombre de documents</key>
-  <key id="nbitemperpage-help">Nombre maximal de documents à afficher par page</key>
-  <key id="showblogrsslink">lien vers le flux RSS du blog</key>
-  <key id="showblogrsslink-help">afficher le lien vers le flux RSS global du blog</key>
+	<key id="cmpref">Document lié</key>
+	<key id="cmpref-help">Document lié</key>
+	<key id="nbitemperpage">Nombre de documents</key>
+	<key id="nbitemperpage-help">Nombre maximal de documents à afficher par page</key>
+	<key id="showhightlightingvisual">afficher le visuel de mise en avant ?</key>
+	<key id="showhightlightingvisual-help">Afficher ou non le visuel de mise en avant défini sur les billets.</key>
+	<key id="showblogrsslink">lien vers le flux RSS du blog</key>
+	<key id="showblogrsslink-help">afficher le lien vers le flux RSS global du blog</key>
 </i18n>

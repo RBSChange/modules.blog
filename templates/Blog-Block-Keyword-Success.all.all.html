@@ -3,19 +3,19 @@
 <ul class="mini-navigation">
 	<li tal:condition="configuration/getShowblogrsslink">
 		<img change:img="front/rss.gif" alt="" />
-		<a class="link" change:link="module blog; action ViewFeed; parentref keyword/getBlog/getId" change:translate="modules.blog.frontoffice.Blog-rss-link"></a>
+		<a change:link="module blog; action ViewFeed; parentref keyword/getBlog/getId">${trans: m.blog.frontoffice.blog-rss-link,ucf}</a>
 	</li>
 	<li>
 		<img change:img="front/rss.gif" alt="" />
-		<a class="link" change:link="module blog; action ViewFeed; parentref keyword/getId" change:translate="modules.blog.frontoffice.Keyword-rss-link"></a>
+		<a change:link="module blog; action ViewFeed; parentref keyword/getId">${trans: m.blog.frontoffice.keyword-rss-link,ucf}</a>
 	</li>
 </ul>
 
-<p tal:condition="keyword/getDescription">${keyword/getDescriptionAsHtml}</p>
+<div tal:condition="keyword/getDescription">${keyword/getDescriptionAsHtml}</div>
 
 <ol class="module-list">
 	<li tal:repeat="post paginator" class="${php: repeat.post.odd ? 'odd' : 'even'}">
-		<tal:block change:include="module 'blog' ; template 'Blog-Inc-PostShortDetail' ; type 'html' ; post post" />
+		<tal:block change:include="module 'blog' ; template 'Blog-Inc-PostShortDetail' ; type 'html' ; post post ; showHightlightingVisual configuration/getShowHightlightingVisual" />
 	</li>
 </ol>
 <tal:block change:paginator="paginator" />

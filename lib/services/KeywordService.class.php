@@ -170,9 +170,8 @@ class blog_KeywordService extends blog_PostgroupService
 	 * @param string $treeType
 	 * @param array<string, string> $nodeAttributes
 	 */
-	protected function addTreeAttributes($keyword, $moduleName, $treeType, &$nodeAttributes)
+	public function addTreeAttributes($keyword, $moduleName, $treeType, &$nodeAttributes)
 	{
-			
 		$query = blog_PostService::getInstance()->createQuery()
 			->add(Restrictions::eq('keyword', $keyword))
 			->setProjection(Projections::rowCount('count'));
@@ -185,9 +184,11 @@ class blog_KeywordService extends blog_PostgroupService
 		$nodeAttributes['postCount'] = $result['count'];
 		$nodeAttributes['publishedPostCount'] = $keyword->getPublishedPostCount();
 	}
+	
+	// Deprecated.
+	
 	/**
-	 * @deprecated 
-	 * @param blog_persistentdocument_keyword $keyword
+	 * @deprecated (will be removed in 4.0)
 	 */
 	public function refreshPublishedPostCount($keyword)
 	{
@@ -195,8 +196,7 @@ class blog_KeywordService extends blog_PostgroupService
 	}
 	
 	/**
-	 * @deprecated
-	 * @param blog_persistentdocument_keyword $keyword
+	 * @deprecated (will be removed in 4.0)
 	 */
 	public function refreshPostCount($keyword)
 	{
@@ -204,8 +204,7 @@ class blog_KeywordService extends blog_PostgroupService
 	}	
 	
 	/**
-	 * @deprecated 
-	 * @param blog_persistentdocument_keyword $keyword
+	 * @deprecated (will be removed in 4.0)
 	 */
 	public function incrementPostCount($keyword)
 	{
@@ -213,12 +212,10 @@ class blog_KeywordService extends blog_PostgroupService
 	}
 
 	/**
-	 * @deprecated 
-	 * @param blog_persistentdocument_keyword $keyword
+	 * @deprecated (will be removed in 4.0)
 	 */
 	public function decrementPostCount($keyword)
 	{
 		$this->updatePostCount($keyword);
 	}
-	
 }

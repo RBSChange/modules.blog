@@ -1,42 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <blocks>
-	<block type="modules_blog_blog" display="nbitemperpage:5" icon="blog" label="&amp;modules.blog.bo.blocks.Blog;">
+	<block type="modules_blog_blog" icon="blog" label="&amp;modules.blog.bo.blocks.Blog;">
 		<parameters>
 			<parameter name="cmpref" type="modules_blog/blog" />
 			<parameter name="nbitemperpage" type="Integer" default-value="5" />
+			<parameter name="showHightlightingVisual" type="Boolean" default-value="true" />
 		</parameters>
 	</block>
-	<block type="modules_blog_blogcontextuallist" display="nbitemperpage:5;showpoststats:true;showauthors:true" icon="list-block"
-		label="&amp;modules.blog.bo.blocks.BlogContextualList;">
+	<block type="modules_blog_blogcontextuallist" icon="list-block" label="&amp;modules.blog.bo.blocks.BlogContextualList;">
 		<parameters>
 			<parameter name="nbitemperpage" type="Integer" default-value="5" />
 			<parameter name="showpoststats" type="Boolean" default-value="true" />
 			<parameter name="showauthors" type="Boolean" default-value="true" />
 		</parameters>
 	</block>
-	<block type="modules_blog_category" display="includedescendents:true;nbitemperpage:5;showblogrsslink:true" icon="category"
-		label="&amp;modules.blog.bo.blocks.Category;">
+	<block type="modules_blog_category" icon="category"	label="&amp;modules.blog.bo.blocks.Category;">
 		<parameters>
 			<parameter name="cmpref" type="modules_blog/category" />
 			<parameter name="nbitemperpage" type="Integer" default-value="5" />
 			<parameter name="includedescendents" type="Boolean" default-value="true" />
+			<parameter name="showHightlightingVisual" type="Boolean" default-value="true" />
 			<parameter name="showblogrsslink" type="Boolean" default-value="true" />
 		</parameters>
 	</block>
-	<block type="modules_blog_categoryList" display="recursivecount:true" icon="list-block" label="&amp;modules.blog.bo.blocks.CategoryList;">
+	<block type="modules_blog_categoryList" icon="list-block" label="&amp;modules.blog.bo.blocks.CategoryList;">
 		<parameters>
 			<parameter name="cmpref" type="modules_blog/blog" />
 			<parameter name="recursivecount" type="Boolean" default-value="true" />
 		</parameters>
 	</block>
-	<block type="modules_blog_keyword" display="nbitemperpage:5;showblogrsslink:true" icon="keyword" label="&amp;modules.blog.bo.blocks.Keyword;">
+	<block type="modules_blog_keyword" icon="keyword" label="&amp;modules.blog.bo.blocks.Keyword;">
 		<parameters>
 			<parameter name="cmpref" type="modules_blog/keyword" />
 			<parameter name="nbitemperpage" type="Integer" default-value="5" />
+			<parameter name="showHightlightingVisual" type="Boolean" default-value="true" />
 			<parameter name="showblogrsslink" type="Boolean" default-value="true" />
 		</parameters>
 	</block>
-	<block type="modules_blog_keywordList" display="limit:30;cloud:true" icon="list-block" label="&amp;modules.blog.bo.blocks.KeywordList;">
+	<block type="modules_blog_keywordList" icon="list-block" label="&amp;modules.blog.bo.blocks.KeywordList;">
 		<parameters>
 			<parameter name="cmpref" type="modules_blog/blog" />
 			<parameter name="limit" type="Integer" min-occurs="1" default-value="30" />
@@ -46,6 +47,7 @@
 	<block type="modules_blog_post" icon="post" label="&amp;modules.blog.bo.blocks.Post;">
 		<parameters>
 			<parameter name="cmpref" type="modules_blog/post" />
+			<parameter name="showHightlightingVisual" type="Boolean" default-value="true" />
 			<parameter name="showblogrsslink" type="Boolean" default-value="true" />
 			<parameter name="showshareblock" type="Boolean" default-value="true" />
 		</parameters>
@@ -76,6 +78,7 @@
 			<parameter name="nbitemperpage" type="Integer" default-value="5" />
 			<parameter name="year" type="Integer" />
 			<parameter name="month" type="Integer" />
+			<parameter name="showHightlightingVisual" type="Boolean" default-value="true" />
 			<parameter name="showblogrsslink" type="Boolean" default-value="true" />
 		</parameters>
 	</block>
@@ -94,6 +97,7 @@
 			<parameter name="maxCount" type="Integer" default-value="5">
 				<constraints>min:1;max:100</constraints>
 			</parameter>
+			<parameter name="showHightlightingVisual" type="Boolean" default-value="true" />
 			<parameter name="showSummary" type="Boolean" default-value="true" />
 			<parameter name="summaryMaxLength" type="Integer" />
 		</parameters>

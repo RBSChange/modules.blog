@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <i18n baseKey="m.blog.bo.blocks.archives" lcid="fr_FR">
-  <key id="cmpref">document lié</key>
-  <key id="cmpref-help">document lié</key>
-  <key id="nbitemperpage">billets par page</key>
-  <key id="nbitemperpage-help">nombre de billets par page</key>
-  <key id="year">année</key>
-  <key id="year-help">année à afficher</key>
-  <key id="month">mois</key>
-  <key id="month-help">mois à afficher</key>
-  <key id="showblogrsslink">lien vers le flux RSS du blog</key>
-  <key id="showblogrsslink-help">afficher le lien vers le flux RSS global du blog</key>
+	<key id="cmpref">document lié</key>
+	<key id="cmpref-help">document lié</key>
+	<key id="nbitemperpage">billets par page</key>
+	<key id="nbitemperpage-help">nombre de billets par page</key>
+	<key id="year">année</key>
+	<key id="year-help">année à afficher</key>
+	<key id="month">mois</key>
+	<key id="month-help">mois à afficher</key>
+	<key id="showhightlightingvisual">afficher le visuel de mise en avant ?</key>
+	<key id="showhightlightingvisual-help">Afficher ou non le visuel de mise en avant défini sur les billets.</key>
+	<key id="showblogrsslink">lien vers le flux RSS du blog</key>
+	<key id="showblogrsslink-help">afficher le lien vers le flux RSS global du blog</key>
 </i18n>

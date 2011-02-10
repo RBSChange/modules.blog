@@ -1,12 +1,17 @@
 <h2 tal:condition="configuration/getBlockTitle" change:h="">${configuration/getBlockTitleAsHtml}</h2>
 <tal:block tal:condition="not: configuration/getBlockTitle" tal:define="blog configuration/getBlog">
-	<h2 tal:condition="not: blog" change:h="" change:translate="modules.blog.frontoffice.Last-posts-from-blogs"></h2>
-	<h2 tal:condition="blog" change:h="" change:translate="modules.blog.frontoffice.Last-posts-from-blog; blog blog/getLabelAsHtml"></h2>
+	<h2 tal:condition="not: blog" change:h="">${trans: m.blog.frontoffice.last-posts-from-blogs,ucf}</h2>
+	<h2 tal:condition="blog" change:h="">${trans: m.blog.frontoffice.last-posts-from-blog,ucf,blog=blog/getLabelAsHtml}</h2>
 </tal:block>
 
 <ul class="normal" tal:condition="posts">
 	<li tal:repeat="post posts">
-		<a change:link="document post">${post/getLabelAsHtml}</a> <tal:block change:translate="modules.blog.frontoffice.posted-by; author post/getAuthorName" /> - <tal:block change:datetime="post/getPostDate" />
+		<p class="meta-post-infos"><a change:link="document post">${post/getLabelAsHtml}</a> ${trans: m.blog.frontoffice.posted-by,author=post/getAuthorNameAsHtml} - <tal:block change:datetime="post/getPostDate" /></p>
+		
+		<tal:block tal:condition="configuration/getShowHightlightingVisual">
+			<img tal:condition="post/getHighlightingVisual" change:media="document post/getHighlightingVisual; format 'modules.blog.frontoffice/hightlightingVisual-last'" class="hightlinghting-visual" />
+		</tal:block>
+		
 		<div class="summary" tal:condition="configuration/getShowSummary">
 			<tal:block tal:condition="not: configuration/getSummaryMaxLength">
 				<tal:block tal:condition="post/getSummary">${post/getSummaryAsHtml}</tal:block>
@@ -16,4 +21,4 @@
 		</div>
 	</li>
 </ul>
-<p tal:condition="not: posts" class="normal" change:translate="modules.blog.frontoffice.No-post-yet"></p>
+<p tal:condition="not: posts" class="normal">${trans: m.blog.frontoffice.no-post-yet,ucf}</p>

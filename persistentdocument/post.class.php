@@ -48,6 +48,14 @@ class blog_persistentdocument_post extends blog_persistentdocument_postbase impl
 	/**
 	 * @return String
 	 */
+	public function getAuthorNameAsHtml()
+	{
+		return f_util_HtmlUtils::textToHtml($this->getAuthorName());
+	}
+	
+	/**
+	 * @return String
+	 */
 	public function getCommentCount()
 	{
 		return comment_CommentService::getInstance()->getPublishedCountByTargetId($this->getId());

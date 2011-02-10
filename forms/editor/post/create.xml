@@ -4,6 +4,7 @@
 		<field name="label" hidehelp="true" />
 		<field name="postDate" />
 		<field name="contents" hidehelp="true" />
+		<field name="highlightingVisual" />
 		<field name="startpublicationdate" hidehelp="true" />
 		<field name="endpublicationdate" hidehelp="true" />
 	</section>

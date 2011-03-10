@@ -4,15 +4,20 @@
 	</tal:block>
 	
 	<tal:block tal:condition="not: target/getAllowComments">
-		<h3 change:h="" change:translate="modules.comment.frontoffice.Leave-a-comment"></h3>
-		
-		<p change:translate="modules.blog.frontoffice.Comments-closed-for-this-post"></p>
+		<h3 change:h="">${trans: m.comment.frontoffice.leave-a-comment,ucf}</h3>
+		<p>${trans: m.blog.frontoffice.comments-closed-for-this-post,ucf}</p>
 	</tal:block>
 	
 	<tal:block tal:condition="target/getAllowComments">
-		<tal:block change:loadhandler="comment_InitFormInfoLoadHandler" />
-		<tal:block change:loadhandler="form_FormLoadHandler" />
-		
-		<tal:block change:include="module 'comment' ; template 'Comment-Inc-CommentForm' ; type 'html' ; target target ; currentUser currentUser ; previewComment previewComment ; enableRating configuration/getEnableRating" />
+		<tal:block tal:condition="connectToPost">
+			<h3 change:h="">${trans: m.comment.frontoffice.leave-a-comment,ucf}</h3>
+			<p>${trans: m.comment.frontoffice.error-not-logged-in,ucf}</p>
+		</tal:block>
+	
+		<tal:block tal:condition="not: connectToPost">
+			<tal:block change:loadhandler="comment_InitFormInfoLoadHandler" />
+			<tal:block change:loadhandler="form_FormLoadHandler" />
+			<tal:block change:include="module 'comment' ; template 'Comment-Inc-CommentForm' ; type 'html' ; target target ; currentUser currentUser ; previewComment previewComment ; enableRating configuration/getEnableRating" />
+		</tal:block>
 	</tal:block>
 </div>

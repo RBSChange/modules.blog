@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <i18n baseKey="m.blog.bo.blocks.comments" lcid="de_DE">
-  <key id="cmpref">verknüpftes Dokument</key>
-  <key id="cmpref-help">verknüpftes Dokument</key>
-  <key id="nbitemperpage">Kommentare pro Seite</key>
-  <key id="nbitemperpage-help">Kommentare pro Seite</key>
-  <key id="showgravatars">Avatar anzeigen</key>
-  <key id="showgravatars-help">Avatar anzeigen (www.gravatar.com)</key>
+	<key id="title">Beitragskommentar</key>
+	<key id="nbitemperpage">Kommentare pro Seite</key>
+	<key id="nbitemperpage-help">Kommentare pro Seite</key>
+	<key id="showgravatars">Avatar anzeigen</key>
+	<key id="showgravatars-help">Avatar anzeigen (www.gravatar.com)</key>
 </i18n>

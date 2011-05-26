@@ -48,30 +48,30 @@
 		<rule redirection="blog/ViewArchive">
 			<template>/blog/$cmpref/$year/$month/</template>
 			<parameters>
-				<parameter name="cmpref" format="[0-9]+" />
-				<parameter name="year" format="[0-9]+" />
-				<parameter name="month" format="([0-9]+)|all" />
+				<parameter name="cmpref" />
+				<parameter name="year" />
+				<parameter name="month" />
 			</parameters>
 		</rule>
 		
 		<rule redirection="blog/ViewFeed">
 			<template>/blog/$parentref/feed/</template>
 			<parameters>
-				<parameter name="parentref" format="[0-9]+" />
+				<parameter name="parentref" />
 			</parameters>
 		</rule>
 		
 		<rule redirection="blog/PingBack">
 			<template>/pingback/$postId/xmlrpc.php</template>
 			<parameters>
-				<parameter name="postId" format="[0-9]+" />
+				<parameter name="postId" />
 			</parameters>
 		</rule>
 		
 		<rule redirection="blog/TrackBack">
 			<template>/trackback/$cmpref</template>
 			<parameters>
-				<parameter name="cmpref" format="[0-9]+" />
+				<parameter name="cmpref" />
 			</parameters>
 		</rule>
 	</rules>

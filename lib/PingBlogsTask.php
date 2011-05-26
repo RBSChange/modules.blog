@@ -7,6 +7,7 @@ class blog_PingBlogsTask extends task_SimpleSystemTask
 	protected function execute()
 	{
 		$postIds = $this->getParameter('postIds');
+		$errors = array();
 		foreach ($postIds as $postId) 
 		{
 			try 
@@ -18,7 +19,13 @@ class blog_PingBlogsTask extends task_SimpleSystemTask
 			catch (Exception $e)
 			{
 				Framework::exception($e);
+				$errors[] = $e->getMessage();
 			}
+		}
+		
+		if (count($errors))
+		{
+			throw new Exception(implode("\n", $errors));
 		}
 	}
 }

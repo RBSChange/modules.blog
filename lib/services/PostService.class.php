@@ -417,6 +417,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 			$pingTask = $taskService->getNewDocumentInstance();
 			$pingTask->setSystemtaskclassname('blog_PingBlogsTask');
 			$pingTask->setLabel(__METHOD__);
+			
 			$postIds = array();
 		}
 		if (!in_array($document->getId(), $postIds))
@@ -425,7 +426,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		}
 		$pingTask->setParameters(serialize(array('postIds' => $postIds)));
 		$pingTask->setUniqueExecutiondate(date_Calendar::getInstance());
-		$pingTask->save(ModuleService::getInstance()->getSystemFolderId('task', 'blog'));
+		$pingTask->save();
 	}
 	
 	/**
@@ -523,16 +524,26 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	}
 	
 	/**
-	 * @param website_persistentdoculent_website $website
-	 * @param Integer $maxUrl
-	 * @return Integer[]
+	 * @param website_persistentdocument_website $website
+	 * @param string $lang
+	 * @param string $modelName
+	 * @param integer $offset
+	 * @param integer $chunkSize
+	 * @return blog_persistentdocument_post[]
 	 */
-	public function getIdsForSitemap($website, $maxUrl)
+	public function getDocumentForSitemap($website, $lang, $modelName, $offset, $chunkSize)
 	{
-		$query = $this->createQuery()->add(Restrictions::published());
-		$query->createCriteria('blog')->add(Restrictions::descendentOf($website->getId()));
-		return $query->setProjection(Projections::property('id'))->setMaxResults($maxUrl)->findColumn('id');
+		$query = $this->createQuery()->add(Restrictions::published())
+					->addOrder(Order::asc('id'))
+					->setMaxResults($chunkSize)
+					->setFirstResult($offset);
+		
+		$query->createCriteria('blog')
+					->add(Restrictions::descendentOf($website->getId()));
+		
+		return $query->find();
 	}
+	
 	
 	/**
 	 * @see f_persistentdocument_DocumentService::getDisplayPage()

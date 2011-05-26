@@ -12,18 +12,22 @@ class blog_CountPublishedPostTask extends task_SimpleSystemTask
 			->findColumn('id');
 
 		$batchPath = 'modules/blog/lib/bin/batchCountPost.php';
+		$errors = array();
+		
 		foreach ($ids as $id)
 		{
-			if (Framework::isInfoEnabled())
-			{
-				Framework::info(__METHOD__ . ' count post for blog: ' . $id);		
-			}	
+			$this->plannedTask->ping();
 			$result = f_util_System::execHTTPScript($batchPath, array($id));
 			// Log fatal errors...
 			if ($result != 'OK')
 			{
-				Framework::error(__METHOD__ . ' ' . $batchPath . ' unexpected result: "' . $result . '"');
+				$errors[] = $result;
 			}
+		}
+		
+		if (count($errors))
+		{
+			throw new Exception(implode("\n", $errors));
 		}	
 	}
 }

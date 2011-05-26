@@ -91,7 +91,7 @@ class blog_KeywordService extends blog_PostgroupService
 	 */
 	private function buildComparablelabel($label)
 	{
-		return f_util_StringUtils::strtolower(website_UrlRewritingService::getInstance()->getUrlLabel($label));
+		return f_util_StringUtils::strtolower(website_UrlRewritingService::getInstance()->encodePathString($label));
 	}
 	
 	/**
@@ -150,19 +150,28 @@ class blog_KeywordService extends blog_PostgroupService
 		$keyword->setPublishedPostCount($result['count']);
 		return $keyword->isPropertyModified('publishedPostCount') || $keyword->isPropertyModified('postCount');
 	}
-	
 		
 	/**
-	 * @param website_persistentdoculent_website $website
-	 * @param Integer $maxUrl
-	 * @return Integer[]
+	 * @param website_persistentdocument_website $website
+	 * @param string $lang
+	 * @param string $modelName
+	 * @param integer $offset
+	 * @param integer $chunkSize
+	 * @return blog_persistentdocument_keyword[]
 	 */
-	public function getIdsForSitemap($website, $maxUrl)
+	public function getDocumentForSitemap($website, $lang, $modelName, $offset, $chunkSize)
 	{
-		$query = $this->createQuery()->add(Restrictions::published());
-		$query->createCriteria('blog')->add(Restrictions::descendentOf($website->getId()));
-		return $query->setProjection(Projections::property('id'))->setMaxResults($maxUrl)->findColumn('id');	
+		$query = $this->createQuery()->add(Restrictions::published())
+					->addOrder(Order::asc('id'))
+					->setMaxResults($chunkSize)
+					->setFirstResult($offset);
+		
+		$query->createCriteria('blog')
+					->add(Restrictions::descendentOf($website->getId()));
+		
+		return $query->find();
 	}
+		
 
 	/**
 	 * @param blog_persistentdocument_keyword $keyword

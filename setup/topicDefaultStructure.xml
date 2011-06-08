@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <script>
-	<binding fileName="modules/blog/persistentdocument/import/blog_binding.xml" />
 	<binding fileName="modules/website/persistentdocument/import/website_binding.xml" />
 
 	<attribute name="template" default="true">webfactory/tplTwo</attribute>

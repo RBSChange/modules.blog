@@ -97,13 +97,13 @@ class blog_ModuleService extends ModuleBaseService
 		// Check container.
 		if (!$container instanceof website_persistentdocument_topic)
 		{
-			throw new BaseException('Invalid shop', 'modules.blog.bo.actions.Invalid-topic');
+			throw new BaseException('Invalid topic', 'modules.blog.bo.actions.Invalid-topic');
 		}
 		
 		$node = TreeService::getInstance()->getInstanceByDocument($container);
 		if (count($node->getChildren('modules_website/page')) > 0)
 		{
-			throw new BaseException('This shop already contains pages', 'modules.blog.bo.actions.Topic-already-contains-pages');
+			throw new BaseException('This topic already contains pages', 'modules.blog.bo.actions.Topic-already-contains-pages');
 		}
 		
 		// Set atrtibutes.

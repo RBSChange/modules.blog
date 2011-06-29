@@ -44,7 +44,9 @@
 			<parameter name="cloud" type="Boolean" default-value="true" />
 		</parameters>
 	</block>
-	<block type="modules_blog_post" icon="post" label="&amp;modules.blog.bo.blocks.Post;">
+	<block type="modules_blog_post" icon="post" label="&amp;modules.blog.bo.blocks.Post;"
+		cache="true" cache-key="cmpref,page"
+		cache-deps="modules_blog/blog,modules_blog/category,modules_media/media,[modules_website/page]">
 		<parameters>
 			<parameter name="cmpref" type="modules_blog/post" />
 			<parameter name="showHightlightingVisual" type="Boolean" default-value="true" />

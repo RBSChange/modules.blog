@@ -12,15 +12,10 @@ class blog_BlockPostAction extends website_TaggerBlockAction
 	{
 		return "functional_blog_post-detail";
 	}
-
-	function getCacheKeyParameters($request)
-	{
-		return array('cmpref' => $this->getDocumentIdParameter(), 'context->lang' => $this->getLang(), 'pageId' => $this->getPage()->getId());
-	}
 	
-	function getCacheDependencies()
+	public function getCacheDependencies()
 	{
-		return array("modules_blog/blog", "modules_blog/post", "modules_blog/category", "modules_media/media", "modules_website/page");
+		return array($this->getDocumentIdParameter());
 	}
 	
 	function initialize($request, $response)

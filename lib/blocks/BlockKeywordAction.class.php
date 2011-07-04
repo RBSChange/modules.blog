@@ -21,7 +21,7 @@ class blog_BlockKeywordAction extends website_TaggerBlockAction
 	 */
 	function execute($request, $response)
 	{
-		if ($this->isInBackoffice())
+		if ($this->isInBackofficeEdition())
 		{
 			return website_BlockView::BACKOFFICE;
 		}

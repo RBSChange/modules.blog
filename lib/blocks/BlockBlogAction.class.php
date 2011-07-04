@@ -22,11 +22,6 @@ class blog_BlockBlogAction extends website_TaggerBlockAction
 	 */
 	function execute($request, $response)
 	{
-		if ($this->isInBackoffice())
-		{
-			return website_BlockView::BACKOFFICE;
-		}
-				
 		$blog = $this->getDocumentParameter();
 		if ($blog === null || !$blog->isPublished())
 		{

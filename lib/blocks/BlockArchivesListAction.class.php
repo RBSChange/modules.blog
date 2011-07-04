@@ -14,11 +14,6 @@ class blog_BlockArchivesListAction extends website_BlockAction
 	 */
 	function execute($request, $response)
 	{
-		if ($this->isInBackoffice())
-		{
-			return website_BlockView::NONE;
-		}
-
 		$document = $this->getDocumentParameter();
 		$request->setAttribute('document', $document);
 		if (!($document instanceof blog_persistentdocument_blog))
@@ -26,18 +21,22 @@ class blog_BlockArchivesListAction extends website_BlockAction
 			if ($document !== null && f_util_ClassUtils::methodExists($document, 'getBlog'))
 			{
 				$blog = $document->getBlog();
+				if ($blog === null)
+				{
+					return website_BlockView::NONE;
+				}
 			}
 			else 
 			{
-				$blog = null;
+				return website_BlockView::NONE;
 			}
 		}
 		else
 		{
 			$blog = $document;
 		}
-		$request->setAttribute('blog', $blog);
 		
+		$request->setAttribute('blog', $blog);		
 		return website_BlockView::SUCCESS;
 	}
 }

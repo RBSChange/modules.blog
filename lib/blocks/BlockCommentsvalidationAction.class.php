@@ -14,17 +14,11 @@ class blog_BlockCommentsvalidationAction extends website_BlockAction
 	 */
 	function execute($request, $response)
 	{
-		if ($this->isInBackoffice())
-		{
-			return website_BlockView::BACKOFFICE;
-		}
-		
 		$blog = $this->getDocumentParameter();
-		if (!$blog)
+		if (!($blog instanceof blog_persistentdocument_blog) || !$blog->isPublished())
 		{
 			return website_BlockView::NONE;
-		}
-		
+		}		
 		return $this->getInputViewName();
 	}
 	

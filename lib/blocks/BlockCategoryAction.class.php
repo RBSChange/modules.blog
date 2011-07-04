@@ -21,12 +21,7 @@ class blog_BlockCategoryAction extends website_TaggerBlockAction
 	 * @return String
 	 */
 	function execute($request, $response)
-	{
-		if ($this->isInBackoffice())
-		{
-			return website_BlockView::BACKOFFICE;
-		}
-				
+	{				
 		$category = $this->getDocumentParameter();
 		if ($category === null || !$category->isPublished())
 		{

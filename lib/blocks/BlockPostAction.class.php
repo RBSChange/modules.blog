@@ -20,11 +20,12 @@ class blog_BlockPostAction extends website_TaggerBlockAction
 	
 	function initialize($request, $response)
 	{
-		$post = $this->getDocumentParameter();
-		if ($post === null)
+		if ($this->isInBackoffice())
 		{
 			return;
 		}
+		
+		$post = $this->getDocumentParameter();
 		if ($post instanceof blog_persistentdocument_post && $post->getAllowPingbacks() == true)
 		{
 			header('X-Pingback: ' . LinkHelper::getActionUrl('blog', 'PingBack', array('postId' => $post->getId())));
@@ -40,11 +41,6 @@ class blog_BlockPostAction extends website_TaggerBlockAction
 	 */
 	function execute($request, $response)
 	{
-		if ($this->isInBackoffice())
-		{
-			return website_BlockView::BACKOFFICE;
-		}
-		
 		$post = $this->getDocumentParameter();
 		if ($post === null)
 		{

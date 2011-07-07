@@ -5,7 +5,6 @@
 
 	<website byTag="default_modules_website_default-website">
 		<execute method="setDocumentIdAttribute" />
-		<binding fileName="modules/blog/setup/frontadminDefaultStructure.xml" />
 		<topic byLabel="Liste des blogs" id="blogs">
 			<execute method="setDocumentIdAttribute" />
 			<binding fileName="modules/blog/setup/topicDefaultStructure.xml" />

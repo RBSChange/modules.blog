@@ -64,24 +64,6 @@
 			}
 		]]></body>
 	</action>
-	<action name="initFrontadminStructure">
-		<parameter name="listWidget" />
-		<body><![CDATA[
-			try
-			{
-				var documentId = listWidget.getSelectedItems()[0].websiteId;
-				var lang = this.getContextLang();
-				var callback = function (attributes) {
-					return wCore.executeJSON('website', 'InitializeStructure', { cmpref: documentId, moduleName: 'blog', scriptName: 'frontadminDefaultStructure', attributes: attributes, lang: lang}, null, true);
-				};
-				getController().openModalDialog(this, 'InitializeStructure', {documentId: documentId, module: this, callback: callback });
-			}
-			catch (e)
-			{
-				wCore.error('blog.initDefaultStruct', [], e);
-			}
-		]]></body>
-	</action>
 	<action name="deleteBlog">
 		<parameter name="listWidget" />
 		<body><![CDATA[

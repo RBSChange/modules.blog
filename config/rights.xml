@@ -22,7 +22,7 @@
 			<action name="Validate" />
 			<action name="Trusted" />
 		</document>
-		<action name="FrontAdmin" />
+		<!-- <action name="FrontAdmin" /> -->
 		<action name="InitDefaultStruct" />
 	</actions>
 	<roles>
@@ -70,10 +70,10 @@
 		<role name="User">
 			<permission name="List.*" />
 		</role>
-		<frontendrole name="FrontAdmin" extend="Trusted">
+		<!-- <frontendrole name="FrontAdmin" extend="Trusted">
 			<permission name="FrontAdmin" />
 			<permission name="Validate.comment" />
-		</frontendrole>
+		</frontendrole> -->
 		<frontendrole name="Trusted">
 			<permission name="Trusted.comment" />
 		</frontendrole>

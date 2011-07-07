@@ -1,41 +1,50 @@
-<h2 change:h="">${post/getLabelAsHtml}</h2>
-
 <ul class="mini-navigation" tal:condition="php: post.getAllowComments() || configuration.getShowblogrsslink()">
 	<li tal:condition="configuration/getShowblogrsslink">
 		<img change:img="front/rss.gif" alt="" />
-		<a class="link" change:link="module blog; action ViewFeed; parentref post/getBlog/getId" change:translate="modules.blog.frontoffice.Blog-rss-link"></a>
+		<a class="link" change:link="module blog; action ViewFeed; parentref post/getBlog/getId">${trans:m.blog.frontoffice.blog-rss-link,ucf}</a>
 	</li>
 	<li tal:condition="post/getAllowComments">
 		<img change:img="front/rss.gif" alt="" />
-		<a class="link" change:link="module comment; action ViewFeed; targetId post/getId" change:translate="modules.comment.frontoffice.Rss-link"></a>
+		<a class="link" change:link="module comment; action ViewFeed; targetId post/getId">${trans:m.comment.frontoffice.rss-link,ucf}</a>
 	</li>
 </ul>
 
-<p class="meta-post-infos">${trans: m.blog.frontoffice.posted-by,ucf,author=post/getAuthorNameAsHtml} - <tal:block change:datetime="post/getPostDate" /></p>
+<h1 change:h="">${post/getLabelAsHtml}</h1>
+
+<div class="normal meta-post-infos">
+	${trans: m.blog.frontoffice.posted-by,ucf,author=post/getAuthorNameAsHtml}<span> - </span>
+	<tal:block change:datetime="post/getPostDate" />
+</div>
 
 <tal:block tal:condition="configuration/getShowHightlightingVisual">
 	<img tal:condition="post/getHighlightingVisual" change:media="document post/getHighlightingVisual; format 'modules.blog.frontoffice/hightlightingVisual-detail'; zoom 'true'" class="hightlinghting-visual" />
 </tal:block>
 
-<div tal:condition="php: post.getSummary() AND post.getShowSummaryOnDetail()">${post/getSummaryAsHtml}</div>
+<div class="normal" tal:condition="php: post.getSummary() AND post.getShowSummaryOnDetail()">${post/getSummaryAsHtml}</div>
 
-<div>${post/getContentsAsHtml}</div>
+<div class="normal">${post/getContentsAsHtml}</div>
 
 <tal:block tal:condition="showShareBlock" change:block="" module="sharethis" name="Sharepage" />
 
-<h3 change:h="">${trans: m.blog.bo.general.categories,ucf}</h3>
-<ul class="meta-categories">
-	<li tal:repeat="category post/getCategoryArray"><a change:link="document category">${category/getLabelAsHtml}</a></li>
-</ul>
+<div class="normal additional-post-meta" tal:condition="php: post.getPublishedCategoryCount() || post.getPublishedKeywordCount()">
+	<dl class="inline-list" tal:condition="post/getPublishedCategoryCount">
+		<dt>${trans: m.blog.bo.general.categories,ucf}</dt>
+		<dd tal:repeat="category post/getPublishedCategoryArray">
+			<a change:link="document category">${category/getLabelAsHtml}</a>
+			<span tal:condition="not: repeat/category/end">, </span>
+		</dd>
+	</dl>
 
-<tal:block tal:condition="post/getKeywordCount">
-	<h3 change:h="">${trans: m.blog.bo.general.keywords,ucf}</h3>
-	<ul class="meta-keyword">
-		<li tal:repeat="keyword post/getKeywordArray"><a change:link="document keyword">${keyword/getLabelAsHtml}</a></li>
-	</ul>
-</tal:block>
+	<dl class="inline-list" tal:condition="post/getPublishedKeywordCount">
+		<dt>${trans: m.blog.bo.general.keywords,ucf}</dt>
+		<dd tal:repeat="keyword post/getPublishedKeywordArray">
+			<a change:link="document keyword">${keyword/getLabelAsHtml}</a>
+			<span tal:condition="not: repeat/keyword/end">, </span>
+		</dd>
+	</dl>
+</div>
 
-<tal:block tal:condition="post/getAllowTrackbacks">
-	<h3 change:h="">${trans: m.blog.frontoffice.trackback-url,ucf}</h3>
-	<input type="text" readonly="readonly" value="${trackbackurl}" class="textfield" style="width:50%" /> 
-</tal:block>
+<p class="normal" tal:condition="post/getAllowTrackbacks">
+	<label for="trackbacks">${trans: m.blog.frontoffice.trackback-url,ucf}</label>
+	<input id="trackbacks" type="text" readonly="readonly" value="${trackbackurl}" class="textfield" style="width:50%" /> 
+</p>

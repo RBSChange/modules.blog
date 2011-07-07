@@ -160,18 +160,7 @@ class blog_BlogService extends f_persistentdocument_DocumentService
 		$restriction = Restrictions::eq('blog.id', $blog->getId());
 		return blog_PostService::getInstance()->getRSSFeedWriterByRestriction($restriction);
 	}
-	
-	/**
-	 * @param blog_persistentdocument_blog $blog
-	 * @return Boolean
-	 */
-	public function checkAdminPermissionsForCurrentFrontendUser($blog)
-	{
-		$user = users_UserService::getInstance()->getCurrentFrontEndUser();
-		$ps = f_permission_PermissionService::getInstance();
-		return $ps->hasPermission($user, 'modules_blog.FrontAdmin', $blog->getId());		
-	}
-	
+		
 	/**
 	 * @param website_persistentdocument_website $website
 	 * @return blog_persistentdocument_blog[]
@@ -214,11 +203,7 @@ class blog_BlogService extends f_persistentdocument_DocumentService
 		}
 	}
 	
-	
-
 	/**
-	 * @see f_persistentdocument_DocumentService::getResume()
-	 *
 	 * @param f_persistentdocument_PersistentDocument $document
 	 * @param string $forModuleName
 	 * @param array $allowedSections
@@ -361,5 +346,17 @@ class blog_BlogService extends f_persistentdocument_DocumentService
 	public function getDocumentsModelNamesForTweet($document)
 	{
 		return array('modules_blog/post');
+	}
+	
+	// Deprecated.
+	
+	/**
+	 * @deprecated (will be removed in 4.0)
+	 */
+	public function checkAdminPermissionsForCurrentFrontendUser($blog)
+	{
+		$user = users_UserService::getInstance()->getCurrentFrontEndUser();
+		$ps = f_permission_PermissionService::getInstance();
+		return $ps->hasPermission($user, 'modules_blog.FrontAdmin', $blog->getId());		
 	}
 }

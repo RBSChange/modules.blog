@@ -1,5 +1,3 @@
-<h2 change:h="">${keyword/getLabelAsHtml}</h2>
-
 <ul class="mini-navigation">
 	<li tal:condition="configuration/getShowblogrsslink">
 		<img change:img="front/rss.gif" alt="" />
@@ -11,9 +9,11 @@
 	</li>
 </ul>
 
-<div tal:condition="keyword/getDescription">${keyword/getDescriptionAsHtml}</div>
+<h1 change:h="">${keyword/getLabelAsHtml}</h1>
 
-<ol class="module-list">
+<div class="normal" tal:condition="keyword/getDescription">${keyword/getDescriptionAsHtml}</div>
+
+<ol class="document-list">
 	<li tal:repeat="post paginator" class="${php: repeat.post.odd ? 'odd' : 'even'}">
 		<tal:block change:include="module 'blog' ; template 'Blog-Inc-PostShortDetail' ; type 'html' ; post post ; showHightlightingVisual configuration/getShowHightlightingVisual" />
 	</li>

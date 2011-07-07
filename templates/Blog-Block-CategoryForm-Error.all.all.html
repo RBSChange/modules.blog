@@ -1,9 +1,0 @@
-<tal:block change:loadhandler="generic_DocumentLoadHandler" args="category" />
-<h2 tal:condition="category/isNew" change:h="" change:translate="modules.blog.frontoffice.Category-new-title"></h2>
-<h2 tal:condition="not: category/isNew" change:h="" change:translate="modules.blog.frontoffice.Category-edit-title"></h2>
-
-<ul change:errors=""></ul>
-
-<p>
-	<a change:link="tag contextual_website_website_modules_blog_blogedit" change:translate="modules.blog.frontoffice.Back-to-list-link"></a>
-</p>

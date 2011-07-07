@@ -15,6 +15,11 @@
 			<changecontent for="content-block">
 				<changeblock type="modules_blog_blog" />
 			</changecontent>
+			<changecontent for="sidebar-block">
+				<changeblock type="modules_blog_CategoryList" />
+				<changeblock type="modules_blog_KeywordList" __cloud="true" />
+				<changeblock type="modules_blog_ArchivesList" />
+			</changecontent>
 		</page>
 		
 		<page byLabel="Catégorie" navigationVisibility="hidden" indexingstatus="false">
@@ -22,12 +27,22 @@
 			<changecontent for="content-block">
 				<changeblock type="modules_blog_category" />
 			</changecontent>
+			<changecontent for="sidebar-block">
+				<changeblock type="modules_blog_CategoryList" />
+				<changeblock type="modules_blog_KeywordList" __cloud="true" />
+				<changeblock type="modules_blog_ArchivesList" />
+			</changecontent>
 		</page>
 		
 		<page byLabel="Mot clé" navigationVisibility="hidden" indexingstatus="false">
 			<tag name="functional_blog_keyword-detail" />
 			<changecontent for="content-block">
 				<changeblock type="modules_blog_keyword" />
+			</changecontent>
+			<changecontent for="sidebar-block">
+				<changeblock type="modules_blog_CategoryList" />
+				<changeblock type="modules_blog_KeywordList" __cloud="true" />
+				<changeblock type="modules_blog_ArchivesList" />
 			</changecontent>
 		</page>
 		
@@ -37,12 +52,22 @@
 				<changeblock type="modules_blog_post" />
 				<changeblock type="modules_blog_comments" />
 			</changecontent>
+			<changecontent for="sidebar-block">
+				<changeblock type="modules_blog_CategoryList" />
+				<changeblock type="modules_blog_KeywordList" __cloud="true" />
+				<changeblock type="modules_blog_ArchivesList" />
+			</changecontent>
 		</page>
 		
 		<page byLabel="Archives" navigationVisibility="hidden" indexingstatus="false">
 			<tag name="functional_blog_archives" />
 			<changecontent for="content-block">
 				<changeblock type="modules_blog_archives" />
+			</changecontent>
+			<changecontent for="sidebar-block">
+				<changeblock type="modules_blog_CategoryList" />
+				<changeblock type="modules_blog_KeywordList" __cloud="true" />
+				<changeblock type="modules_blog_ArchivesList" />
 			</changecontent>
 		</page>
 	</topic>

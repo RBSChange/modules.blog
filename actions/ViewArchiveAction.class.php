@@ -59,4 +59,12 @@ class blog_ViewArchiveAction extends f_action_BaseAction
 
 		return $page;
 	}
+	
+	/**
+	 * @return boolean
+	 */
+	public function isSecure()
+	{
+		return false;
+	}
 }

@@ -115,27 +115,4 @@
 			<parameter name="summaryMaxLength" type="Integer" />
 		</parameters>
 	</block>
-	<!-- Frontoffice administration. -->
-	<block type="modules_blog_blogEdit" icon="admin" label="&amp;modules.blog.bo.blocks.BlogEdit;">
-		<parameters>
-			<parameter name="cmpref" type="modules_blog/blog" />
-			<parameter name="nbitemperpage" type="Integer" default-value="10" />
-		</parameters>
-	</block>
-	<block type="modules_blog_postForm" icon="admin" label="&amp;modules.blog.bo.blocks.PostForm;">
-		<parameters>
-			<parameter name="cmpref" type="modules_blog/post" />
-		</parameters>
-	</block>
-	<block type="modules_blog_categoryForm" icon="admin" label="&amp;modules.blog.bo.blocks.CategoryForm;">
-		<parameters>
-			<parameter name="cmpref" type="modules_blog/category" />
-		</parameters>
-	</block>
-	<block type="modules_blog_commentsvalidation" icon="admin" label="&amp;modules.blog.bo.blocks.CommentsValidation;">
-		<parameters>
-			<parameter name="cmpref" type="modules_blog/blog" />
-			<parameter name="nbitemperpage" type="Integer" default-value="10" />
-		</parameters>
-	</block>
 </blocks>

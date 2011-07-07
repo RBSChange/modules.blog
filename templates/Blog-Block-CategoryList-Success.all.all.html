@@ -1,9 +1,6 @@
-<tal:block tal:condition="blog">
-	<h2 change:h="" change:translate="modules.blog.bo.general.Categories"></h2>
-	
-	<ul class="normal">
-		<tal:block tal:repeat="category blog/getPublishedFistLevelCategories">
-			<tal:block change:include="module 'blog' ; template 'Blog-Inc-RecursiveCategory' ; type 'html' ; category category ; recursiveCount configuration/getRecursivecount ; document document" />
-		</tal:block>
-	</ul>
-</tal:block>
+<dl class="menu-list">
+	<dt>${trans:m.blog.bo.general.categories,ucf}</dt>
+	<tal:block tal:repeat="category blog/getPublishedFistLevelCategories">
+		<tal:block change:include="module 'blog' ; template 'Blog-Inc-RecursiveCategory' ; type 'html' ; category category ; recursiveCount configuration/getRecursivecount ; document document" />
+	</tal:block>
+</dl>

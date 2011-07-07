@@ -1,5 +1,9 @@
-<h3 change:h=""><a change:link="document post">${post/getLabelAsHtml}</a></h3>
-<p class="meta-post-infos">${trans: m.blog.frontoffice.posted-by,ucf,author=post/getAuthorNameAsHtml} - <tal:block change:datetime="post/getPostDate" /> - 
+<h2 change:h=""><a change:link="document post">${post/getLabelAsHtml}</a></h2>
+<p class="normal meta-post-infos">
+	${trans: m.blog.frontoffice.posted-by,ucf,author=post/getAuthorNameAsHtml}
+	<span> - </span>
+	<tal:block change:datetime="post/getPostDate" />
+	<span> - </span> 
 	<a change:link="document post; anchor php: 'comments-' . post.getId()" tal:define="commentCount post/getCommentCount">
 		<tal:block tal:condition="php: commentCount GT 1">${trans: m.blog.frontoffice.several-comments,ucf,count=commentCount}</tal:block>
 		<tal:block tal:condition="php: commentCount == 1">${trans: m.blog.frontoffice.one-comment,ucf}</tal:block>
@@ -7,18 +11,26 @@
 	</a>
 </p>
 <tal:block tal:condition="showHightlightingVisual">
-	<img tal:condition="post/getHighlightingVisual" change:media="document post/getHighlightingVisual; format 'modules.blog.frontoffice/hightlightingVisual-list'" class="hightlinghting-visual" />
+	<img tal:condition="post/getHighlightingVisual" change:media="document post/getHighlightingVisual; format 'modules.blog.frontoffice/hightlightingVisual-list'" class="document-visual" />
 </tal:block>
-<div tal:condition="post/getSummary">${post/getSummaryAsHtml}</div>
-<div tal:condition="not:post/getSummary">${post/getContentsAsHtml}</div>
+<div class="normal" tal:condition="post/getSummary">${post/getSummaryAsHtml}</div>
+<div class="normal" tal:condition="not:post/getSummary">${post/getContentsAsHtml}</div>
 
-<h4 change:h="">${trans: m.blog.bo.general.categories,ucf}</h4>
-<ul tal:condition="post/getCategoryCount" class="meta-categories">
-	<li tal:repeat="category post/getCategoryArray"><a change:link="document category">${category/getLabelAsHtml}</a></li>
-</ul>
-<tal:block tal:condition="post/getKeywordCount">
-	<h4 change:h="">${trans: m.blog.bo.general.keywords}</h4>
-	<ul class="meta-keywords">
-		<li tal:repeat="keyword post/getKeywordArray"><a change:link="document keyword">${keyword/getLabelAsHtml}</a></li>
-	</ul>
-</tal:block>
+<div class="additional-post-meta" tal:condition="php: post.getPublishedCategoryCount() || post.getPublishedKeywordCount()">
+	<dl class="inline-list" tal:condition="post/getPublishedCategoryCount">
+		<dt>${trans: m.blog.bo.general.categories,ucf}</dt>
+		<dd tal:repeat="category post/getPublishedCategoryArray">
+			<a change:link="document category">${category/getLabelAsHtml}</a>
+			<span tal:condition="not: repeat/category/end">, </span>
+		</dd>
+	</dl>
+
+	<dl class="inline-list" tal:condition="post/getPublishedKeywordCount">
+		<dt>${trans: m.blog.bo.general.keywords,ucf}</dt>
+		<dd tal:repeat="keyword post/getPublishedKeywordArray">
+			<a change:link="document keyword">${keyword/getLabelAsHtml}</a>
+			<span tal:condition="not: repeat/keyword/end">, </span>
+		</dd>
+	</dl>
+</div>
+<div class="cleaner"></div>

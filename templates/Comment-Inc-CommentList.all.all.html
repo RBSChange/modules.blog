@@ -8,7 +8,7 @@
 	<tal:block tal:repeat="comment comments">
 		<li id="${comment/getAnchor}" class="${php: repeat.comment.odd ? 'odd' : 'even'}${php: (comment.getId() == currentCommentId) ? ' current' : ''}${php: !comment.isPublished() ? ' not-published' : ''}">
 			<p class="normal comment-info">
-				<a change:currentPageLink="" anchor="${comment/getAnchor}" rel="nofollow">${php: repeat.comment.number + offset}.</a> 
+				<a change:currentpagelink="" anchor="${comment/getAnchor}" rel="nofollow">${php: repeat.comment.number + offset}.</a> 
 				<tal:block change:starrating="" small="true" value="${comment/getRating}" displayOnly="true" tal:condition="enableRating"  />
 				<tal:block tal:condition="php: comment instanceof blog_persistentdocument_pingback">${trans: m.blog.frontoffice.pingback-by,ucf}</tal:block>
 				<tal:block tal:condition="php: comment instanceof blog_persistentdocument_trackback">${trans: m.blog.frontoffice.trackback-by,ucf}</tal:block>

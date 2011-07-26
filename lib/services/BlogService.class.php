@@ -83,14 +83,14 @@ class blog_BlogService extends f_persistentdocument_DocumentService
 		{
 			$dateCalendar = date_Calendar::getInstanceFromFormat($year.'/'.$month.'/1', 'Y/m/d');
 			$startDate = $dateCalendar->toString();
-			$startLabel = date_DateFormat::format($dateCalendar, 'F Y');
+			$startLabel = date_Formatter::format($dateCalendar, 'F Y');
 			$endDate = $dateCalendar->add(date_Calendar::MONTH, 1)->sub(date_Calendar::SECOND, 1)->toString();
 		}
 		else 
 		{
 			$dateCalendar = date_Calendar::getInstanceFromFormat($year.'/1/1', 'Y/m/d');
 			$startDate = $dateCalendar->toString();
-			$startLabel = date_DateFormat::format($dateCalendar, 'Y');
+			$startLabel = date_Formatter::format($dateCalendar, 'Y');
 			$endDate = $dateCalendar->add(date_Calendar::YEAR, 1)->sub(date_Calendar::SECOND, 1)->toString();
 		}
 		

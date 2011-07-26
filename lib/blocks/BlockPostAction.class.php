@@ -83,7 +83,15 @@ class blog_BlockPostAction extends website_TaggerBlockAction
 			$postCategories[] = $category->getLabel();
 		}
 		$blog = $post->getBlog();
-		return array("postLabel" => $post->getLabel(), "postDate" => date_DateFormat::format($post->getPostDate(), 'd/m/Y'), "postSummary" => f_util_StringUtils::htmlToText($post->getSummary(), false, true), "blogLabel" => $blog->getLabel(), "blogDescription" => f_util_StringUtils::htmlToText($blog->getDescription(), false, true), "postKeywords" => join(",", $postKeywords), "postCategories" => join(",", $postCategories));
+		return array(
+			"postLabel" => $post->getLabel(),
+			"postDate" => date_Formatter::toDefaultDate($post->getPostDate()),
+			"postSummary" => f_util_StringUtils::htmlToText($post->getSummary(), false, true),
+			"blogLabel" => $blog->getLabel(),
+			"blogDescription" => f_util_StringUtils::htmlToText($blog->getDescription(), false, true),
+			"postKeywords" => join(",", $postKeywords),
+			"postCategories" => join(",", $postCategories)
+		);
 	}
 	
 	/**

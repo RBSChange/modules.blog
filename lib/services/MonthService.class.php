@@ -116,7 +116,7 @@ class blog_MonthService extends blog_PostgroupService
 	{
 		// Set the label.
 		$dateCalendar = date_Calendar::getInstanceFromFormat($document->getYear()->getNumber().'/'.$document->getNumber().'/1', 'Y/m/d');
-		$document->setLabel(date_DateFormat::format($dateCalendar, 'F'));
+		$document->setLabel(date_Formatter::format($dateCalendar, 'F'));
 	}
 
 

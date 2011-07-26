@@ -24,7 +24,7 @@ class blog_PreviewPostAction extends f_action_BaseAction
 		if (!is_null($page))
 		{
 			$model = $document->getPersistentModel();
-			$request->setParameter($model->getOriginalModuleName()."Param", array("cmpref" => $document->getId()));
+			$request->setParameter($model->getModuleName()."Param", array("cmpref" => $document->getId()));
 
 			
 			//set pageref parameter into the request

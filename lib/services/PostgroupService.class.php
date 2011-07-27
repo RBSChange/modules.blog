@@ -57,34 +57,6 @@ class blog_PostgroupService extends f_persistentdocument_DocumentService
 	}
 	
 	/**
-	 * @deprecated 
-	 * @param blog_persistentdocument_postgroup $postgroup
-	 */
-	public function incrementPublishedPostCount($postgroup)
-	{
-		$this->updatePostCount($postgroup);
-	}
-
-	/**
-	 * @deprecated 
-	 * @param blog_persistentdocument_postgroup $postgroup
-	 */
-	public function decrementPublishedPostCount($postgroup)
-	{
-		$this->updatePostCount($postgroup);
-	}
-
-	/**
-	 * @deprecated 
-	 * @param blog_persistentdocument_postgroup $postgroup
-	 * @param Integer $newCount
-	 */
-	protected function changePublishedPostCount($postgroup, $newCount)
-	{
-		$this->updatePostCount($postgroup);
-	}
-	
-	/**
 	 * @param blog_persistentdocument_postgroup $postgroup
 	 * @return boolean;
 	 */

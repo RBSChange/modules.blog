@@ -57,7 +57,7 @@ class blog_TrackBackAction extends f_action_BaseAction
 		$trackback->setTargetId($postId);
 		$trackback->save();
 		// Ask validation.
-		comment_CommentHelper::validateComment($trackback);
+		$trackback->getDocumentService()->frontendValidation($trackback);
 		$this->writeAnswer($error, $errorMessage);
 	}
 	

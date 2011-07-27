@@ -347,16 +347,4 @@ class blog_BlogService extends f_persistentdocument_DocumentService
 	{
 		return array('modules_blog/post');
 	}
-	
-	// Deprecated.
-	
-	/**
-	 * @deprecated (will be removed in 4.0)
-	 */
-	public function checkAdminPermissionsForCurrentFrontendUser($blog)
-	{
-		$user = users_UserService::getInstance()->getCurrentFrontEndUser();
-		$ps = f_permission_PermissionService::getInstance();
-		return $ps->hasPermission($user, 'modules_blog.FrontAdmin', $blog->getId());		
-	}
 }

@@ -39,7 +39,7 @@ class blog_BlockCategoryAction extends website_TaggerBlockAction
 		$request->setAttribute('paginator', $paginator);
 		
 		// Set meta.
-		$page = $this->getPage();
+		$context = $this->getContext();
 		$website = website_WebsiteModuleService::getInstance()->getCurrentWebsite();
 		$blog = $category->getBlog();
 		$replacements = array(
@@ -48,12 +48,12 @@ class blog_BlockCategoryAction extends website_TaggerBlockAction
 			'blogLabel' => $blog->getLabel(),
 			'siteLabel' => $website->getLabel()
 		);
-		$page->setMetatitle(f_Locale::translate('&modules.blog.frontoffice.Category-meta-title;', $replacements));
-		$page->appendToDescription(f_Locale::translate('&modules.blog.frontoffice.Category-meta-description;', $replacements));
+		$context->setMetatitle(f_Locale::translate('&modules.blog.frontoffice.Category-meta-title;', $replacements));
+		$context->appendToDescription(f_Locale::translate('&modules.blog.frontoffice.Category-meta-description;', $replacements));
 		
 		// Add the RSS feeds.
-		$page->addRssFeed($blog->getLabel(), LinkHelper::getActionUrl('blog', 'ViewFeed', array('parentref' => $blog->getId())));
-		$page->addRssFeed($blog->getLabel() . ' : ' . $category->getLabel(), LinkHelper::getActionUrl('blog', 'ViewFeed', array('parentref' => $category->getId())));
+		$context->addRssFeed($blog->getLabel(), LinkHelper::getActionUrl('blog', 'ViewFeed', array('parentref' => $blog->getId())));
+		$context->addRssFeed($blog->getLabel() . ' : ' . $category->getLabel(), LinkHelper::getActionUrl('blog', 'ViewFeed', array('parentref' => $category->getId())));
 		
 		return website_BlockView::SUCCESS;
 	}

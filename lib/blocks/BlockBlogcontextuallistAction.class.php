@@ -40,7 +40,7 @@ class blog_BlockBlogcontextuallistAction extends website_BlockAction
 	private function getDocumentList($request, $response)
 	{
 		// Get the parent document instance
-        $parent = $this->getPage()->getParent();
+        $parent = $this->getContext()->getParent();
 		$request->setAttribute('parent', $parent);
 		return blog_BlogService::getInstance()->getByParentId($parent->getId());
 	}

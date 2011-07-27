@@ -181,22 +181,4 @@ class blog_MonthService extends blog_PostgroupService
 		}
 		return $modified;
 	}
-	
-	/**
-	 * @deprecated 
-	 * @param blog_persistentdocument_month $month
-	 */
-	public function incrementPublishedPostCount($month)
-	{
-		$this->updatePostCount($month);
-	}
-
-	/**
-	 * @deprecated
-	 * @param blog_persistentdocument_month $month
-	 */
-	public function decrementPublishedPostCount($month)
-	{
-		$this->updatePostCount($month);
-	}
 }

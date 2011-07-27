@@ -353,46 +353,4 @@ class blog_CategoryService extends blog_PostgroupService
 	{
 		return array('modules_blog/post');
 	}
-	
-	// Deprecated.
-		
-	/**
-	 * @deprecated (will be removed in 4.0)
-	 */
-	public function incrementPublishedPostCount($category)
-	{
-		$this->updatePostCount($category);
-	}
-
-	/**
-	 * @deprecated (will be removed in 4.0)
-	 */
-	public function decrementPublishedPostCount($category)
-	{
-		$this->updatePostCount($category);
-	}
-	
-	/**
-	 * @deprecated (will be removed in 4.0)
-	 */
-	public function refreshPublishedPostCount($category)
-	{
-		$this->updatePostCount($category);
-	}
-
-	/**
-	 * @deprecated (will be removed in 4.0)
-	 */
-	private function changeRecursivePublishedPostCount($category, $newCount)
-	{
-		$this->updatePostCount($category);
-	}
-	
-	/**
-	 * @deprecated (will be removed in 4.0)
-	 */
-	public function refreshRecursivePublishedPostCount($category)
-	{
-		$this->updatePostCount($category);
-	}
 }

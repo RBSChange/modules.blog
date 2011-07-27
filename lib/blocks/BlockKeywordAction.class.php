@@ -42,7 +42,7 @@ class blog_BlockKeywordAction extends website_TaggerBlockAction
 		$request->setAttribute('paginator', $paginator);
 		
 		// Set meta.
-		$page = $this->getPage();
+		$context = $this->getContext();
 		$website = website_WebsiteModuleService::getInstance()->getCurrentWebsite();
 		$blog = $keyword->getBlog();
 		$replacements = array(
@@ -51,12 +51,12 @@ class blog_BlockKeywordAction extends website_TaggerBlockAction
 			'blogLabel' => $blog->getLabel(),
 			'siteLabel' => $website->getLabel()
 		);
-		$page->setMetatitle(f_Locale::translate('&modules.blog.frontoffice.Keyword-meta-title;', $replacements));
-		$page->appendToDescription(f_Locale::translate('&modules.blog.frontoffice.Keyword-meta-description;', $replacements));
+		$context->setMetatitle(f_Locale::translate('&modules.blog.frontoffice.Keyword-meta-title;', $replacements));
+		$context->appendToDescription(f_Locale::translate('&modules.blog.frontoffice.Keyword-meta-description;', $replacements));
 		
 		// Add the RSS feeds.
-		$page->addRssFeed($blog->getLabel(), LinkHelper::getActionUrl('blog', 'ViewFeed', array('parentref' => $blog->getId())));
-		$page->addRssFeed($blog->getLabel() . ' : ' . $keyword->getLabel(), LinkHelper::getActionUrl('blog', 'ViewFeed', array('parentref' => $keyword->getId())));
+		$context->addRssFeed($blog->getLabel(), LinkHelper::getActionUrl('blog', 'ViewFeed', array('parentref' => $blog->getId())));
+		$context->addRssFeed($blog->getLabel() . ' : ' . $keyword->getLabel(), LinkHelper::getActionUrl('blog', 'ViewFeed', array('parentref' => $keyword->getId())));
 		
 		return website_BlockView::SUCCESS;
 	}

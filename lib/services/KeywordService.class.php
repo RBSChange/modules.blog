@@ -193,38 +193,4 @@ class blog_KeywordService extends blog_PostgroupService
 		$nodeAttributes['postCount'] = $result['count'];
 		$nodeAttributes['publishedPostCount'] = $keyword->getPublishedPostCount();
 	}
-	
-	// Deprecated.
-	
-	/**
-	 * @deprecated (will be removed in 4.0)
-	 */
-	public function refreshPublishedPostCount($keyword)
-	{
-		$this->updatePostCount($keyword);
-	}
-	
-	/**
-	 * @deprecated (will be removed in 4.0)
-	 */
-	public function refreshPostCount($keyword)
-	{
-		$this->updatePostCount($keyword);
-	}	
-	
-	/**
-	 * @deprecated (will be removed in 4.0)
-	 */
-	public function incrementPostCount($keyword)
-	{
-		$this->updatePostCount($keyword);
-	}
-
-	/**
-	 * @deprecated (will be removed in 4.0)
-	 */
-	public function decrementPostCount($keyword)
-	{
-		$this->updatePostCount($keyword);
-	}
 }

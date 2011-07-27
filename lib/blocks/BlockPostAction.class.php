@@ -60,7 +60,7 @@ class blog_BlockPostAction extends website_TaggerBlockAction
 		
 		// Add the RSS feeds.
 		$blog = $post->getBlog();
-		$this->getPage()->addRssFeed($blog->getLabel(), LinkHelper::getActionUrl('blog', 'ViewFeed', array('parentref' => $blog->getId())));
+		$this->getContext()->addRssFeed($blog->getLabel(), LinkHelper::getActionUrl('blog', 'ViewFeed', array('parentref' => $blog->getId())));
 		
 		return website_BlockView::SUCCESS;
 	}

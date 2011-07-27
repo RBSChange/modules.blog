@@ -62,7 +62,7 @@ class blog_PingBackServer
 		$pingback->setTargetId($postId);
 		$pingback->save();
 		// Ask validation.
-		comment_CommentHelper::validateComment($pingback);
+		$pingback->getDocumentService()->frontendValidation($pingback);
 		return "Successful ping of $targetURI from $sourceURI";
 	}
 }

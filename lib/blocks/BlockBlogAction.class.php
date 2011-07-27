@@ -38,18 +38,18 @@ class blog_BlockBlogAction extends website_TaggerBlockAction
 		$request->setAttribute('paginator', $paginator);
 		
 		// Set meta.
-		$page = $this->getPage();
+		$context = $this->getContext();
 		$website = website_WebsiteModuleService::getInstance()->getCurrentWebsite();
 		$replacements = array(
 			'blogLabel' => $blog->getLabel(),
 			'blogDescription' => $blog->getDescription(),
 			'siteLabel' => $website->getLabel()
 		);
-		$page->setMetatitle(f_Locale::translate('&modules.blog.frontoffice.Blog-meta-title;', $replacements));
-		$page->appendToDescription(f_Locale::translate('&modules.blog.frontoffice.Blog-meta-description;', $replacements));
+		$context->setMetatitle(f_Locale::translate('&modules.blog.frontoffice.Blog-meta-title;', $replacements));
+		$context->appendToDescription(f_Locale::translate('&modules.blog.frontoffice.Blog-meta-description;', $replacements));
 		
 		// Add the RSS feed.
-		$page->addRssFeed($blog->getLabel(), LinkHelper::getActionUrl('blog', 'ViewFeed', array('parentref' => $blog->getId())));
+		$context->addRssFeed($blog->getLabel(), LinkHelper::getActionUrl('blog', 'ViewFeed', array('parentref' => $blog->getId())));
 				
 		return website_BlockView::SUCCESS;
 	}

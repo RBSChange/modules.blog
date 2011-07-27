@@ -2,7 +2,7 @@
 <p class="normal meta-post-infos">
 	${trans: m.blog.frontoffice.posted-by,ucf,author=post/getAuthorNameAsHtml}
 	<span> - </span>
-	<tal:block change:datetime="post/getPostDate" />
+	${datetime:post/getUIPostDate}
 	<span> - </span> 
 	<a change:link="document post; anchor php: 'comments-' . post.getId()" tal:define="commentCount post/getCommentCount">
 		<tal:block tal:condition="php: commentCount GT 1">${trans: m.blog.frontoffice.several-comments,ucf,count=commentCount}</tal:block>
@@ -13,8 +13,8 @@
 <tal:block tal:condition="showHightlightingVisual">
 	<img tal:condition="post/getHighlightingVisual" change:media="document post/getHighlightingVisual; format 'modules.blog.frontoffice/hightlightingVisual-list'" class="document-visual" />
 </tal:block>
-<div class="normal" tal:condition="post/getSummary">${post/getSummaryAsHtml}</div>
-<div class="normal" tal:condition="not:post/getSummary">${post/getContentsAsHtml}</div>
+<div class="normal" tal:condition="post/getSummary">${structure post/getSummaryAsHtml}</div>
+<div class="normal" tal:condition="not:post/getSummary">${structure post/getContentsAsHtml}</div>
 
 <div class="additional-post-meta" tal:condition="php: post.getPublishedCategoryCount() || post.getPublishedKeywordCount()">
 	<dl class="inline-list" tal:condition="post/getPublishedCategoryCount">

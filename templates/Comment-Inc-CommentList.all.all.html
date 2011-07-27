@@ -14,13 +14,13 @@
 				<tal:block tal:condition="php: comment instanceof blog_persistentdocument_trackback">${trans: m.blog.frontoffice.trackback-by,ucf}</tal:block>
 				<tal:block tal:condition="php: !(comment instanceof blog_persistentdocument_pingback) && !(comment instanceof blog_persistentdocument_trackback)">${trans: m.comment.frontoffice.posted-by,ucf}</tal:block>
 				<a tal:omit-tag="not:comment/getAuthorwebsiteurl" class="link" href="${comment/getAuthorwebsiteurl}">${comment/getAuthorNameAsHtml}</a>
-				- <tal:block change:datetime="comment/getCreationdate" />
+				- ${datetime:comment/getUICreationdate}
 			</p>
 			<img tal:condition="showGravatars" class="avatar document-visual" src="${comment/getGravatarUrl}" alt="" />
-			<blockquote class="comment-contents" tal:condition="php: comment instanceof blog_persistentdocument_pingback || comment instanceof blog_persistentdocument_trackback" cite="${comment/getAuthorwebsiteurl}">${comment/getContentsAsHtml}</blockquote>
+			<blockquote class="comment-contents" tal:condition="php: comment instanceof blog_persistentdocument_pingback || comment instanceof blog_persistentdocument_trackback" cite="${comment/getAuthorwebsiteurl}">${structure comment/getContentsAsHtml}</blockquote>
 			<tal:block tal:condition="php: !(comment instanceof blog_persistentdocument_pingback) && !(comment instanceof blog_persistentdocument_trackback)">
-				<div tal:condition="php: comment.isPublished() AND !enableEvaluation" class="comment-contents">${comment/getContentsAsHtml}</div>
-				<div tal:condition="php: !comment.isPublished() OR enableEvaluation" class="normal comment-contents">${comment/getContentsAsHtml}</div>
+				<div tal:condition="php: comment.isPublished() AND !enableEvaluation" class="comment-contents">${structure comment/getContentsAsHtml}</div>
+				<div tal:condition="php: !comment.isPublished() OR enableEvaluation" class="normal comment-contents">${structure comment/getContentsAsHtml}</div>
 			</tal:block>
 			<ul tal:condition="php: comment.isPublished() AND enableEvaluation"  class="comment-evaluation" tal:define="evaluationcount comment/getEvaluationcount; usefulcount php: intval(comment.getUsefulcount())">
 				<li tal:condition="evaluationcount" class="evaluation-overview">

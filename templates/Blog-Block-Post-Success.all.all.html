@@ -13,16 +13,16 @@
 
 <div class="normal meta-post-infos">
 	${trans: m.blog.frontoffice.posted-by,ucf,author=post/getAuthorNameAsHtml}<span> - </span>
-	<tal:block change:datetime="post/getPostDate" />
+	${datetime:post/getUIPostDate}
 </div>
 
 <tal:block tal:condition="configuration/getShowHightlightingVisual">
 	<img tal:condition="post/getHighlightingVisual" change:media="document post/getHighlightingVisual; format 'modules.blog.frontoffice/hightlightingVisual-detail'; zoom 'true'" class="hightlinghting-visual" />
 </tal:block>
 
-<div class="normal" tal:condition="php: post.getSummary() AND post.getShowSummaryOnDetail()">${post/getSummaryAsHtml}</div>
+<div class="normal" tal:condition="php: post.getSummary() AND post.getShowSummaryOnDetail()">${structure post/getSummaryAsHtml}</div>
 
-<div class="normal">${post/getContentsAsHtml}</div>
+<div class="normal">${structure post/getContentsAsHtml}</div>
 
 <tal:block tal:condition="showShareBlock" change:block="" module="sharethis" name="Sharepage" />
 

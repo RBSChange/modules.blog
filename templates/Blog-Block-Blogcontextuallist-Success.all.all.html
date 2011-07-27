@@ -1,4 +1,4 @@
-<h1 change:h="" change:translate="modules.blog.frontoffice.Blogs-list-title"></h1>
+<h1 change:h="" tal:content="trans:m.blog.frontoffice.blogs-list-title,ucf"></h1>
 
 <ol class="document-list">
 	<li tal:repeat="blog paginator" class="${php: repeat.blog.odd ? 'odd' : 'even'}">
@@ -7,10 +7,10 @@
 			<div class="normal meta-blog-infos" tal:define="lastPost blog/getLastPublishedPost">
 				${trans:m.blog.frontoffice.post-count,ucf,count=blog/getPublishedPostCount}<span> - </span>
 				${trans:m.blog.frontoffice.last-post-by,ucf,author=lastPost/getAuthorNameAsHtml}<span> - </span>
-				<tal:block change:datetime="lastPost/getPostDate" />
+				${datetime:lastPost/getUIPostDate}
 			</div>
 		</tal:block>
-		<div class="normal" tal:condition="blog/getDescription">${blog/getDescriptionAsHtml}</div>
+		<div class="normal" tal:condition="blog/getDescription">${structure blog/getDescriptionAsHtml}</div>
 		<div class="additional-blog-meta" tal:condition="configuration/getShowauthors">
 			<dl class="inline-list">
 				<dt>${trans:modules.blog.frontoffice.authors,ucf}</dt>

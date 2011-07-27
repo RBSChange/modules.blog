@@ -6,7 +6,7 @@
 
 <ul class="normal" tal:condition="posts">
 	<li tal:repeat="post posts">
-		<p class="meta-post-infos"><a change:link="document post">${post/getLabelAsHtml}</a> ${trans: m.blog.frontoffice.posted-by,author=post/getAuthorNameAsHtml} - <tal:block change:datetime="post/getPostDate" /></p>
+		<p class="meta-post-infos"><a change:link="document post">${post/getLabelAsHtml}</a> ${trans: m.blog.frontoffice.posted-by,author=post/getAuthorNameAsHtml} - ${datetime:post/getUIPostDate}</p>
 		
 		<tal:block tal:condition="configuration/getShowHightlightingVisual">
 			<img tal:condition="post/getHighlightingVisual" change:media="document post/getHighlightingVisual; format 'modules.blog.frontoffice/hightlightingVisual-last'" class="hightlinghting-visual" />
@@ -14,8 +14,8 @@
 		
 		<div class="summary" tal:condition="configuration/getShowSummary">
 			<tal:block tal:condition="not: configuration/getSummaryMaxLength">
-				<tal:block tal:condition="post/getSummary">${post/getSummaryAsHtml}</tal:block>
-				<tal:block tal:condition="not: post/getSummary">${post/getContentsAsHtml}</tal:block>
+				<tal:block tal:condition="post/getSummary">${structure post/getSummaryAsHtml}</tal:block>
+				<tal:block tal:condition="not: post/getSummary">${structure post/getContentsAsHtml}</tal:block>
 			</tal:block>
 			<tal:block tal:condition="configuration/getSummaryMaxLength">${php: post.getShortSummary(configuration.getSummaryMaxLength())}</tal:block>
 		</div>

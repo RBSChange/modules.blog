@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <blocks>
-	<block type="modules_blog_blog" icon="blog" label="&amp;modules.blog.bo.blocks.Blog;">
+	<block type="modules_blog_blog" icon="blog" labeli18n="m.blog.bo.blocks.blog">
 		<parameters>
 			<parameter name="cmpref" type="modules_blog/blog" />
 			<parameter name="nbitemperpage" type="Integer" default-value="5" />
 			<parameter name="showHightlightingVisual" type="Boolean" default-value="true" />
 		</parameters>
 	</block>
-	<block type="modules_blog_blogcontextuallist" icon="list-block" label="&amp;modules.blog.bo.blocks.BlogContextualList;">
+	<block type="modules_blog_blogcontextuallist" icon="list-block" labeli18n="m.blog.bo.blocks.blogcontextuallist">
 		<parameters>
 			<parameter name="nbitemperpage" type="Integer" default-value="5" />
 			<parameter name="showpoststats" type="Boolean" default-value="true" />
 			<parameter name="showauthors" type="Boolean" default-value="true" />
 		</parameters>
 	</block>
-	<block type="modules_blog_category" icon="category"	label="&amp;modules.blog.bo.blocks.Category;">
+	<block type="modules_blog_category" icon="category"	labeli18n="m.blog.bo.blocks.category">
 		<parameters>
 			<parameter name="cmpref" type="modules_blog/category" />
 			<parameter name="nbitemperpage" type="Integer" default-value="5" />
@@ -23,13 +23,13 @@
 			<parameter name="showblogrsslink" type="Boolean" default-value="true" />
 		</parameters>
 	</block>
-	<block type="modules_blog_categoryList" icon="list-block" label="&amp;modules.blog.bo.blocks.CategoryList;">
+	<block type="modules_blog_categoryList" icon="list-block" labeli18n="m.blog.bo.blocks.categorylist">
 		<parameters>
 			<parameter name="cmpref" type="modules_blog/blog" />
 			<parameter name="recursivecount" type="Boolean" default-value="true" />
 		</parameters>
 	</block>
-	<block type="modules_blog_keyword" icon="keyword" label="&amp;modules.blog.bo.blocks.Keyword;">
+	<block type="modules_blog_keyword" icon="keyword" labeli18n="m.blog.bo.blocks.keyword">
 		<parameters>
 			<parameter name="cmpref" type="modules_blog/keyword" />
 			<parameter name="nbitemperpage" type="Integer" default-value="5" />
@@ -37,14 +37,14 @@
 			<parameter name="showblogrsslink" type="Boolean" default-value="true" />
 		</parameters>
 	</block>
-	<block type="modules_blog_keywordList" icon="list-block" label="&amp;modules.blog.bo.blocks.KeywordList;">
+	<block type="modules_blog_keywordList" icon="list-block" labeli18n="m.blog.bo.blocks.keywordlist">
 		<parameters>
 			<parameter name="cmpref" type="modules_blog/blog" />
 			<parameter name="limit" type="Integer" min-occurs="1" default-value="30" />
 			<parameter name="cloud" type="Boolean" default-value="true" />
 		</parameters>
 	</block>
-	<block type="modules_blog_post" icon="post" label="&amp;modules.blog.bo.blocks.Post;"
+	<block type="modules_blog_post" icon="post" labeli18n="m.blog.bo.blocks.post"
 		cache="true" cache-key="cmpref,page"
 		cache-deps="modules_blog/blog,modules_blog/category,modules_media/media,[modules_website/page]">
 		<parameters>
@@ -74,7 +74,7 @@
 			<parameter name="showgravatars" type="Boolean" default-value="false" />
 		</parameters>
 	</block>
-	<block type="modules_blog_archives" icon="archive" label="&amp;modules.blog.bo.blocks.Archives;">
+	<block type="modules_blog_archives" icon="archive" labeli18n="m.blog.bo.blocks.archives">
 		<parameters>
 			<parameter name="cmpref" type="modules_blog/blog" />
 			<parameter name="nbitemperpage" type="Integer" default-value="5" />
@@ -84,7 +84,7 @@
 			<parameter name="showblogrsslink" type="Boolean" default-value="true" />
 		</parameters>
 	</block>
-	<block type="modules_blog_archivesList" icon="archive" label="&amp;modules.blog.bo.blocks.ArchivesList;">
+	<block type="modules_blog_archivesList" icon="archive" labeli18n="m.blog.bo.blocks.archiveslist">
 		<parameters>
 			<parameter name="cmpref" type="modules_blog/blog" />
 			<parameter name="displaymonths" type="Boolean" default-value="true" />
@@ -92,7 +92,7 @@
 			<parameter name="showpostcountonmonths" type="Boolean" default-value="true" />
 		</parameters>
 	</block>
-	<block type="modules_blog_lastPosts" icon="list-block" label="&amp;modules.blog.bo.blocks.lastposts.Title;">
+	<block type="modules_blog_lastPosts" icon="list-block">
 		<parameters>
 			<parameter name="blockTitle" type="String" />
 			<parameter name="blog" type="modules_blog/blog" />
@@ -104,7 +104,7 @@
 			<parameter name="summaryMaxLength" type="Integer" />
 		</parameters>
 	</block>
-	<block type="modules_blog_LastComments" icon="comments" label="&amp;modules.blog.bo.blocks.lastcomments.Title;">
+	<block type="modules_blog_LastComments" icon="comments">
 		<parameters>
 			<parameter name="blockTitle" type="String" />
 			<parameter name="blog" type="modules_blog/blog" />

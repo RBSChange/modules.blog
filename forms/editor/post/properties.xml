@@ -27,7 +27,7 @@
 			<field name="mPreviewPostButton">null</field>
 
 			<constructor><![CDATA[
-				this.mPreviewPostButton = this.addActionButton('${transui:m.blog.bo.actions.previewpost,ucf}', wToolkit.getIcon('preview', 'small'));
+				this.mPreviewPostButton = this.addActionButton("${transui:m.blog.bo.actions.previewpost,js,ucf}", wToolkit.getIcon('preview', 'small'));
 				var me = this;
 				this.mPreviewPostButton.addEventListener('command', function(event) {me.onPreviewPost();}, true);			
 				this.extendMethod('updateCommandsUI', this.updatePreviewPostUI);

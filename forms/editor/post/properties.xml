@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <panel>
-	<section labeli18n="modules.blog.document.post.Contents">
+	<section labeli18n="m.blog.document.post.contents">
 		<field name="label" hidehelp="true" />
 		<field name="postDate" />
 		<field name="contents" hidehelp="true" />
@@ -8,15 +8,15 @@
 		<field name="startpublicationdate" hidehelp="true" />
 		<field name="endpublicationdate" hidehelp="true" />
 	</section>
-	<section labeli18n="modules.blog.document.post.CategoriesAndKeywords" class="toggle">
+	<section labeli18n="m.blog.document.post.categoriesandkeywords" class="toggle">
 		<field name="category" type="multiplelist" nocache="true" hidehelp="true" />
 		<field name="keywordsText" />
 	</section>
-	<section labeli18n="modules.blog.document.post.Summary" class="toggle" hidden="true">
+	<section labeli18n="m.blog.document.post.summary" class="toggle" hidden="true">
 		<field name="summary" />
 		<field name="showSummaryOnDetail" />
 	</section>
-	<section labeli18n="modules.blog.document.post.CommentsAndPings" class="toggle" hidden="true">
+	<section labeli18n="m.blog.document.post.commentsandpings" class="toggle" hidden="true">
 		<field name="trackbacks" />
 		<field name="allowComments" hidehelp="true" />
 		<field name="allowPingbacks" />
@@ -27,7 +27,7 @@
 			<field name="mPreviewPostButton">null</field>
 
 			<constructor><![CDATA[
-				this.mPreviewPostButton = this.addActionButton('&modules.blog.bo.actions.PreviewPost;', wToolkit.getIcon('preview', 'small'));
+				this.mPreviewPostButton = this.addActionButton('${transui:m.blog.bo.actions.previewpost,ucf}', wToolkit.getIcon('preview', 'small'));
 				var me = this;
 				this.mPreviewPostButton.addEventListener('command', function(event) {me.onPreviewPost();}, true);			
 				this.extendMethod('updateCommandsUI', this.updatePreviewPostUI);

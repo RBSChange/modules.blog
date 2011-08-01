@@ -9,10 +9,10 @@
 	<xul>
 		<javascript>
 			<constructor><![CDATA[
-				this.addTab('comments', '&modules.comment.bo.doceditor.tab.Comments;', 'comments');
+				this.addTab('comments', '${transui:m.comment.bo.doceditor.tab.comments,ucf}', 'comments');
 				if (getController().checkModuleVersion('twitterconnect', '3.0.3'))
 				{
-					this.addTab('tweets', "&modules.twitterconnect.bo.doceditor.tab.Tweets;", 'tweet');
+					this.addTab('tweets', "${transui:m.twitterconnect.bo.doceditor.tab.tweets,ucf}", 'tweet');
 				}
 			]]></constructor>
 		</javascript>

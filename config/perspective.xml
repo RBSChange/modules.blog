@@ -20,7 +20,7 @@
 				<child model="modules_website/systemtopic" from="topics" />
 			</children>
 			<columns>
-				<column name="pathOf" label="PathOf" flex="3" />
+				<column name="pathOf" flex="3" />
 			</columns>
 			<contextactions>
 				<contextaction name="openFolder" />
@@ -82,8 +82,8 @@
 				<child model="modules_blog/keyword" from="function"/>
 			</children>
 			<columns>
-				<column name="postCount" label="Post-count" flex="2" />
-				<column name="publishedPostCount" label="Published-post-count" flex="2" />
+				<column name="postCount" labeli18n="m.blog.bo.general.column.post-count" flex="2" />
+				<column name="publishedPostCount" labeli18n="m.blog.bo.general.column.published-post-count" flex="2" />
 			</columns>
 			<contextactions>
 				<contextaction name="openFolder" />

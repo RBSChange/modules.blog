@@ -17,15 +17,6 @@
   <key id="rss-link">RSS feed</key>
   <key id="comments-closed-for-this-post">comments are closed for this post.</key>
   <key id="archives-title">{blog}: archives {date}</key>
-  <key id="blog-meta-title">{blogLabel} - {siteLabel}</key>
-  <key id="blog-meta-description">Blog {blogLabel} - {siteLabel} : {blogDescription}</key>
-  <key id="category-meta-title">{categoryLabel} - {blogLabel} - {siteLabel}</key>
-  <key id="category-meta-description">{categoryLabel} : billets de la catégorie {categoryLabel} du blog {blogLabel} sur le site {siteLabel}.
-			{categoryDescription}</key>
-  <key id="keyword-meta-title">{keywordLabel} - {blogLabel} - {siteLabel}</key>
-  <key id="keyword-meta-description">Posts {keywordLabel} : in blog {blogLabel} on site {siteLabel}. {keywordDescription}</key>
-  <key id="post-meta-title">{postLabel} - {blogLabel} - {siteLabel}</key>
-  <key id="post-meta-description">{postLabel} : post in blog {blogLabel} on site {siteLabel} created the {postDate}. {postSummary}</key>
   <key id="blog-edit-title">blog administration</key>
   <key id="categories-list-title">categories</key>
   <key id="posts-list-title">posts</key>

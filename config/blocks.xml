@@ -6,6 +6,11 @@
 			<parameter name="nbitemperpage" type="Integer" default-value="5" />
 			<parameter name="showHightlightingVisual" type="Boolean" default-value="true" />
 		</parameters>
+		<metas>
+			<meta name="blogLabel" allow="title,description" />
+			<meta name="blogDescription" allow="description" />
+			<meta name="siteLabel" allow="title,description" />
+		</metas>
 	</block>
 	<block type="modules_blog_blogcontextuallist" icon="list-block" labeli18n="m.blog.bo.blocks.blogcontextuallist">
 		<parameters>
@@ -22,6 +27,12 @@
 			<parameter name="showHightlightingVisual" type="Boolean" default-value="true" />
 			<parameter name="showblogrsslink" type="Boolean" default-value="true" />
 		</parameters>
+		<metas>
+			<meta name="categoryLabel" allow="title,description" />
+			<meta name="categoryDescription" allow="description" />
+			<meta name="blogLabel" allow="title,description" />
+			<meta name="siteLabel" allow="title,description" />
+		</metas>
 	</block>
 	<block type="modules_blog_categoryList" icon="list-block" labeli18n="m.blog.bo.blocks.categorylist">
 		<parameters>
@@ -36,6 +47,12 @@
 			<parameter name="showHightlightingVisual" type="Boolean" default-value="true" />
 			<parameter name="showblogrsslink" type="Boolean" default-value="true" />
 		</parameters>
+		<metas>
+			<meta name="keywordLabel" allow="title,description" />
+			<meta name="keywordDescription" allow="description" />
+			<meta name="blogLabel" allow="title,description" />
+			<meta name="siteLabel" allow="title,description" />
+		</metas>
 	</block>
 	<block type="modules_blog_keywordList" icon="list-block" labeli18n="m.blog.bo.blocks.keywordlist">
 		<parameters>
@@ -61,6 +78,7 @@
 			<meta name="blogDescription" allow="description" />
 			<meta name="postKeywords" allow="keywords" />
 			<meta name="postCategories" allow="keywords" />
+			<meta name="siteLabel" allow="title,description" />
 		</metas>
 	</block>
 	<block type="modules_blog_comments" icon="comments">
@@ -83,6 +101,11 @@
 			<parameter name="showHightlightingVisual" type="Boolean" default-value="true" />
 			<parameter name="showblogrsslink" type="Boolean" default-value="true" />
 		</parameters>
+		<metas>
+			<meta name="date" allow="title,description" />
+			<meta name="blogLabel" allow="title,description" />
+			<meta name="siteLabel" allow="title,description" />
+		</metas>
 	</block>
 	<block type="modules_blog_archivesList" icon="archive" labeli18n="m.blog.bo.blocks.archiveslist">
 		<parameters>

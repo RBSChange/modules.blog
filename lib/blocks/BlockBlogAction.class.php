@@ -14,13 +14,29 @@ class blog_BlockBlogAction extends website_TaggerBlockAction
 	}
 	
 	/**
-	 * @see website_BlockAction::execute()
-	 *
+	 * @return array<String, String>
+	 */
+	public function getMetas()
+	{
+		$blog = $this->getDocumentParameter();
+		if ($blog !== null && $blog->isPublished())
+		{
+			$website = website_WebsiteModuleService::getInstance()->getCurrentWebsite();
+			return array(
+				'blogLabel' => $blog->getLabel(),
+				'blogDescription' => $blog->getDescription(),
+				'siteLabel' => $website->getLabel()
+			);
+		}
+		return array();
+	}
+	
+	/**
 	 * @param f_mvc_Request $request
 	 * @param f_mvc_Response $response
 	 * @return String
 	 */
-	function execute($request, $response)
+	public function execute($request, $response)
 	{
 		$blog = $this->getDocumentParameter();
 		if ($blog === null || !$blog->isPublished())
@@ -37,19 +53,8 @@ class blog_BlockBlogAction extends website_TaggerBlockAction
 
 		$request->setAttribute('paginator', $paginator);
 		
-		// Set meta.
-		$context = $this->getContext();
-		$website = website_WebsiteModuleService::getInstance()->getCurrentWebsite();
-		$replacements = array(
-			'blogLabel' => $blog->getLabel(),
-			'blogDescription' => $blog->getDescription(),
-			'siteLabel' => $website->getLabel()
-		);
-		$context->setMetatitle(f_Locale::translate('&modules.blog.frontoffice.Blog-meta-title;', $replacements));
-		$context->appendToDescription(f_Locale::translate('&modules.blog.frontoffice.Blog-meta-description;', $replacements));
-		
 		// Add the RSS feed.
-		$context->addRssFeed($blog->getLabel(), LinkHelper::getActionUrl('blog', 'ViewFeed', array('parentref' => $blog->getId())));
+		$this->getContext()->addRssFeed($blog->getLabel(), LinkHelper::getActionUrl('blog', 'ViewFeed', array('parentref' => $blog->getId())));
 				
 		return website_BlockView::SUCCESS;
 	}

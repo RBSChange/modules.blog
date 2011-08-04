@@ -13,12 +13,53 @@ class blog_BlockPostAction extends website_TaggerBlockAction
 		return "functional_blog_post-detail";
 	}
 	
+	/**
+	 * @return array<String, String>
+	 */
+	public function getMetas()
+	{
+		$post = $this->getDocumentParameter();
+		if ($post === null || !$post->isPublished())
+		{
+			return array();
+		}
+		$postKeywords = array();
+		foreach ($post->getKeywordArray() as $keyword)
+		{
+			$postKeywords[] = $keyword->getLabel();
+		}
+		$postCategories = array();
+		foreach ($post->getCategoryArray() as $category)
+		{
+			$postCategories[] = $category->getLabel();
+		}
+		$blog = $post->getBlog();
+		$website = website_WebsiteModuleService::getInstance()->getCurrentWebsite();
+		return array(
+			'postLabel' => $post->getLabel(),
+			'postDate' => date_Formatter::toDefaultDate($post->getPostDate()),
+			'postSummary' => f_util_StringUtils::htmlToText($post->getSummary(), false, true),
+			'blogLabel' => $blog->getLabel(),
+			'blogDescription' => f_util_StringUtils::htmlToText($blog->getDescription(), false, true),
+			'postKeywords' => join(',', $postKeywords),
+			'postCategories' => join(',', $postCategories),
+			'siteLabel' => $website->getLabel()
+		);
+	}
+	
+	/**
+	 * @return array
+	 */
 	public function getCacheDependencies()
 	{
 		return array($this->getDocumentIdParameter());
 	}
 	
-	function initialize($request, $response)
+	/**
+	 * @param f_mvc_Request $request
+	 * @param f_mvc_Response $response
+	 */
+	public function initialize($request, $response)
 	{
 		if ($this->isInBackoffice())
 		{
@@ -33,13 +74,11 @@ class blog_BlockPostAction extends website_TaggerBlockAction
 	}
 	
 	/**
-	 * @see website_BlockAction::execute()
-	 *
 	 * @param f_mvc_Request $request
 	 * @param f_mvc_Response $response
 	 * @return String
 	 */
-	function execute($request, $response)
+	public function execute($request, $response)
 	{
 		$post = $this->getDocumentParameter();
 		if ($post === null)
@@ -63,35 +102,6 @@ class blog_BlockPostAction extends website_TaggerBlockAction
 		$this->getContext()->addRssFeed($blog->getLabel(), LinkHelper::getActionUrl('blog', 'ViewFeed', array('parentref' => $blog->getId())));
 		
 		return website_BlockView::SUCCESS;
-	}
-	
-	function getMetas()
-	{
-		$post = $this->getDocumentParameter();
-		if ($post === null || !$post->isPublished())
-		{
-			return array();
-		}
-		$postKeywords = array();
-		foreach ($post->getKeywordArray() as $keyword)
-		{
-			$postKeywords[] = $keyword->getLabel();
-		}
-		$postCategories = array();
-		foreach ($post->getCategoryArray() as $category)
-		{
-			$postCategories[] = $category->getLabel();
-		}
-		$blog = $post->getBlog();
-		return array(
-			"postLabel" => $post->getLabel(),
-			"postDate" => date_Formatter::toDefaultDate($post->getPostDate()),
-			"postSummary" => f_util_StringUtils::htmlToText($post->getSummary(), false, true),
-			"blogLabel" => $blog->getLabel(),
-			"blogDescription" => f_util_StringUtils::htmlToText($blog->getDescription(), false, true),
-			"postKeywords" => join(",", $postKeywords),
-			"postCategories" => join(",", $postCategories)
-		);
 	}
 	
 	/**

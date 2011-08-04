@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.bo.blocks.category.metas" lcid="fr_FR">
+	<key id="categorylabel">titre de la catégorie</key>
+	<key id="categorydescription">description de la catégorie</key>
+	<key id="bloglabel">titre du blog</key>
+	<key id="sitelabel">titre du site</key>
+</i18n>

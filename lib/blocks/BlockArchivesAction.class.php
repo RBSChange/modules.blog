@@ -12,15 +12,34 @@ class blog_BlockArchivesAction extends website_TaggerBlockAction
 	{
 		return "functional_blog_archives";
 	}
-        
+
 	/**
-	 * @see website_BlockAction::execute()
-	 *
+	 * @return array<String, String>
+	 */
+	public function getMetas()
+	{
+		$blog = $this->getDocumentParameter();
+		if ($blog !== null && $blog->isPublished())
+		{
+			$website = website_WebsiteModuleService::getInstance()->getCurrentWebsite();
+			$year = $this->findParameterValue('year');
+			$month = $this->findParameterValue('month');
+			$dates = blog_BlogService::getInstance()->getArchiveDates($year, $month);
+			return array(
+				'date' => $dates['startLabel'],
+				'blogLabel' => $blog->getLabel(),
+				'siteLabel' => $website->getLabel()
+			);
+		}
+		return array();
+	}
+	
+	/**
 	 * @param f_mvc_Request $request
 	 * @param f_mvc_Response $response
 	 * @return String
 	 */
-	function execute($request, $response)
+	public function execute($request, $response)
 	{
 		if ($this->isInBackofficeEdition())
 		{
@@ -48,19 +67,8 @@ class blog_BlockArchivesAction extends website_TaggerBlockAction
 		);
 		$request->setAttribute('paginator', $paginator);
 		
-		// Set meta.
-		$context = $this->getContext();
-		$website = website_WebsiteModuleService::getInstance()->getCurrentWebsite();
-		$replacements = array(
-			'date' => $dates['startLabel'],
-			'blogLabel' => $blog->getLabel(),
-			'siteLabel' => $website->getLabel()
-		);
-		$context->setMetatitle(f_Locale::translate('&modules.blog.frontoffice.Archives-meta-title;', $replacements));
-		$context->appendToDescription(f_Locale::translate('&modules.blog.frontoffice.Archives-meta-description;', $replacements));
-		
 		// Add the RSS feed.
-		$context->addRssFeed($blog->getLabel(), LinkHelper::getActionUrl('blog', 'ViewFeed', array('parentref' => $blog->getId())));
+		$this->getContext()->addRssFeed($blog->getLabel(), LinkHelper::getActionUrl('blog', 'ViewFeed', array('parentref' => $blog->getId())));
 				
 		return website_BlockView::SUCCESS;
 	}

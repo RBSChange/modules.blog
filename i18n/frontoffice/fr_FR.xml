@@ -17,17 +17,6 @@
   <key id="rss-link">flux RSS</key>
   <key id="comments-closed-for-this-post">les commentaires sont fermés pour ce billet.</key>
   <key id="archives-title">{blog} : archives {date}</key>
-  <key id="blog-meta-title">{blogLabel} - {siteLabel}</key>
-  <key id="blog-meta-description">Blog {blogLabel} - {siteLabel} : {blogDescription}</key>
-  <key id="category-meta-title">{categoryLabel} - {blogLabel} - {siteLabel}</key>
-  <key id="category-meta-description">{categoryLabel} : billets de la catégorie {categoryLabel} du blog {blogLabel} sur le site {siteLabel}.
-			{categoryDescription}</key>
-  <key id="keyword-meta-title">{keywordLabel} - {blogLabel} - {siteLabel}</key>
-  <key id="keyword-meta-description">Billets {keywordLabel} : du blog {blogLabel} sur le site {siteLabel}. {keywordDescription}</key>
-  <key id="post-meta-title">{postLabel} - {blogLabel} - {siteLabel}</key>
-  <key id="post-meta-description">{postLabel} : billet du blog {blogLabel} sur le site {siteLabel} créé le {postDate}. {postSummary}</key>
-  <key id="archives-meta-title">billets {date} - {blogLabel} - {siteLabel}</key>
-  <key id="archives-meta-description">archives des billets de {date} du blog {blogLabel} sur le site {siteLabel}.</key>
   <key id="blog-edit-title">administration des blogs</key>
   <key id="categories-list-title">catégories</key>
   <key id="posts-list-title">billets</key>

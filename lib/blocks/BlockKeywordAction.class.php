@@ -5,21 +5,40 @@
  */
 class blog_BlockKeywordAction extends website_TaggerBlockAction
 {
-    	/**
+    /**
 	 * @return String
 	 */
 	protected function getTag()
 	{
 		return "functional_blog_keyword-detail";
 	}
+	
 	/**
-	 * @see website_BlockAction::execute()
-	 *
+	 * @return array<String, String>
+	 */
+	public function getMetas()
+	{
+		$keyword = $this->getDocumentParameter();
+		if ($keyword !== null && $keyword->isPublished())
+		{
+			$website = website_WebsiteModuleService::getInstance()->getCurrentWebsite();
+			$blog = $keyword->getBlog();
+			return array(
+				'keywordLabel' => $keyword->getLabel(),
+				'keywordDescription' => $keyword->getDescription(),
+				'blogLabel' => $blog->getLabel(),
+				'siteLabel' => $website->getLabel()
+			);
+		}
+		return array();
+	}
+	
+	/**
 	 * @param f_mvc_Request $request
 	 * @param f_mvc_Response $response
 	 * @return String
 	 */
-	function execute($request, $response)
+	public function execute($request, $response)
 	{
 		if ($this->isInBackofficeEdition())
 		{
@@ -35,26 +54,16 @@ class blog_BlockKeywordAction extends website_TaggerBlockAction
 		
 		// Set the paginator
 		$paginator = new paginator_Paginator('blog', 
-				$request->getParameter(paginator_Paginator::PAGEINDEX_PARAMETER_NAME, 1),
-				blog_KeywordService::getInstance()->getSortedPosts($keyword),
-				$this->getNbItemPerPage($request, $response));
+			$request->getParameter(paginator_Paginator::PAGEINDEX_PARAMETER_NAME, 1),
+			blog_KeywordService::getInstance()->getSortedPosts($keyword),
+			$this->getNbItemPerPage($request, $response)
+		);
 
 		$request->setAttribute('paginator', $paginator);
-		
-		// Set meta.
-		$context = $this->getContext();
-		$website = website_WebsiteModuleService::getInstance()->getCurrentWebsite();
-		$blog = $keyword->getBlog();
-		$replacements = array(
-			'keywordLabel' => $keyword->getLabel(),
-			'keywordDescription' => $keyword->getDescription(),
-			'blogLabel' => $blog->getLabel(),
-			'siteLabel' => $website->getLabel()
-		);
-		$context->setMetatitle(f_Locale::translate('&modules.blog.frontoffice.Keyword-meta-title;', $replacements));
-		$context->appendToDescription(f_Locale::translate('&modules.blog.frontoffice.Keyword-meta-description;', $replacements));
-		
+
 		// Add the RSS feeds.
+		$blog = $keyword->getBlog();
+		$context = $this->getContext();
 		$context->addRssFeed($blog->getLabel(), LinkHelper::getActionUrl('blog', 'ViewFeed', array('parentref' => $blog->getId())));
 		$context->addRssFeed($blog->getLabel() . ' : ' . $keyword->getLabel(), LinkHelper::getActionUrl('blog', 'ViewFeed', array('parentref' => $keyword->getId())));
 		

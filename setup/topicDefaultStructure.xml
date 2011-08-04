@@ -10,8 +10,9 @@
 			</changecontent>
 		</page>
 
-		<page byLabel="Blog" navigationVisibility="hidden" indexingstatus="false">
-			<tag name="functional_blog_blog-detail" />
+		<page byTag="functional_blog_blog-detail" label="Blog" navigationVisibility="hidden" indexingstatus="false"
+			metatitle="{blog_blog.blogLabel} - {blog_blog.siteLabel}"
+			description="Blog {blog_blog.blogLabel} - {blog_blog.siteLabel} : {blog_blog.blogDescription}">
 			<changecontent for="content-block">
 				<changeblock type="modules_blog_blog" />
 			</changecontent>
@@ -22,8 +23,9 @@
 			</changecontent>
 		</page>
 		
-		<page byLabel="Catégorie" navigationVisibility="hidden" indexingstatus="false">
-			<tag name="functional_blog_category-detail" />
+		<page byTag="functional_blog_category-detail" label="Catégorie" navigationVisibility="hidden" indexingstatus="false"
+			metatitle="{blog_category.categoryLabel} - {blog_category.blogLabel} - {blog_category.siteLabel}"
+			description="{blog_category.categoryLabel} : billets de la catégorie {blog_category.categoryLabel} du blog {blog_category.blogLabel} - {blog_category.categoryDescription}">
 			<changecontent for="content-block">
 				<changeblock type="modules_blog_category" />
 			</changecontent>
@@ -34,8 +36,9 @@
 			</changecontent>
 		</page>
 		
-		<page byLabel="Mot clé" navigationVisibility="hidden" indexingstatus="false">
-			<tag name="functional_blog_keyword-detail" />
+		<page byTag="functional_blog_keyword-detail" label="Mot clé" navigationVisibility="hidden" indexingstatus="false"
+			metatitle="{blog_keyword.keywordLabel} - {blog_keyword.blogLabel} - {blog_keyword.siteLabel}"
+			description="Billets {blog_keyword.keywordLabel} : du blog {blog_keyword.blogLabel}. {blog_keyword.keywordDescription}">
 			<changecontent for="content-block">
 				<changeblock type="modules_blog_keyword" />
 			</changecontent>
@@ -46,8 +49,9 @@
 			</changecontent>
 		</page>
 		
-		<page byLabel="Billet" navigationVisibility="hidden" indexingstatus="false">
-			<tag name="functional_blog_post-detail" />
+		<page byTag="functional_blog_post-detail" label="Billet" navigationVisibility="hidden" indexingstatus="false"
+			metatitle="{blog_post.postLabel} - {blog_post.blogLabel} - {blog_post.siteLabel}"
+			description="{blog_post.postLabel} : billet du blog {blog_post.blogLabel} sur le site {blog_post.siteLabel} créé le {blog_post.postDate}. {blog_post.postSummary}">
 			<changecontent for="content-block">
 				<changeblock type="modules_blog_post" />
 				<changeblock type="modules_blog_comments" />
@@ -59,8 +63,9 @@
 			</changecontent>
 		</page>
 		
-		<page byLabel="Archives" navigationVisibility="hidden" indexingstatus="false">
-			<tag name="functional_blog_archives" />
+		<page byTag="functional_blog_archives" label="Archives" navigationVisibility="hidden" indexingstatus="false"
+			metatitle="Billets {blog_archives.date} - {blog_archives.blogLabel} - {blog_archives.siteLabel}"
+			description="Archives des billets de {blog_archives.date} du blog {blog_archives.blogLabel} sur le site {blog_archives.siteLabel}.">
 			<changecontent for="content-block">
 				<changeblock type="modules_blog_archives" />
 			</changecontent>

@@ -7,4 +7,5 @@
   <key id="blogdescription">description du blog</key>
   <key id="postkeywords">mots clefs du billet</key>
   <key id="postcategories">catégories du billet</key>
+  <key id="sitelabel">titre du site</key>
 </i18n>

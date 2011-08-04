@@ -29,7 +29,7 @@ class blog_ListCategoriesbyblogService extends BaseService implements list_ListI
 	{
 		try 
 		{
-			$request = Controller::getInstance()->getContext()->getRequest();
+			$request = change_Controller::getInstance()->getContext()->getRequest();
 			$parentId = intval($request->getParameter('parentId', 0));
 			$parent = DocumentHelper::getDocumentInstance($parentId);
 			if ($parent instanceof blog_persistentdocument_blog)

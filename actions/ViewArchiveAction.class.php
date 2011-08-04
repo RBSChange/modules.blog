@@ -3,21 +3,21 @@
  * blog_ViewArchiveAction
  * @package modules.blog.actions
  */
-class blog_ViewArchiveAction extends f_action_BaseAction
+class blog_ViewArchiveAction extends change_Action
 {
 	/**
-	 * @param Context $context
-	 * @param Request $request
+	 * @param change_Context $context
+	 * @param change_Request $request
 	 */
 	public function _execute($context, $request)
 	{
-		$module = AG_ERROR_404_MODULE;
-		$action = AG_ERROR_404_ACTION;
+		$module = 'website';
+		$action = 'Error404';
 
-		$documentId = $request->getModuleParameter('blog', K::COMPONENT_ID_ACCESSOR);
+		$documentId = $request->getModuleParameter('blog', 'cmpref');
 		if (null === $documentId)
 		{
-			$documentId = $request->getParameter(K::COMPONENT_ID_ACCESSOR);
+			$documentId = $request->getParameter('cmpref');
 		}		
 		
 		$document = DocumentHelper::getDocumentInstance($documentId);
@@ -34,7 +34,7 @@ class blog_ViewArchiveAction extends f_action_BaseAction
 		}
 
 		$context->getController()->forward($module, $action);
-		return View::NONE;
+		return change_View::NONE;
 	}
 	
 	/**

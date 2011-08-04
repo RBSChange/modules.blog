@@ -3,11 +3,11 @@
  * blog_PingBackAction
  * @package modules.blog.actions
  */
-class blog_PingBackAction extends f_action_BaseAction
+class blog_PingBackAction extends change_Action
 {
 	/**
-	 * @param Context $context
-	 * @param Request $request
+	 * @param change_Context $context
+	 * @param change_Request $request
 	 */
 	public function _execute($context, $request)
 	{

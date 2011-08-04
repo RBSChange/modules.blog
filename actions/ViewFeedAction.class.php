@@ -3,11 +3,11 @@
  * blog_ViewFeedAction
  * @package modules.blog.actions
  */
-class blog_ViewFeedAction extends f_action_BaseAction
+class blog_ViewFeedAction extends change_Action
 {
 	/**
-	 * @param Context $context
-	 * @param Request $request
+	 * @param change_Context $context
+	 * @param change_Request $request
 	 */
 	public function _execute($context, $request)
 	{		
@@ -31,7 +31,7 @@ class blog_ViewFeedAction extends f_action_BaseAction
 	}
 	
 	/**
-	 * @param Request $request
+	 * @param change_Request $request
 	 * @param rss_FeedWriter $feedWriter
 	 * @param f_persistentdocument_PersistentDocument $parent
 	 */

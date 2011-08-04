@@ -3,11 +3,11 @@
  * blog_PreviewAction
  * @package modules.blog.actions
  */
-class blog_PreviewPostAction extends f_action_BaseAction
+class blog_PreviewPostAction extends change_Action
 {
 	/**
-	 * @param Context $context
-	 * @param Request $request
+	 * @param change_Context $context
+	 * @param change_Request $request
 	 */
 	public function _execute($context, $request)
 	{
@@ -34,17 +34,17 @@ class blog_PreviewPostAction extends f_action_BaseAction
 		}
 		else
 		{
-			$module = AG_ERROR_404_MODULE;
-			$action = AG_ERROR_404_ACTION;
+			$module = 'website';
+			$action = 'Error404';
 		}
 
 		// finally, forward the execution to $module / $action
 		$context->getController()->forward($module, $action);
-		return View::NONE;
+		return change_View::NONE;
 	}
 
 	/**
-	 * @param Request $request
+	 * @param change_Request $request
 	 */
 	protected function getDocumentIdArrayFromRequest($request)
 	{

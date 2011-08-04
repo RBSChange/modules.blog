@@ -3,11 +3,11 @@
  * blog_TrackBackAction
  * @package modules.blog.actions
  */
-class blog_TrackBackAction extends f_action_BaseAction
+class blog_TrackBackAction extends change_Action
 {
 	/**
-	 * @param Context $context
-	 * @param Request $request
+	 * @param change_Context $context
+	 * @param change_Request $request
 	 */
 	public function _execute($context, $request)
 	{
@@ -24,7 +24,7 @@ class blog_TrackBackAction extends f_action_BaseAction
 		}
 		if (!$post instanceof blog_persistentdocument_post || $post->getAllowTrackbacks() === false)
 		{
-			$context->getController()->forward(AG_ERROR_404_MODULE, AG_ERROR_404_ACTION);
+			$context->getController()->forward('website', 'Error404');
 			return;
 		}
 		

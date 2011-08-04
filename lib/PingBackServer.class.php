@@ -8,7 +8,7 @@ class blog_PingBackServer
 	 */
 	public static function ping($sourceURI, $targetURI)
 	{
-		$globalRequest = Controller::getInstance()->getContext()->getRequest();
+		$globalRequest = change_Controller::getInstance()->getContext()->getRequest();
 		$postId = $globalRequest->getModuleParameter('blog', 'postId');
 		if ($postId === null)
 		{

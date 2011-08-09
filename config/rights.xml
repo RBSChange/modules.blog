@@ -31,7 +31,6 @@
 			<permission name="LoadPermissions.*" />
 			<permission name="SavePermissions.*" />
 			<permission name="GetPreferencesDocument" />
-			<permission name="EditLocale" />
 			<permission name="Update.rootfolder" />
 			<permission name="InitDefaultStruct" />
 		</role>

@@ -45,11 +45,14 @@ class blog_PingBackClientService extends BaseService
 	 */
 	public function getPingbackUrlForUrl($url)
 	{
-		$client = HTTPClientService::getInstance()->getNewHTTPClient();
-		$content = $client->get($url);
+		$client = change_HttpClientService::getInstance()->getNewHttpClient();
+		$client->setUri($url);
+		$request = $client->request();
+		$content = $request->getBody();
 		foreach ($client->getHTTPHeaders() as $header)
 		{
-			if (strpos($header, "X-Pingback: ") === 0)
+			$header = $client->getHeader('X-Pingback');
+			if ($header)
 			{
 				$pingbackUrl = substr($header, 12);
 				$errors = new validation_Errors();

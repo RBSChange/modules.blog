@@ -492,18 +492,23 @@ class blog_PostService extends f_persistentdocument_DocumentService
 				continue;
 			}
 			
-			$client = HTTPClientService::getInstance()->getNewHTTPClient();
-			$params = array('url' => $postUrl);
-			$params['blog_name'] = $post->getBlogLabel();
-			$params['title'] = $post->getLabel();
+			$client = change_HttpClientService::getInstance()->getNewHttpClient();
+			$client->setUri($postUrl);
+			$client->setMethod(Zend_Http_Client::POST);
+			$client->setParameterPost('url', $postUrl);
+			$client->setParameterPost('blog_name', $post->getBlogLabel());
+			$client->setParameterPost('title', $post->getLabel());
 			$summary = f_util_StringUtils::htmlToText($post->getSummary());
 			if (f_util_StringUtils::isEmpty($summary))
 			{
 				$summary = f_util_StringUtils::shortenString(f_util_StringUtils::htmlToText($post->getContents()));
 			}
-			$params['excerpt'] = $summary;
-			$data = $client->post($url, $params);
-			$trackbackResults[$url] = $data;
+			$client->setParameterPost('excerpt', $summary);
+			
+			$request = $client->request();
+			$content = $request->getBody();
+			
+			$trackbackResults[$url] = $content;
 		}
 		$post->setMeta('trackbackresults', $trackbackResults);
 		$post->saveMeta();

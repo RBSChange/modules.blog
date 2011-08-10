@@ -36,9 +36,11 @@ class blog_TrackBackAction extends change_Action
 		}	
 		$postUrl = LinkHelper::getDocumentUrl($post);
 		$url = $request->getParameter('url');
-		$client = HTTPClientService::getInstance()->getNewHTTPClient();
-		$data = $client->get($url);
-		if ($client->getHTTPReturnCode() != 200)
+		$client = change_HttpClientService::getInstance()->getNewHttpClient(); 
+		$client->getUri($url);
+		$request = $client->request();
+		$data = $request->getBody();
+		if ($request->getStatus() != 200)
 		{
 			$this->handlePingError("Bad url");
 			return;

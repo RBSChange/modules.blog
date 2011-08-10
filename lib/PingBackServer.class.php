@@ -33,9 +33,11 @@ class blog_PingBackServer
 		{
 			throw new XML_RPC2_FaultException("targetURI not recognized", 33);
 		}
-		$client = HTTPClientService::getInstance()->getNewHTTPClient();
-		$data = $client->get($sourceURI);
-		if ($client->getHTTPReturnCode() != 200)
+		$client = change_HttpClientService::getInstance()->getNewHttpClient();
+		$client->setUri($sourceURI);
+		$request = $client->request();
+		$content = $request->getBody();
+		if ($request->getStatus() != 200)
 		{
 			if (Framework::isDebugEnabled())
 			{

@@ -1,4 +1,4 @@
-<h2 tal:condition="configuration/getBlockTitle" change:h="">${configuration/getBlockTitleAsHtml}</h2>
+<h2 tal:condition="configuration/getBlockTitle" change:h="">${structure configuration/getBlockTitleAsHtml}</h2>
 <tal:block tal:condition="not: configuration/getBlockTitle" tal:define="blog configuration/getBlog">
 	<h2 tal:condition="not: blog" change:h="" tal:content="trans:m.blog.frontoffice.last-comments-from-blogs,ucf"></h2>
 	<h2 tal:condition="blog" change:h="" tal:content="trans:m.blog.frontoffice.last-comments-from-blog,ucf,blog=blog/getLabelAsHtml"></h2>

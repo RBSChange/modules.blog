@@ -9,9 +9,9 @@
 	</li>
 </ul>
 
-<h1 change:h="">${keyword/getLabelAsHtml}</h1>
+<h1 change:h="">${structure keyword/getLabelAsHtml}</h1>
 
-<div class="normal" tal:condition="keyword/getDescription">${keyword/getDescriptionAsHtml}</div>
+<div class="normal" tal:condition="keyword/getDescription">${structure keyword/getDescriptionAsHtml}</div>
 
 <ol class="document-list">
 	<li tal:repeat="post paginator" class="${php: repeat.post.odd ? 'odd' : 'even'}">

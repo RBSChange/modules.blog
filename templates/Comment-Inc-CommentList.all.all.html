@@ -13,7 +13,7 @@
 				<tal:block tal:condition="php: comment instanceof blog_persistentdocument_pingback">${trans: m.blog.frontoffice.pingback-by,ucf}</tal:block>
 				<tal:block tal:condition="php: comment instanceof blog_persistentdocument_trackback">${trans: m.blog.frontoffice.trackback-by,ucf}</tal:block>
 				<tal:block tal:condition="php: !(comment instanceof blog_persistentdocument_pingback) && !(comment instanceof blog_persistentdocument_trackback)">${trans: m.comment.frontoffice.posted-by,ucf}</tal:block>
-				<a tal:omit-tag="not:comment/getAuthorwebsiteurl" class="link" href="${comment/getAuthorwebsiteurl}">${comment/getAuthorNameAsHtml}</a>
+				<a tal:omit-tag="not:comment/getAuthorwebsiteurl" class="link" href="${comment/getAuthorwebsiteurl}">${structure comment/getAuthorNameAsHtml}</a>
 				- ${datetime:comment/getUICreationdate}
 			</p>
 			<img tal:condition="showGravatars" class="avatar document-visual" src="${comment/getGravatarUrl}" alt="" />

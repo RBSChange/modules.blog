@@ -3,9 +3,9 @@
 		<dt>${trans:m.blog.bo.general.keywords,ucf}</dt>
 		<tal:block tal:repeat="keyword keywords">
 			<dd tal:define="current php: document.getId() == keyword['document'].getId()" class="${php: current ? 'current' : ''}">
-				<tal:block tal:condition="php: keyword['level'] == 1"><a change:link="document keyword/document" tal:omit-tag="current">${keyword/document/getLabelAsHtml}</a> <span class="post-count">(${keyword/document/getPublishedPostCount})</span></tal:block>
-				<em tal:condition="php: keyword['level'] == 2"><a change:link="document keyword/document" tal:omit-tag="current">${keyword/document/getLabelAsHtml}</a> <span class="post-count">(${keyword/document/getPublishedPostCount})</span></em>
-				<strong tal:condition="php: keyword['level'] == 3"><a change:link="document keyword/document" tal:omit-tag="current">${keyword/document/getLabelAsHtml}</a> <span class="post-count">(${keyword/document/getPublishedPostCount})</span></strong>
+				<tal:block tal:condition="php: keyword['level'] == 1"><a change:link="document keyword/document" tal:omit-tag="current">${structure keyword/document/getLabelAsHtml}</a> <span class="post-count">(${keyword/document/getPublishedPostCount})</span></tal:block>
+				<em tal:condition="php: keyword['level'] == 2"><a change:link="document keyword/document" tal:omit-tag="current">${structure keyword/document/getLabelAsHtml}</a> <span class="post-count">(${keyword/document/getPublishedPostCount})</span></em>
+				<strong tal:condition="php: keyword['level'] == 3"><a change:link="document keyword/document" tal:omit-tag="current">${structure keyword/document/getLabelAsHtml}</a> <span class="post-count">(${keyword/document/getPublishedPostCount})</span></strong>
 			</dd>
 		</tal:block>
 	</dl>
@@ -13,9 +13,9 @@
 		<dt>${trans:m.blog.bo.general.keywords,ucf}</dt>
 		<tal:block tal:repeat="keyword keywords">
 			<dd tal:define="current php: document.getId() == keyword['document'].getId()" style="font-size: ${keyword/size}em" class="${php: current ? 'current' : ''}" title="${keyword/title}">
-				<tal:block tal:condition="php: keyword['level'] == 1"><a change:link="document keyword/document" tal:omit-tag="current">${keyword/document/getLabelAsHtml}</a></tal:block>
-				<em tal:condition="php: keyword['level'] == 2"><a change:link="document keyword/document" tal:omit-tag="current">${keyword/document/getLabelAsHtml}</a></em>
-				<strong tal:condition="php: keyword['level'] == 3"><a change:link="document keyword/document" tal:omit-tag="current">${keyword/document/getLabelAsHtml}</a></strong>
+				<tal:block tal:condition="php: keyword['level'] == 1"><a change:link="document keyword/document" tal:omit-tag="current">${structure keyword/document/getLabelAsHtml}</a></tal:block>
+				<em tal:condition="php: keyword['level'] == 2"><a change:link="document keyword/document" tal:omit-tag="current">${structure keyword/document/getLabelAsHtml}</a></em>
+				<strong tal:condition="php: keyword['level'] == 3"><a change:link="document keyword/document" tal:omit-tag="current">${structure keyword/document/getLabelAsHtml}</a></strong>
 			</dd>
 		</tal:block>
 	</dl>

@@ -9,7 +9,7 @@
 	</li>
 </ul>
 
-<h1 change:h="">${post/getLabelAsHtml}</h1>
+<h1 change:h="">${structure post/getLabelAsHtml}</h1>
 
 <div class="normal meta-post-infos">
 	${trans: m.blog.frontoffice.posted-by,ucf,author=post/getAuthorNameAsHtml}<span> - </span>
@@ -30,7 +30,7 @@
 	<dl class="inline-list" tal:condition="post/getPublishedCategoryCount">
 		<dt>${trans: m.blog.bo.general.categories,ucf}</dt>
 		<dd tal:repeat="category post/getPublishedCategoryArray">
-			<a change:link="document category">${category/getLabelAsHtml}</a>
+			<a change:link="document category">${structure category/getLabelAsHtml}</a>
 			<span tal:condition="not: repeat/category/end">, </span>
 		</dd>
 	</dl>
@@ -38,7 +38,7 @@
 	<dl class="inline-list" tal:condition="post/getPublishedKeywordCount">
 		<dt>${trans: m.blog.bo.general.keywords,ucf}</dt>
 		<dd tal:repeat="keyword post/getPublishedKeywordArray">
-			<a change:link="document keyword">${keyword/getLabelAsHtml}</a>
+			<a change:link="document keyword">${structure keyword/getLabelAsHtml}</a>
 			<span tal:condition="not: repeat/keyword/end">, </span>
 		</dd>
 	</dl>

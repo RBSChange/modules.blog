@@ -1,4 +1,4 @@
-<h2 tal:condition="configuration/getBlockTitle" change:h="">${configuration/getBlockTitleAsHtml}</h2>
+<h2 tal:condition="configuration/getBlockTitle" change:h="">${structure configuration/getBlockTitleAsHtml}</h2>
 <tal:block tal:condition="not: configuration/getBlockTitle" tal:define="blog configuration/getBlog">
 	<h2 tal:condition="not: blog" change:h="">${trans: m.blog.frontoffice.last-posts-from-blogs,ucf}</h2>
 	<h2 tal:condition="blog" change:h="">${trans: m.blog.frontoffice.last-posts-from-blog,ucf,blog=blog/getLabelAsHtml}</h2>
@@ -6,7 +6,7 @@
 
 <ul class="normal" tal:condition="posts">
 	<li tal:repeat="post posts">
-		<p class="meta-post-infos"><a change:link="document post">${post/getLabelAsHtml}</a> ${trans: m.blog.frontoffice.posted-by,author=post/getAuthorNameAsHtml} - ${datetime:post/getUIPostDate}</p>
+		<p class="meta-post-infos"><a change:link="document post">${structure post/getLabelAsHtml}</a> ${trans: m.blog.frontoffice.posted-by,author=post/getAuthorNameAsHtml} - ${datetime:post/getUIPostDate}</p>
 		
 		<tal:block tal:condition="configuration/getShowHightlightingVisual">
 			<img tal:condition="post/getHighlightingVisual" change:media="document post/getHighlightingVisual; format 'modules.blog.frontoffice/hightlightingVisual-last'" class="hightlinghting-visual" />

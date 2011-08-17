@@ -11,10 +11,10 @@ class blog_ViewFeedAction extends change_Action
 	 */
 	public function _execute($context, $request)
 	{		
-		$parentId = $request->getModuleParameter('blog', K::PARENT_ID_ACCESSOR);
+		$parentId = $request->getModuleParameter('blog', 'parentref');
 		if (null === $parentId)
 		{
-			$parentId = $request->getParameter(K::PARENT_ID_ACCESSOR);
+			$parentId = $request->getParameter('parentref');
 		}
 
 		$parent = DocumentHelper::getDocumentInstance($parentId);

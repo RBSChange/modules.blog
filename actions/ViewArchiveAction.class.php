@@ -27,7 +27,7 @@ class blog_ViewArchiveAction extends change_Action
 			$page = $this->getArchivePage($document);
 			if ($page !== null)
 			{
-				$request->setParameter(K::PAGE_REF_ACCESSOR, $page->getId());
+				$request->setParameter('pageref', $page->getId());
 				$module = 'website';
 				$action = 'Display';
 			}

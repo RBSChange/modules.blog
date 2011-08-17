@@ -258,7 +258,7 @@ class blog_BlogService extends f_persistentdocument_DocumentService
 		$websiteLabel = $website->getLabel();
 		$websiteUrl = LinkHelper::getDocumentUrl($website);
 		$blogUrl = LinkHelper::getDocumentUrl($blog);
-		$feedUrl = LinkHelper::getActionUrl('blog', 'ViewFeed', array(K::PARENT_ID_ACCESSOR => $blog->getId()));
+		$feedUrl = LinkHelper::getActionUrl('blog', 'ViewFeed', array('parentref' => $blog->getId()));
 		$optionArray = array('prefix' => 'weblogUpdates.', 'encoding' => 'utf-8');
 		if (defined('OUTGOING_HTTP_PROXY_HOST') && OUTGOING_HTTP_PROXY_HOST && defined('OUTGOING_HTTP_PROXY_PORT') && OUTGOING_HTTP_PROXY_PORT)
 		{

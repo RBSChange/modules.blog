@@ -169,6 +169,20 @@ class blog_BlogService extends f_persistentdocument_DocumentService
 	{
 		return $this->createQuery()->add(Restrictions::descendentOf($website->getId()))->find();
 	}
+	
+
+	/**
+	 * @param indexer_IndexedDocument $indexedDocument
+	 * @param blog_persistentdocument_blog $document
+	 * @param indexer_IndexService $indexService
+	 */
+	protected function updateIndexDocument($indexedDocument, $document, $indexService)
+	{
+		foreach ($this->getAuthorNames($document) as $value) 
+		{
+			$indexedDocument->addAggregateText($value);
+		}
+	}
 
 	/**
 	 * @param blog_persistentdocument_blog $document

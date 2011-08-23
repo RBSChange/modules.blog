@@ -17,7 +17,7 @@ class blog_ListMinutesService extends BaseService implements list_ListItemsServi
 	{
 		if (self::$instance === null)
 		{
-			self::$instance = self::getServiceClassInstance(get_class());
+			self::$instance = new self();
 		}
 		return self::$instance;
 	}

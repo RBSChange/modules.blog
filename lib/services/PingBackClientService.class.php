@@ -13,7 +13,7 @@ class blog_PingBackClientService extends BaseService
 	{
 		if (is_null(self::$instance))
 		{
-			self::$instance = self::getServiceClassInstance(get_class());
+			self::$instance = new self();
 		}
 		return self::$instance;
 	}
@@ -30,9 +30,10 @@ class blog_PingBackClientService extends BaseService
 		{
 			$optionArray['proxy'] = OUTGOING_HTTP_PROXY_HOST . ':' . OUTGOING_HTTP_PROXY_PORT;
 		}
-		
-		$client = XML_RPC2_Client::create($url, $optionArray);
-		$result = $client->ping($source, $target);
+		Framework::info('PING ' . $url);
+		$client =  new Zend_XmlRpc_Client($url, change_HttpClientService::getInstance()->getNewHttpClient());
+		$proxy = $client->getProxy('pingback');
+		$result = $proxy->ping($source, $target);
 		if (isset($result['flerror']) && $result['flerror'] != 0)
 		{
 			Framework::warn(__METHOD__ . var_export($result, true));
@@ -51,16 +52,10 @@ class blog_PingBackClientService extends BaseService
 		$content = $request->getBody();
 		foreach ($client->getHTTPHeaders() as $header)
 		{
-			$header = $client->getHeader('X-Pingback');
-			if ($header)
+			$pingbackUrl = $client->getHeader('X-Pingback');
+			if (Zend_Uri::check($pingbackUrl))
 			{
-				$pingbackUrl = substr($header, 12);
-				$errors = new validation_Errors();
-				$validator = new validation_UrlValidator();
-				if ($validator->validate($pingbackUrl, $errors))
-				{
-					return $pingbackUrl;
-				}
+				return $pingbackUrl;
 			}
 		}
 		$matches = array();
@@ -68,9 +63,7 @@ class blog_PingBackClientService extends BaseService
 		if (count($matches) == 2)
 		{
 			$pingbackUrl = str_replace(array('&lt;', '&gt;', '&quot;', '&amp;'), array('<', '>', '"', '&'), $matches[1]);
-			$errors = new validation_Errors();
-			$validator = new validation_UrlValidator();
-			if ($validator->validate($pingbackUrl, $errors))
+			if (Zend_Uri::check($pingbackUrl))
 			{
 				return $pingbackUrl;
 			}

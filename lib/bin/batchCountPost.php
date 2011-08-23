@@ -1,6 +1,5 @@
 <?php
 $blogId = $arguments[0];
-change_Controller::newInstance('change_Controller');
 $tm = f_persistentdocument_TransactionManager::getInstance();
 try
 {

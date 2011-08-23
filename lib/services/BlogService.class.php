@@ -17,7 +17,7 @@ class blog_BlogService extends f_persistentdocument_DocumentService
 	{
 		if (self::$instance === null)
 		{
-			self::$instance = self::getServiceClassInstance(get_class());
+			self::$instance = new self();
 		}
 		return self::$instance;
 	}
@@ -248,29 +248,19 @@ class blog_BlogService extends f_persistentdocument_DocumentService
 			return;
 		}
 		
-		if (!f_util_ClassUtils::classExists("XML_RPC2_Client"))
-		{
-			Framework::warn(__METHOD__ . " XML_RPC2_Client not installed, please run change.php --deep-check to install module dependency");
-			return;
-		}
-
 		$website = DocumentHelper::getDocumentInstance($this->getWebsiteId($blog));
 		$websiteLabel = $website->getLabel();
 		$websiteUrl = LinkHelper::getDocumentUrl($website);
 		$blogUrl = LinkHelper::getDocumentUrl($blog);
 		$feedUrl = LinkHelper::getActionUrl('blog', 'ViewFeed', array('parentref' => $blog->getId()));
-		$optionArray = array('prefix' => 'weblogUpdates.', 'encoding' => 'utf-8');
-		if (defined('OUTGOING_HTTP_PROXY_HOST') && OUTGOING_HTTP_PROXY_HOST && defined('OUTGOING_HTTP_PROXY_PORT') && OUTGOING_HTTP_PROXY_PORT)
-		{
-			$optionArray['proxy'] = OUTGOING_HTTP_PROXY_HOST . ':' . OUTGOING_HTTP_PROXY_PORT;
-		}
 		
 		foreach ($blog->getPingurlsArray() as $url)
 		{
 			try 
 			{
-				$client = XML_RPC2_Client::create($url, $optionArray);
-				$result = $client->extendedPing($websiteLabel, $websiteUrl , $blogUrl , $feedUrl);
+				$client = new Zend_XmlRpc_Client($url, change_HttpClientService::getInstance()->getNewHttpClient());  
+				$proxy = $client->getProxy('weblogUpdates');
+				$result = $proxy->extendedPing($websiteLabel, $websiteUrl , $blogUrl , $feedUrl);
 				if (isset($result['flerror']) && $result['flerror'] != 0)
 				{
 					Framework::warn(__METHOD__ . var_export($result, true));

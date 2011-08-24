@@ -691,4 +691,14 @@ class blog_PostService extends f_persistentdocument_DocumentService
 			$formProperties['blogId'] = $document->getBlogId();
 		}
 	}
+	
+	/**
+	 * @param indexer_IndexedDocument $indexedDocument
+	 * @param blog_persistentdocument_post $document
+	 * @param indexer_IndexService $indexService
+	 */
+	protected function updateIndexDocument($indexedDocument, $document, $indexService)
+	{
+		$indexedDocument->addAggregateText($this->getAuthorName($document));
+	}
 }

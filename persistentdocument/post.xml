@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <document xmlns="http://www.rbs.fr/schema/change-document/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.rbs.fr/schema/change-document/1.0 http://www.rbschange.fr/static/schema/change-document/1.0.xsd"
+	xsi:schemaLocation="http://www.rbs.fr/schema/change-document/1.0 http://www.rbschange.fr/static/schema/change-document/4.0.xsd"
 	model-version="1.0" icon="post" indexable="true" use-correction="true">
 	<properties>
 		<add name="postDate" type="DateTime" />
-		<add name="contents" type="XHTMLFragment" min-occurs="1" />
+		<add name="contents" type="XHTMLFragment" min-occurs="1" indexed="description"/>
 		<add name="highlightingVisual" type="modules_media/media" />
-		<add name="summary" type="XHTMLFragment" />
+		<add name="summary" type="XHTMLFragment" indexed="property"/>
 		<add name="blog" type="modules_blog/blog" min-occurs="1" max-occurs="1" inverse="true" />
-		<add name="category" type="modules_blog/category" min-occurs="0" max-occurs="-1" inverse="true" tree-node="inverse" />
+		<add name="category" type="modules_blog/category" min-occurs="0" max-occurs="-1" inverse="true" tree-node="inverse" indexed="property"/>
 		<add name="keyword" type="modules_blog/keyword" max-occurs="-1" inverse="true" tree-node="inverse" />
-		<add name="keywordsText" type="LongString" />
+		<add name="keywordsText" type="LongString"  indexed="property" />
 		<add name="showSummaryOnDetail" type="Boolean" default-value="false" />
 		<add name="allowComments" type="Boolean" default-value="true" />
 		<add name="month" type="modules_blog/month" inverse="true" />
-		<add name="trackbacks" type="LongString" />
+		<add name="trackbacks" type="LongString"  indexed="none"/>
 		<add name="allowPingbacks" type="Boolean" default-value="true" />
 		<add name="allowTrackbacks" type="Boolean" default-value="true" />
 	</properties>

@@ -3,40 +3,9 @@
  * blog_persistentdocument_post
  * @package blog.persistentdocument
  */
-class blog_persistentdocument_post extends blog_persistentdocument_postbase implements indexer_IndexableDocument, rss_Item
+class blog_persistentdocument_post extends blog_persistentdocument_postbase implements rss_Item
 {
-	/**
-	 * Get the indexable document
-	 *
-	 * @return indexer_IndexedDocument
-	 */
-	public function getIndexedDocument()
-	{
-		$indexedDoc = new indexer_IndexedDocument();
-		$indexedDoc->setId($this->getId());
-		$indexedDoc->setDocumentModel('modules_blog/post');
-		$indexedDoc->setLabel($this->getLabel());
-		$indexedDoc->setLang($this->getLang());
-		$indexedDoc->setText($this->getFullTextForIndexation());
-		return $indexedDoc;
-	}
-	
-	/**
-	 * @return String
-	 */
-	private function getFullTextForIndexation()
-	{
-		$fullText = $this->getAuthorName();
-		foreach ($this->getCategoryArray() as $category)
-		{
-			$fullText .= ' ' . $category->getLabel();
-		}
-		$fullText .= ' ' . $this->getKeywordsText();
-		$fullText .= ' ' . $this->getSummaryAsHtml();
-		$fullText .= ' ' . $this->getContentsAsHtml();
-		return f_util_StringUtils::htmlToText($fullText);
-	}
-	
+
 	/**
 	 * @return String
 	 */

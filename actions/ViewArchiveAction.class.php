@@ -59,4 +59,12 @@ class blog_ViewArchiveAction extends f_action_BaseAction
 
 		return $page;
 	}
+	
+	/* (non-PHPdoc)
+     * @see f_action_BaseAction::isSecure()
+     */
+    public function isSecure ()
+    {
+        return false;
+    }
 }

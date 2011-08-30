@@ -25,6 +25,12 @@ class blog_PingBackClientService extends BaseService
 	 */
 	public function ping($url, $source, $target)
 	{
+	    if (!blog_ModuleService::getInstance()->checkXmlRpc())
+		{
+			Framework::warn(__METHOD__ . " XML_RPC2_Client not functional");
+			return;
+		}
+		
 		$optionArray = array('prefix' => 'pingback.', 'encoding' => 'utf-8');
 		if (defined('OUTGOING_HTTP_PROXY_HOST') && OUTGOING_HTTP_PROXY_HOST && defined('OUTGOING_HTTP_PROXY_PORT') && OUTGOING_HTTP_PROXY_PORT)
 		{

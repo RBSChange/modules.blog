@@ -263,9 +263,9 @@ class blog_BlogService extends f_persistentdocument_DocumentService
 			return;
 		}
 		
-		if (!f_util_ClassUtils::classExists("XML_RPC2_Client"))
+		if (!blog_ModuleService::getInstance()->checkXmlRpc())
 		{
-			Framework::warn(__METHOD__ . " XML_RPC2_Client not installed, please run change.php --deep-check to install module dependency");
+			Framework::warn(__METHOD__ . " XML_RPC2_Client not functional");
 			return;
 		}
 

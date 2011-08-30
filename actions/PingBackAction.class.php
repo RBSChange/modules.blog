@@ -11,9 +11,9 @@ class blog_PingBackAction extends f_action_BaseAction
 	 */
 	public function _execute($context, $request)
 	{
-		if (!f_util_ClassUtils::classExists("XML_RPC2_Client"))
+		if (!blog_ModuleService::getInstance()->checkXmlRpc())
 		{
-			Framework::warn(__METHOD__ . " XML_RPC2_Client not installed, please run change.php --deep-check to install module dependency");
+			Framework::warn(__METHOD__ . " XML_RPC2_Client not functional");
 			return;
 		}
 		$server = XML_RPC2_Server::create('blog_PingBackServer', array('prefix' => 'pingback.'));

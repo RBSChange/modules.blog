@@ -137,4 +137,9 @@ class blog_ModuleService extends ModuleBaseService
 		$attributes['byDocumentId'] = $container->getId();
 		return $attributes;
 	}
+	
+	public function checkXmlRpc()
+	{
+	    return version_compare(PHP_VERSION, '5.3.0') < 0 && f_util_ClassUtils::classExists("XML_RPC2_Client");
+	}
 }

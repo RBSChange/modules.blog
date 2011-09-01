@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<install type="modules" name="blog" version="4.0.0">
+  <package type="modules" name="rss"/>
+  <package type="modules" name="comment"/>
+  <package type="modules" name="generic"/>
+  <package type="modules" name="website"/>
+  <package type="modules" name="preferences"/>
+</install>

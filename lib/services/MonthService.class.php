@@ -100,11 +100,20 @@ class blog_MonthService extends blog_PostgroupService
 	
 	/**
 	 * @param blog_persistentdocument_year $year
+	 * @param string $order 'desc'|'asc'
 	 * @return blog_persistentdocument_month[]
 	 */
-	public function getPublishedByYear($year)
+	public function getPublishedByYear($year, $order = 'desc')
 	{
 		$query = $this->createQuery()->add(Restrictions::eq('year.id', $year->getId()))->add(Restrictions::published());
+		if ($order == 'asc')
+		{
+			$query->addOrder(Order::asc('number'));
+		}
+		else
+		{
+			$query->addOrder(Order::desc('number'));
+		}
 		return $query->find();
 	}
 	

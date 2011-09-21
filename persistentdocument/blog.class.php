@@ -39,11 +39,12 @@ class blog_persistentdocument_blog extends blog_persistentdocument_blogbase
 	}
 	
 	/**
+	 * @param string $order 'desc'|'asc'
 	 * @return blog_persistentdocument_year[]
 	 */
-	public function getPublishedYears()
+	public function getPublishedYears($order = 'desc')
 	{
-		return blog_YearService::getInstance()->getPublishedByBlog($this);
+		return blog_YearService::getInstance()->getPublishedByBlog($this, $order);
 	}
 	
 	/**

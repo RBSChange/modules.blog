@@ -83,7 +83,8 @@ class blog_YearService extends blog_PostgroupService
 	 */
 	public function getPublishedByBlog($blog)
 	{
-		return $this->createQuery()->add(Restrictions::eq('blog.id', $blog->getId()))->find();
+		$query = $this->createQuery()->add(Restrictions::eq('blog.id', $blog->getId()))->add(Restrictions::published());
+		return $query->find();
 	}
 
 	/**

@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <i18n baseKey="m.blog.bo.general" lcid="fr_FR">
-  <key id="module-name">blog</key>
-  <key id="tree-root-name">blog</key>
-  <key id="system-folder-name">blog</key>
-  <key id="hours">heures</key>
-  <key id="minutes">minutes</key>
-  <key id="blogs">blogs</key>
-  <key id="categories">catégories</key>
-  <key id="keywords">mots-clés</key>
-  <key id="posts">billets</key>
-  <key id="archives">archives</key>
+	<key id="module-name">blog</key>
+	<key id="tree-root-name">blog</key>
+	<key id="system-folder-name">blog</key>
+	<key id="hours">heures</key>
+	<key id="minutes">minutes</key>
+	<key id="blogs">blogs</key>
+	<key id="categories">catégories</key>
+	<key id="keywords">mots-clés</key>
+	<key id="posts">billets</key>
+	<key id="archives">archives</key>
+	<key id="order-asc">ordre croissant</key>
+	<key id="order-desc">ordre décroissant</key>
 </i18n>

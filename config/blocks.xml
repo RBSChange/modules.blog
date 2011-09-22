@@ -113,6 +113,10 @@
 			<parameter name="displaymonths" type="Boolean" default-value="true" />
 			<parameter name="showpostcountonyears" type="Boolean" default-value="false" />
 			<parameter name="showpostcountonmonths" type="Boolean" default-value="true" />
+			<parameter name="order" type="String" default-value="desc" fieldtype="dropdownlist">
+				<fieldlistitem labeli18n="m.blog.bo.general.order-desc" value="desc" />
+				<fieldlistitem labeli18n="m.blog.bo.general.order-asc" value="asc" />
+			</parameter>
 		</parameters>
 	</block>
 	<block type="modules_blog_lastPosts" icon="list-block">

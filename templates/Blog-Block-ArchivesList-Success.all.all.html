@@ -1,10 +1,10 @@
 <dl class="menu-list">
 	<dt>${trans:m.blog.bo.general.archives,ucf}</dt>
-	<dd tal:repeat="year blog/getPublishedYears">
+	<dd tal:repeat="year php: blog.getPublishedYears(configuration.getOrder())">
 		<a tal:condition="not: configuration/getDisplaymonths" change:link="module blog ; action ViewArchive ; cmpref blog/getId ; year year/getNumber ; month 'all'">${structure year/getLabelAsHtml}</a> <span class="post-count" tal:condition="configuration/getShowpostcountonyears">(${year/getPublishedPostCount})</span>
 		<dl tal:condition="configuration/getDisplaymonths" class="menu-list">
 			<dt><a change:link="module blog ; action ViewArchive ; cmpref blog/getId ; year year/getNumber ; month 'all'">${structure year/getLabelAsHtml}</a> <span class="post-count" tal:condition="configuration/getShowpostcountonyears">(${year/getPublishedPostCount})</span></dt>
-			<dd tal:repeat="month year/getPublishedMonths">
+			<dd tal:repeat="month php: year.getPublishedMonths(configuration.getOrder())">
 				<a change:link="module blog ; action ViewArchive ; cmpref blog/getId ; year year/getNumber ; month month/getNumber">${structure month/getLabelAsHtml}</a> <span class="post-count" tal:condition="configuration/getShowpostcountonmonths">(${month/getPublishedPostCount})</span>
 			</dd>
 		</dl>

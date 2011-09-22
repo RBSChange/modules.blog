@@ -17,9 +17,9 @@
 				<changeblock type="modules_blog_blog" />
 			</changecontent>
 			<changecontent for="sidebar-block">
-				<changeblock type="modules_blog_CategoryList" />
-				<changeblock type="modules_blog_KeywordList" __cloud="true" />
-				<changeblock type="modules_blog_ArchivesList" />
+				<changeblock type="modules_blog_categoryList" />
+				<changeblock type="modules_blog_keywordList" __cloud="true" />
+				<changeblock type="modules_blog_archivesList" />
 			</changecontent>
 		</page>
 		
@@ -30,9 +30,9 @@
 				<changeblock type="modules_blog_category" />
 			</changecontent>
 			<changecontent for="sidebar-block">
-				<changeblock type="modules_blog_CategoryList" />
-				<changeblock type="modules_blog_KeywordList" __cloud="true" />
-				<changeblock type="modules_blog_ArchivesList" />
+				<changeblock type="modules_blog_categoryList" />
+				<changeblock type="modules_blog_keywordList" __cloud="true" />
+				<changeblock type="modules_blog_archivesList" />
 			</changecontent>
 		</page>
 		
@@ -43,9 +43,9 @@
 				<changeblock type="modules_blog_keyword" />
 			</changecontent>
 			<changecontent for="sidebar-block">
-				<changeblock type="modules_blog_CategoryList" />
-				<changeblock type="modules_blog_KeywordList" __cloud="true" />
-				<changeblock type="modules_blog_ArchivesList" />
+				<changeblock type="modules_blog_categoryList" />
+				<changeblock type="modules_blog_keywordList" __cloud="true" />
+				<changeblock type="modules_blog_archivesList" />
 			</changecontent>
 		</page>
 		
@@ -57,9 +57,9 @@
 				<changeblock type="modules_blog_comments" />
 			</changecontent>
 			<changecontent for="sidebar-block">
-				<changeblock type="modules_blog_CategoryList" />
-				<changeblock type="modules_blog_KeywordList" __cloud="true" />
-				<changeblock type="modules_blog_ArchivesList" />
+				<changeblock type="modules_blog_categoryList" />
+				<changeblock type="modules_blog_keywordList" __cloud="true" />
+				<changeblock type="modules_blog_archivesList" />
 			</changecontent>
 		</page>
 		
@@ -70,9 +70,9 @@
 				<changeblock type="modules_blog_archives" />
 			</changecontent>
 			<changecontent for="sidebar-block">
-				<changeblock type="modules_blog_CategoryList" />
-				<changeblock type="modules_blog_KeywordList" __cloud="true" />
-				<changeblock type="modules_blog_ArchivesList" />
+				<changeblock type="modules_blog_categoryList" />
+				<changeblock type="modules_blog_keywordList" __cloud="true" />
+				<changeblock type="modules_blog_archivesList" />
 			</changecontent>
 		</page>
 	</topic>

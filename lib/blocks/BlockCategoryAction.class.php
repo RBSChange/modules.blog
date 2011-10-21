@@ -21,7 +21,7 @@ class blog_BlockCategoryAction extends website_TaggerBlockAction
 		$category = $this->getDocumentParameter();
 		if ($category !== null && $category->isPublished())
 		{
-			$website = website_WebsiteModuleService::getInstance()->getCurrentWebsite();
+			$website = website_WebsiteService::getInstance()->getCurrentWebsite();
 			$blog = $category->getBlog();
 			return array(
 				'categoryLabel' => $category->getLabel(),

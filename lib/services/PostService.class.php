@@ -240,19 +240,10 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	protected function preInsert($document, $parentNodeId)
 	{
 		$document->setInsertInTree(false);	
-		// Set the full name of the current user as author, to display it in frontoffice.
-		if (RequestContext::getInstance()->getMode() == RequestContext::BACKOFFICE_MODE)
-		{
-			$user = users_UserService::getInstance()->getCurrentBackEndUser();
-		}
-		else
-		{
-			$user = users_UserService::getInstance()->getCurrentFrontEndUser();
-		}
-		
+		$user = users_UserService::getInstance()->getCurrentUser();		
 		if ($user !== null)
 		{
-			$document->setAuthor($user->getFullname());
+			$document->setAuthor($user->getLabel());
 		}
 	}
 	
@@ -606,7 +597,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		{
 			if ($website === null)
 			{
-				$website = website_WebsiteModuleService::getInstance()->getCurrentWebsite();
+				$website = website_WebsiteService::getInstance()->getCurrentWebsite();
 			}
 			$query->createCriteria('blog')->add(Restrictions::descendentOf($website->getId()));
 		}
@@ -632,7 +623,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		{
 			if ($website === null)
 			{
-				$website = website_WebsiteModuleService::getInstance()->getCurrentWebsite();
+				$website = website_WebsiteService::getInstance()->getCurrentWebsite();
 			}
 			$criteria->createCriteria('blog')->add(Restrictions::descendentOf($website->getId()));
 		}

@@ -21,7 +21,7 @@ class blog_BlockBlogAction extends website_TaggerBlockAction
 		$blog = $this->getDocumentParameter();
 		if ($blog !== null && $blog->isPublished())
 		{
-			$website = website_WebsiteModuleService::getInstance()->getCurrentWebsite();
+			$website = website_WebsiteService::getInstance()->getCurrentWebsite();
 			return array(
 				'blogLabel' => $blog->getLabel(),
 				'blogDescription' => $blog->getDescription(),

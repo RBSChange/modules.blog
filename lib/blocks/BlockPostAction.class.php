@@ -34,7 +34,7 @@ class blog_BlockPostAction extends website_TaggerBlockAction
 			$postCategories[] = $category->getLabel();
 		}
 		$blog = $post->getBlog();
-		$website = website_WebsiteModuleService::getInstance()->getCurrentWebsite();
+		$website = website_WebsiteService::getInstance()->getCurrentWebsite();
 		return array(
 			'postLabel' => $post->getLabel(),
 			'postDate' => date_Formatter::toDefaultDate($post->getPostDate()),

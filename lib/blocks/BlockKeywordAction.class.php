@@ -21,7 +21,7 @@ class blog_BlockKeywordAction extends website_TaggerBlockAction
 		$keyword = $this->getDocumentParameter();
 		if ($keyword !== null && $keyword->isPublished())
 		{
-			$website = website_WebsiteModuleService::getInstance()->getCurrentWebsite();
+			$website = website_WebsiteService::getInstance()->getCurrentWebsite();
 			$blog = $keyword->getBlog();
 			return array(
 				'keywordLabel' => $keyword->getLabel(),

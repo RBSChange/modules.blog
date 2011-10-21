@@ -21,7 +21,7 @@ class blog_BlockArchivesAction extends website_TaggerBlockAction
 		$blog = $this->getDocumentParameter();
 		if ($blog !== null && $blog->isPublished())
 		{
-			$website = website_WebsiteModuleService::getInstance()->getCurrentWebsite();
+			$website = website_WebsiteService::getInstance()->getCurrentWebsite();
 			$year = $this->findParameterValue('year');
 			$month = $this->findParameterValue('month');
 			$dates = blog_BlogService::getInstance()->getArchiveDates($year, $month);

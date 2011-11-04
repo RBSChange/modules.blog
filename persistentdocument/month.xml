@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<document xmlns="http://www.rbs.fr/schema/change-document/1.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.rbs.fr/schema/change-document/1.0 http://www.rbschange.fr/static/schema/change-document/1.0.xsd"
-	model-version="1.0" extend="modules_blog/postgroup" has-url="false" indexable="false"
-	backoffice-indexable="false">
-	<properties>
-		<add name="year" type="modules_blog/year" min-occurs="1" inverse="true" />
-		<add name="number" type="Integer" min-occurs="1" />
-	</properties>
-	
-	<statuses default="ACTIVE" />
+<document xmlns="http://www.rbs.fr/schema/change-document/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.rbs.fr/schema/change-document/1.0 http://www.rbschange.fr/static/schema/change-document/4.0.xsd" 
+	model-version="1.0" extend="modules_blog/postgroup" has-url="false" indexable="false" backoffice-indexable="false">
+  <properties>
+    <property name="year" type="modules_blog/year" min-occurs="1" inverse="true"/>
+    <property name="number" type="Integer" min-occurs="1"/>
+  </properties>
+  <statuses default="ACTIVE"/>
 </document>

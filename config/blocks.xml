@@ -1,145 +1,145 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <blocks>
-	<block type="modules_blog_blog" icon="blog" labeli18n="m.blog.bo.blocks.blog">
-		<parameters>
-			<parameter name="cmpref" type="modules_blog/blog" />
-			<parameter name="nbitemperpage" type="Integer" default-value="5" />
-			<parameter name="showHightlightingVisual" type="Boolean" default-value="true" />
-		</parameters>
-		<metas>
-			<meta name="blogLabel" allow="title,description" />
-			<meta name="blogDescription" allow="description" />
-			<meta name="siteLabel" allow="title,description" />
-		</metas>
-	</block>
-	<block type="modules_blog_blogcontextuallist" icon="list-block" labeli18n="m.blog.bo.blocks.blogcontextuallist">
-		<parameters>
-			<parameter name="nbitemperpage" type="Integer" default-value="5" />
-			<parameter name="showpoststats" type="Boolean" default-value="true" />
-			<parameter name="showauthors" type="Boolean" default-value="true" />
-		</parameters>
-	</block>
-	<block type="modules_blog_category" icon="category"	labeli18n="m.blog.bo.blocks.category">
-		<parameters>
-			<parameter name="cmpref" type="modules_blog/category" />
-			<parameter name="nbitemperpage" type="Integer" default-value="5" />
-			<parameter name="includedescendents" type="Boolean" default-value="true" />
-			<parameter name="showHightlightingVisual" type="Boolean" default-value="true" />
-			<parameter name="showblogrsslink" type="Boolean" default-value="true" />
-		</parameters>
-		<metas>
-			<meta name="categoryLabel" allow="title,description" />
-			<meta name="categoryDescription" allow="description" />
-			<meta name="blogLabel" allow="title,description" />
-			<meta name="siteLabel" allow="title,description" />
-		</metas>
-	</block>
-	<block type="modules_blog_categoryList" icon="list-block" labeli18n="m.blog.bo.blocks.categorylist">
-		<parameters>
-			<parameter name="cmpref" type="modules_blog/blog" />
-			<parameter name="recursivecount" type="Boolean" default-value="true" />
-		</parameters>
-	</block>
-	<block type="modules_blog_keyword" icon="keyword" labeli18n="m.blog.bo.blocks.keyword">
-		<parameters>
-			<parameter name="cmpref" type="modules_blog/keyword" />
-			<parameter name="nbitemperpage" type="Integer" default-value="5" />
-			<parameter name="showHightlightingVisual" type="Boolean" default-value="true" />
-			<parameter name="showblogrsslink" type="Boolean" default-value="true" />
-		</parameters>
-		<metas>
-			<meta name="keywordLabel" allow="title,description" />
-			<meta name="keywordDescription" allow="description" />
-			<meta name="blogLabel" allow="title,description" />
-			<meta name="siteLabel" allow="title,description" />
-		</metas>
-	</block>
-	<block type="modules_blog_keywordList" icon="list-block" labeli18n="m.blog.bo.blocks.keywordlist">
-		<parameters>
-			<parameter name="cmpref" type="modules_blog/blog" />
-			<parameter name="limit" type="Integer" min-occurs="1" default-value="30" />
-			<parameter name="cloud" type="Boolean" default-value="true" />
-		</parameters>
-	</block>
-	<block type="modules_blog_post" icon="post" labeli18n="m.blog.bo.blocks.post"
-		cache="true" cache-key="cmpref,page"
-		cache-deps="modules_blog/blog,modules_blog/category,modules_media/media,[modules_website/page]">
-		<parameters>
-			<parameter name="cmpref" type="modules_blog/post" />
-			<parameter name="showHightlightingVisual" type="Boolean" default-value="true" />
-			<parameter name="showblogrsslink" type="Boolean" default-value="true" />
-			<parameter name="showshareblock" type="Boolean" default-value="true" />
-		</parameters>
-		<metas>
-			<meta name="postLabel" allow="title,description" />
-			<meta name="postDate" allow="title,description" />
-			<meta name="postSummary" allow="description" />
-			<meta name="blogLabel" allow="title,description" />
-			<meta name="blogDescription" allow="description" />
-			<meta name="postKeywords" allow="keywords" />
-			<meta name="postCategories" allow="keywords" />
-			<meta name="siteLabel" allow="title,description" />
-		</metas>
-	</block>
-	<block type="modules_blog_comments" icon="comments">
-		<parameters>
-			<parameter name="nbitemperpage" type="Integer" default-value="25" />
-			<parameter name="allowNotRegistered" type="Boolean" default-value="true" />
-			<parameter name="enableRating" type="Boolean" default-value="false" />
-			<parameter name="showRatingDistribution" type="Boolean" default-value="false" />
-			<parameter name="displaySortOptions" type="Boolean" default-value="false" />
-			<parameter name="enableEvaluation" type="Boolean" default-value="false" />
-			<parameter name="showgravatars" type="Boolean" default-value="false" />
-		</parameters>
-	</block>
-	<block type="modules_blog_archives" icon="archive" labeli18n="m.blog.bo.blocks.archives">
-		<parameters>
-			<parameter name="cmpref" type="modules_blog/blog" />
-			<parameter name="nbitemperpage" type="Integer" default-value="5" />
-			<parameter name="year" type="Integer" />
-			<parameter name="month" type="Integer" />
-			<parameter name="showHightlightingVisual" type="Boolean" default-value="true" />
-			<parameter name="showblogrsslink" type="Boolean" default-value="true" />
-		</parameters>
-		<metas>
-			<meta name="date" allow="title,description" />
-			<meta name="blogLabel" allow="title,description" />
-			<meta name="siteLabel" allow="title,description" />
-		</metas>
-	</block>
-	<block type="modules_blog_archivesList" icon="archive" labeli18n="m.blog.bo.blocks.archiveslist">
-		<parameters>
-			<parameter name="cmpref" type="modules_blog/blog" />
-			<parameter name="displaymonths" type="Boolean" default-value="true" />
-			<parameter name="showpostcountonyears" type="Boolean" default-value="false" />
-			<parameter name="showpostcountonmonths" type="Boolean" default-value="true" />
-			<parameter name="order" type="String" default-value="desc" fieldtype="dropdownlist">
-				<fieldlistitem labeli18n="m.blog.bo.general.order-desc" value="desc" />
-				<fieldlistitem labeli18n="m.blog.bo.general.order-asc" value="asc" />
-			</parameter>
-		</parameters>
-	</block>
-	<block type="modules_blog_lastPosts" icon="list-block">
-		<parameters>
-			<parameter name="blockTitle" type="String" />
-			<parameter name="blog" type="modules_blog/blog" />
-			<parameter name="maxCount" type="Integer" default-value="5">
-				<constraints>min:1;max:100</constraints>
-			</parameter>
-			<parameter name="showHightlightingVisual" type="Boolean" default-value="true" />
-			<parameter name="showSummary" type="Boolean" default-value="true" />
-			<parameter name="summaryMaxLength" type="Integer" />
-		</parameters>
-	</block>
-	<block type="modules_blog_LastComments" icon="comments">
-		<parameters>
-			<parameter name="blockTitle" type="String" />
-			<parameter name="blog" type="modules_blog/blog" />
-			<parameter name="maxCount" type="Integer" default-value="5">
-				<constraints>min:1;max:100</constraints>
-			</parameter>
-			<parameter name="showSummary" type="Boolean" default-value="true" />
-			<parameter name="summaryMaxLength" type="Integer" />
-		</parameters>
-	</block>
+  <block type="modules_blog_blog" icon="blog" labeli18n="m.blog.bo.blocks.blog">
+    <parameters>
+      <parameter name="cmpref" type="modules_blog/blog"/>
+      <parameter name="nbitemperpage" type="Integer" default-value="5"/>
+      <parameter name="showHightlightingVisual" type="Boolean" default-value="true"/>
+    </parameters>
+    <metas>
+      <meta name="blogLabel" allow="title,description"/>
+      <meta name="blogDescription" allow="description"/>
+      <meta name="siteLabel" allow="title,description"/>
+    </metas>
+  </block>
+  <block type="modules_blog_blogcontextuallist" icon="list-block" labeli18n="m.blog.bo.blocks.blogcontextuallist">
+    <parameters>
+      <parameter name="nbitemperpage" type="Integer" default-value="5"/>
+      <parameter name="showpoststats" type="Boolean" default-value="true"/>
+      <parameter name="showauthors" type="Boolean" default-value="true"/>
+    </parameters>
+  </block>
+  <block type="modules_blog_category" icon="category" labeli18n="m.blog.bo.blocks.category">
+    <parameters>
+      <parameter name="cmpref" type="modules_blog/category"/>
+      <parameter name="nbitemperpage" type="Integer" default-value="5"/>
+      <parameter name="includedescendents" type="Boolean" default-value="true"/>
+      <parameter name="showHightlightingVisual" type="Boolean" default-value="true"/>
+      <parameter name="showblogrsslink" type="Boolean" default-value="true"/>
+    </parameters>
+    <metas>
+      <meta name="categoryLabel" allow="title,description"/>
+      <meta name="categoryDescription" allow="description"/>
+      <meta name="blogLabel" allow="title,description"/>
+      <meta name="siteLabel" allow="title,description"/>
+    </metas>
+  </block>
+  <block type="modules_blog_categoryList" icon="list-block" labeli18n="m.blog.bo.blocks.categorylist">
+    <parameters>
+      <parameter name="cmpref" type="modules_blog/blog"/>
+      <parameter name="recursivecount" type="Boolean" default-value="true"/>
+    </parameters>
+  </block>
+  <block type="modules_blog_keyword" icon="keyword" labeli18n="m.blog.bo.blocks.keyword">
+    <parameters>
+      <parameter name="cmpref" type="modules_blog/keyword"/>
+      <parameter name="nbitemperpage" type="Integer" default-value="5"/>
+      <parameter name="showHightlightingVisual" type="Boolean" default-value="true"/>
+      <parameter name="showblogrsslink" type="Boolean" default-value="true"/>
+    </parameters>
+    <metas>
+      <meta name="keywordLabel" allow="title,description"/>
+      <meta name="keywordDescription" allow="description"/>
+      <meta name="blogLabel" allow="title,description"/>
+      <meta name="siteLabel" allow="title,description"/>
+    </metas>
+  </block>
+  <block type="modules_blog_keywordList" icon="list-block" labeli18n="m.blog.bo.blocks.keywordlist">
+    <parameters>
+      <parameter name="cmpref" type="modules_blog/blog"/>
+      <parameter name="limit" type="Integer" min-occurs="1" default-value="30"/>
+      <parameter name="cloud" type="Boolean" default-value="true"/>
+    </parameters>
+  </block>
+  <block type="modules_blog_post" icon="post" labeli18n="m.blog.bo.blocks.post" cache="true" cache-key="cmpref,page" cache-deps="modules_blog/blog,modules_blog/category,modules_media/media,[modules_website/page]">
+    <parameters>
+      <parameter name="cmpref" type="modules_blog/post"/>
+      <parameter name="showHightlightingVisual" type="Boolean" default-value="true"/>
+      <parameter name="showblogrsslink" type="Boolean" default-value="true"/>
+      <parameter name="showshareblock" type="Boolean" default-value="true"/>
+    </parameters>
+    <metas>
+      <meta name="postLabel" allow="title,description"/>
+      <meta name="postDate" allow="title,description"/>
+      <meta name="postSummary" allow="description"/>
+      <meta name="blogLabel" allow="title,description"/>
+      <meta name="blogDescription" allow="description"/>
+      <meta name="postKeywords" allow="keywords"/>
+      <meta name="postCategories" allow="keywords"/>
+      <meta name="siteLabel" allow="title,description"/>
+    </metas>
+  </block>
+  <block type="modules_blog_comments" icon="comments">
+    <parameters>
+      <parameter name="nbitemperpage" type="Integer" default-value="25"/>
+      <parameter name="allowNotRegistered" type="Boolean" default-value="true"/>
+      <parameter name="enableRating" type="Boolean" default-value="false"/>
+      <parameter name="showRatingDistribution" type="Boolean" default-value="false"/>
+      <parameter name="displaySortOptions" type="Boolean" default-value="false"/>
+      <parameter name="enableEvaluation" type="Boolean" default-value="false"/>
+      <parameter name="showgravatars" type="Boolean" default-value="false"/>
+    </parameters>
+  </block>
+  <block type="modules_blog_archives" icon="archive" labeli18n="m.blog.bo.blocks.archives">
+    <parameters>
+      <parameter name="cmpref" type="modules_blog/blog"/>
+      <parameter name="nbitemperpage" type="Integer" default-value="5"/>
+      <parameter name="year" type="Integer"/>
+      <parameter name="month" type="Integer"/>
+      <parameter name="showHightlightingVisual" type="Boolean" default-value="true"/>
+      <parameter name="showblogrsslink" type="Boolean" default-value="true"/>
+    </parameters>
+    <metas>
+      <meta name="date" allow="title,description"/>
+      <meta name="blogLabel" allow="title,description"/>
+      <meta name="siteLabel" allow="title,description"/>
+    </metas>
+  </block>
+  <block type="modules_blog_archivesList" icon="archive" labeli18n="m.blog.bo.blocks.archiveslist">
+    <parameters>
+      <parameter name="cmpref" type="modules_blog/blog"/>
+      <parameter name="displaymonths" type="Boolean" default-value="true"/>
+      <parameter name="showpostcountonyears" type="Boolean" default-value="false"/>
+      <parameter name="showpostcountonmonths" type="Boolean" default-value="true"/>
+      <parameter name="order" type="String" default-value="desc" fieldtype="dropdownlist">
+        <fieldlistitem labeli18n="m.blog.bo.general.order-desc" value="desc"/>
+        <fieldlistitem labeli18n="m.blog.bo.general.order-asc" value="asc"/>
+      </parameter>
+    </parameters>
+  </block>
+  <block type="modules_blog_lastPosts" icon="list-block">
+    <parameters>
+      <parameter name="blockTitle" type="String"/>
+      <parameter name="blog" type="modules_blog/blog"/>
+      <parameter name="maxCount" type="Integer" default-value="5">
+        <constraint name="min" min="1"/>
+        <constraint name="max" max="100"/>
+      </parameter>
+      <parameter name="showHightlightingVisual" type="Boolean" default-value="true"/>
+      <parameter name="showSummary" type="Boolean" default-value="true"/>
+      <parameter name="summaryMaxLength" type="Integer"/>
+    </parameters>
+  </block>
+  <block type="modules_blog_LastComments" icon="comments">
+    <parameters>
+      <parameter name="blockTitle" type="String"/>
+      <parameter name="blog" type="modules_blog/blog"/>
+      <parameter name="maxCount" type="Integer" default-value="5">
+        <constraint name="min" min="1"/>
+        <constraint name="max" max="100"/>
+      </parameter>
+      <parameter name="showSummary" type="Boolean" default-value="true"/>
+      <parameter name="summaryMaxLength" type="Integer"/>
+    </parameters>
+  </block>
 </blocks>

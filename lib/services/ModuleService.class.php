@@ -79,7 +79,7 @@ class blog_ModuleService extends ModuleBaseService
 				return $this->getBlogStructureInitializationAttributes($container, $attributes, $script);
 				
 			default:
-				throw new BaseException('Unknown structure initialization script: '.$script, 'modules.blog.bo.actions.Unknown-structure-initialization-script', array('script' => $script));
+				throw new BaseException('Unknown structure initialization script: '.$script, 'm.website.bo.actions.unknown-structure-initialization-script', array('script' => $script));
 		}
 	}
 
@@ -94,7 +94,7 @@ class blog_ModuleService extends ModuleBaseService
 		// Check container.
 		if (!$container instanceof website_persistentdocument_topic)
 		{
-			throw new BaseException('Invalid topic', 'modules.blog.bo.actions.Invalid-topic');
+			throw new BaseException('Invalid topic', 'm.website.bo.actions.invalid-topic');
 		}
 		
 		$node = TreeService::getInstance()->getInstanceByDocument($container);

@@ -7,6 +7,5 @@
   <key id="create-category">create a category</key>
   <key id="create-keyword">create a keyword</key>
   <key id="previewpost">Preview post</key>
-  <key id="invalid-topic">Invalid topic.</key>
   <key id="topic-already-contains-pages">This topic already contains pages.</key>
 </i18n>

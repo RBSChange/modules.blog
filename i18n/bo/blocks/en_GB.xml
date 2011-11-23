@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <i18n baseKey="m.blog.bo.blocks" lcid="en_GB">
-  <key id="blog">Blog detail</key>
-  <key id="blogcontextuallist">Blog list</key>
-  <key id="post">Post detail</key>
-  <key id="category">Category detail</key>
-  <key id="keyword">keyword detail</key>
+  <key id="blog">blog details</key>
+  <key id="blogcontextuallist">blogs list</key>
+  <key id="post">post details</key>
+  <key id="category">category details</key>
+  <key id="keyword">keyword details</key>
   <key id="categorylist">categories list</key>
-  <key id="keywordlist">keywords list</key>
+  <key id="keywordlist">keyword list</key>
   <key id="archives">Archives</key>
-  <key id="archiveslist">menu of archives</key>
-  <key id="blogedit">Blog administration</key>
-  <key id="postform">Post form</key>
-  <key id="categoryform">Category form</key>
-  <key id="commentsvalidation">Comments validation</key>
+  <key id="archiveslist">archives menu</key>
+  <key id="blogedit">blog administration</key>
+  <key id="postform">post form</key>
+  <key id="categoryform">category form</key>
+  <key id="commentsvalidation">comment validation</key>
 </i18n>

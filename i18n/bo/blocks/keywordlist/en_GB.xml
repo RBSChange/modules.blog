@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <i18n baseKey="m.blog.bo.blocks.keywordlist" lcid="en_GB">
-  <key id="cmpref">linked document</key>
-  <key id="cmpref-help">linked document</key>
-  <key id="limit">limit</key>
-  <key id="limit-help">limit-help</key>
+  <key id="cmpref">Linked document</key>
+  <key id="cmpref-help">Linked document</key>
+  <key id="limit">maximum number</key>
+  <key id="limit-help">specify the maximum number of keywords to display here. If there are more, the most common keywords will be displayed first.</key>
   <key id="cloud">cloud mode</key>
-  <key id="cloud-help">cloud-help</key>
+  <key id="cloud-help">specify here if you want to display keywords as a list or a cloud</key>
 </i18n>

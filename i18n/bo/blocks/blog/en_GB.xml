@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <i18n baseKey="m.blog.bo.blocks.blog" lcid="en_GB">
-  <key id="cmpref">linked document</key>
-  <key id="cmpref-help">linked document</key>
+  <key id="cmpref">Linked document</key>
+  <key id="cmpref-help">Linked document</key>
   <key id="nbitemperpage">Document count</key>
-  <key id="nbitemperpage-help">Max. document count per page</key>
+  <key id="nbitemperpage-help">Maximum number of documents to display per page</key>
+  <key id="showhightlightingvisual">display the sticky icon?</key>
+  <key id="showhightlightingvisual-help">Show or hide the sticky icon defined on posts.</key>
 </i18n>

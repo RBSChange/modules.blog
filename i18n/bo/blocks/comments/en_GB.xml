@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <i18n baseKey="m.blog.bo.blocks.comments" lcid="en_GB">
-	<include id="m.comment.bo.blocks.commentbase" />
-	<key id="title">post comments</key>
-	<key id="enablerating-help">activate rating on posts</key>
-	<key id="showratingdistribution-help">show rating distribution on this post</key>
+  <include id="m.comment.bo.blocks.commentbase"/>
+  <key id="title">post comments</key>
+  <key id="enablerating-help">enable ratings on posts</key>
+  <key id="showratingdistribution-help">display the rating distribution on this post</key>
 </i18n>

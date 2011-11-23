@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.bo.blocks.lastcomments" lcid="en_GB">
+  <key id="blocktitle">title</key>
+  <key id="blocktitle-help">Block title displayed on the site. Leave empty to generate automatically.</key>
+  <key id="blog">blog</key>
+  <key id="blog-help">Enter a blog to restrict display to that one, leave empty to retrieve comments from all of the
+		blogs on the site.</key>
+  <key id="maxcount">number of comments</key>
+  <key id="maxcount-help">Maximum number of comments to display.</key>
+  <key id="showsummary">display the content</key>
+  <key id="showsummary-help">Show or hide the content of comments.</key>
+  <key id="summarymaxlength">maximum length for content</key>
+  <key id="summarymaxlength-help">After this length, the content will be truncated. Leave empty to never truncate.</key>
+  <key id="title">last comments on posts</key>
+</i18n>

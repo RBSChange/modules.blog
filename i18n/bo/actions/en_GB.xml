@@ -9,4 +9,7 @@
   <key id="previewpost">Preview post</key>
   <key id="invalid-topic">Invalid topic.</key>
   <key id="topic-already-contains-pages">This topic already contains pages.</key>
+  <key id="confirm-delete-blog">are you sure you want to delete this blog and all its content? (this operation cannot be undone)</key>
+  <key id="delete-blog">delete this blog and all its content</key>
+  <key id="init-frontadmin-struct">initialise pages for site administration</key>
 </i18n>

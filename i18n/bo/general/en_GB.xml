@@ -10,4 +10,6 @@
   <key id="keywords">keywords</key>
   <key id="posts">posts</key>
   <key id="archives">archives</key>
+  <key id="order-asc"/>
+  <key id="order-desc"/>
 </i18n>

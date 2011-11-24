@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <i18n baseKey="m.blog.bo.blocks.blogcontextuallist" lcid="en_GB">
   <key id="nbitemperpage">Document count</key>
-  <key id="nbitemperpage-help">Max. document count per page</key>
-  <key id="showpoststats">show posts statistics</key>
-  <key id="showpoststats-help">show posts statistics.</key>
-  <key id="showauthors">show authors</key>
+  <key id="nbitemperpage-help">Maximum number of documents to display per page</key>
+  <key id="showpoststats">post statistics</key>
+  <key id="showpoststats-help">Show or hide statistics on posts.</key>
+  <key id="showauthors">display the authors</key>
 </i18n>

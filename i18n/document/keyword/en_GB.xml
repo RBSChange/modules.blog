@@ -5,5 +5,5 @@
   <key id="label">label</key>
   <key id="label-help">label</key>
   <key id="description">description</key>
-  <key id="description-help">description</key>
+  <key id="description-help">This description is displayed in a keyword's details. It is also used as a description for the RSS feed associated with this keyword.</key>
 </i18n>

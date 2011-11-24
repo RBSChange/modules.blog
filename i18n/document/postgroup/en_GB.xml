@@ -6,4 +6,6 @@
   <key id="description-help">description</key>
   <key id="postcount">postCount</key>
   <key id="postcount-help">postCount</key>
+  <key id="document-name">postgroup</key>
+  <key id="edition-form-title">postgroup properties</key>
 </i18n>

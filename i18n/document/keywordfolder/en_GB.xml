@@ -5,4 +5,6 @@
   <key id="label-help">label</key>
   <key id="description">description</key>
   <key id="description-help">description</key>
+  <key id="document-name">keywords folder</key>
+  <key id="edition-form-title">properties of the keywords folder</key>
 </i18n>

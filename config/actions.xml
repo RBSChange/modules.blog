@@ -67,7 +67,7 @@
 	<action name="deleteBlog">
 		<parameter name="listWidget" />
 		<body><![CDATA[
-			if (confirm("&amp;modules.blog.bo.actions.Confirm-delete-blog;"))
+			if (confirm("${trans:m.blog.bo.actions.confirm-delete-blog,ucf,js}"))
 			{
 				var doc = listWidget.getSelectedItems()[0];
 				var lang = this.getContextLang();

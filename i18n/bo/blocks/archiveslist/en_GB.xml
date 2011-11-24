@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <i18n baseKey="m.blog.bo.blocks.archiveslist" lcid="en_GB">
-  <key id="cmpref">linked document</key>
-  <key id="cmpref-help">linked document</key>
-  <key id="displaymonths">show months</key>
-  <key id="displaymonths-help">show months</key>
-  <key id="showpostcountonyears">show count for years</key>
-  <key id="showpostcountonyears-help">show posts count for years</key>
-  <key id="showpostcountonmonths">show count for months</key>
-  <key id="showpostcountonmonths-help">show posts count for months</key>
+  <key id="cmpref">related document</key>
+  <key id="cmpref-help">related document</key>
+  <key id="displaymonths">display months</key>
+  <key id="displaymonths-help">display months</key>
+  <key id="showpostcountonyears">yearly count</key>
+  <key id="showpostcountonyears-help">display the yearly post count</key>
+  <key id="showpostcountonmonths">monthly count</key>
+  <key id="showpostcountonmonths-help">display the monthly post count</key>
+  <key id="order"/>
+  <key id="order-help"/>
 </i18n>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <i18n baseKey="m.blog.bo.blocks.categorylist" lcid="en_GB">
-  <key id="cmpref">linked document</key>
-  <key id="cmpref-help">linked document</key>
+  <key id="cmpref">Linked document</key>
+  <key id="cmpref-help">Linked document</key>
   <key id="recursivecount">recursive count</key>
-  <key id="recursivecount-help">recursivecount-help</key>
+  <key id="recursivecount-help">if you enable the recursive count, the post counter displayed next to the name of the category will include	child categories, otherwise only the posts directly linked to the category will be taken into account.</key>
 </i18n>

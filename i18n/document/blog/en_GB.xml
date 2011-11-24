@@ -5,11 +5,11 @@
   <key id="label">label</key>
   <key id="label-help">label</key>
   <key id="description">description</key>
-  <key id="description-help">description</key>
+  <key id="description-help">This description is displayed in a blog's details. It is also used as a description for the RSS feed associated with this blog.</key>
   <key id="pingurls">URL to ping</key>
-  <key id="pingurls-help">URL implementing the XML-RPC Weblogs.Com interface.</key>
+  <key id="pingurls-help">URL of sites implementing the Weblogs.Com XML-RPC interface.</key>
   <key id="enablepingback">Enable pingbacks</key>
-  <key id="enablepingback-help">Activate pingbacks por the posts of this blog</key>
+  <key id="enablepingback-help">Activates the pingbacks for the posts of this blog.</key>
   <key id="enabletrackback">Enable trackbacks</key>
-  <key id="enabletrackback-help">Activate trackbacks por the posts of this blog</key>
+  <key id="enabletrackback-help">Activates the trackbacks for the posts of this blog.</key>
 </i18n>

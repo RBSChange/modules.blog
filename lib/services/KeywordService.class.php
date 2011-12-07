@@ -172,25 +172,25 @@ class blog_KeywordService extends blog_PostgroupService
 		return $query->find();
 	}
 		
-
 	/**
-	 * @param blog_persistentdocument_keyword $keyword
+	 * @param blog_persistentdocument_keyword $document
+	 * @param array<string, string> $attributes
+	 * @param integer $mode
 	 * @param string $moduleName
-	 * @param string $treeType
-	 * @param array<string, string> $nodeAttributes
 	 */
-	public function addTreeAttributes($keyword, $moduleName, $treeType, &$nodeAttributes)
+	public function completeBOAttributes($document, &$attributes, $mode, $moduleName)
 	{
-		$query = blog_PostService::getInstance()->createQuery()
-			->add(Restrictions::eq('keyword', $keyword))
-			->setProjection(Projections::rowCount('count'));
-				
-		if (f_persistentdocument_PersistentDocumentModel::getInstance("blog", "post")->useCorrection())
+		if ($mode & DocumentHelper::MODE_CUSTOM)
 		{
-			$query->add(Restrictions::isNull('correctionofid'));
+			$query = blog_PostService::getInstance()->createQuery()
+				->add(Restrictions::eq('keyword', $document))
+				->setProjection(Projections::rowCount('count'));				
+			if (f_persistentdocument_PersistentDocumentModel::getInstance("blog", "post")->useCorrection())
+			{
+				$query->add(Restrictions::isNull('correctionofid'));
+			}	
+			$attributes['postCount'] = f_util_ArrayUtils::firstElement($query->findColumn('count'));
+			$attributes['publishedPostCount'] = $document->getPublishedPostCount();
 		}
-		$result = $query->findUnique();			
-		$nodeAttributes['postCount'] = $result['count'];
-		$nodeAttributes['publishedPostCount'] = $keyword->getPublishedPostCount();
 	}
 }

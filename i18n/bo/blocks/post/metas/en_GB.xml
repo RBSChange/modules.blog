@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.bo.blocks.post.metas" lcid="en_GB">
+  <key id="blogdescription">blog description</key>
+  <key id="bloglabel">blog title</key>
+  <key id="postcategories">post categories</key>
+  <key id="postdate">post date</key>
+  <key id="postkeywords">post keywords</key>
+  <key id="postlabel">post title</key>
+  <key id="postsummary">post summary</key>
+  <key id="sitelabel"/>
+</i18n>

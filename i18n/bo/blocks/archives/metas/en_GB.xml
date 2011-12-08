@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n lcid="en_GB" baseKey="m.blog.bo.blocks.archives.metas">
+  <key id="date"/>
+  <key id="bloglabel"/>
+  <key id="sitelabel"/>
+</i18n>

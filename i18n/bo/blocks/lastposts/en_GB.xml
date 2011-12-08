@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.bo.blocks.lastposts" lcid="en_GB">
+  <key id="blocktitle">title</key>
+  <key id="blocktitle-help">Block title displayed on the site. Leave empty to generate automatically.</key>
+  <key id="blog">blog</key>
+  <key id="blog-help">Enter a blog to restrict display to that one, leave empty to retrieve posts from all of the blogs on the site.</key>
+  <key id="maxcount">post count</key>
+  <key id="maxcount-help">Maximum number of posts to display.</key>
+  <key id="showhightlightingvisual">display the sticky icon?</key>
+  <key id="showhightlightingvisual-help">Show or hide the sticky icon defined on posts.</key>
+  <key id="showsummary">display the summary</key>
+  <key id="showsummary-help">Show or hide the summary of posts.</key>
+  <key id="summarymaxlength">maximum length for summary</key>
+  <key id="summarymaxlength-help">After this length, the summary will be truncated. Leave empty to never truncate.</key>
+  <key id="title">latest posts</key>
+</i18n>

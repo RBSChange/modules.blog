@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.bo.useractionlogger" lcid="en_GB">
+  <key id="activate-post">activate.post {documentlabel}</key>
+  <key id="deactivated-blog">deactivated.blog {documentlabel}</key>
+  <key id="deactivated-post">Deactivating the post {documentlabel}</key>
+  <key id="insert-blog">Creating the blog {documentlabel}</key>
+  <key id="insert-category">Creating the category {documentlabel}</key>
+  <key id="insert-keyword">Creating the keyword {documentlabel}</key>
+  <key id="insert-post">Creating the post {documentlabel}</key>
+  <key id="log-activate-post">log-activate-post</key>
+  <key id="log-deactivated-blog">log-deactivated-blog</key>
+  <key id="log-deactivated-post">log-deactivated-post</key>
+  <key id="log-insert-blog">log-insert-blog</key>
+  <key id="log-insert-category">log-insert-category</key>
+  <key id="log-insert-keyword">log-insert-keyword</key>
+  <key id="log-insert-post">log-insert-post</key>
+  <key id="log-reactivate-blog">log-reactivate-blog</key>
+  <key id="log-reactivate-post">log-reactivate-post</key>
+  <key id="log-update-blog">log-update-blog</key>
+  <key id="log-update-category">log-update-category</key>
+  <key id="log-update-keyword">log-update-keyword</key>
+  <key id="log-update-post">log-update-post</key>
+  <key id="log-update-rootfolder">log-update-rootfolder</key>
+  <key id="reactivate-blog">reactivate.blog {documentlabel}</key>
+  <key id="reactivate-post">Reactivating the post {documentlabel}</key>
+  <key id="update-blog">Updating the blog {documentlabel}</key>
+  <key id="update-category">Updating the category {documentlabel}</key>
+  <key id="update-keyword">Updating the keyword {documentlabel}</key>
+  <key id="update-post">Updating the post {documentlabel}</key>
+  <key id="update-rootfolder">update.rootfolder {documentlabel}</key>
+</i18n>

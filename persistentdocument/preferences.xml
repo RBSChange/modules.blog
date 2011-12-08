@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://www.rbs.fr/schema/change-document/1.0 http://www.rbschange.fr/static/schema/change-document/4.0.xsd" 
 	model-version="1.0" icon="blog" publish-on-day-change="false" has-url="false" backoffice-indexable="false">
   <properties>
-    <property name="label" default-value="preferences"/>
+    <property name="label" default-value="blog"/>
     <property name="rssMaxItemCount" type="Integer" default-value="10">
       <constraint name="min" min="0"/>
     </property>

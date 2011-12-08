@@ -38,7 +38,7 @@ class blog_PreferencesService extends f_persistentdocument_DocumentService
 	 */
 	public function createQuery()
 	{
-		return $this->pp->createQuery('modules_blog/preferences');
+		return $this->getPersistentProvider()->createQuery('modules_blog/preferences');
 	}
 	
 	/**
@@ -49,7 +49,7 @@ class blog_PreferencesService extends f_persistentdocument_DocumentService
 	 */
 	public function createStrictQuery()
 	{
-		return $this->pp->createQuery('modules_blog/preferences', false);
+		return $this->getPersistentProvider()->createQuery('modules_blog/preferences', false);
 	}
 	
 	/**
@@ -59,7 +59,7 @@ class blog_PreferencesService extends f_persistentdocument_DocumentService
 	 */
 	protected function preSave($document, $parentNodeId)
 	{
-		$document->setLabel('&modules.blog.bo.general.Module-name;');
+		$document->setLabel('blog');
 		$validUrls = blog_ModuleService::getInstance()->getPingUrls();
 		foreach (blog_BlogService::getInstance()->createQuery()->find() as $blog)
 		{

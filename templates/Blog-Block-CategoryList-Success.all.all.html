@@ -1,6 +1,28 @@
-<dl class="menu-list">
-	<dt>${trans:m.blog.bo.general.categories,ucf}</dt>
+<tal:block metal:define-macro="menuLevel">
+	<dd tal:define="current php: document.getId() == category.getId()" class="${php: current ? 'current' : ''}">
+		<tal:block tal:define="subCategories category/getPublishedSubCategories">
+			<tal:block tal:condition="not: subCategories">
+				<a tal:omit-tag="current" change:link="document category">${category/getLabelAsHtml}</a> 
+				<span tal:condition="recursiveCount" class="post-count">(${category/getRecursivePublishedPostCount})</span>
+				<span tal:condition="not:recursiveCount" class="post-count">(${category/getPublishedPostCount})</span>
+			</tal:block>
+			<dl tal:condition="subCategories" class="menu-list">
+				<dt>
+					<a tal:omit-tag="current" change:link="document category">${category/getLabelAsHtml}</a> 
+					<span tal:condition="recursiveCount" class="post-count">(${category/getRecursivePublishedPostCount})</span>
+					<span tal:condition="not:recursiveCount" class="post-count">(${category/getPublishedPostCount})</span>
+				</dt>
+				<tal:block tal:repeat="subCategory subCategories">
+					<tal:block tal:define="category subCategory" metal:use-macro="menuLevel" />
+				</tal:block>
+			</dl>
+		</tal:block>
+	</dd>
+</tal:block>
+
+<dl class="menu-list" tal:define="recursiveCount configuration/getRecursivecount">
+	<dt class="h-2">${trans:m.blog.bo.general.categories,ucf}</dt>
 	<tal:block tal:repeat="category blog/getPublishedFistLevelCategories">
-		<tal:block change:include="module 'blog' ; template 'Blog-Inc-RecursiveCategory' ; type 'html' ; category category ; recursiveCount configuration/getRecursivecount ; document document" />
+		<tal:block metal:use-macro="menuLevel" />
 	</tal:block>
 </dl>

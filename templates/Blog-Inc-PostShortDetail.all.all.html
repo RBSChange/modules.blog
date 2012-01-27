@@ -1,9 +1,7 @@
 <h2 change:h=""><a change:link="document post">${post/getLabelAsHtml}</a></h2>
 <p class="normal meta-post-infos">
-	${trans: m.blog.frontoffice.posted-by,ucf,author=post/getAuthorNameAsHtml}
-	<span> - </span>
-	<tal:block change:datetime="post/getPostDate" />
-	<span> - </span> 
+	${trans: m.blog.frontoffice.posted-by,ucf,author=post/getAuthorNameAsHtml}<span class="separator"> - </span>
+	<tal:block change:datetime="post/getPostDate" /><span class="separator"> - </span> 
 	<a change:link="document post; anchor php: 'comments-' . post.getId()" tal:define="commentCount post/getCommentCount">
 		<tal:block tal:condition="php: commentCount GT 1">${trans: m.blog.frontoffice.several-comments,ucf,count=commentCount}</tal:block>
 		<tal:block tal:condition="php: commentCount == 1">${trans: m.blog.frontoffice.one-comment,ucf}</tal:block>
@@ -21,7 +19,7 @@
 		<dt>${trans: m.blog.bo.general.categories,ucf}</dt>
 		<dd tal:repeat="category post/getPublishedCategoryArray">
 			<a change:link="document category">${category/getLabelAsHtml}</a>
-			<span tal:condition="not: repeat/category/end">, </span>
+			<span tal:condition="not: repeat/category/end" class="punctuation">, </span>
 		</dd>
 	</dl>
 
@@ -29,7 +27,7 @@
 		<dt>${trans: m.blog.bo.general.keywords,ucf}</dt>
 		<dd tal:repeat="keyword post/getPublishedKeywordArray">
 			<a change:link="document keyword">${keyword/getLabelAsHtml}</a>
-			<span tal:condition="not: repeat/keyword/end">, </span>
+			<span tal:condition="not: repeat/keyword/end" class="punctuation">, </span>
 		</dd>
 	</dl>
 </div>

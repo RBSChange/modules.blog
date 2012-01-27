@@ -1,22 +1,21 @@
 <h1 change:h="" change:translate="modules.blog.frontoffice.Blogs-list-title"></h1>
 
 <ol class="document-list">
-	<li tal:repeat="blog paginator" class="${php: repeat.blog.odd ? 'odd' : 'even'}">
+	<li tal:repeat="blog paginator" class="${alternateclass:blogIndex}">
 		<h2 change:h=""><a change:link="document blog">${blog/getLabelAsHtml}</a></h2>
 		<tal:block tal:condition="configuration/getShowpoststats">
 			<div class="normal meta-blog-infos" tal:define="lastPost blog/getLastPublishedPost">
-				${trans:m.blog.frontoffice.post-count,ucf,count=blog/getPublishedPostCount}<span> - </span>
-				${trans:m.blog.frontoffice.last-post-by,ucf,author=lastPost/getAuthorNameAsHtml}<span> - </span>
+				${trans:m.blog.frontoffice.post-count,ucf,count=blog/getPublishedPostCount}<span class="separator"> - </span>
+				${trans:m.blog.frontoffice.last-post-by,ucf,author=lastPost/getAuthorNameAsHtml}<span class="separator"> - </span>
 				<tal:block change:datetime="lastPost/getPostDate" />
 			</div>
 		</tal:block>
 		<div class="normal" tal:condition="blog/getDescription">${blog/getDescriptionAsHtml}</div>
 		<div class="additional-blog-meta" tal:condition="configuration/getShowauthors">
-			<dl class="inline-list">
+			<dl class="inline-list normal-margin">
 				<dt>${trans:modules.blog.frontoffice.authors,ucf}</dt>
 				<dd tal:repeat="authorName blog/getAuthorNames">
-					${authorName}
-					<span tal:condition="not: repeat/authorName/end">, </span>
+					${authorName}<span tal:condition="not: repeat/authorName/end" class="punctuation">, </span>
 				</dd>
 			</dl>
 		</div>

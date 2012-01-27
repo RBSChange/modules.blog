@@ -6,7 +6,8 @@
 
 <ul class="normal" tal:condition="comments">
 	<li tal:repeat="comment comments">
-		<a change:link="document comment" change:translate="modules.blog.frontoffice.Comment-on; target comment/getTarget/getLabelAsHtml"></a> <tal:block change:translate="modules.blog.frontoffice.posted-by; author comment/getAuthorNameAsHtml" /> - <tal:block change:datetime="comment/getCreationDate" />
+		<a change:link="document comment">${trans:m.blog.frontoffice.comment-on,ucf,target=comment/getTarget/getLabelAsHtml}</a> ${trans:m.blog.frontoffice.posted-by,author=comment/getAuthorNameAsHtml}<span class="separator"> - </span>
+		<tal:block change:datetime="comment/getCreationDate" />
 		<div class="summary" tal:condition="configuration/getShowSummary">
 			<tal:block tal:condition="not: configuration/getSummaryMaxLength">${comment/getContentsAsHtml}</tal:block>
 			<tal:block tal:condition="configuration/getSummaryMaxLength">${php: comment.getSummary(configuration.getSummaryMaxLength())}</tal:block>

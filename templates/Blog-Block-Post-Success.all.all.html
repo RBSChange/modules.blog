@@ -12,7 +12,7 @@
 <h1 change:h="">${post/getLabelAsHtml}</h1>
 
 <div class="normal meta-post-infos">
-	${trans: m.blog.frontoffice.posted-by,ucf,author=post/getAuthorNameAsHtml}<span> - </span>
+	${trans: m.blog.frontoffice.posted-by,ucf,author=post/getAuthorNameAsHtml}<span class="separator"> - </span>
 	<tal:block change:datetime="post/getPostDate" />
 </div>
 
@@ -24,14 +24,16 @@
 
 <div class="normal">${post/getContentsAsHtml}</div>
 
-<tal:block tal:condition="showShareBlock" change:block="" module="sharethis" name="Sharepage" />
+<div class="normal">
+	<tal:block tal:condition="showShareBlock" change:block="" module="sharethis" name="Sharepage" class="normal" />
+</div>
 
 <div class="normal additional-post-meta" tal:condition="php: post.getPublishedCategoryCount() || post.getPublishedKeywordCount()">
 	<dl class="inline-list" tal:condition="post/getPublishedCategoryCount">
 		<dt>${trans: m.blog.bo.general.categories,ucf}</dt>
 		<dd tal:repeat="category post/getPublishedCategoryArray">
 			<a change:link="document category">${category/getLabelAsHtml}</a>
-			<span tal:condition="not: repeat/category/end">, </span>
+			<span tal:condition="not: repeat/category/end" class="punctuation">, </span>
 		</dd>
 	</dl>
 
@@ -39,7 +41,7 @@
 		<dt>${trans: m.blog.bo.general.keywords,ucf}</dt>
 		<dd tal:repeat="keyword post/getPublishedKeywordArray">
 			<a change:link="document keyword">${keyword/getLabelAsHtml}</a>
-			<span tal:condition="not: repeat/keyword/end">, </span>
+			<span tal:condition="not: repeat/keyword/end" class="punctuation">, </span>
 		</dd>
 	</dl>
 </div>

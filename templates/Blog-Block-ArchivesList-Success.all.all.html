@@ -1,5 +1,5 @@
 <dl class="menu-list">
-	<dt>${trans:m.blog.bo.general.archives,ucf}</dt>
+	<dt class="h-2">${trans:m.blog.bo.general.archives,ucf}</dt>
 	<dd tal:repeat="year blog/getPublishedYears">
 		<a tal:condition="not: configuration/getDisplaymonths" change:link="module blog ; action ViewArchive ; cmpref blog/getId ; year year/getNumber ; month 'all'">${year/getLabelAsHtml}</a> <span class="post-count" tal:condition="configuration/getShowpostcountonyears">(${year/getPublishedPostCount})</span>
 		<dl tal:condition="configuration/getDisplaymonths" class="menu-list">

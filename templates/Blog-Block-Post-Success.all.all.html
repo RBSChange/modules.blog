@@ -11,7 +11,7 @@
 
 <h1 change:h="">${post/getLabelAsHtml}</h1>
 
-<div class="normal meta-post-infos">
+<div class="normal meta-infos">
 	${trans: m.blog.frontoffice.posted-by,ucf,author=post/getAuthorNameAsHtml}<span class="separator"> - </span>
 	<tal:block change:datetime="post/getPostDate" />
 </div>

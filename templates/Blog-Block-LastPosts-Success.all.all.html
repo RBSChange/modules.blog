@@ -6,7 +6,7 @@
 
 <ul class="normal" tal:condition="posts">
 	<li tal:repeat="post posts">
-		<span class="meta-post-infos">
+		<span class="meta-infos">
 			<a change:link="document post">${post/getLabelAsHtml}</a> ${trans: m.blog.frontoffice.posted-by,author=post/getAuthorNameAsHtml}
 			<span class="separator"> - </span>
 			<tal:block change:datetime="post/getPostDate" />

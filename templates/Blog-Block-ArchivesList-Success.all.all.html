@@ -1,12 +1,11 @@
-<dl class="menu-list">
-	<dt class="h-2">${trans:m.blog.bo.general.archives,ucf}</dt>
-	<dd tal:repeat="year blog/getPublishedYears">
-		<a tal:condition="not: configuration/getDisplaymonths" change:link="module blog ; action ViewArchive ; cmpref blog/getId ; year year/getNumber ; month 'all'">${year/getLabelAsHtml}</a> <span class="post-count" tal:condition="configuration/getShowpostcountonyears">(${year/getPublishedPostCount})</span>
-		<dl tal:condition="configuration/getDisplaymonths" class="menu-list">
-			<dt><a change:link="module blog ; action ViewArchive ; cmpref blog/getId ; year year/getNumber ; month 'all'">${year/getLabelAsHtml}</a> <span class="post-count" tal:condition="configuration/getShowpostcountonyears">(${year/getPublishedPostCount})</span></dt>
-			<dd tal:repeat="month year/getPublishedMonths">
+<h2 change:h="">${trans:m.blog.bo.general.archives,ucf}</h2>
+<ul class="menu-list">
+	<li tal:repeat="year blog/getPublishedYears">
+		<a change:link="module blog ; action ViewArchive ; cmpref blog/getId ; year year/getNumber ; month 'all'">${year/getLabelAsHtml}</a> <span class="post-count" tal:condition="configuration/getShowpostcountonyears">(${year/getPublishedPostCount})</span>
+		<ul tal:condition="configuration/getDisplaymonths" class="menu-list">
+			<li tal:repeat="month year/getPublishedMonths">
 				<a change:link="module blog ; action ViewArchive ; cmpref blog/getId ; year year/getNumber ; month month/getNumber">${month/getLabelAsHtml}</a> <span class="post-count" tal:condition="configuration/getShowpostcountonmonths">(${month/getPublishedPostCount})</span>
-			</dd>
-		</dl>
-	</dd>
-</dl>
+			</li>
+		</ul>
+	</li>
+</ul>

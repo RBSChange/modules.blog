@@ -18,16 +18,14 @@
 	<dl class="inline-list" tal:condition="post/getPublishedCategoryCount">
 		<dt>${trans: m.blog.bo.general.categories,ucf}</dt>
 		<dd tal:repeat="category post/getPublishedCategoryArray">
-			<a change:link="document category">${category/getLabelAsHtml}</a>
-			<span tal:condition="not: repeat/category/end" class="punctuation">, </span>
+			<a change:link="document category">${category/getLabelAsHtml}</a><span tal:condition="not: repeat/category/end" class="punctuation">, </span>
 		</dd>
 	</dl>
 
 	<dl class="inline-list" tal:condition="post/getPublishedKeywordCount">
 		<dt>${trans: m.blog.bo.general.keywords,ucf}</dt>
 		<dd tal:repeat="keyword post/getPublishedKeywordArray">
-			<a change:link="document keyword">${keyword/getLabelAsHtml}</a>
-			<span tal:condition="not: repeat/keyword/end" class="punctuation">, </span>
+			<a change:link="document keyword">${keyword/getLabelAsHtml}</a><span tal:condition="not: repeat/keyword/end" class="punctuation">, </span>
 		</dd>
 	</dl>
 </div>

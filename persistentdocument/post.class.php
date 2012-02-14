@@ -99,9 +99,17 @@ class blog_persistentdocument_post extends blog_persistentdocument_postbase impl
 	}
 	
 	/**
-	 * @return String
+	 * @return string
 	 */
 	public function getRSSGuid()
+	{
+		return $this->getDocumentModelName() . '#' . $this->getId();
+	}
+	
+	/**
+	 * @return string
+	 */
+	public function getRSSLink()
 	{
 		return LinkHelper::getDocumentUrl($this);
 	}

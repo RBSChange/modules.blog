@@ -103,7 +103,7 @@ class blog_persistentdocument_post extends blog_persistentdocument_postbase impl
 	 */
 	public function getRSSGuid()
 	{
-		return $this->getDocumentModelName() . '#' . $this->getId();
+		return LinkHelper::getPermalink($this);
 	}
 	
 	/**

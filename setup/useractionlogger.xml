@@ -21,4 +21,5 @@
   <actiondef modulename="blog" actionname="update.post" label="modules.blog.bo.useractionlogger.update-post"/>
   <actiondef modulename="blog" actionname="update.rootfolder" label="modules.blog.bo.useractionlogger.update-rootfolder"/>
   <actiondef modulename="blog" actionname="deletecorrection.post" label="modules.blog.bo.useractionlogger.deletecorrection-post"/>
+  <actiondef modulename="blog" actionname="savepermissions.rootfolder" label="m.blog.bo.useractionlogger.savepermissions-rootfolder"/>
 </script>

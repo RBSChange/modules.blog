@@ -19,4 +19,5 @@
   <key id="frontadmin-help">This is a website user who can write posts without logging in to the administration interface.</key>
   <key id="trusted">trusted user</key>
   <key id="trusted-help">This is a user whose comments will be published directly without going through the validation phase.</key>
+  <key id="frontvalidator">validator</key>
 </i18n>

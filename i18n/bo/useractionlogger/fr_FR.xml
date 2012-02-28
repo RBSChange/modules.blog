@@ -28,4 +28,6 @@
   <key id="log-activate-post">log-activate-post</key>
   <key id="update-rootfolder">update.rootfolder {documentlabel}</key>
   <key id="log-update-rootfolder">log-update-rootfolder</key>
+  <key id="savepermissions-rootfolder">savepermissions.rootfolder {documentlabel}</key>
+  <key id="log-savepermissions-rootfolder">log savepermissions rootfolder</key>
 </i18n>

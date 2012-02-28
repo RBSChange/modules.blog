@@ -19,4 +19,6 @@
   <key id="frontadmin-help">utilisateur du site pouvant rédiger des billets sans se connecter à l'interface d'administration.</key>
   <key id="trusted">utilisateur de confiance</key>
   <key id="trusted-help">utilisateur dont les commentaires seront directement publiés sans passer par la phase de validation.</key>
+  <key id="frontvalidator">validateur</key>
+  <key id="frontvalidator-help">utilisateur pouvant valider les commentaires depuis le frontoffice</key>
 </i18n>

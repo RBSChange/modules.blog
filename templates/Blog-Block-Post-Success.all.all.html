@@ -13,7 +13,7 @@
 
 <div class="normal meta-infos">
 	${trans: m.blog.frontoffice.posted-by,ucf,author=post/getAuthorNameAsHtml}<span class="separator"> - </span>
-	<tal:block change:datetime="post/getPostDate" />
+	${datetime:post/getUIPostDate}
 </div>
 
 <tal:block tal:condition="configuration/getShowHightlightingVisual">

@@ -1,7 +1,7 @@
 <h2 change:h=""><a change:link="document post">${post/getLabelAsHtml}</a></h2>
 <p class="normal meta-infos">
 	${trans: m.blog.frontoffice.posted-by,ucf,author=post/getAuthorNameAsHtml}<span class="separator"> - </span>
-	<tal:block change:datetime="post/getPostDate" /><span class="separator"> - </span> 
+	${datetime:post/getUIPostDate}<span class="separator"> - </span> 
 	<a change:link="document post; anchor php: 'comments-' . post.getId()" tal:define="commentCount post/getCommentCount">
 		<tal:block tal:condition="php: commentCount GT 1">${trans: m.blog.frontoffice.several-comments,ucf,count=commentCount}</tal:block>
 		<tal:block tal:condition="php: commentCount == 1">${trans: m.blog.frontoffice.one-comment,ucf}</tal:block>

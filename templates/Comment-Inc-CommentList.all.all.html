@@ -14,7 +14,7 @@
 				<tal:block tal:condition="php: comment instanceof blog_persistentdocument_trackback">${trans: m.blog.frontoffice.trackback-by,ucf}</tal:block>
 				<tal:block tal:condition="php: !(comment instanceof blog_persistentdocument_pingback) && !(comment instanceof blog_persistentdocument_trackback)">${trans: m.comment.frontoffice.posted-by,ucf}</tal:block>
 				<a tal:omit-tag="not:comment/getAuthorwebsiteurl" class="link" href="${comment/getAuthorwebsiteurl}">${comment/getAuthorNameAsHtml}</a><span class="separator"> - </span>
-				<tal:block change:datetime="comment/getCreationdate" />
+				${datetime:comment/getUICreationdate}
 			</p>
 			<img tal:condition="showGravatars" class="avatar document-visual" src="${comment/getGravatarUrl}" alt="" />
 			<blockquote class="comment-contents" tal:condition="php: comment instanceof blog_persistentdocument_pingback || comment instanceof blog_persistentdocument_trackback" cite="${comment/getAuthorwebsiteurl}">${comment/getContentsAsHtml}</blockquote>
@@ -41,7 +41,9 @@
 				</li>
 			</ul>
 			<tal:block tal:condition="not: comment/isPublished">
-				<p class="normal">${trans: m.comment.frontoffice.will-be-published-after-validation,ucf}</p>
+				<ul class="warnings">
+					<li>${trans: m.comment.frontoffice.will-be-published-after-validation,ucf}</li>
+				</ul>
 
 				<div tal:condition="task">
 					<a change:link="module comment; action Moderate; decision 'ACCEPTED'; cmpref comment/getId; currentPage page">${trans:m.comment.frontoffice.accept,ucf}</a>

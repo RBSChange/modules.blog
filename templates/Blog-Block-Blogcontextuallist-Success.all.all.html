@@ -7,7 +7,7 @@
 			<div class="normal meta-blog-infos" tal:define="lastPost blog/getLastPublishedPost">
 				${trans:m.blog.frontoffice.post-count,ucf,count=blog/getPublishedPostCount}<span class="separator"> - </span>
 				${trans:m.blog.frontoffice.last-post-by,ucf,author=lastPost/getAuthorNameAsHtml}<span class="separator"> - </span>
-				<tal:block change:datetime="lastPost/getPostDate" />
+				${datetime:lastPost/getUIPostDate}
 			</div>
 		</tal:block>
 		<div class="normal" tal:condition="blog/getDescription">${blog/getDescriptionAsHtml}</div>

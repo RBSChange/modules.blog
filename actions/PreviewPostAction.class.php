@@ -23,6 +23,15 @@ class blog_PreviewPostAction extends f_action_BaseAction
 
 		if (!is_null($page))
 		{
+			$rc = RequestContext::getInstance();
+			$lang = $page->getLang();
+			if (!$page->getPublicationstatusForLang($page->getLang()))
+			{
+				$lang = $rc->getLang();
+			}
+			$rc->setLang($lang);
+			website_WebsiteModuleService::getInstance()->setCurrentWebsiteId($page->getDocumentService()->getWebsiteId($page));
+			
 			$model = $document->getPersistentModel();
 			$request->setParameter($model->getOriginalModuleName()."Param", array("cmpref" => $document->getId()));
 

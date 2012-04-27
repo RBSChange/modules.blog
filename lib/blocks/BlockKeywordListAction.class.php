@@ -44,22 +44,24 @@ class blog_BlockKeywordListAction extends website_BlockAction
 		$request->setAttribute('blog', $blog);
 
 		$keywordInfos = array();
-		$keywords = blog_KeywordService::getInstance()->getMostUsedByBlog($blog, intval($this->getConfiguration()->getLimit()));  
-		$maxCount = f_util_ArrayUtils::firstElement($keywords)->getPublishedPostCount();
-		$minCount = f_util_ArrayUtils::lastElement($keywords)->getPublishedPostCount();
-		uasort($keywords, create_function('$a, $b', 'return strnatcasecmp($a->getLabel(), $b->getLabel());'));
-
-		$step = 1 / max($maxCount-$minCount, 1);
-		foreach ($keywords as $keyword)
+		$keywords = blog_KeywordService::getInstance()->getMostUsedByBlog($blog, intval($this->getConfiguration()->getLimit()));
+		if (count($keywords))
 		{
-			$count = $keyword->getPublishedPostCount();
-			$weight = (($count - $minCount) * $step);
-			$size = 1 + $weight;
-			$level = min(1 + floor($weight * 3), 3); // Level may equals 1, 2 or 3.
-			$title = LocaleService::getInstance()->transFO('m.blog.frontoffice.post-count', array('ucf'), array('count' => $count));
-			$keywordInfos[] = array('document' => $keyword, 'size' => $size, 'level' => $level, 'title' => $title);
+			$maxCount = f_util_ArrayUtils::firstElement($keywords)->getPublishedPostCount();
+			$minCount = f_util_ArrayUtils::lastElement($keywords)->getPublishedPostCount();
+			uasort($keywords, create_function('$a, $b', 'return strnatcasecmp($a->getLabel(), $b->getLabel());'));
+	
+			$step = 1 / max($maxCount-$minCount, 1);
+			foreach ($keywords as $keyword)
+			{
+				$count = $keyword->getPublishedPostCount();
+				$weight = (($count - $minCount) * $step);
+				$size = 1 + $weight;
+				$level = min(1 + floor($weight * 3), 3); // Level may equals 1, 2 or 3.
+				$title = LocaleService::getInstance()->transFO('m.blog.frontoffice.post-count', array('ucf'), array('count' => $count));
+				$keywordInfos[] = array('document' => $keyword, 'size' => $size, 'level' => $level, 'title' => $title);
+			}
 		}
-
 		$request->setAttribute('keywords', $keywordInfos);
 		
 		return website_BlockView::SUCCESS;

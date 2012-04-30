@@ -1,20 +1,20 @@
 <?xml version="1.0"?>
 <panels>
-	<panel name="resume" />
-	<panel name="properties" />
-	<panel name="publication" />
-	<panel name="redirect" />
-	<panel name="history" />
-	<panel name="create" />
-	<panel name="permission" />
-	<xul>
-		<javascript>
-			<constructor><![CDATA[
+  <panel name="resume"/>
+  <panel name="properties"/>
+  <panel name="publication"/>
+  <panel name="redirect"/>
+  <panel name="permission"/>
+  <panel name="history"/>
+  <panel name="create"/>
+  <xul>
+    <javascript>
+      <constructor><![CDATA[
 				if (getController().checkModuleVersion('twitterconnect', '3.0.3'))
 				{
 					this.addTab('containertweets', "&modules.twitterconnect.bo.doceditor.tab.Automatic-tweets;", 'tweet-planner');
 				}
 			]]></constructor>
-		</javascript>
-	</xul>
+    </javascript>
+  </xul>
 </panels>

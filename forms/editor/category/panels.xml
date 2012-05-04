@@ -2,12 +2,13 @@
 <panels>
 	<panel name="resume" />
 	<panel name="properties" />
+	<panel name="publication"/>
 	<panel name="history" />
 	<panel name="create" />
 	<xul>
 		<javascript>
 			<constructor><![CDATA[
-				if (getController().checkModuleVersion('twitterconnect', '3.0.3'))
+				if (getController().hasModule('twitterconnect'))
 				{
 					this.addTab('containertweets', "&modules.twitterconnect.bo.doceditor.tab.Automatic-tweets;", 'tweet-planner');
 				}

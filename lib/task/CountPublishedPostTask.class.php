@@ -17,7 +17,7 @@ class blog_CountPublishedPostTask extends task_SimpleSystemTask
 		foreach ($ids as $id)
 		{
 			$this->plannedTask->ping();
-			$result = f_util_System::execHTTPScript($batchPath, array($id));
+			$result = f_util_System::execScript($batchPath, array($id));
 			// Log fatal errors...
 			if ($result != 'OK')
 			{

@@ -91,7 +91,7 @@ class blog_KeywordService extends blog_PostgroupService
 	 */
 	private function buildComparablelabel($label)
 	{
-		return f_util_StringUtils::strtolower(website_UrlRewritingService::getInstance()->encodePathString($label));
+		return f_util_StringUtils::toLower(website_UrlRewritingService::getInstance()->encodePathString($label));
 	}
 	
 	/**

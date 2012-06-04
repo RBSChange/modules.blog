@@ -120,6 +120,6 @@ class blog_persistentdocument_post extends blog_persistentdocument_postbase impl
 	public function getShortSummary($maxLength = 80)
 	{
 		$summary = ($this->getSummary()) ? $this->getSummaryAsHtml() : $this->getContentsAsHtml();
-		return f_util_StringUtils::shortenString(f_util_StringUtils::htmlToText($summary), $maxLength);
+		return f_util_StringUtils::shortenString(f_util_HtmlUtils::htmlToText($summary), $maxLength);
 	}
 }

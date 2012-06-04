@@ -489,10 +489,10 @@ class blog_PostService extends f_persistentdocument_DocumentService
 			$client->setParameterPost('url', $postUrl);
 			$client->setParameterPost('blog_name', $post->getBlogLabel());
 			$client->setParameterPost('title', $post->getLabel());
-			$summary = f_util_StringUtils::htmlToText($post->getSummary());
+			$summary = f_util_HtmlUtils::htmlToText($post->getSummary());
 			if (f_util_StringUtils::isEmpty($summary))
 			{
-				$summary = f_util_StringUtils::shortenString(f_util_StringUtils::htmlToText($post->getContents()));
+				$summary = f_util_StringUtils::shortenString(f_util_HtmlUtils::htmlToText($post->getContents()));
 			}
 			$client->setParameterPost('excerpt', $summary);
 			

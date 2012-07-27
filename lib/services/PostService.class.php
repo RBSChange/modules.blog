@@ -676,10 +676,11 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	
 	/**
 	 * @param blog_persistentdocument_post $document
-	 * @param string $actionType
+	 * @param string[] $propertiesNames
 	 * @param array $formProperties
+	 * @param integer $parentId
 	 */
-	public function addFormProperties($document, $propertiesNames, &$formProperties)
+	public function addFormProperties($document, $propertiesNames, &$formProperties, $parentId = null)
 	{	
 		if (!$document->isNew())
 		{

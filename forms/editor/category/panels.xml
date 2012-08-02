@@ -10,7 +10,7 @@
 			<constructor><![CDATA[
 				if (getController().hasModule('twitterconnect'))
 				{
-					this.addTab('containertweets', "&modules.twitterconnect.bo.doceditor.tab.Automatic-tweets;", 'tweet-planner');
+					this.addTab('containertweets', "&modules.twitterconnect.bo.doceditor.tab.Automatic-tweets;", 'tweet-planner', null);
 				}
 			]]></constructor>
 		</javascript>

@@ -1,21 +1,30 @@
 <?xml version="1.0"?>
-<panel>	
-	<section name="properties" linkedtab="properties" labeli18n="modules.uixul.bo.doceditor.section.Properties" image="{IconsBase}/small/edit-properties.png">
-		<property name="label" labeli18n="modules.uixul.bo.doceditor.property.Label"/>
-		<property name="author" labeli18n="modules.uixul.bo.doceditor.property.Author"/>
-		<property name="creationdate" labeli18n="modules.uixul.bo.doceditor.property.Creationdate"/>
-		<property name="publishedpostcount" labeli18n="modules.blog.bo.doceditor.property.Publishedpostcount"/>
+<panel>
+	<section name="properties" linkedtab="properties"
+		labeli18n="modules.uixul.bo.doceditor.section.Properties" image="{IconsBase}/small/edit-properties.png">
+		<property name="label" labeli18n="modules.uixul.bo.doceditor.property.Label" />
+		<property name="author" labeli18n="modules.uixul.bo.doceditor.property.Author" />
+		<property name="creationdate"
+			labeli18n="modules.uixul.bo.doceditor.property.Creationdate" />
+		<property name="publishedpostcount"
+			labeli18n="modules.blog.bo.doceditor.property.Publishedpostcount" />
 	</section>
-			
-	<section name="history" linkedtab="history" actiontexti18n="modules.uixul.bo.doceditor.section.action.View" labeli18n="modules.uixul.bo.doceditor.section.History" image="{IconsBase}/small/history.png">
-		<property name="modificationdate" labeli18n="modules.uixul.bo.doceditor.property.Modificationdate"/>
+
+	<section flex="1" name="urlrewriting"
+		labeli18n="modules.uixul.bo.doceditor.section.Urlrewriting" image="{IconsBase}/small/urlrewriting.png">
+		<property name="currenturl"
+			labeli18n="modules.uixul.bo.doceditor.property.Currenturl" class="link" />
 	</section>
-					
-	<section flex="1" name="urlrewriting" labeli18n="modules.uixul.bo.doceditor.section.Urlrewriting" image="{IconsBase}/small/urlrewriting.png">
-		<property name="currenturl" labeli18n="modules.uixul.bo.doceditor.property.Currenturl" class="link"/>
+
+	<section name="history" linkedtab="history"
+		actiontexti18n="modules.uixul.bo.doceditor.section.action.View"
+		labeli18n="modules.uixul.bo.doceditor.section.History" image="{IconsBase}/small/history.png">
+		<property name="modificationdate"
+			labeli18n="modules.uixul.bo.doceditor.property.Modificationdate" />
 	</section>
-	
-	<section flex="1" name="tags" labeli18n="modules.uixul.bo.doceditor.section.Tags" image="{IconsBase}/small/tags.png">
-		<property name="tags" labeli18n="modules.uixul.bo.doceditor.property.Tags"/>
-	</section>		
+
+	<section flex="1" name="tags"
+		labeli18n="modules.uixul.bo.doceditor.section.Tags" image="{IconsBase}/small/tags.png">
+		<property name="tags" labeli18n="modules.uixul.bo.doceditor.property.Tags" />
+	</section>
 </panel>

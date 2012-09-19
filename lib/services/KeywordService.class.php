@@ -193,6 +193,25 @@ class blog_KeywordService extends blog_PostgroupService
 		$nodeAttributes['postCount'] = $result['count'];
 		$nodeAttributes['publishedPostCount'] = $keyword->getPublishedPostCount();
 	}
+
+	/**
+	 * @param blog_persistentdocument_keyword $document
+	 * @return void
+	 */
+	protected function preDelete($document)
+	{
+		
+		$postList = $document->getPostArrayInverse();
+		
+		foreach ($postList as $post)
+		{
+			if ($post->getPublicationstatus() == 'DEPRECATED')
+			{
+				$post->removeKeyword($document);
+				$this->pp->updateDocument($post);
+			}
+		}
+	}
 	
 	// Deprecated.
 	

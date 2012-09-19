@@ -117,6 +117,7 @@
 			<contextactions>
 				<contextaction name="edit" />
 				<contextaction name="createPost" />
+				<contextaction name="delete" />
 			</contextactions>
 		</model>
 		<model name="modules_blog/preferences">
@@ -134,6 +135,7 @@
 			</children>
 			<contextactions>
 				<contextaction name="edit" />
+				<contextaction name="delete" />
 				<groupactions name="createOnCategory">
 					<contextaction name="createCategory" />
 					<contextaction name="createPost" />

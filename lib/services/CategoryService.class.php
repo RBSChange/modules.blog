@@ -140,7 +140,7 @@ class blog_CategoryService extends blog_PostgroupService
 	}
 		
 	/**
-	 * @param blog_persistentdocument_category $keyword
+	 * @param blog_persistentdocument_category $category
 	 * @return rss_FeedWriter
 	 */
 	public function getRSSFeedWriter($category)
@@ -157,17 +157,30 @@ class blog_CategoryService extends blog_PostgroupService
 	 */
 	protected function preDelete($document)
 	{
+		
 		if (count($document->getPublishedPostCount()))
 		{
 			$id = $document->getId();
 			$ancestorIds = $this->createQuery()->add(Restrictions::ancestorOf($id))
 				->setProjection(Projections::groupProperty('id', 'id'))->findColumn('id');
-				
+
 			if (count($ancestorIds))
 			{
 				$this->ancestorIds[$id] = $ancestorIds;
 			}
 		}
+		
+		$postList = $document->getPostArrayInverse();
+
+		foreach ($postList as $post)
+		{
+			if ($post->getPublicationstatus() == 'DEPRECATED')
+			{
+				$post->removeCategory($document);
+				$this->pp->updateDocument($post);
+			}
+		}
+		
 	}
 	
 	/**

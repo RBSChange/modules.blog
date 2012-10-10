@@ -143,7 +143,8 @@ class blog_PostgroupService extends f_persistentdocument_DocumentService
 		if ($document->isPublished())
 		{
 			$blog = $document->getBlog();
-			$page = TagService::getInstance()->getDocumentBySiblingTag('functional_blog_' . $document->getPersistentModel()->getDocumentName(). '-detail', $blog);
+			$tag = 'functional_blog_' . $document->getPersistentModel()->getDocumentName(). '-detail';
+			$page = TagService::getInstance()->getDocumentBySiblingTag($tag, $blog, false);
 			return $page;
 		}
 		return parent::getDisplayPage($document);

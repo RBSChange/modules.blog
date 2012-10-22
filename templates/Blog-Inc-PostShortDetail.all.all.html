@@ -1,4 +1,7 @@
 <h2 change:h=""><a change:link="document post">${post/getLabelAsHtml}</a></h2>
+<tal:block tal:condition="showHightlightingVisual">
+	<img tal:condition="post/getHighlightingVisual" change:media="document post/getHighlightingVisual; format 'modules.blog.frontoffice/hightlightingVisual-list'; class 'document-visual'" />
+</tal:block>
 <p class="normal meta-infos">
 	${trans: m.blog.frontoffice.posted-by,ucf,author=post/getAuthorNameAsHtml}<span class="separator"> - </span>
 	${datetime:post/getUIPostDate}<span class="separator"> - </span> 
@@ -8,9 +11,6 @@
 		<tal:block tal:condition="php: commentCount LT 1">${trans: m.blog.frontoffice.no-comment,ucf}</tal:block>
 	</a>
 </p>
-<tal:block tal:condition="showHightlightingVisual">
-	<img tal:condition="post/getHighlightingVisual" change:media="document post/getHighlightingVisual; format 'modules.blog.frontoffice/hightlightingVisual-list'" class="document-visual" />
-</tal:block>
 <div class="normal" tal:condition="post/getSummary">${post/getSummaryAsHtml}</div>
 <div class="normal" tal:condition="not:post/getSummary">${post/getContentsAsHtml}</div>
 

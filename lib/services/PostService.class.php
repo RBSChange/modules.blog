@@ -61,7 +61,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	{
 		try
 		{
-			$authorDocument = DocumentHelper::getDocumentInstance($authorid);	
+			$authorDocument = DocumentHelper::getDocumentInstance($authorid);
 		}
 		catch (Exception $e)
 		{
@@ -73,6 +73,51 @@ class blog_PostService extends f_persistentdocument_DocumentService
 			return $author;
 		}
 		return $authorDocument->getFullname();
+	}
+	
+	/**
+	 * @param blog_persistentdocument_post $newDocument
+	 * @param blog_persistentdocument_post $originalDocument
+	 * @param Integer $parentNodeId
+	 */
+	protected function preDuplicate($newDocument, $originalDocument, $parentNodeId)
+	{
+		$originalLabel = $originalDocument->getLabel();
+		
+		$blog = $originalDocument->getBlog();
+		
+		$posts = $blog->getPostArrayInverse();
+		
+		$defaultPrefix = LocaleService::getInstance()->transBO('m.generic.backoffice.duplicate-prefix', array('ucf')) . ' ';
+		
+		$labels = $this->createQuery()->add(Restrictions::eq('blog', $blog))->add(Restrictions::ilike('label', '%' . $originalLabel))->add(Restrictions::ne('label', $originalLabel))->setProjection(Projections::property('label'))->findColumn('label');
+		
+		if (count($labels) > 0)
+		{
+			$index = 1;
+			$found = true;
+			while ($found)
+			{
+				$found = false;
+				foreach ($labels as $label)
+				{
+					$prefix = str_replace('{number}', ' (' . $index . ')', $defaultPrefix);
+					if (strstr($label, $prefix))
+					{
+						$index++;
+						$found = true;
+						break;
+					}
+				}
+			}
+		}
+		else
+		{
+			$prefix = str_replace('{number}', '', $defaultPrefix);
+		}
+		
+		$newLabel = $prefix . $originalLabel;
+		$newDocument->setLabel($newLabel);
 	}
 	
 	/**
@@ -88,7 +133,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 			if ($document->getBlog() === null)
 			{
 				throw new Exception('unable to find parent blog');
-		}
+			}
 		}
 		
 		$this->updateMonth($document);
@@ -96,14 +141,14 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		// Remove categories from other blogs.
 		if ($document->isPropertyModified('category'))
 		{
-		$blogId = $document->getBlog()->getId();
-		foreach ($document->getCategoryArray() as $category)
-		{
-			if ($category->getBlog()->getId() != $blogId)
+			$blogId = $document->getBlog()->getId();
+			foreach ($document->getCategoryArray() as $category)
 			{
-				$document->removeCategory($category);
+				if ($category->getBlog()->getId() != $blogId)
+				{
+					$document->removeCategory($category);
+				}
 			}
-		}
 		}
 		
 		$this->synchronizeKeywordProperties($document);
@@ -173,7 +218,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		
 		$ms = blog_MonthService::getInstance();
 		$oldMonth = $post->getMonth();
-		$newMonth = $ms->getByDateAndBlog($newDate, $post->getBlog());	
+		$newMonth = $ms->getByDateAndBlog($newDate, $post->getBlog());
 		if (!DocumentHelper::equals($newMonth, $oldMonth))
 		{
 			// Set the new month.
@@ -187,7 +232,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	private function buildLinklist($post)
 	{
 		$DOMDoc = f_util_DOMUtils::fromXhtmlFragmentString(f_util_HtmlUtils::renderHtmlFragment($post->getContents()));
-					
+		
 		$nodes = $DOMDoc->find('//a[@href]');
 		$linklist = array();
 		foreach ($nodes as $node)
@@ -239,7 +284,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	 */
 	protected function preInsert($document, $parentNodeId)
 	{
-		$document->setInsertInTree(false);	
+		$document->setInsertInTree(false);
 		// Set the full name of the current user as author, to display it in frontoffice.
 		if (RequestContext::getInstance()->getMode() == RequestContext::BACKOFFICE_MODE)
 		{
@@ -287,13 +332,13 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	{
 		if (Framework::isInfoEnabled())
 		{
-			Framework::info(__METHOD__ . ' -> ' . $document->__toString(). ' -> ' . $document->getPublicationstatus());
+			Framework::info(__METHOD__ . ' -> ' . $document->__toString() . ' -> ' . $document->getPublicationstatus());
 		}
 		$this->updateMonthPostCount($document);
-		$this->updateCategoriesPostCount($document);	
-		$this->updateKeywordsPostCount($document);		
+		$this->updateCategoriesPostCount($document);
+		$this->updateKeywordsPostCount($document);
 	}
-		
+	
 	/**
 	 * @param blog_persistentdocument_post $document
 	 */
@@ -304,14 +349,14 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		{
 			$month->getDocumentService()->updatePostCount($month);
 		}
-	}		
-
+	}
+	
 	/**
 	 * @param blog_persistentdocument_post $document
 	 */
 	private function updateCategoriesPostCount($document)
 	{
-		foreach ($document->getCategoryArray() as $category) 
+		foreach ($document->getCategoryArray() as $category)
 		{
 			$cs = blog_CategoryService::getInstance();
 			$cs->updatePostCount($category);
@@ -323,12 +368,12 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	 */
 	private function updateKeywordsPostCount($document)
 	{
-		foreach ($document->getKeywordArray() as $keyWord) 
+		foreach ($document->getKeywordArray() as $keyWord)
 		{
 			$ks = blog_KeywordService::getInstance();
 			$ks->updatePostCount($keyWord);
 		}
-	}	
+	}
 	
 	/**
 	 * @see f_persistentdocument_DocumentService::onCorrectionActivated()
@@ -351,7 +396,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 			throw $e;
 		}
 	}
-
+	
 	/**
 	 * Methode à surcharger pour effectuer des post traitement apres le changement de status du document
 	 * utiliser $document->getPublicationstatus() pour retrouver le nouveau status du document.
@@ -371,7 +416,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		}
 		// Status transits from PUBLICATED to ACTIVE.
 		elseif ($oldPublicationStatus == 'PUBLICATED')
-		{	
+		{
 			blog_BlogService::getInstance()->pingServicesForBlog($document->getBlog());
 			$this->updatePostCount($document);
 		}
@@ -470,7 +515,6 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		$post->saveMeta();
 	}
 	
-
 	/**
 	 * @param blog_persistentdocument_post $post
 	 */
@@ -508,7 +552,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		$post->setMeta('trackbackresults', $trackbackResults);
 		$post->saveMeta();
 	}
-
+	
 	/**
 	 * @see f_persistentdocument_DocumentService::getResume()
 	 * @param blog_persistentdocument_post $document
@@ -533,17 +577,12 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	 */
 	public function getDocumentForSitemap($website, $lang, $modelName, $offset, $chunkSize)
 	{
-		$query = $this->createQuery()->add(Restrictions::published())
-					->addOrder(Order::asc('id'))
-					->setMaxResults($chunkSize)
-					->setFirstResult($offset);
+		$query = $this->createQuery()->add(Restrictions::published())->addOrder(Order::asc('id'))->setMaxResults($chunkSize)->setFirstResult($offset);
 		
-		$query->createCriteria('blog')
-					->add(Restrictions::descendentOf($website->getId()));
+		$query->createCriteria('blog')->add(Restrictions::descendentOf($website->getId()));
 		
 		return $query->find();
 	}
-	
 	
 	/**
 	 * @see f_persistentdocument_DocumentService::getDisplayPage()
@@ -638,6 +677,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	
 	// Tweets handling.
 	
+
 	/**
 	 * @param blog_persistentdocument_post $document or null
 	 * @param integer $websiteId
@@ -645,16 +685,8 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	 */
 	public function getReplacementsForTweet($document, $websiteId)
 	{
-		$label = array(
-			'name' => 'label',
-			'label' => f_Locale::translateUI('&modules.blog.document.post.Label;'),
-			'maxLength' => 80
-		);
-		$shortUrl = array(
-			'name' => 'shortUrl', 
-			'label' => f_Locale::translateUI('&modules.twitterconnect.bo.general.Short-url;'),
-			'maxLength' => 30
-		);
+		$label = array('name' => 'label', 'label' => f_Locale::translateUI('&modules.blog.document.post.Label;'), 'maxLength' => 80);
+		$shortUrl = array('name' => 'shortUrl', 'label' => f_Locale::translateUI('&modules.twitterconnect.bo.general.Short-url;'), 'maxLength' => 30);
 		if ($document !== null)
 		{
 			$label['value'] = f_util_StringUtils::shortenString($document->getLabel(), 80);
@@ -681,7 +713,7 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	 * @param integer $parentId
 	 */
 	public function addFormProperties($document, $propertiesNames, &$formProperties, $parentId = null)
-	{	
+	{
 		if (!$document->isNew())
 		{
 			$formProperties['blogId'] = $document->getBlogId();

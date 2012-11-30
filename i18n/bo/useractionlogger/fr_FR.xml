@@ -30,4 +30,8 @@
   <key id="log-update-rootfolder">log-update-rootfolder</key>
   <key id="savepermissions-rootfolder">savepermissions.rootfolder {documentlabel}</key>
   <key id="log-savepermissions-rootfolder">log savepermissions rootfolder</key>
+  <key id="duplicate-post">duplicate.post {documentlabel}</key>
+  <key id="log-duplicate-post">log duplicate post</key>
+  <key id="delete-post">delete.post {documentlabel}</key>
+  <key id="log-delete-post">log delete post</key>
 </i18n>

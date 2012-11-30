@@ -22,4 +22,6 @@
   <actiondef modulename="blog" actionname="update.rootfolder" label="modules.blog.bo.useractionlogger.update-rootfolder"/>
   <actiondef modulename="blog" actionname="deletecorrection.post" label="modules.blog.bo.useractionlogger.deletecorrection-post"/>
   <actiondef modulename="blog" actionname="savepermissions.rootfolder" label="m.blog.bo.useractionlogger.savepermissions-rootfolder"/>
+  <actiondef modulename="blog" actionname="duplicate.post" label="m.blog.bo.useractionlogger.duplicate-post"/>
+  <actiondef modulename="blog" actionname="delete.post" label="m.blog.bo.useractionlogger.delete-post"/>
 </script>

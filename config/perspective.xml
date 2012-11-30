@@ -105,6 +105,7 @@
 		<model name="modules_blog/post">
 			<contextactions>
 				<contextaction name="edit" />
+				<contextaction name="duplicate" />
 				<contextaction name="createPost" />
 				<contextaction name="previewPost" />
 				<contextaction name="activate" />
@@ -172,5 +173,6 @@
 		<action name="previewPost" single="true" permission="PreviewPost" icon="preview" labeli18n="m.blog.bo.actions.PreviewPost" />
 		<action name="openTreeNodeOrder" single="true" permission="Order" icon="sort" labeli18n="m.uixul.bo.actions.Set-children-order" />
 		<action name="initDefaultStruct" single="true" permission="InitDefaultStruct" icon="add" labeli18n="m.website.bo.actions.Init-default-struct"/>
+		<action name="duplicate" icon="duplicate" labeli18n="m.uixul.bo.actions.Duplicate" />
 	</actions>
 </perspective>

@@ -5,16 +5,15 @@
  */
 class blog_BlockKeywordAction extends website_TaggerBlockAction
 {
-    	/**
+	/**
 	 * @return String
 	 */
 	protected function getTag()
 	{
 		return "functional_blog_keyword-detail";
 	}
+	
 	/**
-	 * @see website_BlockAction::execute()
-	 *
 	 * @param f_mvc_Request $request
 	 * @param f_mvc_Response $response
 	 * @return String
@@ -25,7 +24,7 @@ class blog_BlockKeywordAction extends website_TaggerBlockAction
 		{
 			return website_BlockView::BACKOFFICE;
 		}
-				
+		
 		$keyword = $this->getDocumentParameter();
 		if ($keyword === null || !$keyword->isPublished())
 		{
@@ -35,10 +34,11 @@ class blog_BlockKeywordAction extends website_TaggerBlockAction
 		
 		// Set the paginator
 		$paginator = new paginator_Paginator('blog', 
-				$request->getParameter(paginator_Paginator::PAGEINDEX_PARAMETER_NAME, 1),
-				blog_KeywordService::getInstance()->getSortedPosts($keyword),
-				$this->getNbItemPerPage($request, $response));
-
+			$request->getParameter(paginator_Paginator::PAGEINDEX_PARAMETER_NAME, 1),
+			blog_KeywordService::getInstance()->getSortedPosts($keyword),
+			$this->getNbItemPerPage($request, $response)
+		);
+		
 		$request->setAttribute('paginator', $paginator);
 		
 		// Set meta.
@@ -60,7 +60,21 @@ class blog_BlockKeywordAction extends website_TaggerBlockAction
 		
 		return website_BlockView::SUCCESS;
 	}
-		
+	
+	/**
+	 * @return array
+	 */
+	public function getMetas()
+	{
+		$keyword = $this->getDocumentParameter();
+		if ($keyword === null || !$keyword->isPublished())
+		{
+			return array();
+		}
+		$blog = $keyword->getBlog();
+		return array('keywordLabel' => $keyword->getLabel(), 'keywordDescription' => $keyword->getDescription(), 'blogLabel' => $blog->getLabel());
+	}
+	
 	/**
 	 * @param f_mvc_Request $request
 	 * @param f_mvc_Response $response

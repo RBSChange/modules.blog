@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.blog.bo.blocks.keyword.metas" lcid="en_GB">
+	<key id="bloglabel">blog title</key>
+	<key id="keywordlabel">keyword name</key>
+	<key id="keyworddescription">keyword description</key>
+</i18n>

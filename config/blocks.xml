@@ -6,6 +6,10 @@
 			<parameter name="nbitemperpage" type="Integer" default-value="5" />
 			<parameter name="showHightlightingVisual" type="Boolean" default-value="true" />
 		</parameters>
+		<metas>
+			<meta name="blogLabel" allow="title,description" />
+			<meta name="blogDescription" allow="description" />
+		</metas>
 	</block>
 	<block type="modules_blog_blogcontextuallist" icon="list-block" label="&amp;modules.blog.bo.blocks.BlogContextualList;">
 		<parameters>
@@ -22,6 +26,11 @@
 			<parameter name="showHightlightingVisual" type="Boolean" default-value="true" />
 			<parameter name="showblogrsslink" type="Boolean" default-value="true" />
 		</parameters>
+		<metas>
+			<meta name="blogLabel" allow="title,description" />
+			<meta name="categoryLabel" allow="title,description" />
+			<meta name="categoryDescription" allow="description" />
+		</metas>
 	</block>
 	<block type="modules_blog_categoryList" icon="list-block" label="&amp;modules.blog.bo.blocks.CategoryList;">
 		<parameters>
@@ -36,6 +45,11 @@
 			<parameter name="showHightlightingVisual" type="Boolean" default-value="true" />
 			<parameter name="showblogrsslink" type="Boolean" default-value="true" />
 		</parameters>
+		<metas>
+			<meta name="blogLabel" allow="title,description" />
+			<meta name="keywordLabel" allow="title,description" />
+			<meta name="keywordDescription" allow="description" />
+		</metas>
 	</block>
 	<block type="modules_blog_keywordList" icon="list-block" label="&amp;modules.blog.bo.blocks.KeywordList;">
 		<parameters>

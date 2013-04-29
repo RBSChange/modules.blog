@@ -53,26 +53,14 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	}
 	
 	/**
-	 * @param Integer $authorid
+	 * @param Integer $authorId
 	 * @param String $author
 	 * @return String
 	 */
-	public function getAuthorNameByAthorData($authorid, $author)
+	public function getAuthorNameByAthorData($authorId, $author)
 	{
-		try
-		{
-			$authorDocument = DocumentHelper::getDocumentInstance($authorid);
-		}
-		catch (Exception $e)
-		{
-			// The author may not exist any more.
-			if (Framework::isDebugEnabled())
-			{
-				Framework::debug(__METHOD__ . " $authorid not found : " . $e->getMessage());
-			}
-			return $author;
-		}
-		return $authorDocument->getFullname();
+		$authorDocument = DocumentHelper::getDocumentInstanceIfExists($authorId);
+		return ($authorDocument) ? $authorDocument->getFullname() : $author;
 	}
 	
 	/**
@@ -85,8 +73,6 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		$originalLabel = $originalDocument->getLabel();
 		
 		$blog = $originalDocument->getBlog();
-		
-		$posts = $blog->getPostArrayInverse();
 		
 		$defaultPrefix = LocaleService::getInstance()->transBO('m.generic.backoffice.duplicate-prefix', array('ucf')) . ' ';
 		
@@ -119,11 +105,11 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		$newLabel = $prefix . $originalLabel;
 		$newDocument->setLabel($newLabel);
 	}
-	
+
 	/**
 	 * @param blog_persistentdocument_post $document
 	 * @param Integer $parentNodeId Parent node ID where to save the document (optionnal => can be null !).
-	 * @return void
+	 * @throws Exception
 	 */
 	protected function preSave($document, $parentNodeId = null)
 	{
@@ -298,11 +284,12 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		if ($user !== null)
 		{
 			$document->setAuthor($user->getFullname());
+			$document->setAuthorId($user->getId());
 		}
 	}
-	
+
 	/**
-	 * @param blog_persistentdocument_blog $blog
+	 * @param f_persistentdocument_criteria_Criterion $restriction
 	 * @return rss_FeedWriter
 	 */
 	public function getRSSFeedWriterByRestriction($restriction)
@@ -374,12 +361,12 @@ class blog_PostService extends f_persistentdocument_DocumentService
 			$ks->updatePostCount($keyWord);
 		}
 	}
-	
+
 	/**
 	 * @see f_persistentdocument_DocumentService::onCorrectionActivated()
-	 *
 	 * @param blog_persistentdocument_post $document
-	 * @param Array<String=>mixed> $args
+	 * @param array<string => mixed> $args
+	 * @throws Exception
 	 */
 	protected function onCorrectionActivated($document, $args)
 	{
@@ -623,10 +610,11 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		$blog = $document->getBlog();
 		return $blog->getDocumentService()->getWebsiteId($blog);
 	}
-	
+
 	/**
 	 * @param blog_persistentdocument_blog $blog or null
 	 * @param integer $maxCount
+	 * @param website_persistentdocument_website $website
 	 * @return blog_persistentdocument_post[]
 	 */
 	public function getLastPublished($blog, $maxCount, $website = null)
@@ -648,10 +636,11 @@ class blog_PostService extends f_persistentdocument_DocumentService
 		$query->setFirstResult(0)->setMaxResults($maxCount);
 		return $query->find();
 	}
-	
+
 	/**
 	 * @param blog_persistentdocument_blog $blog or null
 	 * @param integer $maxCount
+	 * @param website_persistentdocument_website $website
 	 * @return comment_persistentdocument_comment[]
 	 */
 	public function getLastCommentsPublished($blog, $maxCount, $website = null)
@@ -677,7 +666,6 @@ class blog_PostService extends f_persistentdocument_DocumentService
 	
 	// Tweets handling.
 	
-
 	/**
 	 * @param blog_persistentdocument_post $document or null
 	 * @param integer $websiteId
